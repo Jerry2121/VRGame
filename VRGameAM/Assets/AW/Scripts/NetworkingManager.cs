@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -27,23 +29,23 @@ public class NetworkingManager
 
     public static bool IsHost { get { return Instance.networkingDiscovery.isServer; } }
 
-    public void JoinLANGame()
+    public static void JoinLANGame()
     {
-        networkingDiscovery.StartAsClient();
+        Instance.networkingDiscovery.StartAsClient();
         //StartCoroutine(lobbyManager.WaitForJoinLAN());
     }
 
-    public void CreateLANGameAsHost()
+    public static void CreateLANGameAsHost()
     {
-        networkManager.StartHost(null, MAX_CONNECTIONS);
-        networkingDiscovery.StartAsServer();
+        Instance.networkManager.StartHost(null, MAX_CONNECTIONS);
+        Instance.networkingDiscovery.StartAsServer();
         //StartCoroutine(lobbyManager.WaitForCreateLAN());
     }
 
-    public void Disconnect()
+    public static void Disconnect()
     {
-        networkManager.StopHost();
-        networkingDiscovery.StopBroadcast();
+        Instance.networkManager.StopHost();
+        Instance.networkingDiscovery.StopBroadcast();
     }
 
     /// <summary>
@@ -65,5 +67,62 @@ public class NetworkingManager
         return GO;
     }
 
+
+    #region Player Tracking
+    /*
+    private const string PLAYER_ID_PREFIX = "Player ";
+
+    static int playersAmount;
+
+    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+
+    public static void RegisterPlayer(string _netID, Player _player)
+    {
+        Instance.playersAmount++;
+        string playerID = PLAYER_ID_PREFIX + _netID;
+        players.Add(playerID, _player);
+        _player.transform.name = playerID;
+    }
+
+    public static void UnregisterPlayer(string _playerID)
+    {
+        Instance.playersAmount--;
+        players.Remove(_playerID);
+    }
+
+    public static Player GetPlayer(string _playerID)
+    {
+        if (players.ContainsKey(_playerID))
+            return players[_playerID];
+        else return null;
+    }
+
+    public static Player[] GetAllPlayers()
+    {
+        return players.Values.ToArray();
+    }
+
+    public static Player GetLocalPlayer()
+    {
+        foreach (Player player in players.Values)
+        {
+            if (player.isLocalPlayer)
+            {
+                return player;
+            }
+        }
+        return null;
+    }
+
+#if UNITY_EDITOR
+    [MenuItem("VRGame/AddNullPlayer")]
+    public static void AddNullPlayers()
+    {
+        players.Add(("null" + players.Count), null);
+        Instance.playersAmount++;
+    }
+#endif
+    */
+    #endregion
 }
 #pragma warning restore CS0618 // Type or member is obsolete
