@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 #pragma warning disable CS0618 // Type or member is obsolete
-public class NetworkingDiscovery : NetworkDiscovery
+public sealed class NetworkingDiscovery : NetworkDiscovery
 {
     NetworkManager networkManager;
 

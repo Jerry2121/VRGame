@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 #pragma warning disable CS0618 // Type or member is obsolete
-public class NetworkingManager
+public sealed class NetworkingManager
 {
     #region singleton
     private static readonly Lazy<NetworkingManager> lazy =
