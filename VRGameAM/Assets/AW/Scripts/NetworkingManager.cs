@@ -18,31 +18,38 @@ public sealed class NetworkingManager
 
     private NetworkingManager()
     {
+        if (Debug.isDebugBuild)
+            Debug.Log("Creating NetworkingManager Instance");
         networkManager = NetworkManager.singleton;
         networkingDiscovery = networkManager.GetComponent<NetworkingDiscovery>();
+        if (networkingDiscovery == null)
+            throw new Exception("The NetworkingDiscovery component not found on the Network Manager!");
         networkingDiscovery.Init(networkManager);
+        initialized = true;
     }
     private const int MAX_CONNECTIONS = 2;
+
+    public static bool initialized = false;
 
     private NetworkManager networkManager;
     private NetworkingDiscovery networkingDiscovery;
 
-    public static bool IsHost { get { return Instance.networkingDiscovery.isServer; } }
+    public bool IsHost { get { return Instance.networkingDiscovery.isServer; } }
 
-    public static void JoinLANGame()
+    public void JoinLANGame()
     {
         Instance.networkingDiscovery.StartAsClient();
         //StartCoroutine(lobbyManager.WaitForJoinLAN());
     }
 
-    public static void CreateLANGameAsHost()
+    public void CreateLANGameAsHost()
     {
         Instance.networkManager.StartHost(null, MAX_CONNECTIONS);
         Instance.networkingDiscovery.StartAsServer();
         //StartCoroutine(lobbyManager.WaitForCreateLAN());
     }
 
-    public static void Disconnect()
+    public void Disconnect()
     {
         Instance.networkManager.StopHost();
         Instance.networkingDiscovery.StopBroadcast();
@@ -54,7 +61,7 @@ public sealed class NetworkingManager
     /// <param name="_obj"></param>
     /// <param name="_position"></param>
     /// <param name="_rotation"></param>
-    public static GameObject InstantiateOverNetwork(GameObject _obj, Vector3 _position, Quaternion _rotation)
+    public GameObject InstantiateOverNetwork(GameObject _obj, Vector3 _position, Quaternion _rotation)
     {
         if (IsHost == false)
         {
@@ -69,42 +76,42 @@ public sealed class NetworkingManager
 
 
     #region Player Tracking
-    /*
+    
     private const string PLAYER_ID_PREFIX = "Player ";
 
-    static int playersAmount;
+    int playersAmount;
 
-    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private Dictionary<string, TempPlayer> players = new Dictionary<string, TempPlayer>();
 
-    public static void RegisterPlayer(string _netID, Player _player)
+    public void RegisterPlayer(string _netID, TempPlayer _player)
     {
-        Instance.playersAmount++;
+        playersAmount++;
         string playerID = PLAYER_ID_PREFIX + _netID;
         players.Add(playerID, _player);
         _player.transform.name = playerID;
     }
 
-    public static void UnregisterPlayer(string _playerID)
+    public void UnregisterPlayer(string _playerID)
     {
-        Instance.playersAmount--;
+        playersAmount--;
         players.Remove(_playerID);
     }
 
-    public static Player GetPlayer(string _playerID)
+    public TempPlayer GetPlayer(string _playerID)
     {
         if (players.ContainsKey(_playerID))
             return players[_playerID];
         else return null;
     }
 
-    public static Player[] GetAllPlayers()
+    public TempPlayer[] GetAllPlayers()
     {
         return players.Values.ToArray();
     }
 
-    public static Player GetLocalPlayer()
+    public TempPlayer GetLocalPlayer()
     {
-        foreach (Player player in players.Values)
+        foreach (TempPlayer player in players.Values)
         {
             if (player.isLocalPlayer)
             {
@@ -118,11 +125,11 @@ public sealed class NetworkingManager
     [MenuItem("VRGame/AddNullPlayer")]
     public static void AddNullPlayers()
     {
-        players.Add(("null" + players.Count), null);
+        Instance.players.Add(("null" + Instance.players.Count), null);
         Instance.playersAmount++;
     }
 #endif
-    */
+    
     #endregion
 }
 #pragma warning restore CS0618 // Type or member is obsolete

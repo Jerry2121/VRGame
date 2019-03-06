@@ -33,9 +33,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - LocalPlayer
+  - RemotePlayer
+  - DontDraw
   - 
   m_SortingLayers:
   - name: Default

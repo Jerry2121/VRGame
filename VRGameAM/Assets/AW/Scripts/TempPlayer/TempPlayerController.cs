@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 //[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(TempPlayerMotor))]
-public class TempPlayerController : MonoBehaviour
+public class TempPlayerController : NetworkBehaviour
 {
 
     [SerializeField]
@@ -31,20 +32,8 @@ public class TempPlayerController : MonoBehaviour
 
     void Update()
     {
-        /*if (PauseMenu.isOn || PlayerUI.InInventory)
-        {
-            if (Cursor.lockState != CursorLockMode.None)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            return;
-        }*/
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToggleCursor();
 
         //Calculate movement velocity as 3D vector
         float _xMove = Input.GetAxis("Horizontal");
@@ -69,12 +58,27 @@ public class TempPlayerController : MonoBehaviour
 
         //Calculate camera rotation as a 3D vector for loking up or down
         float _xRot = Input.GetAxisRaw("Mouse Y");
-        
-        
-            float _cameraRotationX = _xRot /** PlayerPrefs.GetFloat("YSensitivity")*/;
 
-            //Apply camera rotation
-            motor.RotateCamera(_cameraRotationX);
 
+        float _cameraRotationX = _xRot /** PlayerPrefs.GetFloat("YSensitivity")*/;
+
+        //Apply camera rotation
+        motor.RotateCamera(_cameraRotationX);
+
+    }
+
+    void ToggleCursor()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

@@ -1,146 +1,95 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.Networking;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
 
-//[RequireComponent(typeof(TempPlayer))]
-//[RequireComponent(typeof(TempPlayerController))]
-//public class TempPlayerSetup : NetworkBehaviour {
+[RequireComponent(typeof(TempPlayer))]
+[RequireComponent(typeof(TempPlayerController))]
+public class TempPlayerSetup : NetworkBehaviour
+{
 
-//    //components to disable on non-local players
-//    [SerializeField]
-//    Behaviour[] componentsToDisable;
-//    [SerializeField]
-//    string remoteLayerName = "RemotePlayer";
-//    [SerializeField]
-//    string dontDrawLayerName = "DontDraw";
-//    [SerializeField]
-//    string remoteMinimapLayerName = "MiniMapRemote";
-//    [SerializeField]
-//    GameObject playerGraphics;
-//    [SerializeField]
-//    GameObject playerMiniMapGraphic;
-//    [SerializeField]
-//    GameObject playerUIPrefab;
-//    [HideInInspector]
-//    public GameObject playerUIInstance;
+    //components to disable on non-local players
+    [SerializeField]
+    Behaviour[] componentsToDisable;
+    [SerializeField]
+    string remoteLayerName = "RemotePlayer";
+    [SerializeField]
+    string dontDrawLayerName = "DontDraw";
+    [SerializeField]
+    GameObject playerGraphics;
+    [SerializeField]
+    GameObject playerUIPrefab;
+    [HideInInspector]
+    public GameObject playerUIInstance;
 
-//	// Use this for initialization
-//	void Start () {
-//        //if the object isn't controlled by the local player
-//        if (!isLocalPlayer)
-//        {
-//            DisableComponents();
-//            playerMiniMapGraphic.layer = LayerMask.NameToLayer(remoteMinimapLayerName);
-//            playerMiniMapGraphic.transform.localScale = new Vector3(2f,2f,2f);
-//            AssignRemoteLayer();
-//        }
-//        else
-//        {
-//            //Disable player graphics for local player
-//            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+    // Use this for initialization
+    void Start()
+    {
+        //if the object isn't controlled by the local player
+        if (!isLocalPlayer && NetworkingManager.initialized)
+        {
+            DisableComponents();
+            AssignRemoteLayer();
+        }
+        else
+        {
+            //Disable player graphics for local player
+            Utility.SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
 
-//            //Create player UI
-//            playerUIInstance = Instantiate(playerUIPrefab);
-//            playerUIInstance.name = playerUIPrefab.name;
+            //Create player UI
+            //playerUIInstance = Instantiate(playerUIPrefab);
+            //playerUIInstance.name = playerUIPrefab.name;
 
-//            //Configure playerUI
-//            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-//            if(ui == null)
-//            {
-//                Debug.LogError("PlayerSetup -- Start: No PlayerUI on PlayerUI prefab");
-//                return;
-//            }
-//            ui.SetPlayer(GetComponent<Player>());
+            //Configure playerUI
+            //PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+            /*if (ui == null)
+            {
+                Debug.LogError("PlayerSetup -- Start: No PlayerUI on PlayerUI prefab");
+                return;
+            }
+            ui.SetPlayer(GetComponent<Player>());
+            */
+            //GetComponent<Player>().SetupPlayer();
+            
+        }
+    }
 
-//            GetComponent<Player>().SetupPlayer();
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
 
-//            string username = "Loading...";
-//            bool isDev = false;
-//            if (UserAccountManager.IsLoggedIn)
-//            {
-//                username = UserAccountManager.PlayerUsername;
-//                isDev = UserAccountManager.PlayerIsDev;
-//            }
-//            else username = transform.name;
+        string netID = GetComponent<NetworkIdentity>().netId.ToString();
+        TempPlayer player = GetComponent<TempPlayer>();
 
-//            CmdSetUsername(transform.name, username, isDev);
-//        }
-//	}
+        if (Debug.isDebugBuild)
+            Debug.Log("PlayerSetup -- OnStartClient");
 
-//    [Command]
-//    void CmdSetUsername(string _playerID, string _username, bool _isDev)
-//    {
-//        Player player = GameManager.GetPlayer(_playerID);
-//        if(player != null)
-//        {
-//            player.username = _username;
-//            player.isDev = _isDev;
-//        }
-//    }
+        NetworkingManager.Instance.RegisterPlayer(netID, player);
+    }
 
-//    public override void OnStartClient()
-//    {
-//        base.OnStartClient();
+    void AssignRemoteLayer()
+    {
+        gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+    }
 
-//        string netID = GetComponent<NetworkIdentity>().netId.ToString();
-//        Player player = GetComponent<Player>();
+    void DisableComponents()
+    {
+        for (int i = 0; i < componentsToDisable.Length; i++)
+        {
+            componentsToDisable[i].enabled = false;
+        }
+    }
 
-//        if (Debug.isDebugBuild)
-//            Debug.Log("PlayerSetup -- OnStartClient");
+    void OnDisable()
+    {
+        Destroy(playerUIInstance);
 
-//        GameManager.RegisterPlayer(netID, player);
-//    }
+        //if (isLocalPlayer)
+            //GameManager.Instance.SetSceneCameraActiveState(true);
 
-//    public override void OnStartServer()
-//    {
-//        //If we are the host OnStartClient and OnStartServer are oth called, which causes errors, so we'll only run the code in OnStartClient
-//        if (NetworkDiscoveryScript.IsServerOnly == false)
-//            return;
+        //GameManager.UnregisterPlayer(transform.name);
 
-//        base.OnStartServer();
+    }
 
-//        string netID = GetComponent<NetworkIdentity>().netId.ToString();
-//        Player player = GetComponent<Player>();
+}
 
-//        if (Debug.isDebugBuild)
-//            Debug.Log("PlayerSetup -- OnStartServer");
-
-//        GameManager.RegisterPlayer(netID, player);
-//    }
-
-//    void AssignRemoteLayer()
-//    {
-//        gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
-//    }
-
-//    void DisableComponents()
-//    {
-//        for (int i = 0; i < componentsToDisable.Length; i++)
-//        {
-//            componentsToDisable[i].enabled = false;
-//        }
-//    }
-
-//    void OnDisable()
-//    {
-//        Destroy(playerUIInstance);
-
-//        if(isLocalPlayer)
-//            GameManager.Instance.SetSceneCameraActiveState(true);
-
-//        GameManager.UnregisterPlayer(transform.name);
-
-//    }
-
-//    void SetLayerRecursively(GameObject _obj, int _newLayer)
-//    {
-//        _obj.layer = _newLayer;
-
-//        foreach(Transform child in _obj.transform)
-//        {
-//            SetLayerRecursively(child.gameObject, _newLayer);
-//        }
-//    }
-
-//}

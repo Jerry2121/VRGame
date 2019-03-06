@@ -13,12 +13,14 @@ GameObject:
   - component: {fileID: 4937608010069202734}
   - component: {fileID: 4937608010069202735}
   - component: {fileID: 4937608010069202732}
-  - component: {fileID: 4937608010069202733}
-  - component: {fileID: 4937608010069202730}
+  - component: {fileID: 2922765990514308737}
   - component: {fileID: 4937608010069202731}
+  - component: {fileID: 4937608010069202730}
+  - component: {fileID: 4937608010069202733}
   - component: {fileID: 4937608010069202722}
   - component: {fileID: 4937608010069202723}
-  m_Layer: 0
+  - component: {fileID: 4830358496113748938}
+  m_Layer: 28
   m_Name: TempPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +117,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &4937608010069202733
+--- !u!114 &2922765990514308737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,11 +126,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 4937608010069202728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36173bfb64ffb5041aa8b12bebe14068, type: 3}
+  m_Script: {fileID: 11500000, guid: 2323366db55b5da4f9365ace093be164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 4937608010735646623}
-  cameraRotationLimit: 85
+  componentsToDisable:
+  - {fileID: 4937608010069202730}
+  - {fileID: 4937608010069202733}
+  - {fileID: 4937608010735646623}
+  - {fileID: 4937608010735646622}
+  remoteLayerName: RemotePlayer
+  dontDrawLayerName: DontDraw
+  playerGraphics: {fileID: 0}
+  playerUIPrefab: {fileID: 0}
+  playerUIInstance: {fileID: 0}
+--- !u!114 &4937608010069202731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4937608010069202728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7a22c17872ff345a412f6ecf30c7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  disableOnDeath: []
+  disableGameObjectsOnDeath: []
+  PlayerUI: {fileID: 0}
+  isTheLocalPlayer: 0
+  deaths: 0
 --- !u!114 &4937608010069202730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +176,7 @@ MonoBehaviour:
     m_Bits: 0
   jointSpring: 20
   jointMaxForce: 40
---- !u!114 &4937608010069202731
+--- !u!114 &4937608010069202733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,17 +185,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4937608010069202728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7a22c17872ff345a412f6ecf30c7c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 36173bfb64ffb5041aa8b12bebe14068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  username: Loading...
-  isDev: 0
-  disableOnDeath: []
-  disableGameObjectsOnDeath: []
-  PlayerUI: {fileID: 0}
-  isTheLocalPlayer: 0
-  deaths: 0
+  cam: {fileID: 4937608010735646623}
+  cameraRotationLimit: 85
 --- !u!114 &4937608010069202722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +222,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &4937608010069202723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +243,28 @@ MonoBehaviour:
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_InterpolateRotation: 10
   m_InterpolateMovement: 1
+--- !u!114 &4830358496113748938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4937608010069202728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4937608010735646609}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!1 &4937608010735646620
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +276,7 @@ GameObject:
   - component: {fileID: 4937608010735646609}
   - component: {fileID: 4937608010735646623}
   - component: {fileID: 4937608010735646622}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
