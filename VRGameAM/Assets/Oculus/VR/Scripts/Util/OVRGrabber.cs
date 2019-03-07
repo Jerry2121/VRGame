@@ -82,6 +82,19 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
+    // This is NathanCode
+    public void ForceReleaseLarge(OVRLargeGrabbable grabbable)
+    {
+        bool canRelease = (
+            (m_grabbedObj != null) &&
+            (m_grabbedObj == grabbable)
+        );
+        if (canRelease)
+        {
+            GrabEnd();
+        }
+    }
+
     protected virtual void Awake()
     {
         m_anchorOffsetPosition = transform.localPosition;
