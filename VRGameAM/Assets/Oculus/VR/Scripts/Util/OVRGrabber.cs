@@ -307,8 +307,8 @@ public class OVRGrabber : MonoBehaviour
             }
         }
 
-
-        m_grabbedObj.gameObject.layer = 9;
+        if(m_grabbedObj != null)
+            m_grabbedObj.gameObject.layer = 9;
     }
 
     protected virtual void MoveGrabbedObject(Vector3 pos, Quaternion rot, bool forceTeleport = false)
@@ -357,8 +357,8 @@ public class OVRGrabber : MonoBehaviour
     {
         m_grabbedObj.GrabEnd(linearVelocity, angularVelocity);
         if(m_parentHeldObject) m_grabbedObj.transform.parent = null;
-
-        m_grabbedObj.gameObject.layer = 0;
+        if(m_grabbedObj != null)
+            m_grabbedObj.gameObject.layer = 0;
         m_grabbedObj = null;
     }
 
