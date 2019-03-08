@@ -11,6 +11,7 @@ public sealed class NetworkingDiscovery : NetworkDiscovery
     public void Init(NetworkManager _netManager)
     {
         networkManager = _netManager;
+        Initialize();
     }
     
     public override void OnReceivedBroadcast(string fromAddress, string data)

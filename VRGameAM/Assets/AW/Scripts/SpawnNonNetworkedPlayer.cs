@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class SpawnNonNetworkedPlayer : MonoBehaviour
 {
     [SerializeField]
     GameObject playerPrefab;
@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
         if(NetworkingManager.initialized == false && playerPrefab != null)
         {
             Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
-            sceneCamera.active = false;
+            if (sceneCamera != null)
+                sceneCamera.SetActive(false);
         }
     }
 }

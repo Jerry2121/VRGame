@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(TempPlayer))]
-[RequireComponent(typeof(TempPlayerController))]
+[RequireComponent(typeof(PlayerNetworkInteractions))]
 public class TempPlayerSetup : NetworkBehaviour
 {
 
@@ -49,7 +49,7 @@ public class TempPlayerSetup : NetworkBehaviour
             }
             ui.SetPlayer(GetComponent<Player>());
             */
-            //GetComponent<Player>().SetupPlayer();
+            GetComponent<TempPlayer>().SetupPlayer();
             
         }
     }
@@ -69,7 +69,8 @@ public class TempPlayerSetup : NetworkBehaviour
 
     void AssignRemoteLayer()
     {
-        gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+        //gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+        Utility.SetLayerRecursively(gameObject, LayerMask.NameToLayer(remoteLayerName));
     }
 
     void DisableComponents()

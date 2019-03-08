@@ -22,6 +22,8 @@ public class TempPlayerController : NetworkBehaviour
     [SerializeField]
     private float jointMaxForce = 40;
 
+    bool cursorLocked = false;
+
     //component caching
     private TempPlayerMotor motor;
 
@@ -34,6 +36,9 @@ public class TempPlayerController : NetworkBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             ToggleCursor();
+
+        if (cursorLocked == false)
+            return;
 
         //Calculate movement velocity as 3D vector
         float _xMove = Input.GetAxis("Horizontal");
@@ -73,12 +78,16 @@ public class TempPlayerController : NetworkBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            cursorLocked = false;
+            motor.canMove = false;
             return;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            cursorLocked = true;
+            motor.canMove = true;
         }
     }
 }

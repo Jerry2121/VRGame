@@ -31,6 +31,8 @@ public class TempPlayer : NetworkBehaviour
     [HideInInspector]
     public bool isTheLocalPlayer;
 
+    public PlayerNetworkInteractions networkInteractions;
+
     public int deaths;
 
     private bool firstSetup = true;
@@ -38,6 +40,7 @@ public class TempPlayer : NetworkBehaviour
     public void SetupPlayer()
     {
         isTheLocalPlayer = true;
+        networkInteractions = GetComponent<PlayerNetworkInteractions>();
         //PlayerUI = GetComponent<PlayerSetup>().playerUIInstance;
         //GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
         //Tell they server a player needs to be setup on all clients

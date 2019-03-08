@@ -17,6 +17,8 @@ public class TempPlayerMotor : MonoBehaviour {
 
     private Rigidbody rb;
 
+    public bool canMove;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,6 +27,9 @@ public class TempPlayerMotor : MonoBehaviour {
     //Runs every physics iteration
     void FixedUpdate()
     {
+        if (canMove == false)
+            return;
+
         PerformMovement();
         PerformRotation();
     }
