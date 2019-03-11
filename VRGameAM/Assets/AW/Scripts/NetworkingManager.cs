@@ -18,8 +18,10 @@ public sealed class NetworkingManager
 
     private NetworkingManager()
     {
-        if (Debug.isDebugBuild)
+        Logger.Instance.Init();
+
             Debug.Log("Creating NetworkingManager Instance");
+
         networkManager = NetworkManager.singleton;
         networkingDiscovery = networkManager.GetComponent<NetworkingDiscovery>();
         if (networkingDiscovery == null)
@@ -38,21 +40,28 @@ public sealed class NetworkingManager
 
     public void JoinLANGame()
     {
-        Instance.networkingDiscovery.StartAsClient();
+        networkingDiscovery.Initialize();
+
+        networkingDiscovery.StartAsClient();
         //StartCoroutine(lobbyManager.WaitForJoinLAN());
+        Debug.Log("Joining LAN Game");
     }
 
     public void CreateLANGameAsHost()
     {
-        Instance.networkManager.StartHost(null, MAX_CONNECTIONS);
-        Instance.networkingDiscovery.StartAsServer();
+        networkingDiscovery.Initialize();
+
+        networkManager.StartHost(null, MAX_CONNECTIONS);
+        networkingDiscovery.StartAsServer();
         //StartCoroutine(lobbyManager.WaitForCreateLAN());
+        Debug.Log("Creating LAN Game");
     }
 
     public void Disconnect()
     {
-        Instance.networkManager.StopHost();
-        Instance.networkingDiscovery.StopBroadcast();
+        networkManager.StopHost();
+        networkingDiscovery.StopBroadcast();
+        Debug.Log("Disconnecting");
     }
 
     /// <summary>
@@ -89,12 +98,14 @@ public sealed class NetworkingManager
         string playerID = PLAYER_ID_PREFIX + _netID;
         players.Add(playerID, _player);
         _player.transform.name = playerID;
+        Debug.Log("Player " + playerID + " has been registered");
     }
 
     public void UnregisterPlayer(string _playerID)
     {
         playersAmount--;
         players.Remove(_playerID);
+        Debug.Log("Player with ID '" + _playerID + "' has been unregistered");
     }
 
     public TempPlayer GetPlayer(string _playerID)
@@ -122,14 +133,19 @@ public sealed class NetworkingManager
     }
 
 #if UNITY_EDITOR
-    [MenuItem("VRGame/AddNullPlayer")]
+    [MenuItem("VRGame/Debug/AddNullPlayer")]
     public static void AddNullPlayers()
     {
         Instance.players.Add(("null" + Instance.players.Count), null);
         Instance.playersAmount++;
     }
+    [MenuItem("VRGame/InitNetworkManager")]
+    public static void InitNetworkManager()
+    {
+        NetworkingManager nw = Instance;
+    }
 #endif
-    
+
     #endregion
 }
 #pragma warning restore CS0618 // Type or member is obsolete

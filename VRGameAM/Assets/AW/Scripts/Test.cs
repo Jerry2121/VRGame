@@ -16,6 +16,7 @@ public class Test : MonoBehaviour
         Debug.Log("Log");
         Debug.LogWarning("Warning");
         Debug.LogError("Error");
+        throw new System.Exception("Exception");
 
 
         //Debug.Log(Logger.Instance.DisplayLoggedText());

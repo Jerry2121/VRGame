@@ -20,16 +20,24 @@ public sealed class Logger
     }
     #endregion
 
+    bool initialized;
     bool debugToConsole;
 
     public void Init()
     {
+        if (initialized)
+        {
+            Debug.Log("Logger already initialized");
+            return;
+        }
+        initialized = true;
         Application.logMessageReceivedThreaded += HandleLogThreaded;
         Application.quitting += WriteApplicationLog;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR && DEVELOPMENT_BUILD
         DebugConsole.Instance.WriteLine("Checking Console");
         debugToConsole = true;
 #endif
+        Debug.Log("Logger initialized");
     }
 
     int messageDisplayLimit = 10;
@@ -56,16 +64,19 @@ public sealed class Logger
             logTypeMessage = "Warning - ";
         else if (logType == LogType.Error)
             logTypeMessage = "ERROR - ";
+        else if (logType == LogType.Exception)
+            logTypeMessage = "EXCEPTION - ";
+        else
+            logTypeMessage = "Message - ";
 
-
-        logHistory.Add(string.Format("{0}[{1}] {2}", logTypeMessage, DateTime.Now, _message));
+        logHistory.Add(string.Format("[{0}] {1}{2}", DateTime.Now, logTypeMessage, _message));
         if (debugLog && Debug.isDebugBuild)
         {
             Debug.Log(_message);
         }
 
         if(debugToConsole)
-            DebugConsole.Instance.WriteLine(string.Format("{0}[{1}]: {2}", logTypeMessage, DateTime.Now, _message));
+            DebugConsole.Instance.WriteLine(string.Format("[{0}] {1}{2}", DateTime.Now, logTypeMessage, _message));
     }
 
     public string DisplayLoggedText()

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [RequireComponent(typeof(TempPlayer))]
-public class PlayerNetworkInteractions : MonoBehaviour
+public class PlayerNetworkInteractions : NetworkBehaviour
 {
     [Command]
     public void CmdExample(NetworkInstanceId _netID)
