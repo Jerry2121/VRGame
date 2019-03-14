@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b00527f85bb3346a4d2cb710971587, type: 3}
   m_Name: VolumetricFog
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   colorMode:
     m_OverrideState: 0
     m_Value: 1
@@ -141,11 +141,11 @@ MonoBehaviour:
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 6.68
+    m_Value: 5
     min: 1
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0.95
+    m_Value: 0
   meanHeight:
     m_OverrideState: 1
     m_Value: 1
