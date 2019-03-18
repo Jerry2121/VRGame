@@ -5,13 +5,12 @@ using UnityEngine.Networking;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [RequireComponent(typeof(TempPlayerSetup))]
-public class TempPlayer : NetworkBehaviour
+public class TempPlayer : MonoBehaviour
 {
 
     [SerializeField]
     private int maxHealth = 100;
-
-    [SyncVar]
+    
     private int currentHealth;
 
     [SerializeField]
@@ -21,8 +20,7 @@ public class TempPlayer : NetworkBehaviour
     GameObject[] disableGameObjectsOnDeath;
 
     private bool[] wasEnabled;
-
-    [SyncVar]
+    
     private bool isDead = false;
     public bool IsDead { get { return isDead; } protected set { isDead = value; } } //Done this way instead of "public bool isDead {get; protected set}" so that it can be set as a SyncVar
 
@@ -31,7 +29,7 @@ public class TempPlayer : NetworkBehaviour
     [HideInInspector]
     public bool isTheLocalPlayer;
 
-    public PlayerNetworkInteractions networkInteractions;
+    //public PlayerNetworkInteractions networkInteractions;
 
     public int deaths;
 
@@ -40,7 +38,7 @@ public class TempPlayer : NetworkBehaviour
     public void SetupPlayer()
     {
         isTheLocalPlayer = true;
-        networkInteractions = GetComponent<PlayerNetworkInteractions>();
+        //networkInteractions = GetComponent<PlayerNetworkInteractions>();
         //PlayerUI = GetComponent<PlayerSetup>().playerUIInstance;
         //GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
         //Tell they server a player needs to be setup on all clients
@@ -48,13 +46,13 @@ public class TempPlayer : NetworkBehaviour
     }
 
 
-    [Command] //will be called on the server
+    //[Command] //will be called on the server
     private void CmdBroadcastNewPlayerSetup()
     {
         RpcSetupPlayerOnAllClients();
     }
 
-    [ClientRpc]
+    //[ClientRpc]
     private void RpcSetupPlayerOnAllClients()
     {
         if (firstSetup)
@@ -110,13 +108,13 @@ public class TempPlayer : NetworkBehaviour
         //Destroy(gfxInstance, 3f);
     }
 
-    [Command]
+    //[Command]
     public void CmdHeal(int _amount)
     {
         RpcHeal(_amount);
     }
 
-    [ClientRpc]
+    //[ClientRpc]
     public void RpcHeal(int _amount)
     {
         currentHealth += _amount;
@@ -126,13 +124,13 @@ public class TempPlayer : NetworkBehaviour
             currentHealth = maxHealth;
     }
 
-    [Command]
+    //[Command]
     void CmdTakeDamage(int _damage, string _sourceID) //only call on player, other scripts like shoot have their own Command to call RpcTakeDamage
     {
         RpcTakeDamage(_damage, _sourceID);
     }
 
-    [ClientRpc] //Called on all clients from the server
+    //[ClientRpc] //Called on all clients from the server
     public void RpcTakeDamage(int _damage, string _sourceID)
     {
         if (isDead)

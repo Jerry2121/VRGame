@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 //[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(TempPlayerMotor))]
-public class TempPlayerController : NetworkBehaviour
+public class TempPlayerController : MonoBehaviour
 {
 
     [SerializeField]

@@ -12,11 +12,11 @@ public class LobbyUIManager : MonoBehaviour
 
     public void JoinLANGame()
     {
-        NetworkingManager.Instance.JoinLANGame();
+        //NetworkingManager.Instance.JoinLANGame();
     }
 
     public void CreateLANGame()
     {
-        NetworkingManager.Instance.CreateLANGameAsHost();
+        //NetworkingManager.Instance.CreateLANGameAsHost();
     }
 }

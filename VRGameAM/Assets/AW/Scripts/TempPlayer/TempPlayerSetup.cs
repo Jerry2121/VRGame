@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(TempPlayer))]
-[RequireComponent(typeof(PlayerNetworkInteractions))]
-public class TempPlayerSetup : NetworkBehaviour
+//[RequireComponent(typeof(PlayerNetworkInteractions))]
+public class TempPlayerSetup : MonoBehaviour
 {
 
     //components to disable on non-local players
@@ -25,6 +25,7 @@ public class TempPlayerSetup : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
+        /*
         //if the object isn't controlled by the local player
         if (!isLocalPlayer && NetworkingManager.initialized)
         {
@@ -48,13 +49,13 @@ public class TempPlayerSetup : NetworkBehaviour
                 return;
             }
             ui.SetPlayer(GetComponent<Player>());
-            */
-            GetComponent<TempPlayer>().SetupPlayer();
             
+            GetComponent<TempPlayer>().SetupPlayer();
         }
+        */
     }
 
-    public override void OnStartClient()
+    /*public override void OnStartClient()
     {
         base.OnStartClient();
 
@@ -64,8 +65,8 @@ public class TempPlayerSetup : NetworkBehaviour
         if (Debug.isDebugBuild)
             Debug.Log("PlayerSetup -- OnStartClient");
 
-        NetworkingManager.Instance.RegisterPlayer(netID, player);
-    }
+        //NetworkingManager.Instance.RegisterPlayer(netID, player);
+    }*/
 
     void AssignRemoteLayer()
     {

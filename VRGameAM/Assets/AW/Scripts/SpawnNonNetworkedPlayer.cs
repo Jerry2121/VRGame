@@ -14,11 +14,11 @@ public class SpawnNonNetworkedPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(NetworkingManager.initialized == false && playerPrefab != null)
-        {
+        //if(NetworkingManager.initialized == false && playerPrefab != null)
+        //{
             Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
             if (sceneCamera != null)
                 sceneCamera.SetActive(false);
-        }
+        //}
     }
 }
