@@ -23,7 +23,8 @@ namespace VRGame.Networking
         void Start()
         {
             m_Driver = new UdpCNetworkDriver(new INetworkParameter[0]);
-            if (m_Driver.Bind(new IPEndPoint(IPAddress.Loopback, 9000)) != 0)
+
+            if (m_Driver.Bind(new IPEndPoint(IPAddress.Any, 9000)) != 0)
                 Debug.Log("NetworkServer -- Failed to bind to port 9000");
             else
                 m_Driver.Listen();

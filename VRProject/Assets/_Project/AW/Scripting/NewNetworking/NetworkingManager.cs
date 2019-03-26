@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 namespace VRGame.Networking
@@ -14,7 +15,8 @@ namespace VRGame.Networking
 
         public Dictionary<int, TempPlayer> playerDictionary = new Dictionary<int, TempPlayer>();
 
-        public string m_NetworkAddress = "localhost";
+        [SerializeField]
+        string m_NetworkAddress = "localhost";
         public int m_NetworkPort = 9000;
 
         [SerializeField] bool showGUI;
@@ -123,6 +125,7 @@ namespace VRGame.Networking
         {
             if (m_Client != null)
             {
+                m_Client.Disconnect();
                 Destroy(m_Client);
                 m_Client = null;
             }
@@ -144,6 +147,16 @@ namespace VRGame.Networking
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StopHost: Server stopped.");
         }
+
+        public IPAddress NetworkAddress()
+        {
+            if (m_NetworkAddress == "localhost")
+                return IPAddress.Loopback;
+            else if (IPAddress.TryParse(m_NetworkAddress, out IPAddress address))
+                return address;
+            else return null;
+        }
+
 
     }
 }

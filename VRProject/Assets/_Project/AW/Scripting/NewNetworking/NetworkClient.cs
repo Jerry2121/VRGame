@@ -43,7 +43,15 @@ namespace VRGame.Networking
             m_Driver = new UdpCNetworkDriver(new INetworkParameter[0]);
             m_Connection = default(NetworkConnection);
 
-            var endpoint = new IPEndPoint(IPAddress.Loopback, 9000);
+            if(NetworkingManager.Instance.NetworkAddress() == null)
+            {
+                Debug.Log("NetworkClient -- Start: Invalid IP address");
+                Disconnect();
+                NetworkingManager.Instance.ClientDisconnect();
+                return;
+            }
+
+            var endpoint = new IPEndPoint(NetworkingManager.Instance.NetworkAddress(), 9000);
             m_Connection = m_Driver.Connect(endpoint);
 
             SendMessage("Connected");
