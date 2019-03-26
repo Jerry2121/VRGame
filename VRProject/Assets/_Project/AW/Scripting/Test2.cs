@@ -10,23 +10,27 @@ public class Test2 : MonoBehaviour
     void Start()
     {
         string msg = "1|Move|9.4|5.4";
+        string msgtwo = "1|Pos|6.77|3.44";
         float x;
         float z;
 
-        switch (NetworkTranslater.GetMessageContentType(msg))
-        {
-            case NetworkMessageContent.Move:
-                if (NetworkTranslater.TranslateMoveMessage(msg, out int ID, out x, out z))
-                    Debug.LogFormat("x = {0}, z = {1}", x, z);
-                break;
-        }
+        string sentmsg = NetworkTranslater.CombineMessages(new string[] { msg, msgtwo });
 
+        Debug.Log(sentmsg);
+
+        string[] recieved = NetworkTranslater.SplitMessages(sentmsg);
+
+        foreach(var msgr in recieved)
+        {
+            Debug.Log(msgr);
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+    
 }
+

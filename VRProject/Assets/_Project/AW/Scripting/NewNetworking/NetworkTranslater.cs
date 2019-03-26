@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace VRGame.Networking
@@ -8,15 +9,17 @@ namespace VRGame.Networking
     public enum NetworkMessageContent
     {
         None,
-        Move,
-        Position,
-        ID
+        Move,           // Mov
+        Position,       // Pos
+        ID,             // ID
+        Instantiate     // Ins
     }
 
     public static class NetworkTranslater
     {
 
         //Messages go playerID|contentType|data|data|data... ect
+        //Messages connected Message1-Message2
 
         public static NetworkMessageContent GetMessageContentType(string message)
         {
@@ -33,20 +36,51 @@ namespace VRGame.Networking
                     return NetworkMessageContent.Position;
                 case "ID":
                     return NetworkMessageContent.ID;
+                case "Ins":
+                    return NetworkMessageContent.Instantiate;
                 default:
                     return NetworkMessageContent.None;
             }
         }
 
-        public static NetworkMessageContent MessageContentType(string[] message)
+        public static NetworkMessageContent GetMessageContentType(string[] message)
         {
-            switch (message[0])
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var msg in message)
             {
-                case "Move":
-                    return NetworkMessageContent.Move;
-                default:
-                    return NetworkMessageContent.None;
+                sb.Append(msg);
             }
+            return GetMessageContentType(sb.ToString());
+        }
+
+        public static string CombineMessages(string[] messages)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var message in messages)
+            {
+                sb.Append("-" + message);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string CombineMessages(List<string> messages)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var message in messages)
+            {
+                sb.Append("-" + message);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string[] SplitMessages(string recievedMessage)
+        {
+            return recievedMessage.Split('-');
         }
 
         #region TranslateMessages
@@ -55,7 +89,7 @@ namespace VRGame.Networking
         {
             string[] splitMessage = message.Split('|');
 
-            if (MessageContentType(splitMessage) != NetworkMessageContent.Move)
+            if (GetMessageContentType(splitMessage) != NetworkMessageContent.Move)
             {
                 x = z = playerID = 0;
                 return false;
@@ -74,8 +108,9 @@ namespace VRGame.Networking
         {
             string[] splitMessage = message.Split('|');
 
-            if (MessageContentType(splitMessage) != NetworkMessageContent.ID)
+            if (GetMessageContentType(message) != NetworkMessageContent.ID)
             {
+                Debug.LogError("FOOOOOO");
                 clientID = -1;
                 return false;
             }
@@ -96,9 +131,13 @@ namespace VRGame.Networking
             return string.Format("{0}|Move|{1}|{2}", playerID, x, z);
         }
 
-        public static string CreateIDMessage(int clientID)
+        public static string CreateIDMessageFromServer(int clientID)
         {
             return string.Format("{0}|ID", clientID);
+        }
+        public static string CreateIDMessageFromClient()
+        {
+            return string.Format("-1|ID");
         }
 
         #endregion

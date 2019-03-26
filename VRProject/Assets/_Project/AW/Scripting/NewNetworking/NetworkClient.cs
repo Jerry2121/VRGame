@@ -35,7 +35,7 @@ namespace VRGame.Networking
         public NetworkConnection m_Connection;
         public bool m_Done;
 
-        List<byte[]> messageList = new List<byte[]>();
+        List<string> messageList = new List<string>();
 
 
         void Start()
@@ -54,7 +54,7 @@ namespace VRGame.Networking
             var endpoint = new IPEndPoint(NetworkingManager.Instance.NetworkAddress(), 9000);
             m_Connection = m_Driver.Connect(endpoint);
 
-            SendMessage("Connected");
+            WriteMessage("Connected");
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- Start: Client created");
@@ -87,28 +87,20 @@ namespace VRGame.Networking
                 if (cmd == NetworkEvent.Type.Connect)
                 {
                     Debug.Log("NetworkClient -- We are now connected to the server");
-                    
-                    using (var writer = new DataStreamWriter(1024, Allocator.Temp))
-                    {
-                        if (messageList.Count < 1)
-                            break;
-                        writer.Write(messageList[0]);
-                        Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(messageList[0]));
-                        //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
-                        messageList.RemoveAt(0);
-
-                        m_Connection.Send(m_Driver, writer);
-                    }
                 }
                 else if (cmd == NetworkEvent.Type.Data)
                 {
                     var readerCtx = default(DataStreamReader.Context);
 
-                    byte[] messageBytes = new byte[stream.Length];
-                    stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
-                    string recievedMessage = Encoding.Unicode.GetString(messageBytes);
-                    Debug.Log("NetworkClient -- Got the value " + recievedMessage + " back from the server");
-                    TranslateMessage(recievedMessage);
+                    try
+                    {
+                        byte[] messageBytes = new byte[stream.Length];
+                        stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
+                        string recievedMessage = Encoding.Unicode.GetString(messageBytes);
+                        Debug.Log("NetworkClient -- Got the value " + recievedMessage + " back from the server");
+                        TranslateMessage(recievedMessage);
+                    }
+                    catch (NullReferenceException) { }
                 }
                 else if (cmd == NetworkEvent.Type.Disconnect)
                 {
@@ -120,20 +112,30 @@ namespace VRGame.Networking
             }
 
             //send the first message in the message list
-
-            if (m_playerID == -1 || messageList.Count <= 0)
-                return;
-
-            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            try
             {
-                if (messageList.Count < 1)
+                if (m_playerID == -1)
+                {
+                    if (messageList.Count > 0)
+                        messageList.Clear(); //none of our messages hve the proper ID
+                    string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
+                    SendMessages(Encoding.Unicode.GetBytes(IDRequest));
                     return;
-                writer.Write(messageList[0]);
-                Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(messageList[0]));
-                //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
-                messageList.RemoveAt(0);
+                }
+            }
+            catch (InvalidOperationException) {
+                return;
+            }
 
-                m_Connection.Send(m_Driver, writer);
+            if(messageList.Count <= 0)
+            {
+                SendMessages(Encoding.Unicode.GetBytes(string.Empty));
+            }
+
+            else {
+                string allMessages = NetworkTranslater.CombineMessages(messageList);
+                messageList.Clear();
+                SendMessages(Encoding.Unicode.GetBytes(allMessages));
             }
 
             if (m_Done)
@@ -143,10 +145,21 @@ namespace VRGame.Networking
             }
         }
 
-        new public void SendMessage(string message)
+        void SendMessages(byte[] buffer)
         {
-            byte[] buffer = Encoding.Unicode.GetBytes(message);
-            messageList.Add(buffer);
+            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            {
+                writer.Write(buffer);
+                Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(buffer));
+                //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
+
+                m_Connection.Send(m_Driver, writer);
+            }
+        }
+
+        public void WriteMessage(string message)
+        {
+            messageList.Add(message);
         }
 
 
@@ -182,8 +195,10 @@ namespace VRGame.Networking
 
         void IDMessage(string recievedMessage)
         {
+
             NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID);
             m_playerID = clientID;
+            Debug.LogError("IDMESSAGE  " + clientID +" "+ m_playerID);
         }
 
         public void Disconnect()

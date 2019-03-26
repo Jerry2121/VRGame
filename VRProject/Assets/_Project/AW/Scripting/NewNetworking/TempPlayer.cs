@@ -34,7 +34,7 @@ namespace VRGame.Networking
             if(xMov != 0 && zMov != 0)
             {
                 //string message = "1|Move|" + xMov.ToString() + "|" + zMov.ToString();
-                client.SendMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
+                client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
             }
         }
 
