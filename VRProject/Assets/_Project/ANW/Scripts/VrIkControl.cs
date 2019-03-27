@@ -10,11 +10,21 @@ public class VrIkControl : MonoBehaviour
 
     public Transform rightHandObj;
     public Transform leftHandObj;
+    public Transform ovrCamera;
+    public Transform trackingSpace;
+    public Transform headObj;
+    public Vector3 playerOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        this.gameObject.transform.position = ovrCamera.transform.position - playerOffset;
+        headObj.transform.rotation = trackingSpace.transform.rotation;
     }
 
     // A callback for calculating IK
