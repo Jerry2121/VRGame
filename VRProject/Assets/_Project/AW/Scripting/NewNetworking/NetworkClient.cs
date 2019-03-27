@@ -195,10 +195,25 @@ namespace VRGame.Networking
 
         void IDMessage(string recievedMessage)
         {
+            Debug.LogError("IDMessage = " + recievedMessage);
 
             NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID);
+
+            Debug.LogError("ClientID = " + clientID);
+
+            if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
+                return;
+
+            Debug.LogError("Foo");
+
+            if (m_playerID != -1) //The message is for someone else
+            {
+                Debug.LogError("player ID != -1");
+                NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+            }
+            Debug.LogError("IDMessage set to " + clientID);
+            NetworkingManager.Instance.playerDictionary.Add(clientID, null);
             m_playerID = clientID;
-            Debug.LogError("IDMESSAGE  " + clientID +" "+ m_playerID);
         }
 
         public void Disconnect()
@@ -214,10 +229,10 @@ namespace VRGame.Networking
             }
             else
             {
-                if(m_player = player)
+                if(m_player == player)
                     Debug.LogWarning("NetworkClient -- AssignPlayer: Tried to assign the local player twice");
                 else
-                    Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these player is incorrect");
+                    Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these players is incorrect");
             }
         }
 

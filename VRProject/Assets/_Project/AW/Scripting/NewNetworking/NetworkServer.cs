@@ -20,6 +20,7 @@ namespace VRGame.Networking
 
         List<int> m_PlayerIDs = new List<int>();
         List<string> m_MessageList = new List<string>();
+        Dictionary<int, ServerPlayer> m_Players = new Dictionary<int, ServerPlayer>();
 
         void Start()
         {
@@ -46,7 +47,7 @@ namespace VRGame.Networking
         {
             m_Driver.ScheduleUpdate().Complete();
 
-            string[] currentMessages = m_MessageList.ToArray();
+            List<string> currentMessages = new List<string>(m_MessageList);
             m_MessageList.Clear();
 
             // CleanUpConnections
@@ -79,36 +80,31 @@ namespace VRGame.Networking
                     if(cmd == NetworkEvent.Type.Connect)
                     {
                         Debug.Log("NetworkServer -- Client has connected");
-
-                        //Send Data
-
-                        using (var writer = new DataStreamWriter(1024, Allocator.Temp))
-                        {
-                            writer.Write(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(m_Connections[i].InternalId)));
-                            m_Driver.Send(m_Connections[i], writer);
-                            break;
-                        }
                     }
 
                     if (cmd == NetworkEvent.Type.Data)
                     {
-                        var readerCtx = default(DataStreamReader.Context);
-                        byte[] messageBytes = new byte[stream.Length];
-                        stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
-                        //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
-
-                        string recievedMessage = Encoding.Unicode.GetString(messageBytes);
-                        Debug.Log("NetworkServer -- Got " + recievedMessage + " from the Client.");
-
-                        m_MessageList.Add(recievedMessage);
-
-                        string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
-
-                        foreach(var msg in splitMessages)
+                        try
                         {
-                            if (TranslateMessage(recievedMessage, i) == false)
-                                break;
+                            var readerCtx = default(DataStreamReader.Context);
+                            byte[] messageBytes = new byte[stream.Length];
+                            stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
+                            //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
+
+                            string recievedMessage = Encoding.Unicode.GetString(messageBytes);
+                            Debug.Log("NetworkServer -- Got " + recievedMessage + " from the Client.");
+
+                            m_MessageList.Add(recievedMessage);
+
+                            string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
+
+                            foreach (var msg in splitMessages)
+                            {
+                                if (TranslateMessage(recievedMessage, i) == false)
+                                    break;
+                            }
                         }
+                        catch (NullReferenceException) { }
 
                     }
                     else if (cmd == NetworkEvent.Type.Disconnect)
@@ -165,6 +161,8 @@ namespace VRGame.Networking
                     return false;
                 case NetworkMessageContent.None:
                     break;
+                default:
+                    break;
             }
 
             return true;
@@ -174,7 +172,10 @@ namespace VRGame.Networking
         {
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z);
 
-            NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
+            if (m_Players == null)
+                return;
+
+            //NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
 
         }
 
@@ -185,7 +186,15 @@ namespace VRGame.Networking
 
         void IDMessage(int i)
         {
-            SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(m_Connections[i].InternalId)), i);
+            int ID = m_Connections[i].InternalId;
+            SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+
+            if (m_Players.ContainsKey(ID) == false)
+            {
+                m_Players.Add(ID, null);
+
+                m_PlayerIDs.Add(ID);
+            }
         }
 
     }

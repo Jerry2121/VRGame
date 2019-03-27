@@ -9,20 +9,25 @@ public class Test2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string msg = "1|Move|9.4|5.4";
-        string msgtwo = "1|Pos|6.77|3.44";
-        float x;
-        float z;
+        List<string> listone = new List<string>();
+        listone.Add("Foo");
+        listone.Add("Roo");
+        listone.Add("Too");
+        listone.Add("Yoo");
 
-        string sentmsg = NetworkTranslater.CombineMessages(new string[] { msg, msgtwo });
+        List<string> listtwo = new List<string>(listone);
 
-        Debug.Log(sentmsg);
+        listone.Clear();
 
-        string[] recieved = NetworkTranslater.SplitMessages(sentmsg);
-
-        foreach(var msgr in recieved)
+        Debug.Log("List One:");
+        foreach(var v in listone)
         {
-            Debug.Log(msgr);
+            Debug.Log(v);
+        }
+        Debug.Log("List Two:");
+        foreach (var v in listtwo)
+        {
+            Debug.Log(v);
         }
 
     }

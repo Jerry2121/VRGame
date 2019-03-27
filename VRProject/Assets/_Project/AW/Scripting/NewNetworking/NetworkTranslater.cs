@@ -60,7 +60,7 @@ namespace VRGame.Networking
 
             foreach(var message in messages)
             {
-                sb.Append("-" + message);
+                sb.Append(message + ":");
             }
 
             return sb.ToString();
@@ -72,7 +72,7 @@ namespace VRGame.Networking
 
             foreach (var message in messages)
             {
-                sb.Append("-" + message);
+                sb.Append(message + ":");
             }
 
             return sb.ToString();
@@ -80,7 +80,7 @@ namespace VRGame.Networking
 
         public static string[] SplitMessages(string recievedMessage)
         {
-            return recievedMessage.Split('-');
+            return recievedMessage.Split(':');
         }
 
         #region TranslateMessages
