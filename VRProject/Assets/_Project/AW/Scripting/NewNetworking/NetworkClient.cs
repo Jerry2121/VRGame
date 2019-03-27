@@ -186,11 +186,20 @@ namespace VRGame.Networking
         void MoveMessage(string recievedMessage)
         {
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z);
+
+
+
         }
 
         void PositionMessage(string recievedMessage)
         {
-            throw new System.NotImplementedException();
+
+            NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out float xPos, out float yPos, out float zPos);
+
+            if(clientID != m_playerID) //Make sure we aren't getting out own position back
+            {
+                NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+            }
         }
 
         void IDMessage(string recievedMessage)
@@ -215,6 +224,9 @@ namespace VRGame.Networking
             NetworkingManager.Instance.playerDictionary.Add(clientID, null);
             m_playerID = clientID;
         }
+
+
+
 
         public void Disconnect()
         {

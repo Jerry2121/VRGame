@@ -33,14 +33,20 @@ namespace VRGame.Networking
 
             if(xMov != 0 && zMov != 0)
             {
-                //string message = "1|Move|" + xMov.ToString() + "|" + zMov.ToString();
-                client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
+                //client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
             }
+
+            client.WriteMessage(NetworkTranslater.CreatePositionMessage(client.PlayerID, transform.position));
         }
 
         public void RecieveMoveMessage(float xMov, float zMov)
         {
             transform.Translate(xMov * 0.5f, 0, zMov * 0.5f);
+        }
+
+        public void RecievePositionMessage(float x, float y, float z)
+        {
+            transform.position = new Vector3(x, y, z);
         }
 
     }
