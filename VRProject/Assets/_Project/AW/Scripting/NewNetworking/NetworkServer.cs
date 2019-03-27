@@ -92,7 +92,7 @@ namespace VRGame.Networking
                             //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
 
                             string recievedMessage = Encoding.Unicode.GetString(messageBytes);
-                            Debug.Log("NetworkServer -- Got " + recievedMessage + " from the Client.");
+                            Debug.Log("NetworkServer -- Got " + recievedMessage + " from a Client.");
 
                             m_MessageList.Add(recievedMessage);
 
