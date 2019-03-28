@@ -125,6 +125,7 @@ namespace VRGame.Networking
         {
             if (GetMessageContentType(message) != NetworkMessageContent.ID)
             {
+                Debug.LogError("NOOOOOOO");
                 clientID = -1;
                 return false;
             }

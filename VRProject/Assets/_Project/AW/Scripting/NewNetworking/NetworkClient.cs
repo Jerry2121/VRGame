@@ -234,10 +234,16 @@ namespace VRGame.Networking
 
         void InstantiateMessage(string recievedMessage)
         {
+            Debug.LogError("INS MSG");
+
             if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out string objectName, out float x, out float y, out float z) == false)
                 return;
 
             if (clientID == m_playerID)
+                return;
+
+            //If we have already set up the other player, return
+            if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) && NetworkingManager.Instance.playerDictionary[clientID] != null)
                 return;
 
             if(NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) == false)

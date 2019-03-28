@@ -181,17 +181,40 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
+            NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out float x, out float y, out float z);
 
+            m_Players[clientID].SetPosition(x, y, z);
         }
 
         void IDMessage(int i)
         {
             int ID = m_Connections[i].InternalId;
-            SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+
+            Debug.LogError("ID MSG " + ID);
+
+            if (m_Players.Count > 0)
+            {
+                List<string> messages = new List<string>();
+
+                messages.Add(NetworkTranslater.CreateIDMessageFromServer(ID));
+                Debug.LogError("ID MSG TRANSLATE " + NetworkTranslater.CreateIDMessageFromServer(ID));
+
+                foreach (var playerID in m_Players.Keys)
+                {
+                    ServerPlayer player = m_Players[playerID];
+                    messages.Add(NetworkTranslater.CreateInstantiateMessage(playerID, player.playerType, player.m_Position));
+                }
+
+                Debug.LogError("COMBINE " + NetworkTranslater.CombineMessages(messages));
+
+                SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
+            }
+            else
+                SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
 
             if (m_Players.ContainsKey(ID) == false)
             {
-                m_Players.Add(ID, null);
+                m_Players.Add(ID, new ServerPlayer());
 
                 m_PlayerIDs.Add(ID);
             }
