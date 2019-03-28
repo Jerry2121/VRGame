@@ -103,7 +103,7 @@ namespace VRGame.Networking
 
                         foreach (var msg in splitMessages)
                         {
-                            TranslateMessage(recievedMessage);
+                            TranslateMessage(msg);
                         }
                     }
                     catch (NullReferenceException) { }
