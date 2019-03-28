@@ -178,6 +178,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.ID:
                     IDMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Instantiate:
+                    InstantiateMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.None:
                     break;
             }
@@ -185,7 +188,8 @@ namespace VRGame.Networking
 
         void MoveMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z);
+            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z) == false)
+                return;
 
 
 
@@ -194,7 +198,8 @@ namespace VRGame.Networking
         void PositionMessage(string recievedMessage)
         {
 
-            NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out float xPos, out float yPos, out float zPos);
+            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out float xPos, out float yPos, out float zPos) == false)
+                return;
 
             if(clientID != m_playerID) //Make sure we aren't getting out own position back
             {
@@ -204,29 +209,47 @@ namespace VRGame.Networking
 
         void IDMessage(string recievedMessage)
         {
-            Debug.LogError("IDMessage = " + recievedMessage);
 
-            NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID);
-
-            Debug.LogError("ClientID = " + clientID);
+            if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
+                return;
 
             if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
                 return;
 
-            Debug.LogError("Foo");
-
             if (m_playerID != -1) //The message is for someone else
             {
-                Debug.LogError("player ID != -1");
                 NetworkingManager.Instance.playerDictionary.Add(clientID, null);
             }
-            Debug.LogError("IDMessage set to " + clientID);
+
             NetworkingManager.Instance.playerDictionary.Add(clientID, null);
             m_playerID = clientID;
+
+            TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
+            player.client = this;
+
+            NetworkingManager.Instance.playerDictionary[clientID] = player;
+
+            WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, "Player", player.transform.position));
         }
 
+        void InstantiateMessage(string recievedMessage)
+        {
+            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out string objectName, out float x, out float y, out float z) == false)
+                return;
 
+            if (clientID == m_playerID)
+                return;
 
+            if(NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) == false)
+            {
+                NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+            }
+
+            TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
+
+            NetworkingManager.Instance.playerDictionary[clientID] = player;
+
+        }
 
         public void Disconnect()
         {

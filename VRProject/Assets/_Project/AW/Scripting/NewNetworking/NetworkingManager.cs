@@ -96,8 +96,6 @@ namespace VRGame.Networking
         {
             m_Server = gameObject.AddComponent<NetworkServer>();
             m_Client = gameObject.AddComponent<NetworkClient>();
-            GameObject playerGO = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            playerGO.GetComponent<TempPlayer>().client = m_Client;
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartHost: Host created.");
@@ -106,8 +104,6 @@ namespace VRGame.Networking
         public void StartClient()
         {
             m_Client = gameObject.AddComponent<NetworkClient>();
-            GameObject playerGO = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            playerGO.GetComponent<TempPlayer>().client = m_Client;
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartClient: Client created.");

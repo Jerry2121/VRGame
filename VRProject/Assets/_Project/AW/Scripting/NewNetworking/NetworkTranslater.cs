@@ -191,6 +191,11 @@ namespace VRGame.Networking
             return string.Format("{0}|Ins|{1}|{2}|{3}|{4}", playerID, objectName, x, y, z);
         }
 
+        public static string CreateInstantiateMessage(int playerID, string objectName, Vector3 position)
+        {
+            return string.Format("{0}|Ins|{1}|{2}|{3}|{4}", playerID, objectName, position.x, position.y, position.z);
+        }
+
         #endregion
 
     }

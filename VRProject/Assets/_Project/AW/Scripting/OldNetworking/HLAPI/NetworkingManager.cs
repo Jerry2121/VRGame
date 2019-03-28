@@ -26,6 +26,9 @@ namespace VRGame.OldNetworking
             Debug.Log("Creating NetworkingManager Instance");
 
             networkManager = NetworkManager.singleton;
+            if(networkManager == null)
+                throw new Exception("The Networkmanager cannot be found!");
+
             networkingDiscovery = networkManager.GetComponent<NetworkingDiscovery>();
             if (networkingDiscovery == null)
                 throw new Exception("The NetworkingDiscovery component not found on the Network Manager!");
