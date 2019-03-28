@@ -98,7 +98,13 @@ namespace VRGame.Networking
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
                         string recievedMessage = Encoding.Unicode.GetString(messageBytes);
                         Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
-                        TranslateMessage(recievedMessage);
+
+                        string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
+
+                        foreach (var msg in splitMessages)
+                        {
+                            TranslateMessage(recievedMessage);
+                        }
                     }
                     catch (NullReferenceException) { }
                 }
