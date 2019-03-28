@@ -188,7 +188,7 @@ namespace VRGame.Networking
 
         void IDMessage(int i)
         {
-            int ID = m_Connections[i].InternalId;
+            int ID = m_Connections[i].InternalId + 1;
 
             Debug.LogError("ID MSG " + ID);
 
