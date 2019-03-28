@@ -123,7 +123,7 @@ namespace VRGame.Networking
                 if (m_playerID == -1)
                 {
                     if (messageList.Count > 0)
-                        messageList.Clear(); //none of our messages hve the proper ID
+                        messageList.Clear(); //none of our messages have the proper ID
                     string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
                     SendMessages(Encoding.Unicode.GetBytes(IDRequest));
                     return;
@@ -215,12 +215,17 @@ namespace VRGame.Networking
 
         void IDMessage(string recievedMessage)
         {
+            Debug.LogError("111");
 
             if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
                 return;
 
+            Debug.LogError("222");
+
             if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
                 return;
+
+            Debug.LogError("333");
 
             if (m_playerID != -1) //The message is for someone else
             {

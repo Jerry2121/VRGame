@@ -60,6 +60,8 @@ namespace VRGame.Networking
 
             foreach(var message in messages)
             {
+                if (message.Equals(string.Empty))
+                    continue;
                 sb.Append(message + ":");
             }
 
@@ -72,6 +74,8 @@ namespace VRGame.Networking
 
             foreach (var message in messages)
             {
+                if (message.Equals(string.Empty))
+                    continue;
                 sb.Append(message + ":");
             }
 
