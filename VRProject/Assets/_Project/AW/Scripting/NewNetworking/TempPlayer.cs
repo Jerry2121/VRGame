@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VRGame.Networking
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class TempPlayer : MonoBehaviour
+    public class TempPlayer : NetworkingBehavior
     {
 
         Rigidbody rb;

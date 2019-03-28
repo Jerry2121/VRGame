@@ -190,22 +190,17 @@ namespace VRGame.Networking
         {
             int ID = m_Connections[i].InternalId + 1;
 
-            Debug.LogError("ID MSG " + ID);
-
             if (m_Players.Count > 0)
             {
                 List<string> messages = new List<string>();
 
                 messages.Add(NetworkTranslater.CreateIDMessageFromServer(ID));
-                Debug.LogError("ID MSG TRANSLATE " + NetworkTranslater.CreateIDMessageFromServer(ID));
 
                 foreach (var playerID in m_Players.Keys)
                 {
                     ServerPlayer player = m_Players[playerID];
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(playerID, player.playerType, player.m_Position));
                 }
-
-                Debug.LogError("COMBINE " + NetworkTranslater.CombineMessages(messages));
 
                 SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
             }

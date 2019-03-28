@@ -215,17 +215,11 @@ namespace VRGame.Networking
 
         void IDMessage(string recievedMessage)
         {
-            Debug.LogError("111");
-
             if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
                 return;
 
-            Debug.LogError("222");
-
             if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
                 return;
-
-            Debug.LogError("333");
 
             if (m_playerID != -1) //The message is for someone else
             {
@@ -245,7 +239,6 @@ namespace VRGame.Networking
 
         void InstantiateMessage(string recievedMessage)
         {
-            Debug.LogError("INS MSG");
 
             if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out string objectName, out float x, out float y, out float z) == false)
                 return;

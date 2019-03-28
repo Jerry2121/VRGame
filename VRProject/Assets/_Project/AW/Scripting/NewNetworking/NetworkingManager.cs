@@ -24,6 +24,8 @@ namespace VRGame.Networking
         [SerializeField] int offsetY;
 
         NetworkClient m_Client;
+        public NetworkClient Client { get { return m_Client; }}
+
         NetworkServer m_Server;
         bool m_Connected;
 
