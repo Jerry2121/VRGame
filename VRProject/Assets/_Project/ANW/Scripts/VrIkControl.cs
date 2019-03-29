@@ -60,16 +60,23 @@ public class VrIkControl : MonoBehaviour
 
         // If the players foot is lower than the ground, position back up.
         // This will stop the tracking spaces movement from clipping the player through the ground.
-        if (rightFoot.position.y < 0.5)
+        if (rightFoot.position.y < 0.1f)
         {
             animator.SetIKPosition(AvatarIKGoal.RightFoot, new Vector3 (rightFoot.position.x, 0.1100572f, rightFoot.position.z));
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, new Vector3 (leftFoot.position.x, 0.1100572f, leftFoot.position.z));
            
             Vector3 foo = rightFoot.transform.rotation.eulerAngles;
             foo = -rightKnee.transform.rotation.eulerAngles;
-            foo.z += 90;
-            foo.y -= 90;
+            foo.z += 105;
+            foo.y -= 60;
             rightFoot.transform.rotation = Quaternion.Euler(foo);
+            animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.Euler(foo));
+
+            Vector3 foo2 = leftFoot.transform.rotation.eulerAngles;
+            foo2 = -leftKnee.transform.rotation.eulerAngles;
+            foo2.z += 90;
+            foo2.y -= 90;
+            leftFoot.transform.rotation = Quaternion.Euler(foo);
             animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.Euler(foo));
         }
     }
