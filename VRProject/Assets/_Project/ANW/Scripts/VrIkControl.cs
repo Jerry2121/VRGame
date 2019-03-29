@@ -19,9 +19,9 @@ public class VrIkControl : MonoBehaviour
     public Transform ovrCamera;
     public Transform trackingSpace;
     public Transform headObj;
-    public int playerYOffset;
-
-    
+    public float playerYOffset;
+    public float playerXOffset;
+    public float playerZOffset;    
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class VrIkControl : MonoBehaviour
 
     private void Update()
     {
-        this.gameObject.transform.position = ovrCamera.transform.position - new Vector3 (ovrCamera.transform.position.x, playerYOffset, ovrCamera.transform.position.z);
+        this.gameObject.transform.position = ovrCamera.transform.position - new Vector3 (playerXOffset, playerYOffset, playerZOffset);
         headObj.transform.rotation = trackingSpace.transform.rotation;
         if (trackingSpace.position.y < -0.5)
         {
