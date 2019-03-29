@@ -258,9 +258,9 @@ namespace VRGame.Networking
             return m_Server != null;
         }
 
-        public int ClientID()
+        public static int ClientID()
         {
-            return m_Client.PlayerID;
+            return Instance.m_Client.PlayerID;
         }
 
     }
