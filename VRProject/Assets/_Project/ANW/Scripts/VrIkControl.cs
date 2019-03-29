@@ -83,6 +83,7 @@ public class VrIkControl : MonoBehaviour
         if (rightFoot.position.y > 0.1f)
         {
             // I DON'T KNOW
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (trackingSpace.position.y - playerYOffset), gameObject.transform.position.z);
         }
     }
 }
