@@ -32,7 +32,7 @@ public class VrIkControl : MonoBehaviour
     private void Update()
     {
         this.gameObject.transform.position = ovrCamera.transform.position - new Vector3 (playerXOffset, playerYOffset, playerZOffset);
-        headObj.transform.rotation = trackingSpace.transform.rotation;
+        // headObj.transform.rotation = trackingSpace.transform.rotation;
         if (trackingSpace.position.y < -0.5)
         {
             // Set animator croush to true
@@ -78,6 +78,11 @@ public class VrIkControl : MonoBehaviour
             foo2.y -= 90;
             leftFoot.transform.rotation = Quaternion.Euler(foo);
             animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.Euler(foo));
+        }
+
+        if (rightFoot.position.y > 0.1f)
+        {
+            // I DON'T KNOW
         }
     }
 }
