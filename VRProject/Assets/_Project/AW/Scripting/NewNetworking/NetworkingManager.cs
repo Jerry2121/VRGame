@@ -8,32 +8,51 @@ namespace VRGame.Networking
 
     public class NetworkingManager : MonoBehaviour
     {
+        [SerializeField]
+        GameObject[] spawnableGameObjects;
 
         public static NetworkingManager Instance;
 
         public GameObject playerPrefab;
 
         public Dictionary<int, TempPlayer> playerDictionary = new Dictionary<int, TempPlayer>();
+        public Dictionary<int, GameObject> networkedObjectDictionary = new Dictionary<int, GameObject>();
 
         [SerializeField]
         string m_NetworkAddress = "localhost";
-        public int m_NetworkPort = 9000;
+        [SerializeField]
+        int m_NetworkPort = 9000;
 
         [SerializeField] bool showGUI;
         [SerializeField] int offsetX;
         [SerializeField] int offsetY;
 
         NetworkClient m_Client;
-        public NetworkClient Client { get { return m_Client; }}
+        //public NetworkClient Client { get { return m_Client; }} 
 
         NetworkServer m_Server;
         bool m_Connected;
+
+        Dictionary<string, GameObject> spawnableObjectDictionary = new Dictionary<string, GameObject>();
 
         // Start is called before the first frame update
         void Start()
         {
             Instance = this;
             Logger.Instance.Init();
+
+            foreach(var GO in spawnableGameObjects)
+            {
+                NetworkSpawnable netSpawn = GO.GetComponent<NetworkSpawnable>();
+                if(netSpawn == null)
+                {
+                    Debug.LogError("NetworkingManager -- Start: Gameobject does not have a NetworkSpawnable component");
+                    continue;
+                }
+
+                spawnableObjectDictionary.Add(netSpawn.objectName, GO);
+            }
+
         }
 
         // Update is called once per frame
@@ -94,6 +113,80 @@ namespace VRGame.Networking
             }
         }
 
+
+        public void SendNetworkMessage(string message)
+        {
+            if (m_Client == null)
+                return;
+
+            m_Client.WriteMessage(message);
+        }
+
+        public void RecieveInstantiateMessage(string recievedMessage)
+        {
+            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName, out float x, out float y, out float z) == false)
+                return;
+
+            if (objectID == -1) //The message does not have a valid objectID
+                return;
+
+            if (objectName == "Player")
+            {
+                InstantiatePlayer(clientID, objectName, x, y, z);
+                return;
+            }
+
+            if (spawnableObjectDictionary.ContainsKey(objectName) == false)
+            {
+                Debug.LogError(
+                    "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectName + " over the network. " +
+                    "It either has not been added to the gamemanager, or it does not have a networkspawnable component.");
+                return;
+            }
+
+            GameObject temp = Instantiate(spawnableObjectDictionary[objectName]);
+            temp.transform.position = new Vector3(x, y, z);
+            temp.GetComponent<NetworkSpawnable>().objectID = objectID;
+            networkedObjectDictionary.Add(objectID, temp);
+        }
+
+        void InstantiatePlayer(int ID, string objectName, float x, float y, float z)
+        {
+            if (ID == m_Client.PlayerID) //The message came from us
+                return; 
+
+            //If we have already set up the other player, return
+            if (playerDictionary.ContainsKey(ID) && playerDictionary[ID] != null)
+                return;
+
+            if (playerDictionary.ContainsKey(ID) == false)
+            {
+                playerDictionary.Add(ID, null);
+            }
+
+            //if(ID%2 == 0)
+            //    //Spawn player 1 prefab
+            //    else
+            //    //spawn player 2
+
+
+            TempPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
+
+            playerDictionary[ID] = player;
+
+            player.SetPlayerID(ID);
+        }
+
+        public void InstantiateOverNetwork(string objectName, float x, float y, float z)
+        {
+            SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.PlayerID, -1, objectName, x, y, z));
+        }
+
+        public void InstantiateOverNetwork(string objectName, Vector3 position)
+        {
+            InstantiateOverNetwork(objectName, position.x, position.y, position.z);
+        }
+
         public void StartHost()
         {
             m_Server = gameObject.AddComponent<NetworkServer>();
@@ -130,6 +223,11 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
+
+            foreach(var netObject in networkedObjectDictionary.Keys)
+            {
+                networkedObjectDictionary.Remove(netObject);
+            }
         }
 
         public void StopHost()
@@ -155,6 +253,15 @@ namespace VRGame.Networking
             else return null;
         }
 
+        public bool IsHost()
+        {
+            return m_Server != null;
+        }
+
+        public int ClientID()
+        {
+            return m_Client.PlayerID;
+        }
 
     }
 }

@@ -97,7 +97,8 @@ namespace VRGame.Networking
                         byte[] messageBytes = new byte[stream.Length];
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
                         string recievedMessage = Encoding.Unicode.GetString(messageBytes);
-                        Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
+
+                        //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
 
                         string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
 
@@ -156,7 +157,8 @@ namespace VRGame.Networking
             using (var writer = new DataStreamWriter(1024, Allocator.Temp))
             {
                 writer.Write(buffer);
-                Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(buffer));
+
+                //Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(buffer));
                 //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
 
                 m_Connection.Send(m_Driver, writer);
@@ -181,7 +183,7 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Position:
                     PositionMessage(recievedMessage);
                     break;
-                case NetworkMessageContent.ID:
+                case NetworkMessageContent.ClientID:
                     IDMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.Instantiate:
@@ -194,7 +196,7 @@ namespace VRGame.Networking
 
         void MoveMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z) == false)
+            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z) == false)
                 return;
 
 
@@ -204,7 +206,7 @@ namespace VRGame.Networking
         void PositionMessage(string recievedMessage)
         {
 
-            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out float xPos, out float yPos, out float zPos) == false)
+            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float xPos, out float yPos, out float zPos) == false)
                 return;
 
             if(clientID != m_playerID) //Make sure we aren't getting out own position back
@@ -230,35 +232,17 @@ namespace VRGame.Networking
             m_playerID = clientID;
 
             TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
-            player.client = this;
+            player.SetIsLocalPlayer();
+            player.SetPlayerID(clientID);
 
             NetworkingManager.Instance.playerDictionary[clientID] = player;
 
-            WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, "Player", player.transform.position));
+            WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, m_playerID, "Player", player.transform.position));
         }
 
         void InstantiateMessage(string recievedMessage)
         {
-
-            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out string objectName, out float x, out float y, out float z) == false)
-                return;
-
-            if (clientID == m_playerID)
-                return;
-
-            //If we have already set up the other player, return
-            if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) && NetworkingManager.Instance.playerDictionary[clientID] != null)
-                return;
-
-            if(NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) == false)
-            {
-                NetworkingManager.Instance.playerDictionary.Add(clientID, null);
-            }
-
-            TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
-
-            NetworkingManager.Instance.playerDictionary[clientID] = player;
-
+            NetworkingManager.Instance.RecieveInstantiateMessage(recievedMessage);
         }
 
         public void Disconnect()

@@ -9,21 +9,24 @@ namespace VRGame.Networking
     {
 
         Rigidbody rb;
-        [SerializeField]
-        public NetworkClient client;
+        //[SerializeField]
+        //public NetworkClient client;
+
+        bool m_IsLocalPlayer;
+        int m_PlayerID;
 
         // Start is called before the first frame update
         void Start()
         {
-            if (client != null)
-                client.AssignPlayer(this);
+            //if (client != null)
+                //client.AssignPlayer(this);
             rb = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (client == null)
+            if (m_IsLocalPlayer == false)
                 return;
 
             float xMov = Input.GetAxisRaw("Horizontal");
@@ -36,7 +39,19 @@ namespace VRGame.Networking
                 //client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
             }
 
-            client.WriteMessage(NetworkTranslater.CreatePositionMessage(client.PlayerID, transform.position));
+            NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(m_PlayerID, m_PlayerID, transform.position));
+        }
+
+        public void SetIsLocalPlayer()
+        {
+            if (m_IsLocalPlayer)
+                Debug.LogWarning("TempPlayer -- SetIsLocalPlayer: isLocalPlayer already set! This should not be called on a setup player!");
+            m_IsLocalPlayer = true;
+        }
+
+        public void SetPlayerID(int playerID)
+        {
+            m_PlayerID = playerID;
         }
 
         public void RecieveMoveMessage(float xMov, float zMov)
