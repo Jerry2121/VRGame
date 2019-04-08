@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6646407849346875947}
   - component: {fileID: 3469320943628698869}
   - component: {fileID: 7101251190459138357}
+  - component: {fileID: 1144142884671783517}
   m_Layer: 0
   m_Name: TestSpawnCube
   m_TagString: Untagged
@@ -106,3 +107,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: SpawnCubeTest
   objectID: 0
+--- !u!114 &1144142884671783517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621736490306606718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e2c7589f16254489a1112c849d1102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

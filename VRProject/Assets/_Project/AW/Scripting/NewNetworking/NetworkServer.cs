@@ -123,8 +123,8 @@ namespace VRGame.Networking
 
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {
+                        Debug.LogError("COUNT: " + currentMessages.Count);
                         string allMessages = NetworkTranslater.CombineMessages(currentMessages);
-
                         SendMessages(Encoding.Unicode.GetBytes(allMessages), i);
                     }
                 }
@@ -137,7 +137,7 @@ namespace VRGame.Networking
             {
                 writer.Write(buffer);
 
-                //Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.Unicode.GetString(buffer));
+                Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.Unicode.GetString(buffer));
                 //Debug.LogFormat("NetworkServer -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
 
                 m_Driver.Send(m_Connections[i], writer);
@@ -232,17 +232,19 @@ namespace VRGame.Networking
         void InstantiateMessage(string recievedMessage)
         {
             NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName,  out float x, out float y, out float z);
-
-            if (objectName == "Player")
-                return; //Players are setup when we get an ID message from the client
+            
+            //if (objectName == "Player")
+            //return; //Players are setup when we get an ID message from the client
 
             if (objectID != -1)
                 return;
 
-            objectID = m_NetworkedObjects.Count + 101;
+            objectID = m_NetworkedObjects.Count /*+ 101*/;
 
             m_NetworkedObjects.Add(objectID, new ServerObject(objectName, x, y, z));
 
+
+            Debug.LogError("SER INS");
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectName, x, y, z));
         }
 

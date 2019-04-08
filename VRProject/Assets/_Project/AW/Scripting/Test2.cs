@@ -28,8 +28,8 @@ public class Test2 : MonoBehaviour
     
     void Spawn()
     {
-        float foo = Random.Range(-10, -10);
-        NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkSpawnable>().objectName, foo, 0, foo);
+        float foo = Random.Range(-10, 10);
+        NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().objectName, foo, 0, foo);
     }
 
 }

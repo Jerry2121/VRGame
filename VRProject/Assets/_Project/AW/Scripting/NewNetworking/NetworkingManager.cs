@@ -16,7 +16,7 @@ namespace VRGame.Networking
         public GameObject playerPrefab;
 
         public Dictionary<int, TempPlayer> playerDictionary = new Dictionary<int, TempPlayer>();
-        public Dictionary<int, GameObject> networkedObjectDictionary = new Dictionary<int, GameObject>();
+        public Dictionary<int, NetworkObject> networkedObjectDictionary = new Dictionary<int, NetworkObject>();
 
         [SerializeField]
         string m_NetworkAddress = "localhost";
@@ -43,7 +43,7 @@ namespace VRGame.Networking
 
             foreach(var GO in spawnableGameObjects)
             {
-                NetworkSpawnable netSpawn = GO.GetComponent<NetworkSpawnable>();
+                NetworkObject netSpawn = GO.GetComponent<NetworkObject>();
                 if(netSpawn == null)
                 {
                     Debug.LogError("NetworkingManager -- Start: Gameobject does not have a NetworkSpawnable component");
@@ -124,45 +124,55 @@ namespace VRGame.Networking
 
         public void RecieveInstantiateMessage(string recievedMessage)
         {
+            Debug.LogError("1");
+
             if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName, out float x, out float y, out float z) == false)
                 return;
+
+            Debug.LogError("2");
 
             if (objectID == -1) //The message does not have a valid objectID
                 return;
 
+            Debug.LogError("3");
+
             if (objectName == "Player")
             {
-                InstantiatePlayer(clientID, objectName, x, y, z);
+                InstantiatePlayer(clientID, objectID, objectName, x, y, z);
                 return;
             }
+
+            Debug.LogError("4");
 
             if (spawnableObjectDictionary.ContainsKey(objectName) == false)
             {
                 Debug.LogError(
                     "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectName + " over the network. " +
-                    "It either has not been added to the gamemanager, or it does not have a networkspawnable component.");
+                    "It either has not been added to the gamemanager, or it does not have a NetworkObject component.");
                 return;
             }
 
             GameObject temp = Instantiate(spawnableObjectDictionary[objectName]);
             temp.transform.position = new Vector3(x, y, z);
-            temp.GetComponent<NetworkSpawnable>().objectID = objectID;
-            networkedObjectDictionary.Add(objectID, temp);
+            temp.GetComponent<NetworkObject>().objectID = objectID;
+            networkedObjectDictionary.Add(objectID, temp.GetComponent<NetworkObject>());
         }
 
-        void InstantiatePlayer(int ID, string objectName, float x, float y, float z)
+        void InstantiatePlayer(int ID, int objectID, string objectName, float x, float y, float z)
         {
-            if (ID == m_Client.PlayerID) //The message came from us
-                return; 
-
-            //If we have already set up the other player, return
+            Debug.LogError("A");
+            //If we have already set up the player, return
             if (playerDictionary.ContainsKey(ID) && playerDictionary[ID] != null)
                 return;
+
+            Debug.LogError("B");
 
             if (playerDictionary.ContainsKey(ID) == false)
             {
                 playerDictionary.Add(ID, null);
             }
+
+            Debug.LogError("C");
 
             //if(ID%2 == 0)
             //    //Spawn player 1 prefab
@@ -172,14 +182,20 @@ namespace VRGame.Networking
 
             TempPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
 
+            player.GetComponent<NetworkObject>().objectID = objectID;
+            networkedObjectDictionary.Add(objectID, player.GetComponent<NetworkObject>());
+
             playerDictionary[ID] = player;
 
             player.SetPlayerID(ID);
+
+            if (ID == m_Client.ClientID) //The message came from us, the local player
+                player.SetIsLocalPlayer();
         }
 
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
         {
-            SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.PlayerID, -1, objectName, x, y, z));
+            SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, x, y, z));
         }
 
         public void InstantiateOverNetwork(string objectName, Vector3 position)
@@ -224,8 +240,10 @@ namespace VRGame.Networking
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
 
+            //Destroy all networked objects
             foreach(var netObject in networkedObjectDictionary.Keys)
             {
+                Destroy(networkedObjectDictionary[netObject]);
                 networkedObjectDictionary.Remove(netObject);
             }
         }
@@ -255,12 +273,17 @@ namespace VRGame.Networking
 
         public bool IsHost()
         {
+            return m_Server != null && m_Client != null;
+        }
+
+        public bool IsServer()
+        {
             return m_Server != null;
         }
 
         public static int ClientID()
         {
-            return Instance.m_Client.PlayerID;
+            return Instance.m_Client.ClientID;
         }
 
     }

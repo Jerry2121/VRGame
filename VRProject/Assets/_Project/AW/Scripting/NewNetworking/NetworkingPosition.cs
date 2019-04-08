@@ -5,21 +5,34 @@ using UnityEngine;
 namespace VRGame.Networking
 {
 
-    [RequireComponent(typeof(NetworkSpawnable))]
-    public class NetworkingPosition : MonoBehaviour
+    public class NetworkingPosition : NetworkObjectComponent
     {
 
-        NetworkSpawnable netSpawn;
+        NetworkObject netObject;
 
         void Start()
         {
-            netSpawn = GetComponent<NetworkSpawnable>();
+            netObject = GetComponent<NetworkObject>();
         }
         void Update()
         {
-            NetworkingManager.Instance.SendMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netSpawn.objectID, transform.position));
+            NetworkingManager.Instance.SendMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
         }
 
+        public void RecieveMoveMessage(float xMov, float zMov)
+        {
+            transform.Translate(xMov * 0.5f, 0, zMov * 0.5f);
+        }
+
+        public void RecievePositionMessage(float x, float y, float z)
+        {
+            transform.position = new Vector3(x, y, z);
+        }
+
+        /*public override void RecieveMessage()
+        {
+            throw new System.NotImplementedException();
+        }*/
     }
 
 }

@@ -164,11 +164,11 @@ namespace VRGame.Networking
 
             string[] splitMessage = message.Split('|');
 
-            if (int.TryParse(splitMessage[0], out clientID) && 
-                int.TryParse(splitMessage[1], out objectID) && 
-                float.TryParse(splitMessage[4], out x) && 
-                float.TryParse(splitMessage[5], out y) && 
-                float.TryParse(splitMessage[5], out z)  )
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID) &&
+                float.TryParse(splitMessage[4], out x) &&
+                float.TryParse(splitMessage[5], out y) &&
+                float.TryParse(splitMessage[6], out z))
             {
                 objectName = splitMessage[3];
                 return true;
@@ -210,9 +210,9 @@ namespace VRGame.Networking
             return string.Format("{0}|{1}|Ins|{2}|{3}|{4}|{5}", clientID, objectID, objectName, x, y, z);
         }
 
-        public static string CreateInstantiateMessage(int playerID, int objectID, string objectName, Vector3 position)
+        public static string CreateInstantiateMessage(int clientID, int objectID, string objectName, Vector3 position)
         {
-            return CreateInstantiateMessage(playerID, objectID, objectName, position.x, position.y, position.z);
+            return CreateInstantiateMessage(clientID, objectID, objectName, position.x, position.y, position.z);
         }
 
         #endregion

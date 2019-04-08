@@ -25,11 +25,11 @@ namespace VRGame.Networking
         //}
         //#endregion
 
-        int m_playerID = -1;
+        int m_clientID = -1;
 
         TempPlayer m_player;
 
-        public int PlayerID { get => m_playerID;}
+        public int ClientID { get => m_clientID;}
         
         public UdpCNetworkDriver m_Driver;
         public NetworkConnection m_Connection;
@@ -98,7 +98,7 @@ namespace VRGame.Networking
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
                         string recievedMessage = Encoding.Unicode.GetString(messageBytes);
 
-                        //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
+                        Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
 
                         string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
 
@@ -121,7 +121,7 @@ namespace VRGame.Networking
             //send the first message in the message list
             try
             {
-                if (m_playerID == -1)
+                if (m_clientID == -1)
                 {
                     if (messageList.Count > 0)
                         messageList.Clear(); //none of our messages have the proper ID
@@ -199,17 +199,15 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z) == false)
                 return;
 
-
-
+            throw new NotImplementedException();
         }
 
         void PositionMessage(string recievedMessage)
         {
-
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float xPos, out float yPos, out float zPos) == false)
                 return;
 
-            if(clientID != m_playerID) //Make sure we aren't getting out own position back
+            if(clientID != m_clientID) //Make sure we aren't getting out own position back
             {
                 NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
             }
@@ -223,21 +221,25 @@ namespace VRGame.Networking
             if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
                 return;
 
-            if (m_playerID != -1) //The message is for someone else
+            if (m_clientID != -1) //The message is for someone else
             {
                 NetworkingManager.Instance.playerDictionary.Add(clientID, null);
             }
 
             NetworkingManager.Instance.playerDictionary.Add(clientID, null);
-            m_playerID = clientID;
+            m_clientID = clientID;
 
-            TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
-            player.SetIsLocalPlayer();
-            player.SetPlayerID(clientID);
+            //TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
+            //player.SetIsLocalPlayer();
+            //player.SetPlayerID(clientID);
 
-            NetworkingManager.Instance.playerDictionary[clientID] = player;
+            //NetworkingManager.Instance.playerDictionary[clientID] = player;
 
-            WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, m_playerID, "Player", player.transform.position));
+            //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, m_playerID, "Player", player.transform.position));
+
+            //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_clientID, -1, "Player", Vector3.zero);
+
+            NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
         }
 
         void InstantiateMessage(string recievedMessage)

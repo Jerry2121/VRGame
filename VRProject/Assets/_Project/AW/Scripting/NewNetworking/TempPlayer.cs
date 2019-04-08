@@ -39,7 +39,7 @@ namespace VRGame.Networking
                 //client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
             }
 
-            NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(m_PlayerID, m_PlayerID, transform.position));
+            //NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(m_PlayerID, m_PlayerID, transform.position));
         }
 
         public void SetIsLocalPlayer()
