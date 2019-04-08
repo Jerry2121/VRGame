@@ -4,11 +4,66 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Cieling
+    100004: Corner
+    100006: Cube
+    100008: DoorHolder
+    100010: DoorLeft
+    100012: DoorRight
+    100014: Doorway
+    100016: Floor
+    100018: Hallway
+    100020: Wall
+    100022: WallInnerPiece
     400000: //RootNode
+    400002: Cieling
+    400004: Corner
+    400006: Cube
+    400008: DoorHolder
+    400010: DoorLeft
+    400012: DoorRight
+    400014: Doorway
+    400016: Floor
+    400018: Hallway
+    400020: Wall
+    400022: WallInnerPiece
     2100000: No Name
+    2100002: Material
     2300000: //RootNode
+    2300002: Cieling
+    2300004: Corner
+    2300006: Cube
+    2300008: DoorHolder
+    2300010: DoorLeft
+    2300012: DoorRight
+    2300014: Doorway
+    2300016: Floor
+    2300018: Hallway
+    2300020: Wall
+    2300022: WallInnerPiece
     3300000: //RootNode
+    3300002: Cieling
+    3300004: Corner
+    3300006: Cube
+    3300008: DoorHolder
+    3300010: DoorLeft
+    3300012: DoorRight
+    3300014: Doorway
+    3300016: Floor
+    3300018: Hallway
+    3300020: Wall
+    3300022: WallInnerPiece
     4300000: DoorRight
+    4300002: Cieling
+    4300004: Floor
+    4300006: DoorLeft
+    4300008: DoorHolder
+    4300010: Cube
+    4300012: Hallway
+    4300014: Corner
+    4300016: Wall
+    4300018: Doorway
+    4300020: WallInnerPiece
   externalObjects:
   - first:
       type: UnityEngine:Material
