@@ -117,13 +117,12 @@ namespace VRGame.Networking
                         m_Connections[i] = default(NetworkConnection);
                     }
 
-                    //send the first message in the list
-                    if (m_MessageList.Count <= 0)
+                    //don't send if there aren't any messages
+                    if (currentMessages.Count <= 0)
                         return;
 
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {
-                        Debug.LogError("COUNT: " + currentMessages.Count);
                         string allMessages = NetworkTranslater.CombineMessages(currentMessages);
                         SendMessages(Encoding.Unicode.GetBytes(allMessages), i);
                     }

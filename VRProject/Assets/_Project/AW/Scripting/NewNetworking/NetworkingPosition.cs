@@ -16,7 +16,7 @@ namespace VRGame.Networking
         }
         void Update()
         {
-            NetworkingManager.Instance.SendMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
+            NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
         }
 
         public void RecieveMoveMessage(float xMov, float zMov)

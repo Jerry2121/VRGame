@@ -124,25 +124,17 @@ namespace VRGame.Networking
 
         public void RecieveInstantiateMessage(string recievedMessage)
         {
-            Debug.LogError("1");
-
             if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName, out float x, out float y, out float z) == false)
                 return;
 
-            Debug.LogError("2");
-
             if (objectID == -1) //The message does not have a valid objectID
                 return;
-
-            Debug.LogError("3");
 
             if (objectName == "Player")
             {
                 InstantiatePlayer(clientID, objectID, objectName, x, y, z);
                 return;
             }
-
-            Debug.LogError("4");
 
             if (spawnableObjectDictionary.ContainsKey(objectName) == false)
             {
