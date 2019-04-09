@@ -189,7 +189,9 @@ namespace VRGame.Networking
         {
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z);
 
-            m_Players[clientID].SetPosition(x, y, z);
+            m_NetworkedObjects[objectID].SetPosition(x, y, z);
+
+            //m_Players[clientID].SetPosition(x, y, z);
         }
 
         void IDMessage(int i)

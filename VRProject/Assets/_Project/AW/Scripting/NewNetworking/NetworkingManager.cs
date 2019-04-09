@@ -182,7 +182,8 @@ namespace VRGame.Networking
 
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
         {
-            SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, x, y, z));
+            if(m_Client != null)
+                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, x, y, z));
         }
 
         public void InstantiateOverNetwork(string objectName, Vector3 position)
@@ -230,9 +231,10 @@ namespace VRGame.Networking
             //Destroy all networked objects
             foreach(var netObject in networkedObjectDictionary.Keys)
             {
-                Destroy(networkedObjectDictionary[netObject]);
-                networkedObjectDictionary.Remove(netObject);
+                Destroy(networkedObjectDictionary[netObject].gameObject);
             }
+            networkedObjectDictionary.Clear();
+            playerDictionary.Clear();
         }
 
         public void StopHost()
@@ -270,7 +272,9 @@ namespace VRGame.Networking
 
         public static int ClientID()
         {
-            return Instance.m_Client.ClientID;
+            if(Instance.m_Client != null)
+                return Instance.m_Client.ClientID;
+            return -1;
         }
 
     }
