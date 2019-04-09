@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 namespace VRGame.Networking
 {
 
+    [DisallowMultipleComponent]
     public class NetworkingPosition : NetworkObjectComponent
     {
 
         NetworkObject netObject;
+        
+        Vector3 lastSentPosition = Vector3.zero;
 
         void Start()
         {
@@ -16,7 +20,12 @@ namespace VRGame.Networking
         }
         void Update()
         {
-            NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
+            if (transform.position != lastSentPosition)
+            {
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
+                lastSentPosition = transform.position;
+            }
+
         }
 
         //public void RecieveMoveMessage(float xMov, float zMov)

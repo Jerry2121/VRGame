@@ -150,7 +150,8 @@ namespace VRGame.Networking
 
             if (networkedObjectDictionary.ContainsKey(objectID))
             {
-                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}" , objectID, objectType), temp);
+                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object" , objectID, objectType), temp);
+                Destroy(temp);
                 return;
             }
             networkedObjectDictionary.Add(objectID, temp.GetComponent<NetworkObject>());

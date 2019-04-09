@@ -158,6 +158,7 @@ namespace VRGame.Networking
                     MoveMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.Position:
+                    PositionMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.ClientID:
                     IDMessage(i);
