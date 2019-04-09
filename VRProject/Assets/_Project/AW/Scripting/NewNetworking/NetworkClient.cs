@@ -98,7 +98,7 @@ namespace VRGame.Networking
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
                         string recievedMessage = Encoding.Unicode.GetString(messageBytes);
 
-                        Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
+                        //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
 
                         string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
 
@@ -204,12 +204,13 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float xPos, out float yPos, out float zPos) == false)
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID))
                 return;
 
-            if(clientID != m_clientID) //Make sure we aren't getting out own position back
+            if(clientID != m_clientID) //Make sure we aren't getting out own positions back
             {
-                NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+                //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Position);
             }
         }
 

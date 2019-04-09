@@ -152,19 +152,14 @@ namespace VRGame.Networking
 
         void InstantiatePlayer(int ID, int objectID, string objectName, float x, float y, float z)
         {
-            Debug.LogError("A");
             //If we have already set up the player, return
             if (playerDictionary.ContainsKey(ID) && playerDictionary[ID] != null)
                 return;
-
-            Debug.LogError("B");
 
             if (playerDictionary.ContainsKey(ID) == false)
             {
                 playerDictionary.Add(ID, null);
             }
-
-            Debug.LogError("C");
 
             //if(ID%2 == 0)
             //    //Spawn player 1 prefab

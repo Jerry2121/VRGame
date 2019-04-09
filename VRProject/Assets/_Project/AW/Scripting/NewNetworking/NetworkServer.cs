@@ -136,7 +136,7 @@ namespace VRGame.Networking
             {
                 writer.Write(buffer);
 
-                Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.Unicode.GetString(buffer));
+                //Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.Unicode.GetString(buffer));
                 //Debug.LogFormat("NetworkServer -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
 
                 m_Driver.Send(m_Connections[i], writer);
@@ -242,8 +242,7 @@ namespace VRGame.Networking
 
             m_NetworkedObjects.Add(objectID, new ServerObject(objectName, x, y, z));
 
-
-            Debug.LogError("SER INS");
+            
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectName, x, y, z));
         }
 

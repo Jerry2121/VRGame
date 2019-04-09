@@ -9,7 +9,7 @@ namespace VRGame.Networking
     public abstract class NetworkObjectComponent : MonoBehaviour
     {
 
-        //public abstract void RecieveMessage();
+        public abstract void RecieveMessage(string recievedMessage);
 
     }
 }

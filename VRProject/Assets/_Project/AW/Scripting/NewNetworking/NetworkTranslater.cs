@@ -57,6 +57,7 @@ namespace VRGame.Networking
             return GetMessageContentType(sb.ToString());
         }
 
+
         public static string CombineMessages(string[] messages)
         {
             StringBuilder sb = new StringBuilder();
@@ -88,6 +89,21 @@ namespace VRGame.Networking
         public static string[] SplitMessages(string recievedMessage)
         {
             return recievedMessage.Split(':');
+        }
+
+        public static bool GetIDsFromMessage(string recievedMessage, out int clientID, out int objectID)
+        {
+            clientID = objectID = -1;
+
+            if (GetMessageContentType(recievedMessage) == NetworkMessageContent.ClientID)
+                return false;
+
+            string[] splitMessage = recievedMessage.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID))
+                return true;
+
+            else return false;
         }
 
         #region TranslateMessages

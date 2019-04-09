@@ -39,8 +39,22 @@ namespace VRGame.Networking {
             
         }
 
+        //public NetworkObjectComponent GetNetObjectForMessage(NetworkMessageContent contentType)
+        //{
+        //    if(netComponents.ContainsKey(contentType) == false)
+        //        return null;
 
+        //    return netComponents[contentType];
+        //}
         
+        public void RecieveMessage(string recievedMessage, NetworkMessageContent contentType)
+        {
+            if (netComponents.ContainsKey(contentType) == false)
+                return;
+
+            netComponents[contentType].RecieveMessage(recievedMessage);
+        }
+
     }
 
 }
