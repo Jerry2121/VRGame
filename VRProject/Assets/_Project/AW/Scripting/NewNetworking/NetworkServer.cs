@@ -202,11 +202,11 @@ namespace VRGame.Networking
 
                 messages.Add(NetworkTranslater.CreateIDMessageFromServer(ID));
 
-                foreach (var playerID in m_Players.Keys)
+                /*foreach (var playerID in m_Players.Keys)
                 {
                     ServerObject player = m_Players[playerID];
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(playerID, playerID, player.objectType, player.m_Position));
-                }
+                }*/
 
                 foreach (var objectID in m_NetworkedObjects.Keys)
                 {
