@@ -73,7 +73,7 @@ namespace VRGame.Networking
             for (int i = 0; i < m_Connections.Length; i++)
             {
                 if (!m_Connections[i].IsCreated)
-                    Assert.IsTrue(true);
+                    continue; //Assert.IsTrue(true);
 
                 NetworkEvent.Type cmd;
                 while ((cmd = m_Driver.PopEventForConnection(m_Connections[i], out stream)) !=

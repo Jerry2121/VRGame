@@ -18,7 +18,7 @@ namespace VRGame.Networking
         {
             netObject = GetComponent<NetworkObject>();
         }
-        void Update()
+        void FixedUpdate()
         {
             if (transform.position != lastSentPosition)
             {
