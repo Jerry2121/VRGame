@@ -124,29 +124,35 @@ namespace VRGame.Networking
 
         public void RecieveInstantiateMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName, out float x, out float y, out float z) == false)
+            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType, out float x, out float y, out float z) == false)
                 return;
 
             if (objectID == -1) //The message does not have a valid objectID
                 return;
 
-            if (objectName == "Player")
+            if (objectType == "Player")
             {
-                InstantiatePlayer(clientID, objectID, objectName, x, y, z);
+                InstantiatePlayer(clientID, objectID, objectType, x, y, z);
                 return;
             }
 
-            if (spawnableObjectDictionary.ContainsKey(objectName) == false)
+            if (spawnableObjectDictionary.ContainsKey(objectType) == false)
             {
                 Debug.LogError(
-                    "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectName + " over the network. " +
+                    "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectType + " over the network. " +
                     "It either has not been added to the gamemanager, or it does not have a NetworkObject component.");
                 return;
             }
 
-            GameObject temp = Instantiate(spawnableObjectDictionary[objectName]);
+            GameObject temp = Instantiate(spawnableObjectDictionary[objectType]);
             temp.transform.position = new Vector3(x, y, z);
             temp.GetComponent<NetworkObject>().objectID = objectID;
+
+            if (networkedObjectDictionary.ContainsKey(objectID))
+            {
+                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}" , objectID, objectType), temp);
+                return;
+            }
             networkedObjectDictionary.Add(objectID, temp.GetComponent<NetworkObject>());
         }
 

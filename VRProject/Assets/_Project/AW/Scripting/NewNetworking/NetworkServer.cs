@@ -231,7 +231,7 @@ namespace VRGame.Networking
 
         void InstantiateMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectName,  out float x, out float y, out float z);
+            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType,  out float x, out float y, out float z);
             
             //if (objectName == "Player")
             //return; //Players are setup when we get an ID message from the client
@@ -241,13 +241,10 @@ namespace VRGame.Networking
 
             objectID = m_NetworkedObjects.Count /*+ 101*/;
 
-            m_NetworkedObjects.Add(objectID, new ServerObject(clientID, objectName, x, y, z));
-
-
-
-            Debug.LogError("Ins " + objectName);
+            m_NetworkedObjects.Add(objectID, new ServerObject(clientID, objectType, x, y, z));
             
-            WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectName, x, y, z));
+            
+            WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, x, y, z));
         }
 
     }
