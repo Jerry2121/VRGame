@@ -178,8 +178,8 @@ namespace VRGame.Networking
         {
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z);
 
-            if (m_Players == null)
-                return;
+            //if (m_Players == null)
+                //return;
 
             //NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
 
@@ -198,7 +198,7 @@ namespace VRGame.Networking
         {
             int ID = m_Connections[i].InternalId + 1;
 
-            if (m_Players.Count > 0)
+            if (m_NetworkedObjects.Count > 0)
             {
                 List<string> messages = new List<string>();
 
@@ -213,8 +213,7 @@ namespace VRGame.Networking
                 foreach (var objectID in m_NetworkedObjects.Keys)
                 {
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
-                    //Set the clientID to 0, because it doesn't really matter when somone connects
-                    messages.Add(NetworkTranslater.CreateInstantiateMessage(0, objectID, networkedObject.objectType, networkedObject.m_Position));
+                    messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_clientID, objectID, networkedObject.m_objectType, networkedObject.m_Position));
                 }
 
                 SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
@@ -222,12 +221,12 @@ namespace VRGame.Networking
             else
                 SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
 
-            if (m_Players.ContainsKey(ID) == false)
+            /*if (m_Players.ContainsKey(ID) == false)
             {
-                m_Players.Add(ID, new ServerObject("Player"));
+                //m_Players.Add(ID, new ServerObject("Player"));
 
                 m_PlayerIDs.Add(ID);
-            }
+            }*/
         }
 
         void InstantiateMessage(string recievedMessage)
@@ -242,8 +241,11 @@ namespace VRGame.Networking
 
             objectID = m_NetworkedObjects.Count /*+ 101*/;
 
-            m_NetworkedObjects.Add(objectID, new ServerObject(objectName, x, y, z));
+            m_NetworkedObjects.Add(objectID, new ServerObject(clientID, objectName, x, y, z));
 
+
+
+            Debug.LogError("Ins " + objectName);
             
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectName, x, y, z));
         }

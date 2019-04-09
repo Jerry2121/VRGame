@@ -150,15 +150,15 @@ namespace VRGame.Networking
             networkedObjectDictionary.Add(objectID, temp.GetComponent<NetworkObject>());
         }
 
-        void InstantiatePlayer(int ID, int objectID, string objectName, float x, float y, float z)
+        void InstantiatePlayer(int clientID, int objectID, string objectName, float x, float y, float z)
         {
             //If we have already set up the player, return
-            if (playerDictionary.ContainsKey(ID) && playerDictionary[ID] != null)
+            if (playerDictionary.ContainsKey(clientID) && playerDictionary[clientID] != null)
                 return;
 
-            if (playerDictionary.ContainsKey(ID) == false)
+            if (playerDictionary.ContainsKey(clientID) == false)
             {
-                playerDictionary.Add(ID, null);
+                playerDictionary.Add(clientID, null);
             }
 
             //if(ID%2 == 0)
@@ -172,11 +172,11 @@ namespace VRGame.Networking
             player.GetComponent<NetworkObject>().objectID = objectID;
             networkedObjectDictionary.Add(objectID, player.GetComponent<NetworkObject>());
 
-            playerDictionary[ID] = player;
+            playerDictionary[clientID] = player;
 
-            player.SetPlayerID(ID);
+            player.SetPlayerID(clientID);
 
-            if (ID == m_Client.ClientID) //The message came from us, the local player
+            if (clientID == m_Client.ClientID) //The message came from us, the local player
                 player.SetIsLocalPlayer();
         }
 

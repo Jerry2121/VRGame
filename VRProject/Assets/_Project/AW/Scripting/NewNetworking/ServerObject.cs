@@ -9,7 +9,9 @@ namespace VRGame.Networking
     {
         public Vector3 m_Position;
 
-        public string objectType;
+        public string m_objectType;
+
+        public int m_clientID = 0; //Really only matters for player objects
 
         public void SetPosition(float x, float y, float z)
         {
@@ -20,12 +22,13 @@ namespace VRGame.Networking
 
         public ServerObject(string objectType)
         {
-            this.objectType = objectType;
+            m_objectType = objectType;
         }
 
-        public ServerObject(string objectType, float x, float y, float z)
+        public ServerObject(int clientID, string objectType, float x, float y, float z)
         {
-            this.objectType = objectType;
+            m_objectType = objectType;
+            m_clientID = clientID;
 
             m_Position.x = x;
             m_Position.y = y;
