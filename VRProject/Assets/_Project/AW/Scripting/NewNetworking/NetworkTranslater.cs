@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace VRGame.Networking
@@ -209,7 +210,12 @@ namespace VRGame.Networking
 
         public static string CreatePositionMessage(int clientID, int objectID, Vector3 position)
         {
-            return string.Format("{0}|{1}|Pos|{2}|{3}|{4}", clientID, objectID, position.x, position.y, position.z);
+            return CreatePositionMessage(clientID, objectID, position.x, position.y, position.z);
+        }
+
+        public static string CreatePositionMessage(int clientID, int objectID, float3 position)
+        {
+            return CreatePositionMessage(clientID, objectID, position.x, position.y, position.z);
         }
 
         public static string CreateIDMessageFromServer(int clientID)

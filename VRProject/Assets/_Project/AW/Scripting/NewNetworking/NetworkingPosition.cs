@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
@@ -22,7 +23,13 @@ namespace VRGame.Networking
         {
             if (transform.position != lastSentPosition)
             {
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, transform.position));
+                float3 roundedPos = new float3();
+
+                roundedPos.x = (float)Math.Round(transform.position.x, 3);
+                roundedPos.y = (float)Math.Round(transform.position.y, 3);
+                roundedPos.z = (float)Math.Round(transform.position.z, 3);
+
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, roundedPos));
                 lastSentPosition = transform.position;
             }
 
