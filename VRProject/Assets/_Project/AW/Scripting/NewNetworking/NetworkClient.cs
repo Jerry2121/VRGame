@@ -67,14 +67,12 @@ namespace VRGame.Networking
 
         void Update()
         {
-            //The main part of this Update code is from Unity's multiplayer repo
-
             m_Driver.ScheduleUpdate().Complete();
 
             if (!m_Connection.IsCreated)
             {
-                if (!m_Done)
-                    Debug.Log("NetworkClient -- Something went wrong during connect");
+                if (!m_Done && Debug.isDebugBuild)
+                    Debug.Log("NetworkClient -- Update: Something went wrong during connect");
                 return;
             }
 
@@ -86,7 +84,8 @@ namespace VRGame.Networking
             {
                 if (cmd == NetworkEvent.Type.Connect)
                 {
-                    Debug.Log("NetworkClient -- We are now connected to the server");
+                    if (Debug.isDebugBuild)
+                        Debug.Log("NetworkClient -- Update: We are now connected to the server");
                 }
                 else if (cmd == NetworkEvent.Type.Data)
                 {
@@ -107,11 +106,15 @@ namespace VRGame.Networking
                             TranslateMessage(msg);
                         }
                     }
-                    catch (NullReferenceException) { }
+                    catch (NullReferenceException)
+                    {
+                        if(Debug.isDebugBuild)
+                            Debug.LogError("NetworkClient -- Update: Caught Null Reference");
+                    }
                 }
                 else if (cmd == NetworkEvent.Type.Disconnect)
                 {
-                    Debug.Log("NetworkClient -- Client got disconnected from server");
+                    Debug.Log("NetworkClient -- Update: Client got disconnected from server");
                     m_Connection = default(NetworkConnection);
 
                     NetworkingManager.Instance.ClientDisconnect();
@@ -124,7 +127,7 @@ namespace VRGame.Networking
                 if (m_clientID == -1)
                 {
                     if (messageList.Count > 0)
-                        messageList.Clear(); //none of our messages have the proper ID
+                        messageList.Clear(); //none of our messages have the proper ID, so clear them
                     string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
                     SendMessages(Encoding.Unicode.GetBytes(IDRequest));
                     return;
@@ -184,7 +187,7 @@ namespace VRGame.Networking
                     PositionMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.ClientID:
-                    IDMessage(recievedMessage);
+                    //IDMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);

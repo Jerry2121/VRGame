@@ -164,7 +164,7 @@ namespace VRGame.Networking
                     IDMessage(i);
                     return false;
                 case NetworkMessageContent.Instantiate:
-                    InstantiateMessage(recievedMessage);
+                    //InstantiateMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.None:
                     break;
@@ -197,7 +197,10 @@ namespace VRGame.Networking
 
         void IDMessage(int i)
         {
-            int ID = m_Connections[i].InternalId + 1;
+            int ID = -1;
+
+            if (m_Connections[i] != null && m_Connections[i] != default(NetworkConnection))
+                ID = m_Connections[i].InternalId + 1;
 
             if (m_NetworkedObjects.Count > 0)
             {

@@ -334,7 +334,7 @@ MonoBehaviour:
   - {fileID: 7621736490306606718, guid: 23a8cabdeaa432342a1b3134e2fd6b0b, type: 3}
   playerPrefab: {fileID: 6951622398202203694, guid: 9fd366357c69ec045a5ba08c863d9c28,
     type: 3}
-  m_NetworkAddress: localhost
+  m_NetworkAddress: 10.47.1.42
   m_NetworkPort: 9000
   showGUI: 1
   offsetX: 0
