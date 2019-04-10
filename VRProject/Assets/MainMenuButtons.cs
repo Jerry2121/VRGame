@@ -12,10 +12,11 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject PlayJoin;
     public GameObject SettingsCanvas;
     public GameObject ExitConfirm;
+    public GameObject PutOnHeadSetCanvas;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PutOnHeadSetCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void CreateGameTEST()
     {
+        PutOnHeadSetCanvas.SetActive(true);
         SceneManager.LoadScene(1);
     }
     public void JoinGame()
