@@ -74,6 +74,7 @@ namespace VRGame.Networking
             {
                 if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Host(H)"))
                 {
+                    m_NetworkAddress = IPAddress.Loopback.ToString();
                     StartHost();
                 }
                 ypos += spacing;

@@ -204,12 +204,12 @@ namespace VRGame.Networking
 
         public static string CreatePositionMessage(int clientID, int objectID, float x, float y, float z)
         {
-            return string.Format("{0}{1}|Pos|{2}|{3}|{4}", clientID, objectID, x, y, z);
+            return string.Format("{0}|{1}|Pos|{2}|{3}|{4}", clientID, objectID, x, y, z);
         }
 
         public static string CreatePositionMessage(int clientID, int objectID, Vector3 position)
         {
-            return string.Format("{0}{1}|Pos|{2}|{3}|{4}", clientID, objectID, position.x, position.y, position.z);
+            return string.Format("{0}|{1}|Pos|{2}|{3}|{4}", clientID, objectID, position.x, position.y, position.z);
         }
 
         public static string CreateIDMessageFromServer(int clientID)
