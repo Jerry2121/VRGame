@@ -42,11 +42,13 @@ namespace VRGame.Networking
 
         public void RecievePositionMessage(float x, float y, float z)
         {
-            transform.position = new Vector3(x, y, z);
+            transform.position = new float3(x, y, z);
         }
 
         public override void RecieveMessage(string recievedMessage)
         {
+            //Debug.Log(" -- Recieved Pos Msg", this.gameObject);
+
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z) == false)
                 return;
 

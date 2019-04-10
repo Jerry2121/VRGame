@@ -199,6 +199,8 @@ namespace VRGame.Networking
 
         void IDMessage(int i)
         {
+            Debug.Log(string.Format("NetworkServer -- IDMessage: Got ID Message from connection {0}", i));
+
             int ID = -1;
 
             if (m_Connections[i] != null && m_Connections[i] != default(NetworkConnection))

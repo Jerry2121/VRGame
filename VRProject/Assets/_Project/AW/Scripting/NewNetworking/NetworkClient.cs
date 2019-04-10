@@ -228,10 +228,14 @@ namespace VRGame.Networking
             if (m_clientID != -1) //The message is for someone else
             {
                 NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+                return;
             }
 
             NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+
             m_clientID = clientID;
+
+            Debug.Log(string.Format("NetworkClient -- IDMessage: Recieved ID of {0} from the server", clientID));
 
             //TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
             //player.SetIsLocalPlayer();
