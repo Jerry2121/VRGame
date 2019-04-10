@@ -28,7 +28,6 @@ namespace VRGame.Networking
         [SerializeField] int offsetY;
 
         NetworkClient m_Client;
-        //public NetworkClient Client { get { return m_Client; }} 
 
         NetworkServer m_Server;
         bool m_Connected;
@@ -86,10 +85,13 @@ namespace VRGame.Networking
                 m_NetworkAddress = GUI.TextField(new Rect(xpos + 105, ypos, 95, 20), m_NetworkAddress);
                 ypos += spacing;
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
                 if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Server Only(S)"))
                 {
-                    //manager.StartServer();
+                    StartServer();
                 }
+                ypos += spacing;
+#endif
             }
             else
             {
@@ -101,11 +103,11 @@ namespace VRGame.Networking
 
                 if (m_Server != null)
                 {
-                    string serverMsg = "Server: port=" + m_NetworkPort;
+                    string serverMsg = "Server: address=" + m_Server.ServerIPAddress() + " port=" + m_NetworkPort;
                     GUI.Label(new Rect(xpos, ypos, 300, 20), serverMsg);
                     ypos += spacing;
                 }
-                if (m_Client != null)
+                else if (m_Client != null)
                 {
                     GUI.Label(new Rect(xpos, ypos, 300, 20), "Client: address=" + m_NetworkAddress + " port=" + m_NetworkPort);
                     ypos += spacing;
@@ -213,6 +215,13 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartClient: Client created.");
+        }
+
+        public void StartServer()
+        {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD //Actual builds don't need a server only option, they should host
+            m_Server = gameObject.AddComponent<NetworkServer>();
+#endif
         }
 
         private void Disconnect()

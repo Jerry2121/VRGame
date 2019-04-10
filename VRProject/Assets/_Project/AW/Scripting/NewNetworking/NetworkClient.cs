@@ -187,7 +187,7 @@ namespace VRGame.Networking
                     PositionMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.ClientID:
-                    //IDMessage(recievedMessage);
+                    IDMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);

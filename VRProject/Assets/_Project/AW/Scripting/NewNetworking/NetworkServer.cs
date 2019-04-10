@@ -9,6 +9,8 @@ using Unity.Collections;
 using UnityEngine.Assertions;
 
 using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+using System.Linq;
+using System.Net.Sockets;
 
 namespace VRGame.Networking
 {
@@ -249,6 +251,15 @@ namespace VRGame.Networking
             
             
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, x, y, z));
+        }
+
+        public string ServerIPAddress()
+        {
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            return host
+                .AddressList
+                .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork).ToString();
         }
 
     }
