@@ -166,7 +166,7 @@ namespace VRGame.Networking
                     IDMessage(i);
                     return false;
                 case NetworkMessageContent.Instantiate:
-                    //InstantiateMessage(recievedMessage);
+                    InstantiateMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.None:
                     break;
