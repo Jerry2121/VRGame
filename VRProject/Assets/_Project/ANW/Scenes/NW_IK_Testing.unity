@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671922562}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.24}
+  m_LocalPosition: {x: 0.045, y: 0, z: 0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1814565029}
@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081063542}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.24}
+  m_LocalPosition: {x: -0.045, y: 0, z: 0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1814560971}
@@ -5434,6 +5434,8 @@ MonoBehaviour:
   leftFoot: {fileID: 7102809478686570874}
   rightKnee: {fileID: 7102809478686570654}
   leftKnee: {fileID: 7102809478686570754}
+  leftKneeGameObject: {fileID: 7102809478686598434}
+  rightKneeGameObject: {fileID: 7102809478686598334}
   characterHead: {fileID: 7102809478686598238}
   ovrCamera: {fileID: 1814650277}
   trackingSpace: {fileID: 1814580187}
