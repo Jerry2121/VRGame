@@ -75,16 +75,7 @@ public class VrIkControl : MonoBehaviour
 
     void LateUpdate()
     {
-        if (leftKnee.transform.position.y < 0.477f)
-        {
-            leftKneeGameObject.transform.position = new Vector3 (leftKnee.position.x, 0.477f, leftKnee.position.z);
-        }
-
-        if (rightKnee.transform.position.y < 0.477f)
-        {
-            rightKneeGameObject.transform.position = new Vector3(rightKnee.position.x, 0.477f, rightKnee.position.z);
-        }
-        //characterHead.transform.rotation = trackingSpace.transform.rotation;
+        
     }
 
     // A callback for calculating IK
