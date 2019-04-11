@@ -7,6 +7,7 @@ namespace VRGame.Networking
     [RequireComponent(typeof(NetworkObject))]
     public abstract class NetworkObjectComponent : MonoBehaviour
     {
+        public abstract void RegisterSelf();
 
         public abstract void RecieveMessage(string recievedMessage);
 

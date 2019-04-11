@@ -104,7 +104,7 @@ namespace VRGame.Networking
 
                             //Debug.Log("NetworkServer -- Got " + recievedMessage + " from a Client.");
 
-                            m_MessageList.Add(recievedMessage);
+                            //m_MessageList.Add(recievedMessage);
 
                             string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
 
@@ -190,10 +190,11 @@ namespace VRGame.Networking
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z);
 
             //if (m_Players == null)
-                //return;
+            //return;
 
             //NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
 
+            WriteMessage(recievedMessage);
         }
 
         void PositionMessage(string recievedMessage)
@@ -203,8 +204,10 @@ namespace VRGame.Networking
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z);
 
             m_NetworkedObjects[objectID].SetPosition(x, y, z);
-
+            
             //m_Players[clientID].SetPosition(x, y, z);
+
+            WriteMessage(recievedMessage);
         }
 
         void IDMessage(int i)

@@ -18,6 +18,7 @@ namespace VRGame.Networking
         void Start()
         {
             netObject = GetComponent<NetworkObject>();
+            //RegisterSelf();
         }
 
         void FixedUpdate()
@@ -56,6 +57,12 @@ namespace VRGame.Networking
             RecievePositionMessage(x, y, z);
 
         }
+
+        public override void RegisterSelf()
+        {
+            netObject.RegisterNetComponent(NetworkMessageContent.Position, this);
+        }
+
     }
 
 }
