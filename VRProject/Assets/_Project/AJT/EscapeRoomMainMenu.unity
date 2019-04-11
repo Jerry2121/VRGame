@@ -1355,6 +1355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &122040463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1694,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &164723994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,6 +4657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &684569689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,6 +4836,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &711774041
 GameObject:
   m_ObjectHideFlags: 0
@@ -6596,6 +6620,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &1027335309
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,6 +8325,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &1261228220
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,6 +9358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &1461851529
 GameObject:
   m_ObjectHideFlags: 0
@@ -13477,6 +13519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3653a9bf4b9d549bc0de4302a7c75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickedColorPicker:
+    serializedVersion: 2
+    rgba: 4278190181
+  UnClickColorPicker:
+    serializedVersion: 2
+    rgba: 4279966625
 --- !u!1 &2103081645
 GameObject:
   m_ObjectHideFlags: 0

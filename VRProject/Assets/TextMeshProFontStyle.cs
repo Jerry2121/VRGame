@@ -6,6 +6,8 @@ using TMPro;
 
 public class TextMeshProFontStyle : MonoBehaviour
 {
+    public Color32 ClickedColorPicker;
+    public Color32 UnClickColorPicker;
     private bool CursorHovering;
     // Start is called before the first frame update
     void Start()
@@ -39,10 +41,10 @@ public class TextMeshProFontStyle : MonoBehaviour
     public void ClickColor()
     {
         CursorHovering = false;
-        this.gameObject.GetComponent<TextMeshProUGUI>().color = new Color32 (101, 0, 0, 255);
+        this.gameObject.GetComponent<TextMeshProUGUI>().color = ClickedColorPicker;
     }
     public void UnClickColor()
     {
-        this.gameObject.GetComponent<TextMeshProUGUI>().color = new Color32(161, 27, 27, 255);
+        this.gameObject.GetComponent<TextMeshProUGUI>().color = UnClickColorPicker;
     }
 }
