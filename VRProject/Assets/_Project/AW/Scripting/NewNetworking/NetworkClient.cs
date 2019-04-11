@@ -69,7 +69,7 @@ namespace VRGame.Networking
         {
             m_Driver.ScheduleUpdate().Complete();
 
-            if (!m_Connection.IsCreated)
+            if (m_Connection.IsCreated == false)
             {
                 if (!m_Done && Debug.isDebugBuild)
                     Debug.Log("NetworkClient -- Update: Something went wrong during connect");
@@ -95,7 +95,7 @@ namespace VRGame.Networking
                     {
                         byte[] messageBytes = new byte[stream.Length];
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
-                        string recievedMessage = Encoding.Unicode.GetString(messageBytes);
+                        string recievedMessage = Encoding.UTF8.GetString(messageBytes);
 
                         //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
 
@@ -129,23 +129,28 @@ namespace VRGame.Networking
                     if (messageList.Count > 0)
                         messageList.Clear(); //none of our messages have the proper ID, so clear them
                     string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
-                    SendMessages(Encoding.Unicode.GetBytes(IDRequest));
+
+                    Debug.Log("NetworkClient -- Update: Sending ID Request");
+
+                    SendMessages(Encoding.UTF8.GetBytes(IDRequest));
                     return;
                 }
             }
             catch (InvalidOperationException) {
+                if (Debug.isDebugBuild)
+                    Debug.LogError("NetworkClient -- Update: InvalidOperationException caught. Did not send ID request");
                 return;
             }
 
             if(messageList.Count <= 0)
             {
-                SendMessages(Encoding.Unicode.GetBytes(string.Empty));
+                SendMessages(Encoding.UTF8.GetBytes(string.Empty));
             }
 
             else {
                 string allMessages = NetworkTranslater.CombineMessages(messageList);
                 messageList.Clear();
-                SendMessages(Encoding.Unicode.GetBytes(allMessages));
+                SendMessages(Encoding.UTF8.GetBytes(allMessages));
             }
 
             if (m_Done)
@@ -161,7 +166,7 @@ namespace VRGame.Networking
             {
                 writer.Write(buffer);
 
-                //Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(buffer));
+                //Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.UTF8.GetString(buffer));
                 //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
 
                 m_Connection.Send(m_Driver, writer);

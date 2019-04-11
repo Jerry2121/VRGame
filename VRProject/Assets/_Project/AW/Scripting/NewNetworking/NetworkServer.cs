@@ -96,7 +96,7 @@ namespace VRGame.Networking
 
                             //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
 
-                            string recievedMessage = Encoding.Unicode.GetString(messageBytes);
+                            string recievedMessage = Encoding.UTF8.GetString(messageBytes);
 
                             //Debug.Log("NetworkServer -- Got " + recievedMessage + " from a Client.");
 
@@ -126,7 +126,7 @@ namespace VRGame.Networking
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {
                         string allMessages = NetworkTranslater.CombineMessages(currentMessages);
-                        SendMessages(Encoding.Unicode.GetBytes(allMessages), i);
+                        SendMessages(Encoding.UTF8.GetBytes(allMessages), i);
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace VRGame.Networking
             {
                 writer.Write(buffer);
 
-                //Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.Unicode.GetString(buffer));
+                //Debug.LogFormat("NetworkServer -- Sending message {0} to Client", Encoding.UTF8.GetString(buffer));
                 //Debug.LogFormat("NetworkServer -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
 
                 m_Driver.Send(m_Connections[i], writer);
@@ -224,10 +224,10 @@ namespace VRGame.Networking
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_clientID, objectID, networkedObject.m_objectType, networkedObject.m_Position));
                 }
 
-                SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
+                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
             }
             else
-                SendMessages(Encoding.Unicode.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
 
             /*if (m_Players.ContainsKey(ID) == false)
             {
