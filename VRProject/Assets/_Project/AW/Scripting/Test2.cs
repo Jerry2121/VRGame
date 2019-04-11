@@ -12,7 +12,21 @@ public class Test2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        string[] foo = { "0|0|Pos|4|5", "1|1|Pos|3|5" };
+
+        foreach (var val in foo)
+        {
+            Debug.Log(val);
+        }
+
+        string comb = NetworkTranslater.CombineMessages(foo);
+
+        foo = NetworkTranslater.SplitMessages(comb);
+
+        foreach(var val in foo)
+        {
+            Debug.Log(val);
+        }
 
     }
 

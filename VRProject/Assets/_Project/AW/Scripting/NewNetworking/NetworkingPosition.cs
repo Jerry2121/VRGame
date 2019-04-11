@@ -19,10 +19,13 @@ namespace VRGame.Networking
         {
             netObject = GetComponent<NetworkObject>();
         }
+
         void FixedUpdate()
         {
             if (transform.position != lastSentPosition)
             {
+                lastSentPosition = transform.position;
+
                 float3 roundedPos = new float3();
 
                 roundedPos.x = (float)Math.Round(transform.position.x, 3);
@@ -30,9 +33,7 @@ namespace VRGame.Networking
                 roundedPos.z = (float)Math.Round(transform.position.z, 3);
 
                 NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, roundedPos));
-                lastSentPosition = transform.position;
             }
-
         }
 
         //public void RecieveMoveMessage(float xMov, float zMov)

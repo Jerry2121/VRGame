@@ -81,6 +81,7 @@ namespace VRGame.Networking
                 while ((cmd = m_Driver.PopEventForConnection(m_Connections[i], out stream)) !=
                        NetworkEvent.Type.Empty)
                 {
+
                     if(cmd == NetworkEvent.Type.Connect)
                     {
                         Debug.Log("NetworkServer -- Client has connected");
@@ -91,9 +92,12 @@ namespace VRGame.Networking
                         try
                         {
                             var readerCtx = default(DataStreamReader.Context);
-                            byte[] messageBytes = new byte[stream.Length];
-                            stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
+                            int length = stream.Length;
+                            //byte[] messageBytes = new byte[stream.Length];
+                            //stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
 
+                            byte[] messageBytes = stream.ReadBytesAsArray(ref readerCtx, length);
+                            
                             //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
 
                             string recievedMessage = Encoding.UTF8.GetString(messageBytes);
@@ -110,7 +114,8 @@ namespace VRGame.Networking
                                     break;
                             }
                         }
-                        catch (NullReferenceException) {
+                        catch (NullReferenceException)
+                        {
                             if (Debug.isDebugBuild)
                                 Debug.LogError("NetworkSever -- Update: Caught Null Reference");
                         }
@@ -193,6 +198,8 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
+            Debug.Log(string.Format("NetworkServer -- PositionMessage: Got Position Message"));
+
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z);
 
             m_NetworkedObjects[objectID].SetPosition(x, y, z);

@@ -36,12 +36,16 @@ namespace VRGame.Networking
             {
                 case "Mov":
                     return NetworkMessageContent.Move;          // ClientID|ObjectID|Mov|xMove|zMove
+
                 case "Pos":
                     return NetworkMessageContent.Position;      // ClientID|ObjectID|Pos|xPositon|yPosition|zPosition
+
                 case "ID":
                     return NetworkMessageContent.ClientID;      // ID||ID    This is used for setting clientIDs
+
                 case "Ins":
                     return NetworkMessageContent.Instantiate;   // ClientID|ObjectID|Ins|ObjectName|xPosition|yPosition|zPosition
+
                 default:
                     return NetworkMessageContent.None;
             }
@@ -67,7 +71,10 @@ namespace VRGame.Networking
             {
                 if (message.Equals(string.Empty))
                     continue;
-                sb.Append(message + ":");
+                if(message == messages[messages.Length - 1])
+                    sb.Append(message);
+                else
+                    sb.Append(message + ":");
             }
 
             return sb.ToString();
@@ -75,16 +82,18 @@ namespace VRGame.Networking
 
         public static string CombineMessages(List<string> messages)
         {
-            StringBuilder sb = new StringBuilder();
+            return CombineMessages(messages.ToArray());
 
-            foreach (var message in messages)
-            {
-                if (message.Equals(string.Empty))
-                    continue;
-                sb.Append(message + ":");
-            }
+            //StringBuilder sb = new StringBuilder();
 
-            return sb.ToString();
+            //foreach (var message in messages)
+            //{
+            //    if (message.Equals(string.Empty))
+            //        continue;
+            //    sb.Append(message + ":");
+            //}
+
+            //return sb.ToString();
         }
 
         public static string[] SplitMessages(string recievedMessage)
