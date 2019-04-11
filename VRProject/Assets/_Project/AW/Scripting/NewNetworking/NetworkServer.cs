@@ -74,7 +74,7 @@ namespace VRGame.Networking
             DataStreamReader stream;
             for (int i = 0; i < m_Connections.Length; i++)
             {
-                if (!m_Connections[i].IsCreated)
+                if (m_Connections[i].IsCreated == false)
                     continue; //Assert.IsTrue(true);
 
                 NetworkEvent.Type cmd;
@@ -86,7 +86,7 @@ namespace VRGame.Networking
                         Debug.Log("NetworkServer -- Client has connected");
                     }
 
-                    if (cmd == NetworkEvent.Type.Data)
+                    else if (cmd == NetworkEvent.Type.Data)
                     {
                         try
                         {
@@ -110,7 +110,10 @@ namespace VRGame.Networking
                                     break;
                             }
                         }
-                        catch (NullReferenceException) { }
+                        catch (NullReferenceException) {
+                            if (Debug.isDebugBuild)
+                                Debug.LogError("NetworkSever -- Update: Caught Null Reference");
+                        }
 
                     }
                     else if (cmd == NetworkEvent.Type.Disconnect)
