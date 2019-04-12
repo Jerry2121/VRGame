@@ -55,21 +55,12 @@ public class VrIkControl : MonoBehaviour
             gameObject.transform.position = ovrCamera.transform.position - new Vector3(playerXOffset, playerYOffset, playerZOffset);
         }
         */
-        if (trackingSpace.transform.position.y > 1.0f)
-        {
-            gameObject.transform.position = ovrCamera.transform.position - new Vector3(playerXOffset, playerYOffset, playerZOffset);
-        }
 
-        else
+        gameObject.transform.position = ovrCamera.transform.position - new Vector3(playerXOffset, playerYOffset, playerZOffset);
+
+        if (trackingSpace.transform.rotation.y < 30.0f)
         {
             gameObject.transform.position = new Vector3(-0, -0.4f, -0.2f);
-        }
-
-
-        // headObj.transform.rotation = trackingSpace.transform.rotation;
-        if (trackingSpace.position.y < -0.5)
-        {
-            
         }
     }
 
