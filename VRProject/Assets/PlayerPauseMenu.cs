@@ -51,7 +51,7 @@ public class PlayerPauseMenu : MonoBehaviour
     public void ExitConfirmYes()
     {
         //load MainMenu if Yes Button is clicked
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     public void ExitConfirmNo()
     {
