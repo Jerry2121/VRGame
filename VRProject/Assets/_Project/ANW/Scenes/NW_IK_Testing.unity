@@ -5441,12 +5441,12 @@ MonoBehaviour:
   trackingSpace: {fileID: 1814580187}
   playerYOffset: 1.4
   playerYOffsetCrouch: 0.7
-  playerXOffset: 0
+  playerXOffset: 0.4
   playerXOffsetCrouch: 0
   playerZOffset: 0.2
   playerZOffsetCrouch: 0.4
+  trackingSpaceReq: 0
   characterMove: 0
-  characterCrouch: 0
 --- !u!137 &7102809478691874934
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
