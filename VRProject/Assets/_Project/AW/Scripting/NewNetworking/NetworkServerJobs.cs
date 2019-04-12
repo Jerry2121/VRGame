@@ -15,7 +15,7 @@ using System.Net.Sockets;
 namespace VRGame.Networking
 {
 
-    public class NetworkServer : MonoBehaviour
+    public class NetworkServerJobs : MonoBehaviour
     {
         public UdpCNetworkDriver m_Driver;
         private NativeList<NetworkConnection> m_Connections;
@@ -81,12 +81,13 @@ namespace VRGame.Networking
                 while ((cmd = m_Driver.PopEventForConnection(m_Connections[i], out stream)) !=
                        NetworkEvent.Type.Empty)
                 {
-                    if (cmd == NetworkEvent.Type.Connect)
+
+                    if(cmd == NetworkEvent.Type.Connect)
                     {
                         Debug.Log("NetworkServer -- Client has connected");
                     }
 
-                    if (cmd == NetworkEvent.Type.Data)
+                    else if (cmd == NetworkEvent.Type.Data)
                     {
                         try
                         {
@@ -128,7 +129,7 @@ namespace VRGame.Networking
 
                     //don't send if there aren't any messages
                     if (currentMessages.Count <= 0)
-                        continue;
+                        return;
 
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {

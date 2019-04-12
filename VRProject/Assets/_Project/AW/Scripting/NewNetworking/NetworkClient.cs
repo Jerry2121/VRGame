@@ -10,27 +10,12 @@ using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Ne
 
 namespace VRGame.Networking
 {
-    public class NetworkClient : MonoBehaviour
+    class NetworkClient : NetworkingClient
     {
-
-        //#region singleton
-        //private static readonly Lazy<NetworkClient> lazy =
-        //    new Lazy<NetworkClient>(() => new NetworkClient());
-
-        //public static NetworkClient Instance { get { return lazy.Value; } }
-
-        //private NetworkClient()
-        //{
-        //    Init();
-        //}
-        //#endregion
-
         int m_clientID = -1;
 
         TempPlayer m_player;
 
-        public int ClientID { get => m_clientID;}
-        
         public UdpCNetworkDriver m_Driver;
         public NetworkConnection m_Connection;
         public bool m_Done;
@@ -173,7 +158,7 @@ namespace VRGame.Networking
             }
         }
 
-        public void WriteMessage(string message)
+        public override void WriteMessage(string message)
         {
             messageList.Add(message);
         }
@@ -260,7 +245,7 @@ namespace VRGame.Networking
             NetworkingManager.Instance.RecieveInstantiateMessage(recievedMessage);
         }
 
-        public void Disconnect()
+        public override void Disconnect()
         {
             m_Done = true;
         }
@@ -278,6 +263,11 @@ namespace VRGame.Networking
                 else
                     Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these players is incorrect");
             }
+        }
+        
+        public override int ClientID()
+        {
+            return m_clientID;
         }
 
     }

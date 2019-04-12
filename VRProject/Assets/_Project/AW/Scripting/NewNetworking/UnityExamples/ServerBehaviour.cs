@@ -7,6 +7,8 @@ using UnityEngine.Assertions;
 
 using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
+namespace UnityExamples {
+
 public class ServerBehaviour : MonoBehaviour
 {
     public UdpCNetworkDriver m_Driver;
@@ -82,4 +84,5 @@ public class ServerBehaviour : MonoBehaviour
             }
         }
     }
+}
 }

@@ -6,7 +6,7 @@ using Unity.Mathematics;
 
 namespace VRGame.Networking
 {
-
+    [AddComponentMenu("VR Networking/Networking Position")]
     [DisallowMultipleComponent]
     public class NetworkingPosition : NetworkObjectComponent
     {
@@ -49,7 +49,7 @@ namespace VRGame.Networking
 
         public override void RecieveMessage(string recievedMessage)
         {
-            //Debug.Log(" -- Recieved Pos Msg", this.gameObject);
+            Debug.Log(" -- Recieved Pos Msg", this.gameObject);
 
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z) == false)
                 return;

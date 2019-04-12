@@ -23,12 +23,15 @@ namespace VRGame.Networking
         string m_NetworkAddress = "localhost";
         [SerializeField]
         int m_NetworkPort = 9000;
+        [SerializeField] bool useJobClient;
+        [SerializeField] bool useJobServer;
 
         [SerializeField] bool showGUI;
+        [SerializeField] bool debug;
         [SerializeField] int offsetX;
         [SerializeField] int offsetY;
 
-        NetworkClient m_Client;
+        NetworkingClient m_Client;
 
         NetworkServer m_Server;
         bool m_Connected;
@@ -115,6 +118,18 @@ namespace VRGame.Networking
                     ypos += spacing;
                 }
             }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (debug == false)
+                return;
+
+            if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Testing Client"))
+                {
+                    DebugCreateClient();
+                }
+                ypos += spacing;
+#endif
+
         }
 
 
@@ -187,14 +202,14 @@ namespace VRGame.Networking
 
             player.SetPlayerID(clientID);
 
-            if (clientID == m_Client.ClientID) //The message came from us, the local player
+            if (clientID == m_Client.ClientID()) //The message came from us, the local player
                 player.SetIsLocalPlayer();
         }
 
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
         {
             if(m_Client != null)
-                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, x, y, z));
+                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID(), -1, objectName, x, y, z));
         }
 
         public void InstantiateOverNetwork(string objectName, Vector3 position)
@@ -204,8 +219,8 @@ namespace VRGame.Networking
 
         public void StartHost()
         {
-            m_Server = gameObject.AddComponent<NetworkServer>();
-            m_Client = gameObject.AddComponent<NetworkClient>();
+            StartServer();
+            StartClient();
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartHost: Host created.");
@@ -213,17 +228,24 @@ namespace VRGame.Networking
 
         public void StartClient()
         {
-            m_Client = gameObject.AddComponent<NetworkClient>();
+            if (useJobClient)
+                m_Client = gameObject.AddComponent<NetworkClientJobs>();
+            else
+                m_Client = gameObject.AddComponent<NetworkClient>();
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartClient: Client created.");
         }
 
-        public void StartServer()
+        void StartServer()
         {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD //Actual builds don't need a server only option, they should host
-            m_Server = gameObject.AddComponent<NetworkServer>();
-#endif
+            if(useJobServer)
+                m_Server = gameObject.AddComponent<NetworkServer>();
+            else
+                m_Server = gameObject.AddComponent<NetworkServer>();
+
+            if (Debug.isDebugBuild)
+                Debug.Log("NetworkingManager -- StartServer: Server created.");
         }
 
         private void Disconnect()
@@ -291,9 +313,16 @@ namespace VRGame.Networking
         public static int ClientID()
         {
             if(Instance.m_Client != null)
-                return Instance.m_Client.ClientID;
+                return Instance.m_Client.ClientID();
             return -1;
         }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        void DebugCreateClient()
+        {
+            gameObject.AddComponent<NetworkClient>();
+        }
+#endif
 
     }
 }

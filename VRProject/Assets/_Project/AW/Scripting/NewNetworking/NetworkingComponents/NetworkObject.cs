@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace VRGame.Networking {
 
+    [AddComponentMenu("VR Networking/Network Object")]
     [DisallowMultipleComponent]
     public class NetworkObject : MonoBehaviour
     {
