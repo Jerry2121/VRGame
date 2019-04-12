@@ -312,7 +312,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229723602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fa3f0e20895c17439acbae795094ec7, type: 3}
   m_Name: 
@@ -336,7 +336,10 @@ MonoBehaviour:
     type: 3}
   m_NetworkAddress: 10.47.1.42
   m_NetworkPort: 9000
+  useJobClient: 0
+  useJobServer: 0
   showGUI: 1
+  debug: 1
   offsetX: 0
   offsetY: 0
 --- !u!1 &263738632
