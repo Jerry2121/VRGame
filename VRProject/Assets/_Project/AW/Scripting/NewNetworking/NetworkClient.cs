@@ -197,7 +197,10 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID))
+            if(Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- PositionMessage");
+
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
                 return;
 
             if(clientID != m_clientID) //Make sure we aren't getting out own positions back
