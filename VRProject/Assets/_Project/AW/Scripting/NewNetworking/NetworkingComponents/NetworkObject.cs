@@ -14,6 +14,10 @@ namespace VRGame.Networking {
 
         public int objectID;
 
+        [SerializeField] bool serverAuthority;
+
+        bool m_isLocalObject;
+
         Dictionary<NetworkMessageContent, NetworkObjectComponent> netComponents = new Dictionary<NetworkMessageContent, NetworkObjectComponent>();
 
 
@@ -39,14 +43,6 @@ namespace VRGame.Networking {
             netComponents.Remove(contentType);
             
         }
-
-        //public NetworkObjectComponent GetNetObjectForMessage(NetworkMessageContent contentType)
-        //{
-        //    if(netComponents.ContainsKey(contentType) == false)
-        //        return null;
-
-        //    return netComponents[contentType];
-        //}
         
         public void RecieveMessage(string recievedMessage, NetworkMessageContent contentType)
         {
@@ -54,6 +50,16 @@ namespace VRGame.Networking {
                 return;
 
             netComponents[contentType].RecieveMessage(recievedMessage);
+        }
+
+        public void SetLocal()
+        {
+            m_isLocalObject = true;
+        }
+
+        public bool isLocalObject()
+        {
+            return m_isLocalObject;
         }
 
     }

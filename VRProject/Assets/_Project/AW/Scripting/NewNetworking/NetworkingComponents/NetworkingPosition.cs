@@ -23,7 +23,7 @@ namespace VRGame.Networking
 
         void FixedUpdate()
         {
-            if (transform.position != lastSentPosition)
+            if (transform.position != lastSentPosition && netObject.isLocalObject())
             {
                 lastSentPosition = transform.position;
 

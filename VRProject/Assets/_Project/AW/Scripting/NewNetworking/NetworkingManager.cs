@@ -149,13 +149,21 @@ namespace VRGame.Networking
             if (objectID == -1) //The message does not have a valid objectID
                 return;
 
+            GameObject tempGO;
+
+            //Do unique player stuff
             if (objectType == "Player")
             {
-                InstantiatePlayer(clientID, objectID, objectType, x, y, z);
-                return;
+                tempGO = InstantiatePlayer(clientID, objectID, objectType, x, y, z);
+                if (tempGO == null) return;
             }
-
-            if (spawnableObjectDictionary.ContainsKey(objectType) == false)
+            //otherwise see if it is a spawnable object
+            else if (spawnableObjectDictionary.ContainsKey(objectType))
+            {
+                tempGO = Instantiate(spawnableObjectDictionary[objectType], new Vector3(x,y,z), Quaternion.identity);
+            }
+            //we couldn't spawn it. It likely is either not on the Manager, or doesn't have a NetworkObject component
+            else
             {
                 Debug.LogError(
                     "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectType + " over the network. " +
@@ -163,24 +171,26 @@ namespace VRGame.Networking
                 return;
             }
 
-            GameObject temp = Instantiate(spawnableObjectDictionary[objectType]);
-            temp.transform.position = new Vector3(x, y, z);
-            temp.GetComponent<NetworkObject>().objectID = objectID;
+            NetworkObject netObj = tempGO.GetComponent<NetworkObject>();
+            netObj.objectID = objectID;
 
             if (networkedObjectDictionary.ContainsKey(objectID))
             {
-                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object" , objectID, objectType), temp);
-                Destroy(temp);
+                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object" , objectID, objectType), tempGO);
+                Destroy(tempGO);
                 return;
             }
-            networkedObjectDictionary.Add(objectID, temp.GetComponent<NetworkObject>());
+            networkedObjectDictionary.Add(objectID, netObj);
+
+            if (clientID == ClientID())
+                netObj.SetLocal();
         }
 
-        void InstantiatePlayer(int clientID, int objectID, string objectName, float x, float y, float z)
+        GameObject InstantiatePlayer(int clientID, int objectID, string objectName, float x, float y, float z)
         {
             //If we have already set up the player, return
             if (playerDictionary.ContainsKey(clientID) && playerDictionary[clientID] != null)
-                return;
+                return null;
 
             if (playerDictionary.ContainsKey(clientID) == false)
             {
@@ -195,15 +205,13 @@ namespace VRGame.Networking
 
             TempPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
 
-            player.GetComponent<NetworkObject>().objectID = objectID;
-            networkedObjectDictionary.Add(objectID, player.GetComponent<NetworkObject>());
-
             playerDictionary[clientID] = player;
-
             player.SetPlayerID(clientID);
 
             if (clientID == m_Client.ClientID()) //The message came from us, the local player
                 player.SetIsLocalPlayer();
+
+            return player.gameObject;
         }
 
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
