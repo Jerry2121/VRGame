@@ -25,7 +25,7 @@ namespace VRGame.Networking {
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (transform.rotation != lastSentRotation)
+            if (transform.rotation != lastSentRotation && netObject.isLocalObject())
             {
                 lastSentRotation = transform.rotation;
 
