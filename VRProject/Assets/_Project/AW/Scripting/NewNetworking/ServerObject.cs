@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 namespace VRGame.Networking
 {
 
     public class ServerObject
     {
-        public Vector3 m_Position;
+        public float3 m_Position;
+        public quaternion m_rotation;
 
         public string m_objectType;
 
@@ -18,6 +20,14 @@ namespace VRGame.Networking
             m_Position.x = x;
             m_Position.y = y;
             m_Position.z = z;
+        }
+
+        public void SetRotation(float x, float y, float z, float w)
+        {
+            m_rotation.value.x = x;
+            m_rotation.value.y = y;
+            m_rotation.value.z = z;
+            m_rotation.value.w = w;
         }
 
         public ServerObject(string objectType)

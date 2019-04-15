@@ -182,6 +182,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Rotation:
+                    RotationMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.None:
                     break;
             }
@@ -207,6 +210,21 @@ namespace VRGame.Networking
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
                 NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Position);
+            }
+        }
+
+        void RotationMessage(string recievedMessage)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- RotationMessage");
+
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
+                return;
+
+            if (clientID != m_clientID) //Make sure we aren't getting out own rotations back
+            {
+                //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Rotation);
             }
         }
 

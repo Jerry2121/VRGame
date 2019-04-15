@@ -175,6 +175,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Rotation:
+                    RotationMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.None:
                     break;
                 default:
@@ -198,12 +201,25 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            Debug.Log(string.Format("NetworkServer -- PositionMessage: Got Position Message"));
+            Debug.Log(string.Format("NetworkServer -- PositionMessage"));
 
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z);
 
             m_NetworkedObjects[objectID].SetPosition(x, y, z);
             
+            //m_Players[clientID].SetPosition(x, y, z);
+
+            WriteMessage(recievedMessage);
+        }
+
+        void RotationMessage(string recievedMessage)
+        {
+            Debug.Log(string.Format("NetworkServer -- RotationMessage"));
+
+            NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z, out float w);
+
+            m_NetworkedObjects[objectID].SetRotation(x, y, z, w);
+
             //m_Players[clientID].SetPosition(x, y, z);
 
             WriteMessage(recievedMessage);

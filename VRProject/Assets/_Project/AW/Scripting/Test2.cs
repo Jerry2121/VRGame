@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using UnityEngine;
 using VRGame.Networking;
+using Unity.Mathematics;
 
 public class Test2 : MonoBehaviour
 {
@@ -12,21 +13,19 @@ public class Test2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] foo = { "0|0|Pos|4|5", "1|1|Pos|3|5" };
+        //quaternion quat = transform.rotation;
 
-        foreach (var val in foo)
-        {
-            Debug.Log(val);
-        }
+        //Debug.Log(string.Format("A: x={0} y={1} z={2} w={3}", quat.value.x, quat.value.y, quat.value.z, quat.value.w));
 
-        string comb = NetworkTranslater.CombineMessages(foo);
+        //float3 roundedRot = new float3();
 
-        foo = NetworkTranslater.SplitMessages(comb);
+        //roundedRot.x = quat.value.x;
+        //roundedRot.y = quat.value.y;
+        //roundedRot.z = quat.value.z;
 
-        foreach(var val in foo)
-        {
-            Debug.Log(val);
-        }
+        //quaternion quatTwo = quaternion.Euler(roundedRot);
+
+        //Debug.Log(string.Format("B: x={0} y={1} z={2} w={3}", quatTwo.value.x, quatTwo.value.y, quatTwo.value.z, quatTwo.value.w));
 
     }
 
@@ -42,8 +41,8 @@ public class Test2 : MonoBehaviour
     
     void Spawn()
     {
-        float foo = Random.Range(-10, 10);
-        float boo = Random.Range(-10, 10);
+        float foo = UnityEngine.Random.Range(-10, 10);
+        float boo = UnityEngine.Random.Range(-10, 10);
         NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().objectName, foo, 0, boo);
     }
 

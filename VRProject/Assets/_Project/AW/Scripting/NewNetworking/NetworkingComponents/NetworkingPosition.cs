@@ -42,7 +42,7 @@ namespace VRGame.Networking
         //    transform.Translate(xMov * 0.5f, 0, zMov * 0.5f);
         //}
 
-        public void RecievePositionMessage(float x, float y, float z)
+        public void MoveTo(float x, float y, float z)
         {
             transform.position = new float3(x, y, z);
         }
@@ -54,7 +54,7 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z) == false)
                 return;
 
-            RecievePositionMessage(x, y, z);
+            MoveTo(x, y, z);
 
         }
 
