@@ -16,16 +16,13 @@ public class VrIkControl : MonoBehaviour
     public Transform rightKnee;
     public Transform leftKnee;
 
-    public GameObject leftKneeGameObject;
-    public GameObject rightKneeGameObject;
     public GameObject characterHead;
+    public GameObject characterSpine;
 
     public Transform ovrCamera;
     public Transform trackingSpace;
     public float playerYOffset;
-    public float playerYOffsetCrouch;
     public float playerXOffset;
-    public float playerXOffsetCrouch;
     public float playerZOffset;
     public float playerZOffsetCrouch;
     public float trackingSpaceReq;
@@ -43,10 +40,15 @@ public class VrIkControl : MonoBehaviour
     {
         gameObject.transform.position = ovrCamera.transform.position - new Vector3(0, playerYOffset, playerZOffset);
 
-        if (characterHead.transform.position.y < 1)
+        if (characterHead.transform.position.y < 1.375)
         {
             gameObject.transform.position = new Vector3(-playerXOffset, -0.4f, -playerZOffset);
         }
+    }
+
+    private void LateUpdate()
+    {
+
     }
 
     // A callback for calculating IK
