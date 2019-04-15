@@ -42,7 +42,7 @@ public class VrIkControl : MonoBehaviour
 
         if (characterHead.transform.position.y < 1.375)
         {
-            gameObject.transform.position = new Vector3(0, -0.4f, 0);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, -0.4f, gameObject.transform.position.z);
         }
     }
 
