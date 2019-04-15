@@ -49,10 +49,8 @@ public class VrIkControl : MonoBehaviour
     void LateUpdate()
     {
 
-        //characterSpine.eulerAngles = new Vector3 (0, 0, ovrCamera.rotation.x);
-        characterSpine.rotation = ovrCamera.rotation;
-        //characterSpine.rotation = Quaternion.Euler(0, 0, ovrCamera.rotation.x);
-
+        characterSpine.eulerAngles = new Vector3 (0, ovrCamera.rotation.x + 90, -90);
+        //characterSpine.rotation = ovrCamera.rotation;
     }
 
     // A callback for calculating IK
