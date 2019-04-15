@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuButtons : MonoBehaviour
 {
@@ -13,6 +15,13 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject SettingsCanvas;
     public GameObject ExitConfirm;
     public GameObject PutOnHeadSetCanvas;
+    [Header("HostGameOptions")]
+    public TextMeshProUGUI WorldName;
+    public GameObject DifficultyDropDown;
+    public Toggle AllowHintsToggle;
+    public Toggle Allowsavingtoggle;
+    public Toggle thirtyminutetimer;
+    public Toggle timeelapsedtimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +49,43 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void CreateGameTEST()
     {
-        PutOnHeadSetCanvas.SetActive(true);
+        PlayerPrefs.SetString("WorldName", WorldName.text);
+        PlayerPrefs.SetInt("Difficulty", DifficultyDropDown.GetComponent<TMP_Dropdown>().value);
+        if (AllowHintsToggle.isOn)
+        {
+            PlayerPrefs.SetInt("AllowHints", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("AllowHints", 0);
+        }
+
+        if (Allowsavingtoggle.isOn)
+        {
+            PlayerPrefs.SetInt("AllowSaving", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("AllowSaving", 0);
+        }
+
+        if (thirtyminutetimer.isOn)
+        {
+            PlayerPrefs.SetInt("ThirtyMinuteTimer", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ThirtyMinuteTimer", 0);
+        }
+
+        if (timeelapsedtimer.isOn)
+        {
+            PlayerPrefs.SetInt("TimeElapsed", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TimeElapsed", 0);
+        }
         SceneManager.LoadScene(1);
     }
     public void JoinGame()
