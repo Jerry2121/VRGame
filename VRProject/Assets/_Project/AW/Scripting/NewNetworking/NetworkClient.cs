@@ -10,32 +10,17 @@ using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Ne
 
 namespace VRGame.Networking
 {
-    public class NetworkClient : MonoBehaviour
+    class NetworkClient : NetworkingClient
     {
-
-        //#region singleton
-        //private static readonly Lazy<NetworkClient> lazy =
-        //    new Lazy<NetworkClient>(() => new NetworkClient());
-
-        //public static NetworkClient Instance { get { return lazy.Value; } }
-
-        //private NetworkClient()
-        //{
-        //    Init();
-        //}
-        //#endregion
-
-        int m_playerID = -1;
+        int m_clientID = -1;
 
         TempPlayer m_player;
 
-        public int PlayerID { get => m_playerID;}
-        
         public UdpCNetworkDriver m_Driver;
         public NetworkConnection m_Connection;
         public bool m_Done;
 
-        List<byte[]> messageList = new List<byte[]>();
+        List<string> messageList = new List<string>();
 
 
         void Start()
@@ -43,10 +28,18 @@ namespace VRGame.Networking
             m_Driver = new UdpCNetworkDriver(new INetworkParameter[0]);
             m_Connection = default(NetworkConnection);
 
-            var endpoint = new IPEndPoint(IPAddress.Loopback, 9000);
+            if(NetworkingManager.Instance.NetworkAddress() == null)
+            {
+                Debug.Log("NetworkClient -- Start: Invalid IP address");
+                Disconnect();
+                NetworkingManager.Instance.ClientDisconnect();
+                return;
+            }
+
+            var endpoint = new IPEndPoint(NetworkingManager.Instance.NetworkAddress(), 9000);
             m_Connection = m_Driver.Connect(endpoint);
 
-            SendMessage("Connected");
+            WriteMessage("Connected");
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- Start: Client created");
@@ -59,14 +52,12 @@ namespace VRGame.Networking
 
         void Update()
         {
-            //The main part of this Update code is from Unity's multiplayer repo
-
             m_Driver.ScheduleUpdate().Complete();
 
-            if (!m_Connection.IsCreated)
+            if (m_Connection.IsCreated == false)
             {
-                if (!m_Done)
-                    Debug.Log("NetworkClient -- Something went wrong during connect");
+                if (!m_Done && Debug.isDebugBuild)
+                    Debug.Log("NetworkClient -- Update: Something went wrong during connect");
                 return;
             }
 
@@ -78,33 +69,37 @@ namespace VRGame.Networking
             {
                 if (cmd == NetworkEvent.Type.Connect)
                 {
-                    Debug.Log("NetworkClient -- We are now connected to the server");
-                    
-                    using (var writer = new DataStreamWriter(1024, Allocator.Temp))
-                    {
-                        if (messageList.Count < 1)
-                            break;
-                        writer.Write(messageList[0]);
-                        Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(messageList[0]));
-                        //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
-                        messageList.RemoveAt(0);
-
-                        m_Connection.Send(m_Driver, writer);
-                    }
+                    if (Debug.isDebugBuild)
+                        Debug.Log("NetworkClient -- Update: We are now connected to the server");
                 }
                 else if (cmd == NetworkEvent.Type.Data)
                 {
                     var readerCtx = default(DataStreamReader.Context);
 
-                    byte[] messageBytes = new byte[stream.Length];
-                    stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
-                    string recievedMessage = Encoding.Unicode.GetString(messageBytes);
-                    Debug.Log("NetworkClient -- Got the value " + recievedMessage + " back from the server");
-                    TranslateMessage(recievedMessage);
+                    try
+                    {
+                        byte[] messageBytes = new byte[stream.Length];
+                        stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
+                        string recievedMessage = Encoding.UTF8.GetString(messageBytes);
+
+                        //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
+
+                        string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
+
+                        foreach (var msg in splitMessages)
+                        {
+                            TranslateMessage(msg);
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
+                        if(Debug.isDebugBuild)
+                            Debug.LogError("NetworkClient -- Update: Caught Null Reference");
+                    }
                 }
                 else if (cmd == NetworkEvent.Type.Disconnect)
                 {
-                    Debug.Log("NetworkClient -- Client got disconnected from server");
+                    Debug.Log("NetworkClient -- Update: Client got disconnected from server");
                     m_Connection = default(NetworkConnection);
 
                     NetworkingManager.Instance.ClientDisconnect();
@@ -112,20 +107,35 @@ namespace VRGame.Networking
             }
 
             //send the first message in the message list
-
-            if (m_playerID == -1 || messageList.Count <= 0)
-                return;
-
-            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            try
             {
-                if (messageList.Count < 1)
-                    return;
-                writer.Write(messageList[0]);
-                Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.Unicode.GetString(messageList[0]));
-                //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
-                messageList.RemoveAt(0);
+                if (m_clientID == -1)
+                {
+                    if (messageList.Count > 0)
+                        messageList.Clear(); //none of our messages have the proper ID, so clear them
+                    string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
 
-                m_Connection.Send(m_Driver, writer);
+                    Debug.Log("NetworkClient -- Update: Sending ID Request");
+
+                    SendMessages(Encoding.UTF8.GetBytes(IDRequest));
+                    return;
+                }
+            }
+            catch (InvalidOperationException) {
+                if (Debug.isDebugBuild)
+                    Debug.LogError("NetworkClient -- Update: InvalidOperationException caught. Did not send ID request");
+                return;
+            }
+
+            if(messageList.Count <= 0)
+            {
+                SendMessages(Encoding.UTF8.GetBytes(string.Empty));
+            }
+
+            else {
+                string allMessages = NetworkTranslater.CombineMessages(messageList);
+                messageList.Clear();
+                SendMessages(Encoding.UTF8.GetBytes(allMessages));
             }
 
             if (m_Done)
@@ -135,10 +145,22 @@ namespace VRGame.Networking
             }
         }
 
-        new public void SendMessage(string message)
+        void SendMessages(byte[] buffer)
         {
-            byte[] buffer = Encoding.Unicode.GetBytes(message);
-            messageList.Add(buffer);
+            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            {
+                writer.Write(buffer);
+
+                //Debug.LogFormat("NetworkClient -- Sending message {0} to server", Encoding.UTF8.GetString(buffer));
+                //Debug.LogFormat("NetworkClient -- Message  is {0} in bytes", BitConverter.ToString(messageList[0]));
+
+                m_Connection.Send(m_Driver, writer);
+            }
+        }
+
+        public override void WriteMessage(string message)
+        {
+            messageList.Add(message);
         }
 
 
@@ -154,8 +176,14 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Position:
                     PositionMessage(recievedMessage);
                     break;
-                case NetworkMessageContent.ID:
+                case NetworkMessageContent.ClientID:
                     IDMessage(recievedMessage);
+                    break;
+                case NetworkMessageContent.Instantiate:
+                    InstantiateMessage(recievedMessage);
+                    break;
+                case NetworkMessageContent.Rotation:
+                    RotationMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.None:
                     break;
@@ -164,21 +192,81 @@ namespace VRGame.Networking
 
         void MoveMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateMoveMessage(recievedMessage, out int playerID, out float x, out float z);
+            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z) == false)
+                return;
+
+            throw new NotImplementedException();
         }
 
         void PositionMessage(string recievedMessage)
         {
-            throw new System.NotImplementedException();
+            if(Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- PositionMessage");
+
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
+                return;
+
+            if(clientID != m_clientID) //Make sure we aren't getting out own positions back
+            {
+                //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Position);
+            }
+        }
+
+        void RotationMessage(string recievedMessage)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- RotationMessage");
+
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
+                return;
+
+            if (clientID != m_clientID) //Make sure we aren't getting out own rotations back
+            {
+                //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Rotation);
+            }
         }
 
         void IDMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID);
-            m_playerID = clientID;
+            if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
+                return;
+
+            if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
+                return;
+
+            if (m_clientID != -1) //The message is for someone else
+            {
+                NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+                return;
+            }
+
+            NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+
+            m_clientID = clientID;
+
+            Debug.Log(string.Format("NetworkClient -- IDMessage: Recieved ID of {0} from the server", clientID));
+
+            //TempPlayer player = Instantiate(NetworkingManager.Instance.playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<TempPlayer>();
+            //player.SetIsLocalPlayer();
+            //player.SetPlayerID(clientID);
+
+            //NetworkingManager.Instance.playerDictionary[clientID] = player;
+
+            //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_playerID, m_playerID, "Player", player.transform.position));
+
+            //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_clientID, -1, "Player", Vector3.zero);
+
+            NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
         }
 
-        public void Disconnect()
+        void InstantiateMessage(string recievedMessage)
+        {
+            NetworkingManager.Instance.RecieveInstantiateMessage(recievedMessage);
+        }
+
+        public override void Disconnect()
         {
             m_Done = true;
         }
@@ -191,11 +279,16 @@ namespace VRGame.Networking
             }
             else
             {
-                if(m_player = player)
+                if(m_player == player)
                     Debug.LogWarning("NetworkClient -- AssignPlayer: Tried to assign the local player twice");
                 else
-                    Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these player is incorrect");
+                    Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these players is incorrect");
             }
+        }
+        
+        public override int ClientID()
+        {
+            return m_clientID;
         }
 
     }

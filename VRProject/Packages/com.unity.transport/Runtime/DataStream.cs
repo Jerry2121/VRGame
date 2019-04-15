@@ -554,7 +554,7 @@ namespace Unity.Networking.Transport
             get
             {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
-                AtomicSafetyHandle.CheckReadAndThrow(m_Safety);
+                //AtomicSafetyHandle.CheckReadAndThrow(m_Safety);
 #endif
                 return m_Length;
             }
