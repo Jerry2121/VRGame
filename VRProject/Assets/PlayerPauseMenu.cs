@@ -26,8 +26,8 @@ public class PlayerPauseMenu : MonoBehaviour
     public void Pause()
     {
         //Turn on/off the PauseCanvas and reset its position to be in front of the player based on its active state.
-        PauseCanvas.transform.position = Player.transform.position + new Vector3(0, 0, 1);
-        PauseCanvas.transform.rotation = Player.transform.rotation;
+        //PauseCanvas.transform.position = Player.transform.position + new Vector3(0, 0, 1);
+       // PauseCanvas.transform.rotation = Player.transform.rotation;
         PauseCanvas.SetActive(!PauseCanvas.activeSelf);
     }
     public void Resume()
