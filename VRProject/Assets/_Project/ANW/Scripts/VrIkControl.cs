@@ -16,8 +16,8 @@ public class VrIkControl : MonoBehaviour
     public Transform rightKnee;
     public Transform leftKnee;
 
-    public GameObject characterHead;
-    public GameObject characterSpine;
+    public Transform characterHead;
+    public Transform characterSpine;
 
     public Transform ovrCamera;
     public Transform trackingSpace;
@@ -42,12 +42,16 @@ public class VrIkControl : MonoBehaviour
 
         if (characterHead.transform.position.y < 1.375)
         {
-            gameObject.transform.position = new Vector3(-playerXOffset, -0.4f, -playerZOffset);
+            gameObject.transform.position = new Vector3(0, -0.4f, 0);
         }
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
+
+        //characterSpine.eulerAngles = new Vector3 (0, 0, ovrCamera.rotation.x);
+        characterSpine.rotation = ovrCamera.rotation;
+        //characterSpine.rotation = Quaternion.Euler(0, 0, ovrCamera.rotation.x);
 
     }
 

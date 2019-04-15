@@ -8912,8 +8912,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3726223074682923696}
-  m_LocalRotation: {x: -3.6592954e-13, y: 5.465779e-10, z: 3.7123082e-16, w: 1}
-  m_LocalPosition: {x: -0.14667848, y: 0.02572707, z: -0.000000332346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14667848, y: 0.025727067, z: -0.00000031571835}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 3726223074682566294}
@@ -13154,8 +13154,8 @@ MonoBehaviour:
   leftFoot: {fileID: 3726223074682566632}
   rightKnee: {fileID: 3726223074682566348}
   leftKnee: {fileID: 3726223074682566228}
-  characterHead: {fileID: 3726223074682924002}
-  characterSpine: {fileID: 0}
+  characterHead: {fileID: 3726223074682566594}
+  characterSpine: {fileID: 3726223074682566288}
   ovrCamera: {fileID: 735249727}
   trackingSpace: {fileID: 733480328}
   playerYOffset: 1.75
