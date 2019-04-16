@@ -16,12 +16,13 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject ExitConfirm;
     public GameObject PutOnHeadSetCanvas;
     [Header("HostGameOptions")]
-    public TextMeshProUGUI WorldName;
+    public TMP_InputField WorldName;
     public GameObject DifficultyDropDown;
     public Toggle AllowHintsToggle;
     public Toggle Allowsavingtoggle;
     public Toggle thirtyminutetimer;
     public Toggle timeelapsedtimer;
+    public GameObject Warning;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,44 +50,52 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void CreateGameTEST()
     {
-        PlayerPrefs.SetString("WorldName", WorldName.text);
-        PlayerPrefs.SetInt("Difficulty", DifficultyDropDown.GetComponent<TMP_Dropdown>().value);
-        if (AllowHintsToggle.isOn)
+        if (string.IsNullOrWhiteSpace(WorldName.text) == false)
         {
-            PlayerPrefs.SetInt("AllowHints", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("AllowHints", 0);
-        }
+            PlayerPrefs.SetString("WorldName", WorldName.text);
+            PlayerPrefs.SetInt("Difficulty", DifficultyDropDown.GetComponent<TMP_Dropdown>().value);
+            if (AllowHintsToggle.isOn)
+            {
+                PlayerPrefs.SetInt("AllowHints", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("AllowHints", 0);
+            }
 
-        if (Allowsavingtoggle.isOn)
-        {
-            PlayerPrefs.SetInt("AllowSaving", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("AllowSaving", 0);
-        }
+            if (Allowsavingtoggle.isOn)
+            {
+                PlayerPrefs.SetInt("AllowSaving", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("AllowSaving", 0);
+            }
 
-        if (thirtyminutetimer.isOn)
-        {
-            PlayerPrefs.SetInt("ThirtyMinuteTimer", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("ThirtyMinuteTimer", 0);
-        }
+            if (thirtyminutetimer.isOn)
+            {
+                PlayerPrefs.SetInt("ThirtyMinuteTimer", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("ThirtyMinuteTimer", 0);
+            }
 
-        if (timeelapsedtimer.isOn)
-        {
-            PlayerPrefs.SetInt("TimeElapsed", 1);
+            if (timeelapsedtimer.isOn)
+            {
+                PlayerPrefs.SetInt("TimeElapsed", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("TimeElapsed", 0);
+            }
+            Warning.SetActive(false);
+            SceneManager.LoadScene(1);
         }
         else
         {
-            PlayerPrefs.SetInt("TimeElapsed", 0);
+            Warning.SetActive(true);
         }
-        SceneManager.LoadScene(1);
     }
     public void JoinGame()
     {
