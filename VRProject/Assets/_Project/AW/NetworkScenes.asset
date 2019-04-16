@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NetworkScenes
   m_EditorClassIdentifier: 
   mainMenuScene:
-    m_Handle: 0
+    _asset: {fileID: 102900000, guid: bae7e2dfd1af72e4a8663d545d0a10df, type: 3}
+    _path: Assets/_Project/AW/NetworkingTest.unity
   gameScenes:
-  - m_Handle: 0
-  - m_Handle: 0
+  - _asset: {fileID: 102900000, guid: acf6a2a7f0873944b9f198e8f38c201a, type: 3}
+    _path: Assets/_Project/AW/Net2.unity

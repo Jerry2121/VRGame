@@ -23,8 +23,12 @@ namespace VRGame.Networking
         string m_NetworkAddress = "localhost";
         [SerializeField]
         int m_NetworkPort = 9000;
-        [SerializeField] bool useJobClient;
-        [SerializeField] bool useJobServer;
+
+        [SerializeField] SceneReference offlineScene;
+        [SerializeField] SceneReference onlineScene;
+
+        bool useJobClient;
+        bool useJobServer;
 
         [SerializeField] bool showGUI;
         [SerializeField] bool debug;
@@ -41,8 +45,16 @@ namespace VRGame.Networking
         // Start is called before the first frame update
         void Start()
         {
+            if(Instance != null)
+            {
+                Debug.LogError("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
+                Destroy(this);
+                return;
+            }
             Instance = this;
             Logger.Instance.Init();
+            DontDestroyOnLoad(Instance);
+            SceneManager.sceneLoaded += OnSceneLoaded;
 
             foreach(var GO in spawnableGameObjects)
             {
@@ -132,6 +144,10 @@ namespace VRGame.Networking
 
         }
 
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
 
         public void SendNetworkMessage(string message)
         {
@@ -283,6 +299,7 @@ namespace VRGame.Networking
             }
             networkedObjectDictionary.Clear();
             playerDictionary.Clear();
+            SwitchToOfflineScene();
         }
 
         public void StopHost()
@@ -297,6 +314,25 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StopHost: Server stopped.");
+        }
+
+        public void SwitchToOfflineScene()
+        {
+            SceneManager.LoadScene(offlineScene.Path);
+        }
+
+        public void SwitchToOnlineScene()
+        {
+            if(m_Client != null)
+                SceneManager.LoadScene(onlineScene.Path);
+        }
+
+        public void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
+        {
+            if(scene.path == onlineScene.Path && m_Client != null)
+            {
+                InstantiateOverNetwork("Player", Vector3.zero);
+            }
         }
 
         public IPAddress NetworkAddress()

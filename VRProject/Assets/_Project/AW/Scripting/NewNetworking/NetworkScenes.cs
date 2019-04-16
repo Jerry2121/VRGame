@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "VRGame/SceneAssets")]
 public class NetworkScenes : ScriptableObject
 {
-    public Scene mainMenuScene;
-    public Scene[] gameScenes;
+    public SceneReference mainMenuScene;
+    public SceneReference[] gameScenes;
 }

@@ -258,7 +258,8 @@ namespace VRGame.Networking
 
             //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_clientID, -1, "Player", Vector3.zero);
 
-            NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
+            //NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
+            NetworkingManager.Instance.SwitchToOnlineScene();
         }
 
         void InstantiateMessage(string recievedMessage)
