@@ -167,6 +167,8 @@ namespace VRGame.Networking
 
             GameObject tempGO;
 
+            Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
+
             //Do unique player stuff
             if (objectType == "Player")
             {
@@ -278,6 +280,15 @@ namespace VRGame.Networking
                 StopHost();
             else
                 ClientDisconnect();
+
+            //Destroy all networked objects
+            foreach (var netObject in networkedObjectDictionary.Keys)
+            {
+                Destroy(networkedObjectDictionary[netObject].gameObject);
+            }
+            networkedObjectDictionary.Clear();
+            playerDictionary.Clear();
+            SwitchToOfflineScene();
         }
 
         public void ClientDisconnect()
@@ -291,15 +302,6 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
-
-            //Destroy all networked objects
-            foreach(var netObject in networkedObjectDictionary.Keys)
-            {
-                Destroy(networkedObjectDictionary[netObject].gameObject);
-            }
-            networkedObjectDictionary.Clear();
-            playerDictionary.Clear();
-            SwitchToOfflineScene();
         }
 
         public void StopHost()
@@ -329,6 +331,7 @@ namespace VRGame.Networking
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
         {
+            SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
             if(scene.path == onlineScene.Path && m_Client != null)
             {
                 InstantiateOverNetwork("Player", Vector3.zero);
