@@ -23,8 +23,12 @@ namespace VRGame.Networking
         string m_NetworkAddress = "localhost";
         [SerializeField]
         int m_NetworkPort = 9000;
-        [SerializeField] bool useJobClient;
-        [SerializeField] bool useJobServer;
+
+        [SerializeField] SceneReference offlineScene;
+        [SerializeField] SceneReference onlineScene;
+
+        bool useJobClient;
+        bool useJobServer;
 
         [SerializeField] bool showGUI;
         [SerializeField] bool debug;
@@ -41,8 +45,16 @@ namespace VRGame.Networking
         // Start is called before the first frame update
         void Start()
         {
+            if(Instance != null)
+            {
+                Debug.LogError("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
+                Destroy(this);
+                return;
+            }
             Instance = this;
             Logger.Instance.Init();
+            DontDestroyOnLoad(Instance);
+            SceneManager.sceneLoaded += OnSceneLoaded;
 
             foreach(var GO in spawnableGameObjects)
             {
@@ -53,7 +65,7 @@ namespace VRGame.Networking
                     continue;
                 }
 
-                spawnableObjectDictionary.Add(netSpawn.objectName, GO);
+                spawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
             }
 
         }
@@ -100,6 +112,14 @@ namespace VRGame.Networking
             }
             else
             {
+                if(m_Server != null && m_Client == null)
+                {
+                    string warningMsg = "WARNING: server running with no client";
+                    GUIStyle style = new GUIStyle();
+                    style.normal.textColor = Color.red;
+                    GUI.Label(new Rect(xpos, ypos, 300, 20), warningMsg, style);
+                    ypos += spacing;
+                }
                 if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Disconnect(D)"))
                 {
                     Disconnect();
@@ -132,6 +152,10 @@ namespace VRGame.Networking
 
         }
 
+        private void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
 
         public void SendNetworkMessage(string message)
         {
@@ -150,6 +174,8 @@ namespace VRGame.Networking
                 return;
 
             GameObject tempGO;
+
+            Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
 
             //Do unique player stuff
             if (objectType == "Player")
@@ -172,7 +198,7 @@ namespace VRGame.Networking
             }
 
             NetworkObject netObj = tempGO.GetComponent<NetworkObject>();
-            netObj.objectID = objectID;
+            netObj.m_ObjectID = objectID;
 
             if (networkedObjectDictionary.ContainsKey(objectID))
             {
@@ -256,15 +282,24 @@ namespace VRGame.Networking
                 Debug.Log("NetworkingManager -- StartServer: Server created.");
         }
 
-        private void Disconnect()
+        public void Disconnect()
         {
             if (m_Server != null)
                 StopHost();
             else
-                ClientDisconnect();
+                StopClient();
+
+            //Destroy all networked objects
+            foreach (var netObject in networkedObjectDictionary.Keys)
+            {
+                Destroy(networkedObjectDictionary[netObject].gameObject);
+            }
+            networkedObjectDictionary.Clear();
+            playerDictionary.Clear();
+            SwitchToOfflineScene();
         }
 
-        public void ClientDisconnect()
+        void StopClient()
         {
             if (m_Client != null)
             {
@@ -275,19 +310,11 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
-
-            //Destroy all networked objects
-            foreach(var netObject in networkedObjectDictionary.Keys)
-            {
-                Destroy(networkedObjectDictionary[netObject].gameObject);
-            }
-            networkedObjectDictionary.Clear();
-            playerDictionary.Clear();
         }
 
-        public void StopHost()
+        void StopHost()
         {
-            ClientDisconnect();
+            StopClient();
 
             if(m_Server != null)
             {
@@ -297,6 +324,26 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StopHost: Server stopped.");
+        }
+
+        public void SwitchToOfflineScene()
+        {
+            SceneManager.LoadScene(offlineScene.Path);
+        }
+
+        public void SwitchToOnlineScene()
+        {
+            if(m_Client != null)
+                SceneManager.LoadScene(onlineScene.Path);
+        }
+
+        public void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
+        {
+            SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
+            if(scene.path == onlineScene.Path && m_Client != null)
+            {
+                InstantiateOverNetwork("Player", Vector3.zero);
+            }
         }
 
         public IPAddress NetworkAddress()

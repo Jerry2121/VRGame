@@ -178,6 +178,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Rotation:
                     RotationMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.LoadedIn:
+                    LoadedInMessage(recievedMessage, i);
+                    break;
                 case NetworkMessageContent.None:
                     break;
                 default:
@@ -234,11 +237,28 @@ namespace VRGame.Networking
             if (m_Connections[i] != null && m_Connections[i] != default(NetworkConnection))
                 ID = m_Connections[i].InternalId + 1;
 
+            
+                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+
+            /*if (m_Players.ContainsKey(ID) == false)
+            {
+                //m_Players.Add(ID, new ServerObject("Player"));
+
+                m_PlayerIDs.Add(ID);
+            }*/
+        }
+
+        void LoadedInMessage(string recievedMessage, int i)
+        {
+            if (NetworkTranslater.TranslateLoadedInMessage(recievedMessage, out int clientID) == false)
+                return;
+
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("NetworkServer -- LoadedInMessage: Recieved from client {0}", clientID));
+
             if (m_NetworkedObjects.Count > 0)
             {
                 List<string> messages = new List<string>();
-
-                messages.Add(NetworkTranslater.CreateIDMessageFromServer(ID));
 
                 /*foreach (var playerID in m_Players.Keys)
                 {
@@ -252,17 +272,8 @@ namespace VRGame.Networking
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_clientID, objectID, networkedObject.m_objectType, networkedObject.m_Position));
                 }
 
-                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
+                WriteMessage(NetworkTranslater.CombineMessages(messages));
             }
-            else
-                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
-
-            /*if (m_Players.ContainsKey(ID) == false)
-            {
-                //m_Players.Add(ID, new ServerObject("Player"));
-
-                m_PlayerIDs.Add(ID);
-            }*/
         }
 
         void InstantiateMessage(string recievedMessage)

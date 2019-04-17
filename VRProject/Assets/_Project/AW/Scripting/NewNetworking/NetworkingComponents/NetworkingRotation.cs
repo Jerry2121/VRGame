@@ -25,7 +25,11 @@ namespace VRGame.Networking {
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (transform.rotation != lastSentRotation && netObject.isLocalObject())
+            //If the object is controlled by its local client, and this isn't an object local to us, return
+            if (netObject.LocalAuthority() && netObject.isLocalObject() == false)
+                return;
+
+            if (transform.rotation != lastSentRotation)
             {
                 lastSentRotation = transform.rotation;
 
@@ -36,13 +40,16 @@ namespace VRGame.Networking {
                 roundedRot.z = (float)Math.Round(transform.rotation.z, 3);
                 roundedRot.w = (float)Math.Round(transform.rotation.w, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), netObject.objectID, roundedRot));
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, roundedRot));
             }
         }
 
         void RotateTo(float x, float y, float z, float w)
         {
-            transform.rotation = new quaternion(x, y, z, w);
+            quaternion rotation = new quaternion(x, y, z, w);
+
+            transform.rotation = rotation;
+            lastSentRotation = rotation;
         }
 
         public override void RecieveMessage(string recievedMessage)

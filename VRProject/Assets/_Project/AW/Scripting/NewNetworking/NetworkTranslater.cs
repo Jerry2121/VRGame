@@ -14,7 +14,9 @@ namespace VRGame.Networking
         Position,       // Pos
         ClientID,       // ID
         Instantiate,    // Ins
-        Rotation        // Rot
+        Rotation,       // Rot
+        LoadedIn,       // LIN
+        PuzzleComplete, // PuC
     }
 
     public static class NetworkTranslater
@@ -49,6 +51,12 @@ namespace VRGame.Networking
 
                 case "Rot":
                     return NetworkMessageContent.Rotation;      // ClientID|ObjectID|Rot|xRotation|yRotation|zRotation
+
+                case "LIN":
+                    return NetworkMessageContent.LoadedIn;      // ClientID||LIN
+
+                case "PuC":                                     // ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
+                    return NetworkMessageContent.PuzzleComplete;
 
                 default:
                     return NetworkMessageContent.None;
@@ -206,6 +214,24 @@ namespace VRGame.Networking
             return false;
         }
 
+        public static bool TranslateLoadedInMessage(string message, out int clientID)
+        {
+            if (GetMessageContentType(message) != NetworkMessageContent.LoadedIn)
+            {
+                Debug.LogError("NOOOOOOO");
+                clientID = -1;
+                return false;
+            }
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID))
+                return true;
+
+
+            return false;
+        }
+
         public static bool TranslateInstantiateMessage(string message, out int clientID, out int objectID, out string objectName, out float x, out float y, out float z)
         {
             x = y = z = 0;
@@ -273,6 +299,7 @@ namespace VRGame.Networking
         {
             return string.Format("{0}||ID", clientID);
         }
+
         public static string CreateIDMessageFromClient()
         {
             return string.Format("-1||ID");
@@ -286,6 +313,11 @@ namespace VRGame.Networking
         public static string CreateInstantiateMessage(int clientID, int objectID, string objectName, Vector3 position)
         {
             return CreateInstantiateMessage(clientID, objectID, objectName, position.x, position.y, position.z);
+        }
+
+        public static string CreateLoadedInMessage(int clientID)
+        {
+            return string.Format("{0}||LIN", clientID);
         }
 
         #endregion

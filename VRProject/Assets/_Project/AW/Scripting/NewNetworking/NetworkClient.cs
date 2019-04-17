@@ -7,6 +7,7 @@ using UnityEngine;
 using Unity.Networking.Transport;
 
 using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+using System.Timers;
 
 namespace VRGame.Networking
 {
@@ -22,6 +23,7 @@ namespace VRGame.Networking
 
         List<string> messageList = new List<string>();
 
+        Timer connectionTimer;
 
         void Start()
         {
@@ -32,7 +34,7 @@ namespace VRGame.Networking
             {
                 Debug.Log("NetworkClient -- Start: Invalid IP address");
                 Disconnect();
-                NetworkingManager.Instance.ClientDisconnect();
+                NetworkingManager.Instance.Disconnect();
                 return;
             }
 
@@ -43,11 +45,17 @@ namespace VRGame.Networking
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- Start: Client created");
+
+            connectionTimer = new Timer(15000);
+            connectionTimer.Elapsed += OnTimerDone;
+            connectionTimer.Enabled = true;
         }
 
         public void OnDestroy()
         {
             m_Driver.Dispose();
+            connectionTimer.Stop();
+            connectionTimer.Dispose();
         }
 
         void Update()
@@ -102,7 +110,7 @@ namespace VRGame.Networking
                     Debug.Log("NetworkClient -- Update: Client got disconnected from server");
                     m_Connection = default(NetworkConnection);
 
-                    NetworkingManager.Instance.ClientDisconnect();
+                    NetworkingManager.Instance.Disconnect();
                 }
             }
 
@@ -142,6 +150,18 @@ namespace VRGame.Networking
             {
                 m_Connection.Disconnect(m_Driver);
                 m_Connection = default(NetworkConnection);
+            }
+        }
+
+        void OnTimerDone(object source, ElapsedEventArgs e)
+        {
+            connectionTimer.Stop();
+            connectionTimer.Dispose();
+
+            if(m_clientID == -1)
+            {
+                Debug.Log("NetworkClient -- Failed To Connect");
+                NetworkingManager.Instance.Disconnect();
             }
         }
 
@@ -258,7 +278,8 @@ namespace VRGame.Networking
 
             //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_clientID, -1, "Player", Vector3.zero);
 
-            NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
+            //NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
+            NetworkingManager.Instance.SwitchToOnlineScene();
         }
 
         void InstantiateMessage(string recievedMessage)

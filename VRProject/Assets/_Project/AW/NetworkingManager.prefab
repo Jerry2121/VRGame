@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1300288230848432400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300288230848432401}
+  - component: {fileID: 1300288230848432405}
+  m_Layer: 0
+  m_Name: NetworkingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300288230848432401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300288230848432400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1593165, y: -3.7013493, z: 0.92749786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1300288230848432405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300288230848432400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ed26dddf74ae54ea0eb2405c554952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnableGameObjects:
+  - {fileID: 7621736490306606718, guid: 23a8cabdeaa432342a1b3134e2fd6b0b, type: 3}
+  - {fileID: 253583440114526318, guid: 208ea99fa3cb37f45be44e0f0224bb54, type: 3}
+  playerPrefab: {fileID: 6951622398202203694, guid: 9fd366357c69ec045a5ba08c863d9c28,
+    type: 3}
+  m_NetworkAddress: 10.47.1.42
+  m_NetworkPort: 9000
+  offlineScene:
+    _asset: {fileID: 102900000, guid: 9dce18dcd29f77347905b9f41ec48748, type: 3}
+    _path: Assets/_Project/AW/NetMenu.unity
+  onlineScene:
+    _asset: {fileID: 102900000, guid: bae7e2dfd1af72e4a8663d545d0a10df, type: 3}
+    _path: Assets/_Project/AW/NetworkingTest.unity
+  showGUI: 1
+  debug: 1
+  offsetX: 0
+  offsetY: 0
