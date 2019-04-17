@@ -112,6 +112,14 @@ namespace VRGame.Networking
             }
             else
             {
+                if(m_Server != null && m_Client == null)
+                {
+                    string warningMsg = "WARNING: server running with no client";
+                    GUIStyle style = new GUIStyle();
+                    style.normal.textColor = Color.red;
+                    GUI.Label(new Rect(xpos, ypos, 300, 20), warningMsg, style);
+                    ypos += spacing;
+                }
                 if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Disconnect(D)"))
                 {
                     Disconnect();
@@ -274,12 +282,12 @@ namespace VRGame.Networking
                 Debug.Log("NetworkingManager -- StartServer: Server created.");
         }
 
-        private void Disconnect()
+        public void Disconnect()
         {
             if (m_Server != null)
                 StopHost();
             else
-                ClientDisconnect();
+                StopClient();
 
             //Destroy all networked objects
             foreach (var netObject in networkedObjectDictionary.Keys)
@@ -291,7 +299,7 @@ namespace VRGame.Networking
             SwitchToOfflineScene();
         }
 
-        public void ClientDisconnect()
+        void StopClient()
         {
             if (m_Client != null)
             {
@@ -304,9 +312,9 @@ namespace VRGame.Networking
                 Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
         }
 
-        public void StopHost()
+        void StopHost()
         {
-            ClientDisconnect();
+            StopClient();
 
             if(m_Server != null)
             {

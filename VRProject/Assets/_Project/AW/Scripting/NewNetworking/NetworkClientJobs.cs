@@ -37,7 +37,7 @@ namespace VRGame.Networking
             {
                 Debug.Log("NetworkClient -- Start: Invalid IP address");
                 Disconnect();
-                NetworkingManager.Instance.ClientDisconnect();
+                NetworkingManager.Instance.Disconnect();
                 return;
             }
 
@@ -229,7 +229,7 @@ namespace VRGame.Networking
                     Debug.Log("NetworkClient -- Update: Client got disconnected from server");
                     connection[0] = default(NetworkConnection);
 
-                    NetworkingManager.Instance.ClientDisconnect();
+                    NetworkingManager.Instance.Disconnect();
                 }
             }
             
