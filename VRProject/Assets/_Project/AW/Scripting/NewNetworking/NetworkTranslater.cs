@@ -15,7 +15,8 @@ namespace VRGame.Networking
         ClientID,       // ID
         Instantiate,    // Ins
         Rotation,       // Rot
-        LoadedIn        // LIN
+        LoadedIn,       // LIN
+        PuzzleComplete, // PuC
     }
 
     public static class NetworkTranslater
@@ -50,8 +51,12 @@ namespace VRGame.Networking
 
                 case "Rot":
                     return NetworkMessageContent.Rotation;      // ClientID|ObjectID|Rot|xRotation|yRotation|zRotation
+
                 case "LIN":
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
+
+                case "PuC":                                     // ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
+                    return NetworkMessageContent.PuzzleComplete;
 
                 default:
                     return NetworkMessageContent.None;

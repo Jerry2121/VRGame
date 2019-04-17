@@ -23,7 +23,7 @@ namespace VRGame.Networking
 
         void FixedUpdate()
         {
-            if (transform.position != lastSentPosition && netObject.isLocalObject())
+            if (transform.position != lastSentPosition/* && netObject.isLocalObject()*/)
             {
                 lastSentPosition = transform.position;
 
@@ -44,7 +44,9 @@ namespace VRGame.Networking
 
         public void MoveTo(float x, float y, float z)
         {
-            transform.position = new float3(x, y, z);
+            float3 position = new float3(x, y, z);
+            transform.position = position;
+            lastSentPosition = position;
         }
 
         public override void RecieveMessage(string recievedMessage)
