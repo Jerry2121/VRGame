@@ -23,7 +23,11 @@ namespace VRGame.Networking
 
         void FixedUpdate()
         {
-            if (transform.position != lastSentPosition/* && netObject.isLocalObject()*/)
+            //If the object is controlled by its local client, and this isn't an object local to us, return
+            if (netObject.LocalAuthority() && netObject.isLocalObject() == false)
+                return;
+
+            if (transform.position != lastSentPosition)
             {
                 lastSentPosition = transform.position;
 
@@ -33,7 +37,7 @@ namespace VRGame.Networking
                 roundedPos.y = (float)Math.Round(transform.position.y, 3);
                 roundedPos.z = (float)Math.Round(transform.position.z, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.objectID, roundedPos));
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, roundedPos));
             }
         }
 

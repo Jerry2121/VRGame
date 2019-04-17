@@ -10,56 +10,67 @@ namespace VRGame.Networking {
     public class NetworkObject : MonoBehaviour
     {
         [Header("The Objects Type")]
-        public string objectName;
+        public string m_ObjectName;
 
-        public int objectID;
+        public int m_ObjectID;
 
-        [SerializeField] bool serverAuthority;
+        [SerializeField] bool m_LocalAuthority;
+        [SerializeField] bool m_ServerAuthority;
 
-        bool m_isLocalObject;
+        bool m_IsLocalObject;
 
-        Dictionary<NetworkMessageContent, NetworkObjectComponent> netComponents = new Dictionary<NetworkMessageContent, NetworkObjectComponent>();
+        Dictionary<NetworkMessageContent, NetworkObjectComponent> m_NetComponents = new Dictionary<NetworkMessageContent, NetworkObjectComponent>();
 
 
         public bool RegisterNetComponent(NetworkMessageContent contentType, NetworkObjectComponent component)
         {
-            if (netComponents.ContainsKey(contentType))
+            if (m_NetComponents.ContainsKey(contentType))
             {
                 Debug.LogError(string.Format("There is already a registered component handleing {0} messages", contentType.ToString()));
                 return false;
             }
 
-            netComponents.Add(contentType, component);
+            m_NetComponents.Add(contentType, component);
             return true;
         }
 
         public void UnRegisterNetComponent(NetworkMessageContent contentType, NetworkObjectComponent component)
         {
-            if (netComponents.ContainsKey(contentType) == false || netComponents.ContainsValue(component) == false)
+            if (m_NetComponents.ContainsKey(contentType) == false || m_NetComponents.ContainsValue(component) == false)
             {
                 return;
             }
 
-            netComponents.Remove(contentType);
+            m_NetComponents.Remove(contentType);
             
         }
         
         public void RecieveMessage(string recievedMessage, NetworkMessageContent contentType)
         {
-            if (netComponents.ContainsKey(contentType) == false)
+            if (m_NetComponents.ContainsKey(contentType) == false)
                 return;
 
-            netComponents[contentType].RecieveMessage(recievedMessage);
+            m_NetComponents[contentType].RecieveMessage(recievedMessage);
         }
 
         public void SetLocal()
         {
-            m_isLocalObject = true;
+            m_IsLocalObject = true;
         }
 
         public bool isLocalObject()
         {
-            return m_isLocalObject;
+            return m_IsLocalObject;
+        }
+
+        public bool LocalAuthority()
+        {
+            return m_LocalAuthority;
+        }
+
+        public bool ServerAuthority()
+        {
+            return m_ServerAuthority;
         }
 
     }

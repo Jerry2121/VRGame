@@ -137,8 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a541b03f5377e049858795f9332e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Player
-  objectID: 0
+  m_ObjectName: Player
+  m_ObjectID: 0
+  m_LocalAuthority: 1
+  m_ServerAuthority: 0
 --- !u!114 &3382016290966560601
 MonoBehaviour:
   m_ObjectHideFlags: 0

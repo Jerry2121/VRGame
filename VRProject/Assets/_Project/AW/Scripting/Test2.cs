@@ -43,7 +43,7 @@ public class Test2 : MonoBehaviour
     {
         float foo = UnityEngine.Random.Range(-10, 10);
         float boo = UnityEngine.Random.Range(-10, 10);
-        NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().objectName, foo, 0, boo);
+        NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo);
     }
 
 }

@@ -65,7 +65,7 @@ namespace VRGame.Networking
                     continue;
                 }
 
-                spawnableObjectDictionary.Add(netSpawn.objectName, GO);
+                spawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
             }
 
         }
@@ -198,7 +198,7 @@ namespace VRGame.Networking
             }
 
             NetworkObject netObj = tempGO.GetComponent<NetworkObject>();
-            netObj.objectID = objectID;
+            netObj.m_ObjectID = objectID;
 
             if (networkedObjectDictionary.ContainsKey(objectID))
             {
