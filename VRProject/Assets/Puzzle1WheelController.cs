@@ -16,11 +16,10 @@ public class Puzzle1WheelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "VRHands")
+        if(other.gameObject.tag == "VRHands" && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         {
             this.transform.position = Wheelposition;
             Quaternion rot = transform.rotation;
