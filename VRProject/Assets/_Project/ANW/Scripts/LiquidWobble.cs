@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wobble : MonoBehaviour
+public class LiquidWobble : MonoBehaviour
 {
     Renderer rend;
     Vector3 lastPos;
