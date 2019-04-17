@@ -602,17 +602,17 @@ PrefabInstance:
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1593165
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7013493
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.92749786
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
@@ -653,34 +653,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: offlineScene._asset
-      value: 
-      objectReference: {fileID: 102900000, guid: 9dce18dcd29f77347905b9f41ec48748,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: offlineScene._path
-      value: Assets/_Project/AW/NetMenu.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: onlineScenes._asset
-      value: 
-      objectReference: {fileID: 102900000, guid: bae7e2dfd1af72e4a8663d545d0a10df,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: onlineScene._asset
-      value: 
-      objectReference: {fileID: 102900000, guid: bae7e2dfd1af72e4a8663d545d0a10df,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: onlineScene._path
-      value: Assets/_Project/AW/NetworkingTest.unity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680a2ffbaf98a7047825ace67da2a8ac, type: 3}
