@@ -38,7 +38,7 @@ namespace VRGame.Networking
                 {
                     NetworkObject netScript = ((NetworkObject)target);
                     int ID = 0;
-                    netScript.CheckForChildrenNetworkComponentsRecursively(netScript.gameObject, &ID);
+                    netScript.CheckForNetworkComponents(netScript.gameObject, &ID);
                 }
             }
 

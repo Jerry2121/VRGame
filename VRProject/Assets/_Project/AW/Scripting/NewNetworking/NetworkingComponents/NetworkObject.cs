@@ -58,7 +58,35 @@ namespace VRGame.Networking {
         }
 
         [ExecuteInEditMode]
-        public unsafe void CheckForChildrenNetworkComponentsRecursively(GameObject obj, int* ID)
+        public unsafe void CheckForNetworkComponents(GameObject obj, int* ID)
+        {
+            Debug.Log("Checking" + obj.name);
+            if (obj == null)
+            {
+                return;
+            }
+
+            foreach (var netObjComp in obj.GetComponents<NetworkObjectComponent>())
+            {
+                if (netObjComp != null)
+                {
+                    netObjComp.SetID(*ID);
+                    *ID = *ID + 1;
+                }
+            }
+
+            *ID = 10;
+
+            foreach (Transform child in obj.transform) {
+                if (child == null)
+                    continue;
+
+                CheckForNetworkComponentsInChildrenRecursively(child.gameObject, ID);
+            }
+
+        }
+
+        public unsafe void CheckForNetworkComponentsInChildrenRecursively(GameObject obj, int* ID)
         {
             Debug.Log("Checking" + obj.name);
             if (obj == null)
@@ -78,11 +106,12 @@ namespace VRGame.Networking {
                 }
             }
 
-            foreach(Transform child in obj.transform) {
+            foreach (Transform child in obj.transform)
+            {
                 if (child == null)
                     continue;
 
-                CheckForChildrenNetworkComponentsRecursively(child.gameObject, ID);
+                CheckForNetworkComponentsInChildrenRecursively(child.gameObject, ID);
             }
 
         }
