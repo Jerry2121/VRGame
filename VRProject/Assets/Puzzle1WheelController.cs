@@ -26,7 +26,7 @@ public class Puzzle1WheelController : MonoBehaviour
             Vector3 handPositionResetXZ = new Vector3(handPosition.x, handPosition.y, 0);
             Vector3 handDirection = transform.position - handPositionResetXZ;
             handDirection.z = 0;
-            float angle = Vector3.SignedAngle(handDirection, transform.position, )
+            //float angle = Vector3.SignedAngle(handDirection, transform.position)
         }
     }
     

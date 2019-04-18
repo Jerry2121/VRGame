@@ -5224,7 +5224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 121942, guid: e715ee18d4ba7664ab5b37966b127c76, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 485684, guid: e715ee18d4ba7664ab5b37966b127c76, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9162,7 +9162,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1765875719}
-  - component: {fileID: 1765875718}
   m_Layer: 0
   m_Name: Puzzle1
   m_TagString: Untagged
@@ -9170,22 +9169,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1765875718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765875717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6555022fb84b374a8c64d71979859c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PuzzleStarted: 0
-  PuzzleCompleted: 0
-  PuzzlePoweredUp: 0
-  Puzzle1Light: {fileID: 1141884786}
 --- !u!4 &1765875719
 Transform:
   m_ObjectHideFlags: 0
@@ -10046,7 +10029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 160676, guid: b18333bd3d4ff954ab4259f067d1ee6c, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 469668, guid: b18333bd3d4ff954ab4259f067d1ee6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10501,7 +10484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 166594, guid: 2ec331173f7675241a638434697a019d, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 484984, guid: 2ec331173f7675241a638434697a019d, type: 3}
       propertyPath: m_LocalPosition.x
