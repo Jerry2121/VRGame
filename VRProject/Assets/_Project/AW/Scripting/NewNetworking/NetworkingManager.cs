@@ -52,7 +52,6 @@ namespace VRGame.Networking
                 return;
             }
             Instance = this;
-            Logger.Instance.Init();
             DontDestroyOnLoad(Instance);
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -64,7 +63,11 @@ namespace VRGame.Networking
                     Debug.LogError("NetworkingManager -- Start: Gameobject does not have a NetworkSpawnable component");
                     continue;
                 }
-
+                if(string.IsNullOrWhiteSpace(netSpawn.m_ObjectName))
+                {
+                    Debug.LogError("NetworkingManager -- Start: GameObject has no objectName on NetworkObject!");
+                    continue;
+                }
                 spawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
             }
 
@@ -262,9 +265,6 @@ namespace VRGame.Networking
 
         public void StartClient()
         {
-            if (useJobClient)
-                m_Client = gameObject.AddComponent<NetworkClientJobs>();
-            else
                 m_Client = gameObject.AddComponent<NetworkClient>();
 
             if (Debug.isDebugBuild)
@@ -273,9 +273,6 @@ namespace VRGame.Networking
 
         void StartServer()
         {
-            if(useJobServer)
-                m_Server = gameObject.AddComponent<NetworkServer>();
-            else
                 m_Server = gameObject.AddComponent<NetworkServer>();
 
             if (Debug.isDebugBuild)

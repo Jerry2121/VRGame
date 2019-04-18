@@ -32,6 +32,16 @@ namespace VRGame.Networking
             EditorGUILayout.PropertyField(m_LocalAuthority);
             EditorGUILayout.PropertyField(m_ServerAuthority);
 
+            unsafe
+            {
+                if (GUILayout.Button("Register Network Children IDs"))
+                {
+                    NetworkObject netScript = ((NetworkObject)target);
+                    int ID = 0;
+                    netScript.CheckForChildrenNetworkComponentsRecursively(netScript.gameObject, &ID);
+                }
+            }
+
             serializedObject.ApplyModifiedProperties();
         }
 

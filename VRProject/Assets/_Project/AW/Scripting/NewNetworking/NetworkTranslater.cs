@@ -38,10 +38,10 @@ namespace VRGame.Networking
             switch (splitMessage[2])
             {
                 case "Mov":
-                    return NetworkMessageContent.Move;          // ClientID|ObjectID|Mov|xMove|zMove
+                    return NetworkMessageContent.Move;          // ClientID|ObjectID|Mov|ComponentID|xMove|zMove
 
                 case "Pos":
-                    return NetworkMessageContent.Position;      // ClientID|ObjectID|Pos|xPositon|yPosition|zPosition
+                    return NetworkMessageContent.Position;      // ClientID|ObjectID|Pos|ComponentID|xPositon|yPosition|zPosition
 
                 case "ID":
                     return NetworkMessageContent.ClientID;      // ID||ID    This is used for setting clientIDs
@@ -50,7 +50,7 @@ namespace VRGame.Networking
                     return NetworkMessageContent.Instantiate;   // ClientID|ObjectID|Ins|ObjectName|xPosition|yPosition|zPosition
 
                 case "Rot":
-                    return NetworkMessageContent.Rotation;      // ClientID|ObjectID|Rot|xRotation|yRotation|zRotation
+                    return NetworkMessageContent.Rotation;      // ClientID|ObjectID|Rot|ComponentID|xRotation|yRotation|zRotation
 
                 case "LIN":
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
@@ -128,12 +128,27 @@ namespace VRGame.Networking
             else return false;
         }
 
+        public static bool GetIDsFromMessage(string recievedMessage, out int clientID, out int objectID, out int componentID)
+        {
+            clientID = objectID = componentID = -1;
+
+            if (GetMessageContentType(recievedMessage) == NetworkMessageContent.ClientID)
+                return false;
+
+            string[] splitMessage = recievedMessage.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID) && int.TryParse(splitMessage[3], out componentID))
+                return true;
+
+            else return false;
+        }
+
         #region TranslateMessages
 
-        public static bool TranslateMoveMessage(string message, out int clientID, out int objectID, out float x, out float z)
+        public static bool TranslateMoveMessage(string message, out int clientID, out int objectID, out int componentID, out float x, out float z)
         {
             x = z = 0;
-            clientID = objectID = -1;
+            clientID = objectID  =componentID = -1;
 
             if (GetMessageContentType(message) != NetworkMessageContent.Move)
                 return false;
@@ -142,29 +157,8 @@ namespace VRGame.Networking
 
             if (int.TryParse(splitMessage[0], out clientID) && 
                 int.TryParse(splitMessage[1], out objectID) &&
-                float.TryParse(splitMessage[3], out x) && 
-                float.TryParse(splitMessage[4], out z))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public static bool TranslatePositionMessage(string message, out int clientID, out int objectID, out float x, out float y, out float z)
-        {
-            x = y = z = 0;
-            clientID = objectID = -1;
-
-            if (GetMessageContentType(message) != NetworkMessageContent.Position)
-                return false;
-
-            string[] splitMessage = message.Split('|');
-
-            if (int.TryParse(splitMessage[0], out clientID) && 
-                int.TryParse(splitMessage[1], out objectID) &&
-                float.TryParse(splitMessage[3], out x) && 
-                float.TryParse(splitMessage[4], out y) && 
+                int.TryParse(splitMessage[3], out componentID)&&
+                float.TryParse(splitMessage[4], out x) && 
                 float.TryParse(splitMessage[5], out z))
             {
                 return true;
@@ -173,10 +167,33 @@ namespace VRGame.Networking
             return false;
         }
 
-        public static bool TranslateRotationMessage(string message, out int clientID, out int objectID, out float x, out float y, out float z, out float w)
+        public static bool TranslatePositionMessage(string message, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z)
+        {
+            x = y = z = 0;
+            clientID = objectID = componentID = -1;
+
+            if (GetMessageContentType(message) != NetworkMessageContent.Position)
+                return false;
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) && 
+                int.TryParse(splitMessage[1], out objectID) &&
+                int.TryParse(splitMessage[3], out componentID) &&
+                float.TryParse(splitMessage[4], out x) && 
+                float.TryParse(splitMessage[5], out y) && 
+                float.TryParse(splitMessage[6], out z))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool TranslateRotationMessage(string message, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w)
         {
             x = y = z = w = 0;
-            clientID = objectID = -1;
+            clientID = objectID = componentID = -1;
 
             if (GetMessageContentType(message) != NetworkMessageContent.Rotation)
                 return false;
@@ -185,10 +202,11 @@ namespace VRGame.Networking
 
             if (int.TryParse(splitMessage[0], out clientID) &&
                 int.TryParse(splitMessage[1], out objectID) &&
-                float.TryParse(splitMessage[3], out x) &&
-                float.TryParse(splitMessage[4], out y) &&
-                float.TryParse(splitMessage[5], out z) &&
-                float.TryParse(splitMessage[6], out w))
+                int.TryParse(splitMessage[3], out componentID) &&
+                float.TryParse(splitMessage[4], out x) &&
+                float.TryParse(splitMessage[5], out y) &&
+                float.TryParse(splitMessage[6], out z) &&
+                float.TryParse(splitMessage[7], out w))
             {
                 return true;
             }
@@ -260,39 +278,39 @@ namespace VRGame.Networking
 
         #region CreateMessage
 
-        public static string CreateMoveMessage(int clientID, int objectID, float x, float z)
+        public static string CreateMoveMessage(int clientID, int objectID, int componentID, float x, float z)
         {
-            return string.Format("{0}|{1}|Mov|{2}|{3}", clientID, objectID, x, z);
+            return string.Format("{0}|{1}|Mov|{2}|{3}|{4}", clientID, objectID, componentID, x, z);
         }
 
-        public static string CreatePositionMessage(int clientID, int objectID, float x, float y, float z)
+        public static string CreatePositionMessage(int clientID, int objectID, int componentID, float x, float y, float z)
         {
-            return string.Format("{0}|{1}|Pos|{2}|{3}|{4}", clientID, objectID, x, y, z);
+            return string.Format("{0}|{1}|Pos|{2}|{3}|{4}|{5}", clientID, objectID, componentID, x, y, z);
         }
 
-        public static string CreatePositionMessage(int clientID, int objectID, Vector3 position)
+        public static string CreatePositionMessage(int clientID, int objectID, int componentID, Vector3 position)
         {
-            return CreatePositionMessage(clientID, objectID, position.x, position.y, position.z);
+            return CreatePositionMessage(clientID, objectID, componentID, position.x, position.y, position.z);
         }
 
-        public static string CreatePositionMessage(int clientID, int objectID, float3 position)
+        public static string CreatePositionMessage(int clientID, int objectID, int componentID, float3 position)
         {
-            return CreatePositionMessage(clientID, objectID, position.x, position.y, position.z);
+            return CreatePositionMessage(clientID, objectID, componentID, position.x, position.y, position.z);
         }
 
-        public static string CreateRotationMessage(int clientID, int objectID, float x, float y, float z, float w)
+        public static string CreateRotationMessage(int clientID, int objectID, int componentID, float x, float y, float z, float w)
         {
-            return string.Format("{0}|{1}|Rot|{2}|{3}|{4}|{5}", clientID, objectID, x, y, z, w);
+            return string.Format("{0}|{1}|Rot|{2}|{3}|{4}|{5}|{6}", clientID, objectID, componentID, x, y, z, w);
         }
 
-        public static string CreateRotationMessage(int clientID, int objectID, Vector4 rotation)
+        public static string CreateRotationMessage(int clientID, int objectID, int componentID, Vector4 rotation)
         {
-            return CreateRotationMessage(clientID, objectID, rotation.x, rotation.y, rotation.z, rotation.w);
+            return CreateRotationMessage(clientID, objectID, componentID, rotation.x, rotation.y, rotation.z, rotation.w);
         }
 
-        public static string CreateRotationMessage(int clientID, int objectID, float4 rotation)
+        public static string CreateRotationMessage(int clientID, int objectID, int componentID, float4 rotation)
         {
-            return CreateRotationMessage(clientID, objectID, rotation.x, rotation.y, rotation.z, rotation.w);
+            return CreateRotationMessage(clientID, objectID, componentID, rotation.x, rotation.y, rotation.z, rotation.w);
         }
 
         public static string CreateIDMessageFromServer(int clientID)

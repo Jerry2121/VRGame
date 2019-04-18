@@ -15,6 +15,10 @@ namespace VRGame.Networking
         
         Vector3 lastSentPosition = Vector3.zero;
 
+        public override int ID => m_ID;
+
+        int m_ID;
+
         void Start()
         {
             netObject = GetComponent<NetworkObject>();
@@ -37,7 +41,7 @@ namespace VRGame.Networking
                 roundedPos.y = (float)Math.Round(transform.position.y, 3);
                 roundedPos.z = (float)Math.Round(transform.position.z, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, roundedPos));
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, m_ID, roundedPos));
             }
         }
 
@@ -57,7 +61,7 @@ namespace VRGame.Networking
         {
             Debug.Log(" -- Recieved Pos Msg", this.gameObject);
 
-            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z) == false)
+            if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componenentID, out float x, out float y, out float z) == false)
                 return;
 
             MoveTo(x, y, z);
@@ -66,9 +70,23 @@ namespace VRGame.Networking
 
         public override void RegisterSelf()
         {
-            netObject.RegisterNetComponent(NetworkMessageContent.Position, this);
+            netObject.RegisterNetComponent(ID, this);
         }
 
+        public override void SetID(int ID)
+        {
+            if (ID > -1)
+            {
+                if(Debug.isDebugBuild)
+                    Debug.Log(string.Format("NetworkPosition -- SetID: ID set to {0}", ID));
+                m_ID = ID;
+            }
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+        }
     }
 
 }

@@ -7,6 +7,8 @@ using UnityEditor;
 
 //From https://gist.github.com/JohannesMP/ec7d3f0bcf167dab3d0d3bb480e0e07b#gistcomment-2864171
 
+
+
 [Serializable]
 public sealed class SceneReference : ISerializationCallbackReceiver
 {

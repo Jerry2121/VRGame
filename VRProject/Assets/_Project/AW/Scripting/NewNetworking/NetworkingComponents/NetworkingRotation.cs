@@ -15,6 +15,10 @@ namespace VRGame.Networking {
 
         quaternion lastSentRotation = quaternion.identity;
 
+        public override int ID => m_ID;
+
+        int m_ID = -1;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -40,7 +44,7 @@ namespace VRGame.Networking {
                 roundedRot.z = (float)Math.Round(transform.rotation.z, 3);
                 roundedRot.w = (float)Math.Round(transform.rotation.w, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, roundedRot));
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, m_ID, roundedRot));
             }
         }
 
@@ -56,7 +60,7 @@ namespace VRGame.Networking {
         {
             Debug.Log(" -- Recieved Rot Msg", this.gameObject);
 
-            if (NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z, out float w) == false)
+            if (NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w) == false)
                 return;
 
             RotateTo(x, y, z, w);
@@ -64,7 +68,21 @@ namespace VRGame.Networking {
 
         public override void RegisterSelf()
         {
-            netObject.RegisterNetComponent(NetworkMessageContent.Rotation, this);
+            netObject.RegisterNetComponent(ID, this);
+        }
+        public override void SetID(int ID)
+        {
+            if (ID > -1)
+            {
+                if (Debug.isDebugBuild)
+                    Debug.Log(string.Format("NetworkRotation -- SetID: ID set to {0}", ID));
+                m_ID = ID;
+            }
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
         }
 
     }
