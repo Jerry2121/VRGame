@@ -1,0 +1,17 @@
+{
+    "name": "Networking",
+    "references": [
+        "Unity.Networking.Transport",
+        "Unity.Mathematics",
+        "Unity.Jobs",
+        "Unity.Collections"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

@@ -192,7 +192,7 @@ namespace VRGame.Networking
 
         void MoveMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z);
+            NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float z);
 
             //if (m_Players == null)
             //return;
@@ -206,9 +206,10 @@ namespace VRGame.Networking
         {
             Debug.Log(string.Format("NetworkServer -- PositionMessage"));
 
-            NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z);
+            NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z);
 
-            m_NetworkedObjects[objectID].SetPosition(x, y, z);
+            if(componentID < 10) //The root gameobject's component should always have ID of < 10
+                m_NetworkedObjects[objectID].SetPosition(x, y, z);
             
             //m_Players[clientID].SetPosition(x, y, z);
 
@@ -219,9 +220,10 @@ namespace VRGame.Networking
         {
             Debug.Log(string.Format("NetworkServer -- RotationMessage"));
 
-            NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out float x, out float y, out float z, out float w);
+            NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w);
 
-            m_NetworkedObjects[objectID].SetRotation(x, y, z, w);
+            if (componentID < 10) //The root gameobject's component should always have ID of < 10
+                m_NetworkedObjects[objectID].SetRotation(x, y, z, w);
 
             //m_Players[clientID].SetPosition(x, y, z);
 

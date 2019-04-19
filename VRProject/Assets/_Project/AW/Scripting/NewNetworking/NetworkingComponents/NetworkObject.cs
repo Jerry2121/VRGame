@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace VRGame.Networking {
 
@@ -19,38 +20,103 @@ namespace VRGame.Networking {
 
         bool m_IsLocalObject;
 
-        Dictionary<NetworkMessageContent, NetworkObjectComponent> m_NetComponents = new Dictionary<NetworkMessageContent, NetworkObjectComponent>();
+        Dictionary<int, NetworkObjectComponent> m_NetComponents = new Dictionary<int, NetworkObjectComponent>();
 
 
-        public bool RegisterNetComponent(NetworkMessageContent contentType, NetworkObjectComponent component)
+        public bool RegisterNetComponent(int ID, NetworkObjectComponent component)
         {
-            if (m_NetComponents.ContainsKey(contentType))
+            if (m_NetComponents.ContainsKey(ID))
             {
-                Debug.LogError(string.Format("There is already a registered component handleing {0} messages", contentType.ToString()));
+                Debug.LogError(string.Format("There is already a registered component for ID {0}", ID.ToString()));
                 return false;
             }
 
-            m_NetComponents.Add(contentType, component);
+            m_NetComponents.Add(ID, component);
             return true;
         }
 
-        public void UnRegisterNetComponent(NetworkMessageContent contentType, NetworkObjectComponent component)
+        public void UnRegisterNetComponent(int ID, NetworkObjectComponent component)
         {
-            if (m_NetComponents.ContainsKey(contentType) == false || m_NetComponents.ContainsValue(component) == false)
+            if (m_NetComponents.ContainsKey(ID) == false || m_NetComponents.ContainsValue(component) == false)
             {
                 return;
             }
 
-            m_NetComponents.Remove(contentType);
+            m_NetComponents.Remove(ID);
             
         }
         
-        public void RecieveMessage(string recievedMessage, NetworkMessageContent contentType)
+        public void RecieveMessage(string recievedMessage, int componentID)
         {
-            if (m_NetComponents.ContainsKey(contentType) == false)
+            if (m_NetComponents.ContainsKey(componentID) == false)
+            {
+                Debug.LogError("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary");
                 return;
+            }
 
-            m_NetComponents[contentType].RecieveMessage(recievedMessage);
+            m_NetComponents[componentID].RecieveMessage(recievedMessage);
+        }
+
+        [ExecuteInEditMode]
+        public unsafe void CheckForNetworkComponents(GameObject obj, int* ID)
+        {
+            Debug.Log("Checking" + obj.name);
+            if (obj == null)
+            {
+                return;
+            }
+
+            foreach (var netObjComp in obj.GetComponents<NetworkObjectComponent>())
+            {
+                if (netObjComp != null)
+                {
+                    netObjComp.SetID(*ID);
+                    *ID = *ID + 1;
+                    netObjComp.SetNetworkObject(this);
+                }
+            }
+
+            *ID = 10;
+
+            foreach (Transform child in obj.transform) {
+                if (child == null)
+                    continue;
+
+                CheckForNetworkComponentsInChildrenRecursively(child.gameObject, ID);
+            }
+
+        }
+
+        [ExecuteInEditMode]
+        public unsafe void CheckForNetworkComponentsInChildrenRecursively(GameObject obj, int* ID)
+        {
+            Debug.Log("Checking" + obj.name);
+            if (obj == null)
+            {
+                return;
+            }
+
+            if (obj.GetComponent<NetworkObject>() != null && obj.GetComponent<NetworkObject>() != this)
+                Debug.LogError("Network Object -- Children should not have Network Object components!", obj);
+
+            foreach (var netObjComp in obj.GetComponents<NetworkObjectComponent>())
+            {
+                if (netObjComp != null)
+                {
+                    netObjComp.SetID(*ID);
+                    *ID = *ID + 1;
+                    netObjComp.SetNetworkObject(this);
+                }
+            }
+
+            foreach (Transform child in obj.transform)
+            {
+                if (child == null)
+                    continue;
+
+                CheckForNetworkComponentsInChildrenRecursively(child.gameObject, ID);
+            }
+
         }
 
         public void SetLocal()
@@ -71,6 +137,13 @@ namespace VRGame.Networking {
         public bool ServerAuthority()
         {
             return m_ServerAuthority;
+        }
+
+        private unsafe void OnValidate()
+        {
+            Debug.Log("NetworkObject -- OnValidate: Checking For Network Components and setting IDs");
+            int ID = 0;
+            CheckForNetworkComponents(this.gameObject, &ID);
         }
 
     }

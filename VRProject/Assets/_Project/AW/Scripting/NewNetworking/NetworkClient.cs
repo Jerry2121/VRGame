@@ -212,7 +212,7 @@ namespace VRGame.Networking
 
         void MoveMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out float x, out float z) == false)
+            if (NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float z) == false)
                 return;
 
             throw new NotImplementedException();
@@ -223,13 +223,13 @@ namespace VRGame.Networking
             if(Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- PositionMessage");
 
-            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
             if(clientID != m_clientID) //Make sure we aren't getting out own positions back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Position);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
             }
         }
 
@@ -238,13 +238,13 @@ namespace VRGame.Networking
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- RotationMessage");
 
-            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID) == false)
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
             if (clientID != m_clientID) //Make sure we aren't getting out own rotations back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, NetworkMessageContent.Rotation);
+                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
             }
         }
 

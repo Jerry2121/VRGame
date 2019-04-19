@@ -13,6 +13,8 @@ public class Test2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Logger.Instance.Init();
+
         //quaternion quat = transform.rotation;
 
         //Debug.Log(string.Format("A: x={0} y={1} z={2} w={3}", quat.value.x, quat.value.y, quat.value.z, quat.value.w));
@@ -36,7 +38,6 @@ public class Test2 : MonoBehaviour
         {
             Spawn();
         }
-
     }
     
     void Spawn()
@@ -44,6 +45,12 @@ public class Test2 : MonoBehaviour
         float foo = UnityEngine.Random.Range(-10, 10);
         float boo = UnityEngine.Random.Range(-10, 10);
         NetworkingManager.Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo);
+    }
+
+    [ExecuteAlways]
+    private void OnValidate()
+    {
+        Debug.Log("OnValidate");
     }
 
 }
