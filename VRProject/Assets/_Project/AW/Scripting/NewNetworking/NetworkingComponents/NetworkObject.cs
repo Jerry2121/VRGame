@@ -72,6 +72,7 @@ namespace VRGame.Networking {
                 {
                     netObjComp.SetID(*ID);
                     *ID = *ID + 1;
+                    netObjComp.SetNetworkObject(this);
                 }
             }
 
@@ -86,6 +87,7 @@ namespace VRGame.Networking {
 
         }
 
+        [ExecuteInEditMode]
         public unsafe void CheckForNetworkComponentsInChildrenRecursively(GameObject obj, int* ID)
         {
             Debug.Log("Checking" + obj.name);
@@ -103,6 +105,7 @@ namespace VRGame.Networking {
                 {
                     netObjComp.SetID(*ID);
                     *ID = *ID + 1;
+                    netObjComp.SetNetworkObject(this);
                 }
             }
 
@@ -134,6 +137,13 @@ namespace VRGame.Networking {
         public bool ServerAuthority()
         {
             return m_ServerAuthority;
+        }
+
+        private unsafe void OnValidate()
+        {
+            Debug.Log("NetworkObject -- OnValidate: Checking For Network Components and setting IDs");
+            int ID = 0;
+            CheckForNetworkComponents(this.gameObject, &ID);
         }
 
     }

@@ -10,19 +10,20 @@ namespace VRGame.Networking {
     [DisallowMultipleComponent]
     public class NetworkingRotation : NetworkObjectComponent
     {
-
-        NetworkObject netObject;
-
         quaternion lastSentRotation = quaternion.identity;
 
-        public override int ID => m_ID;
+        public override int ID { get => m_ID; protected set => m_ID = value; }
 
-        int m_ID = -1;
+        [HideInInspector]
+        [SerializeField]
+        int m_ID;
+
+        public override NetworkObject networkObject { get; protected set; }
 
         // Start is called before the first frame update
         void Start()
         {
-            netObject = GetComponent<NetworkObject>();
+            networkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
 
@@ -30,7 +31,7 @@ namespace VRGame.Networking {
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if (netObject.LocalAuthority() && netObject.isLocalObject() == false)
+            if (networkObject.LocalAuthority() && networkObject.isLocalObject() == false)
                 return;
 
             if (transform.rotation != lastSentRotation)
@@ -44,7 +45,7 @@ namespace VRGame.Networking {
                 roundedRot.z = (float)Math.Round(transform.rotation.z, 3);
                 roundedRot.w = (float)Math.Round(transform.rotation.w, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), netObject.m_ObjectID, m_ID, roundedRot));
+                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), networkObject.m_ObjectID, ID, roundedRot));
             }
         }
 
@@ -68,16 +69,22 @@ namespace VRGame.Networking {
 
         public override void RegisterSelf()
         {
-            netObject.RegisterNetComponent(ID, this);
+            base.RegisterSelf();
         }
-        public override void SetID(int ID)
+        public override void SetID(int newID)
         {
-            if (ID > -1)
+            if (newID > -1)
             {
                 if (Debug.isDebugBuild)
-                    Debug.Log(string.Format("NetworkRotation -- SetID: ID set to {0}", ID));
-                m_ID = ID;
+                    Debug.Log(string.Format("NetworkRotation -- SetID: ID set to {0}", newID));
+                ID = newID;
             }
+        }
+
+        [ExecuteAlways]
+        public override void SetNetworkObject(NetworkObject newNetworkObject)
+        {
+            base.SetNetworkObject(newNetworkObject);
         }
 
         public override void Reset()
