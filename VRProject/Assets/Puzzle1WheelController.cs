@@ -48,7 +48,7 @@ public class Puzzle1WheelController : MonoBehaviour
 
             Debug.Log("Hand forward prior = " + transform.forward);
 
-            transform.forward = handDirection;
+            transform.right = handDirection;
 
             Debug.Log("Hand forward after = " + transform.forward);
             //angle = Vector3.SignedAngle(transform.position, handDirection, transform.position);
