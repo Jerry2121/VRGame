@@ -32,7 +32,7 @@ public class Puzzle1WheelController : MonoBehaviour
 
             //Debug.Log("Hand position after = " + handPosition);
 
-            Vector3 handPositionResetXZ = new Vector3(handPosition.x, handPosition.y, 0);
+            Vector3 handPositionResetXZ = new Vector3(0, handPosition.y, handPosition.z);
 
             //Debug.Log("Hand position reset = " + handPositionResetXZ);
 
@@ -40,7 +40,7 @@ public class Puzzle1WheelController : MonoBehaviour
 
             //Debug.Log("Hand direction prior = " + handDirection);
 
-            handDirection.z = 0;
+            handDirection.x = 0;
 
             //Debug.Log("Hand position midway = " + handDirection);
 
@@ -50,8 +50,8 @@ public class Puzzle1WheelController : MonoBehaviour
 
             //Debug.Log("Hand forward prior = " + transform.forward);
 
-            float rot = Vector3.Angle(forward, handDirection);
-            Quaternion rotation = Quaternion.Euler(rot, 0, 0);
+            float rot = Vector3.SignedAngle(forward, handDirection, new Vector3(1,0,0));
+            Quaternion rotation = Quaternion.Euler(rot + 180, 0, 0);
             transform.rotation = rotation;
             Debug.Log("Dir: " + handDirection);
             Debug.Log("Angle = " + rot);
