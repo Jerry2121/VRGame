@@ -1,10 +1,12 @@
 {
-    "name": "NewAssembly",
+    "name": "NetworkingEditor",
     "references": [
         "Networking"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
     "overrideReferences": false,

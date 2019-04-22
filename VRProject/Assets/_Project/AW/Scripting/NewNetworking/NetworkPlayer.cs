@@ -60,6 +60,14 @@ namespace VRGame.Networking
                 Debug.Log("Disabling " + comp.name);
                 comp.enabled = false;
             }
+
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.useGravity = false;
+                rb.velocity = Vector3.zero;
+            }
+
         }
 
     }
