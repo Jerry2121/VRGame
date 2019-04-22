@@ -69,6 +69,8 @@ namespace VRGame.Networking
                     continue;
                 }
                 spawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
+
+                Application.runInBackground = true;
             }
 
         }
