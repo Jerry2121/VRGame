@@ -15,6 +15,7 @@ namespace VRGame.Networking
         // Start is called before the first frame update
         void Start()
         {
+            StartCoroutine(DisableComponents());
         }
 
         // Update is called once per frame
@@ -55,6 +56,7 @@ namespace VRGame.Networking
 
             foreach(var comp in componentsToDisable)
             {
+                Debug.Log("Disabling " + comp.name);
                 comp.enabled = false;
             }
         }
