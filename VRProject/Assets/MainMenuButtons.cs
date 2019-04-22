@@ -90,6 +90,7 @@ public class MainMenuButtons : MonoBehaviour
                 PlayerPrefs.SetInt("TimeElapsed", 0);
             }
             Warning.SetActive(false);
+            PutOnHeadSetCanvas.SetActive(true);
             SceneManager.LoadScene(1);
         }
         else
