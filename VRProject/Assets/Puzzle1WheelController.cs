@@ -61,7 +61,7 @@ public class Puzzle1WheelController : MonoBehaviour
             //Debug.Log("Hand forward after = " + transform.forward);
             //angle = Vector3.SignedAngle(transform.position, handDirection, transform.position);
         }
-
+        
         if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         {
             grabbedBy = null;
