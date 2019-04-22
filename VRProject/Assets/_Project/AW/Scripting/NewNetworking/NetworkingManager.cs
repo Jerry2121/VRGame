@@ -345,6 +345,10 @@ namespace VRGame.Networking
 
         public IPAddress NetworkAddress()
         {
+#if UNITY_EDITOR
+            if (DevIPs(out IPAddress devAddress))
+                return devAddress;
+#endif
             if (m_NetworkAddress == "localhost")
                 return IPAddress.Loopback;
             else if (IPAddress.TryParse(m_NetworkAddress, out IPAddress address))
@@ -376,5 +380,44 @@ namespace VRGame.Networking
         }
 #endif
 
+#if UNITY_EDITOR
+        bool DevIPs(out IPAddress devAddress)
+        {
+            devAddress = null;
+
+            try
+            {
+                switch (m_NetworkAddress)
+                {
+                    case "20":
+                        devAddress = IPAddress.Parse("10.47.1.149");
+                        break;
+                    case "21":
+                        devAddress = IPAddress.Parse("10.47.1.42");
+                        break;
+                    case "22":
+                        devAddress = IPAddress.Parse("10.47.1.142");
+                        break;
+                    case "23":
+                        throw new System.NotImplementedException();
+                    case "24":
+                        throw new System.NotImplementedException();
+                    case "25":
+                        throw new System.NotImplementedException();
+                    case "26":
+                        devAddress = IPAddress.Parse("10.47.1.36");
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            catch(System.Exception ex)
+            {
+                Debug.LogError(ex.Message);
+                return false;
+            }
+            return true;
+        }
+#endif
     }
 }
