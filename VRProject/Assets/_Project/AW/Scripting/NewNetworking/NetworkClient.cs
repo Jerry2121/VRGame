@@ -15,7 +15,7 @@ namespace VRGame.Networking
     {
         int m_clientID = -1;
 
-        TempPlayer m_player;
+        NetworkPlayer m_player;
 
         public UdpCNetworkDriver m_Driver;
         public NetworkConnection m_Connection;
@@ -292,7 +292,7 @@ namespace VRGame.Networking
             m_Done = true;
         }
 
-        public void AssignPlayer(TempPlayer player)
+        public void AssignPlayer(NetworkPlayer player)
         {
             if(m_player == null)
             {

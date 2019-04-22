@@ -161,4 +161,21 @@ public class OVRGrabbable : MonoBehaviour
             m_grabbedBy.ForceRelease(this);
         }
     }
+
+    
+    void LateUpdate()
+    {
+        /*
+        if (grabbedBy != null && gameObject.tag == "Rotatable")
+        {
+            Vector3 handPosition = grabbedBy.transform.position;
+            Vector3 handPositionResetXZ = new Vector3(handPosition.x, handPosition.y, 0);
+            Vector3 handDirection = transform.position - handPositionResetXZ;
+            handDirection.z = 0;
+            float angle = Vector3.SignedAngle(transform.position, handDirection, transform.position);
+
+            transform.rotation = Quaternion.Euler(0, -90, angle);
+        }
+        */
+    }
 }
