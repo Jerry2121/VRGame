@@ -5,12 +5,9 @@ using UnityEngine;
 namespace VRGame.Networking
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class TempPlayer : NetworkingBehavior
+    public class NetworkPlayer : NetworkingBehavior
     {
-
-        Rigidbody rb;
-        //[SerializeField]
-        //public NetworkClient client;
+        [SerializeField] Behaviour[] componentsToDisable;
 
         bool m_IsLocalPlayer;
         int m_PlayerID;
@@ -18,9 +15,6 @@ namespace VRGame.Networking
         // Start is called before the first frame update
         void Start()
         {
-            //if (client != null)
-                //client.AssignPlayer(this);
-            rb = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -28,18 +22,6 @@ namespace VRGame.Networking
         {
             if (m_IsLocalPlayer == false)
                 return;
-
-            float xMov = Input.GetAxisRaw("Horizontal");
-            float zMov = Input.GetAxisRaw("Vertical");
-
-            transform.Translate(xMov * 0.5f, 0, zMov * 0.5f);
-
-            if(xMov != 0 && zMov != 0)
-            {
-                //client.WriteMessage(NetworkTranslater.CreateMoveMessage(client.PlayerID, xMov, zMov));
-            }
-
-            //NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(m_PlayerID, m_PlayerID, transform.position));
         }
 
         public void SetIsLocalPlayer()
@@ -62,6 +44,19 @@ namespace VRGame.Networking
         public void RecievePositionMessage(float x, float y, float z)
         {
             transform.position = new Vector3(x, y, z);
+        }
+
+        IEnumerator DisableComponents()
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (m_IsLocalPlayer)
+                yield break;
+
+            foreach(var comp in componentsToDisable)
+            {
+                comp.enabled = false;
+            }
         }
 
     }

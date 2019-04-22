@@ -16,7 +16,7 @@ namespace VRGame.Networking
 
         public GameObject playerPrefab;
 
-        public Dictionary<int, TempPlayer> playerDictionary = new Dictionary<int, TempPlayer>();
+        public Dictionary<int, NetworkPlayer> playerDictionary = new Dictionary<int, NetworkPlayer>();
         public Dictionary<int, NetworkObject> networkedObjectDictionary = new Dictionary<int, NetworkObject>();
 
         [SerializeField]
@@ -232,7 +232,7 @@ namespace VRGame.Networking
             //    //spawn player 2
 
 
-            TempPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<TempPlayer>();
+            NetworkPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<NetworkPlayer>();
 
             playerDictionary[clientID] = player;
             player.SetPlayerID(clientID);
