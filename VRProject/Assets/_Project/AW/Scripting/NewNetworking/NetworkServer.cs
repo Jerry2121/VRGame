@@ -128,7 +128,10 @@ namespace VRGame.Networking
 
                     //don't send if there aren't any messages
                     if (currentMessages.Count <= 0)
+                    {
+                        SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()), i);
                         continue;
+                    }
 
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {
@@ -182,6 +185,7 @@ namespace VRGame.Networking
                     LoadedInMessage(recievedMessage, i);
                     break;
                 case NetworkMessageContent.None:
+                    Debug.Log("Null Message");
                     break;
                 default:
                     break;

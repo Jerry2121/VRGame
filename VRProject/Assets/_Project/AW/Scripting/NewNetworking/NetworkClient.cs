@@ -47,7 +47,7 @@ namespace VRGame.Networking
                 Debug.Log("NetworkClient -- Start: Client created");
 
             connectionTimer = new Timer(15000);
-            connectionTimer.Elapsed += OnTimerDone;
+            connectionTimer.Elapsed += OnConnectionTimerDone;
             connectionTimer.Enabled = true;
         }
 
@@ -137,7 +137,7 @@ namespace VRGame.Networking
 
             if(messageList.Count <= 0)
             {
-                SendMessages(Encoding.UTF8.GetBytes(string.Empty));
+                SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()));
             }
 
             else {
@@ -153,7 +153,7 @@ namespace VRGame.Networking
             }
         }
 
-        void OnTimerDone(object source, ElapsedEventArgs e)
+        void OnConnectionTimerDone(object source, ElapsedEventArgs e)
         {
             connectionTimer.Stop();
             connectionTimer.Dispose();
