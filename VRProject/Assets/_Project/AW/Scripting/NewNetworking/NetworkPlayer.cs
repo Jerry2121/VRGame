@@ -52,6 +52,9 @@ namespace VRGame.Networking
         {
             yield return new WaitForSeconds(1f);
 
+            if (NetworkingManager.Instance == null || NetworkingManager.Instance.IsConnected() == false)
+                yield break;
+
             if (m_IsLocalPlayer)
                 yield break;
 

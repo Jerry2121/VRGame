@@ -368,6 +368,11 @@ namespace VRGame.Networking
             return m_Server != null;
         }
 
+        public bool IsConnected()
+        {
+            return m_Client != null;
+        }
+
         public static int ClientID()
         {
             if(Instance.m_Client != null)
