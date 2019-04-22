@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/AJT/EscapeRoomMainMenu.unity
+    guid: 363442386788f0c42bdce9f110c92e4d
+  - enabled: 1
+    path: Assets/_Project/AJT/JT2.unity
+    guid: 412e29617a0df164e9ec391432e19184
+  - enabled: 0
     path: Assets/_Project/AW/NetMenu.unity
     guid: 9dce18dcd29f77347905b9f41ec48748
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/AW/NetworkingTest.unity
     guid: bae7e2dfd1af72e4a8663d545d0a10df
   m_configObjects: {}
