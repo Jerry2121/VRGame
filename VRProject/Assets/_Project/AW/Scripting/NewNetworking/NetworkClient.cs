@@ -292,6 +292,8 @@ namespace VRGame.Networking
 
         void DisconnectedMessage(string recievedMessage)
         {
+            if(Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- Disconnected");
             if (NetworkTranslater.TranslateDisconnectedMessage(recievedMessage, out int clientID) == false)
                 return;
 

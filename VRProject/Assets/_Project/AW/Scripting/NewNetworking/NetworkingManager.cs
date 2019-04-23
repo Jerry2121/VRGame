@@ -330,7 +330,7 @@ namespace VRGame.Networking
             if (m_Client != null)
             {
                 m_Client.Disconnect();
-                Destroy(m_Client);
+                Destroy(m_Client, 1f);
                 m_Client = null;
             }
 
