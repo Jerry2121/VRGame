@@ -368,8 +368,22 @@ namespace VRGame.Networking
             SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
             if(scene.path == onlineScene.Path && m_Client != null)
             {
+                if (IsHost())
+                    SpawnObjectsOverNetwork();
                 InstantiateOverNetwork("Player", Vector3.zero);
             }
+        }
+
+        void SpawnObjectsOverNetwork()
+        {
+            NetworkObject[] netObjects = GameObject.FindObjectsOfType<NetworkObject>();
+
+            foreach(var netObject in netObjects)
+            {
+                InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position);
+                Destroy(netObject.gameObject);
+            }
+
         }
 
         public IPAddress NetworkAddress()

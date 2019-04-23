@@ -186,7 +186,6 @@ namespace VRGame.Networking
                     LoadedInMessage(recievedMessage, i);
                     break;
                 case NetworkMessageContent.None:
-                    Debug.Log("Null Message");
                     break;
                 default:
                     break;
