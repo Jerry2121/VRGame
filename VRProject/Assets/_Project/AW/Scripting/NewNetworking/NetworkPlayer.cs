@@ -5,7 +5,6 @@ using UnityEngine;
 namespace VRGame.Networking
 {
     [AddComponentMenu("VR Networking/Network Player")]
-    [RequireComponent(typeof(Rigidbody))]
     public class NetworkPlayer : NetworkingBehavior
     {
         [SerializeField] Behaviour[] componentsToDisable;

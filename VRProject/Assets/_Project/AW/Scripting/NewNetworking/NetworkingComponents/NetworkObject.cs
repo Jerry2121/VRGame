@@ -19,6 +19,7 @@ namespace VRGame.Networking {
         [SerializeField] bool m_ServerAuthority;
 
         bool m_IsLocalObject;
+        bool m_PlayerInteracting;
 
         Dictionary<int, NetworkObjectComponent> m_NetComponents = new Dictionary<int, NetworkObjectComponent>();
 
@@ -127,6 +128,16 @@ namespace VRGame.Networking {
         public bool isLocalObject()
         {
             return m_IsLocalObject;
+        }
+
+        public bool PlayerIsInteracting()
+        {
+            return m_PlayerInteracting;
+        }
+
+        public void SetPlayerInteracting(bool playerInteracting)
+        {
+            m_PlayerInteracting = playerInteracting;
         }
 
         public bool LocalAuthority()

@@ -245,6 +245,33 @@ namespace VRGame.Networking
             return player.gameObject;
         }
 
+        public void DestroyPlayer(int playerID)
+        {
+            if (playerID == ClientID())
+            {
+                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected player");
+                return;
+            }
+
+            if(playerDictionary.ContainsKey(playerID) == false)
+            {
+                Debug.LogError("NetworkingManager -- DestroyPlayer: Tried to destroy a player that is not in the dictionary");
+                return;
+            }
+            
+            GameObject player = playerDictionary[playerID].gameObject;
+            playerDictionary.Remove(playerID);
+
+            int objectID = player.GetComponent<NetworkObject>().m_ObjectID;
+
+            if (networkedObjectDictionary.ContainsKey(objectID))
+            {
+                networkedObjectDictionary.Remove(objectID);
+            }
+
+            Destroy(player);
+        }
+
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
         {
             if(m_Client != null)
@@ -303,7 +330,7 @@ namespace VRGame.Networking
             if (m_Client != null)
             {
                 m_Client.Disconnect();
-                Destroy(m_Client);
+                Destroy(m_Client, 1f);
                 m_Client = null;
             }
 
@@ -341,8 +368,22 @@ namespace VRGame.Networking
             SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
             if(scene.path == onlineScene.Path && m_Client != null)
             {
+                if (IsHost())
+                    SpawnObjectsOverNetwork();
                 InstantiateOverNetwork("Player", Vector3.zero);
             }
+        }
+
+        void SpawnObjectsOverNetwork()
+        {
+            NetworkObject[] netObjects = GameObject.FindObjectsOfType<NetworkObject>();
+
+            foreach(var netObject in netObjects)
+            {
+                InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position);
+                Destroy(netObject.gameObject);
+            }
+
         }
 
         public IPAddress NetworkAddress()

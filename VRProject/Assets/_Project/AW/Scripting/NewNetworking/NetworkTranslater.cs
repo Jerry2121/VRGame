@@ -17,6 +17,7 @@ namespace VRGame.Networking
         Rotation,       // Rot
         LoadedIn,       // LIN
         PuzzleComplete, // PuC
+        Disconnected,   // Dco
     }
 
     public static class NetworkTranslater
@@ -57,6 +58,9 @@ namespace VRGame.Networking
 
                 case "PuC":                                     // ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
                     return NetworkMessageContent.PuzzleComplete;
+
+                case "Dco":                                     // ClientID||Dco
+                    return NetworkMessageContent.Disconnected;
 
                 default:
                     return NetworkMessageContent.None;
@@ -274,6 +278,24 @@ namespace VRGame.Networking
             return false;
         }
 
+        public static bool TranslateDisconnectedMessage(string message, out int clientID)
+        {
+            if (GetMessageContentType(message) != NetworkMessageContent.Disconnected)
+            {
+                Debug.LogError("NOOOOOOO");
+                clientID = -1;
+                return false;
+            }
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID))
+                return true;
+
+
+            return false;
+        }
+
         #endregion
 
         #region CreateMessage
@@ -336,6 +358,11 @@ namespace VRGame.Networking
         public static string CreateLoadedInMessage(int clientID)
         {
             return string.Format("{0}||LIN", clientID);
+        }
+
+        public static string CreateDisconnectedMessage(int clientID)
+        {
+            return string.Format("{0}||Dco", clientID);
         }
 
         #endregion

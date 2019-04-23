@@ -123,6 +123,7 @@ namespace VRGame.Networking
                     else if (cmd == NetworkEvent.Type.Disconnect)
                     {
                         Debug.Log("NetworkServer -- Client disconnected from server");
+                        m_MessageList.Add(NetworkTranslater.CreateDisconnectedMessage(m_Connections[i].InternalId + 1));
                         m_Connections[i] = default(NetworkConnection);
                     }
 
@@ -185,7 +186,6 @@ namespace VRGame.Networking
                     LoadedInMessage(recievedMessage, i);
                     break;
                 case NetworkMessageContent.None:
-                    Debug.Log("Null Message");
                     break;
                 default:
                     break;

@@ -205,6 +205,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Rotation:
                     RotationMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Disconnected:
+                    DisconnectedMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.None:
                     break;
             }
@@ -287,25 +290,35 @@ namespace VRGame.Networking
             NetworkingManager.Instance.RecieveInstantiateMessage(recievedMessage);
         }
 
+        void DisconnectedMessage(string recievedMessage)
+        {
+            if(Debug.isDebugBuild)
+                Debug.Log("NetworkClient -- Disconnected");
+            if (NetworkTranslater.TranslateDisconnectedMessage(recievedMessage, out int clientID) == false)
+                return;
+
+            NetworkingManager.Instance.DestroyPlayer(clientID);
+        }
+
         public override void Disconnect()
         {
             m_Done = true;
         }
 
-        public void AssignPlayer(NetworkPlayer player)
-        {
-            if(m_player == null)
-            {
-                m_player = player;
-            }
-            else
-            {
-                if(m_player == player)
-                    Debug.LogWarning("NetworkClient -- AssignPlayer: Tried to assign the local player twice");
-                else
-                    Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these players is incorrect");
-            }
-        }
+        //public void AssignPlayer(NetworkPlayer player)
+        //{
+        //    if(m_player == null)
+        //    {
+        //        m_player = player;
+        //    }
+        //    else
+        //    {
+        //        if(m_player == player)
+        //            Debug.LogWarning("NetworkClient -- AssignPlayer: Tried to assign the local player twice");
+        //        else
+        //            Debug.LogError("NetworkClient -- AssignPlayer: Tried to assign the local player to a different player! One of these players is incorrect");
+        //    }
+        //}
         
         public override int ClientID()
         {
