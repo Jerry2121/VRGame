@@ -18,10 +18,14 @@ namespace VRGame.Networking
         [SerializeField]
         int m_ID;
 
+        Rigidbody rb;
+
         public override NetworkObject networkObject { get; protected set; }
 
         void Start()
         {
+            if (GetComponent<Rigidbody>() != null)
+                rb = GetComponent<Rigidbody>();
             networkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
@@ -30,7 +34,11 @@ namespace VRGame.Networking
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
             if (networkObject.LocalAuthority() && networkObject.isLocalObject() == false)
+            {
+                if (rb != null)
+                    rb.velocity = Vector3.zero;
                 return;
+            }
 
             if (transform.position != lastSentPosition)
             {
