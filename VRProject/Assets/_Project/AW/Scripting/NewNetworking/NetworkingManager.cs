@@ -245,6 +245,33 @@ namespace VRGame.Networking
             return player.gameObject;
         }
 
+        public void DestroyPlayer(int playerID)
+        {
+            if (playerID == ClientID())
+            {
+                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected player");
+                return;
+            }
+
+            if(playerDictionary.ContainsKey(playerID) == false)
+            {
+                Debug.LogError("NetworkingManager -- DestroyPlayer: Tried to destroy a player that is not in the dictionary");
+                return;
+            }
+            
+            GameObject player = playerDictionary[playerID].gameObject;
+            playerDictionary.Remove(playerID);
+
+            int objectID = player.GetComponent<NetworkObject>().m_ObjectID;
+
+            if (networkedObjectDictionary.ContainsKey(objectID))
+            {
+                networkedObjectDictionary.Remove(objectID);
+            }
+
+            Destroy(player);
+        }
+
         public void InstantiateOverNetwork(string objectName, float x, float y, float z)
         {
             if(m_Client != null)
