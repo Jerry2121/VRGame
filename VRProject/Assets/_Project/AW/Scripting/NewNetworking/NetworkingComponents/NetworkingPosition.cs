@@ -33,7 +33,7 @@ namespace VRGame.Networking
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if (networkObject.LocalAuthority() && networkObject.isLocalObject() == false)
+            if ((networkObject.LocalAuthority() && networkObject.isLocalObject() == false) || (networkObject.LocalAuthority() == false && networkObject.PlayerIsInteracting() == false))
             {
                 if (rb != null)
                     rb.velocity = Vector3.zero;
