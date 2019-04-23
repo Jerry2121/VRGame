@@ -23,7 +23,7 @@ public class FadeWhenCloseToAWall : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         // Bit shift the index of the layer (11) to get a bit mask
