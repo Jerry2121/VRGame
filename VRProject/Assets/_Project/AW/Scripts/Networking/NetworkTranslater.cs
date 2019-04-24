@@ -56,11 +56,11 @@ namespace VRGame.Networking
                 case "LIN":
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
 
-                case "PuC":                                     // ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
-                    return NetworkMessageContent.PuzzleComplete;
+                case "PuC":                                     
+                    return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
 
-                case "Dco":                                     // ClientID||Dco
-                    return NetworkMessageContent.Disconnected;
+                case "Dco":                                     
+                    return NetworkMessageContent.Disconnected;  // ClientID||Dco
 
                 default:
                     return NetworkMessageContent.None;
