@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
+using NetworkPlayer = VRGame.Networking.NetworkPlayer;
 
 public class TestMoveCubes : MonoBehaviour
 {
@@ -21,13 +23,14 @@ public class TestMoveCubes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("FOO");
-        MoveCube.Move(true, moveLeft);
+        if(other.GetComponent<NetworkPlayer>() != null && other.GetComponent<NetworkPlayer>().IsLocalPlayer())
+            MoveCube.Move(true, moveLeft);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        MoveCube.Move(false, moveLeft);
+        if (other.GetComponent<NetworkPlayer>() != null && other.GetComponent<NetworkPlayer>().IsLocalPlayer())
+            MoveCube.Move(false, moveLeft);
     }
 
 }

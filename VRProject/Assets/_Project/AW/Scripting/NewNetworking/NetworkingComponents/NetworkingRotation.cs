@@ -59,7 +59,7 @@ namespace VRGame.Networking {
 
         public override void RecieveMessage(string recievedMessage)
         {
-            Debug.Log(" -- Recieved Rot Msg", this.gameObject);
+            //Debug.Log(" -- Recieved Rot Msg", this.gameObject);
 
             if (NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w) == false)
                 return;

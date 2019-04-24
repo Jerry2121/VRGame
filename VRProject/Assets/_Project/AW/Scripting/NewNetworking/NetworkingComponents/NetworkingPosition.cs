@@ -24,8 +24,7 @@ namespace VRGame.Networking
 
         void Start()
         {
-            if (GetComponent<Rigidbody>() != null)
-                rb = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
             networkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
@@ -68,7 +67,7 @@ namespace VRGame.Networking
 
         public override void RecieveMessage(string recievedMessage)
         {
-            Debug.Log(" -- Recieved Pos Msg", this.gameObject);
+            //Debug.Log(" -- Recieved Pos Msg", this.gameObject);
 
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componenentID, out float x, out float y, out float z) == false)
                 return;
