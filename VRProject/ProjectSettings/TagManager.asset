@@ -8,6 +8,11 @@ TagManager:
   - P1Bar
   - P1End
   - VRHands
+  - P1HandlePos1
+  - P1HandlePos2
+  - P1HandlePos3
+  - P1HandlePos4
+  - P1Wand
   layers:
   - Default
   - TransparentFX

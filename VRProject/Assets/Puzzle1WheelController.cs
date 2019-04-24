@@ -53,8 +53,8 @@ public class Puzzle1WheelController : MonoBehaviour
             float rot = Vector3.SignedAngle(forward, handDirection, new Vector3(1,0,0));
             Quaternion rotation = Quaternion.Euler(rot + 180, 0, 0);
             transform.rotation = rotation;
-            Debug.Log("Dir: " + handDirection);
-            Debug.Log("Angle = " + rot);
+           // Debug.Log("Dir: " + handDirection);
+           // Debug.Log("Angle = " + rot);
             //transform.LookAt(transform.position + handDirection);
             //transform.right = handDirection;
 
