@@ -208,7 +208,7 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            Debug.Log(string.Format("NetworkServer -- PositionMessage"));
+            //Debug.Log(string.Format("NetworkServer -- PositionMessage"));
 
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z);
 
@@ -222,7 +222,7 @@ namespace VRGame.Networking
 
         void RotationMessage(string recievedMessage)
         {
-            Debug.Log(string.Format("NetworkServer -- RotationMessage"));
+            //Debug.Log(string.Format("NetworkServer -- RotationMessage"));
 
             NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w);
 

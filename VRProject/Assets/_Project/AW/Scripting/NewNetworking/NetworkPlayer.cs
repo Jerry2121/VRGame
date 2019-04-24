@@ -32,6 +32,11 @@ namespace VRGame.Networking
             m_IsLocalPlayer = true;
         }
 
+        public bool IsLocalPlayer()
+        {
+            return m_IsLocalPlayer;
+        }
+
         public void SetPlayerID(int playerID)
         {
             m_PlayerID = playerID;
