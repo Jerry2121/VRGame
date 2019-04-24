@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NetworkPlayer = VRGame.Networking.NetworkPlayer;
 
 [RequireComponent(typeof(Rigidbody))]
 public class TempPlayerController : MonoBehaviour
@@ -17,7 +18,10 @@ public class TempPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xMov = Input.GetAxisRaw("Horizontal");
+        if (GetComponent<NetworkPlayer>() != null && GetComponent<NetworkPlayer>().IsLocalPlayer() == false)
+            return;
+
+            float xMov = Input.GetAxisRaw("Horizontal");
         float yMov = Input.GetAxisRaw("Vertical");
 
         transform.Translate(xMov * moveSpeed, 0, yMov * moveSpeed);
