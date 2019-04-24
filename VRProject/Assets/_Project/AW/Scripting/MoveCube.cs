@@ -23,8 +23,8 @@ public class MoveCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((startPosition - transform.position).magnitude >= distance)
-            return;
+        //if ((startPosition - transform.position).magnitude >= distance)
+            //return;
 
 
         if (m_Move)

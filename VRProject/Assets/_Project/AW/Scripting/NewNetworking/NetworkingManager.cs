@@ -369,12 +369,12 @@ namespace VRGame.Networking
             if(scene.path == onlineScene.Path && m_Client != null)
             {
                 if (IsHost())
-                    SpawnObjectsOverNetwork();
+                    SpawnSceneObjectsOverNetwork();
                 InstantiateOverNetwork("Player", Vector3.zero);
             }
         }
 
-        void SpawnObjectsOverNetwork()
+        void SpawnSceneObjectsOverNetwork()
         {
             NetworkObject[] netObjects = GameObject.FindObjectsOfType<NetworkObject>();
 
