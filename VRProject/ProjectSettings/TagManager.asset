@@ -13,6 +13,8 @@ TagManager:
   - P1HandlePos3
   - P1HandlePos4
   - P1Wand
+  - P1Progress1
+  - P1Progress2
   layers:
   - Default
   - TransparentFX

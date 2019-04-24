@@ -6648,7 +6648,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.31930244, b: 0, a: 1}
+  m_Color: {r: 0.31890443, g: 0.0993236, b: 0.6792453, a: 1}
   m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
@@ -7401,6 +7401,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 861484977034f89419f6311ff123a574, type: 3}
+--- !u!1 &1299373160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299373161}
+  - component: {fileID: 1299373162}
+  m_Layer: 0
+  m_Name: Progress2
+  m_TagString: P1Progress2
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1299373161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299373160}
+  m_LocalRotation: {x: -1.27054926e-20, y: 9.947597e-14, z: 6.394884e-14, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00457, z: -0.00322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700745971}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1299373162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299373160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00030633746, y: 0.00089528656, z: 0.0008253087}
+  m_Center: {x: 3.793228e-17, y: 0.002328564, z: 0.00007134074}
 --- !u!1001 &1309093257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9124,8 +9168,14 @@ MonoBehaviour:
   PuzzleStarted: 0
   PuzzleCompleted: 0
   PuzzlePoweredUp: 0
+  ProgressMade: 0
+  ProgressMade1: 0
+  ProgressMade2: 0
   PuzzleWheel: {fileID: 116487858}
   Puzzle1Light: {fileID: 1141884786}
+  PuzzlePowerUp: {fileID: 1678777002}
+  PuzzleWrong: {fileID: 1582063713}
+  PuzzleCompletedSound: {fileID: 180374975}
 --- !u!1 &1496187705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123056, guid: 08664425fe4b55a438efa73476965e3a,
@@ -11170,6 +11220,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb72f022f1a7115419cafb5ff29794a3, type: 3}
+--- !u!1 &1934904329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934904330}
+  - component: {fileID: 1934904331}
+  m_Layer: 0
+  m_Name: Progress1
+  m_TagString: P1Progress1
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934904330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934904329}
+  m_LocalRotation: {x: -1.27054926e-20, y: 9.947597e-14, z: 6.394884e-14, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00457, z: -0.00188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700745971}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1934904331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934904329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00030633746, y: 0.00089528656, z: 0.0006914295}
+  m_Center: {x: 4.389355e-17, y: 0.002328564, z: 0.00013370404}
 --- !u!4 &1943445100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 402668, guid: 94a4e3eafbc7e2942931221d56b6e8d6,
