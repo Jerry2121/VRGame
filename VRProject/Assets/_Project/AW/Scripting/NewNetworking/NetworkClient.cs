@@ -223,8 +223,8 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            if(Debug.isDebugBuild)
-                Debug.Log("NetworkClient -- PositionMessage");
+            //if(Debug.isDebugBuild)
+                //Debug.Log("NetworkClient -- PositionMessage");
 
             if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
@@ -238,8 +238,8 @@ namespace VRGame.Networking
 
         void RotationMessage(string recievedMessage)
         {
-            if (Debug.isDebugBuild)
-                Debug.Log("NetworkClient -- RotationMessage");
+            //if (Debug.isDebugBuild)
+                //Debug.Log("NetworkClient -- RotationMessage");
 
             if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
