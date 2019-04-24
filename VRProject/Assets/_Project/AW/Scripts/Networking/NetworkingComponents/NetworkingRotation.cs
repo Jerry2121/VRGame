@@ -10,7 +10,7 @@ namespace VRGame.Networking {
     [DisallowMultipleComponent]
     public class NetworkingRotation : NetworkObjectComponent
     {
-        quaternion lastSentRotation = quaternion.identity;
+        quaternion m_LastSentRotation = quaternion.identity;
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
@@ -18,12 +18,12 @@ namespace VRGame.Networking {
         [SerializeField]
         int m_ID;
 
-        public override NetworkObject networkObject { get; protected set; }
+        public override NetworkObject m_NetworkObject { get; protected set; }
 
         // Start is called before the first frame update
         void Start()
         {
-            networkObject = GetNetworkObjectForObject(this.transform);
+            m_NetworkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
 
@@ -31,12 +31,12 @@ namespace VRGame.Networking {
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if (networkObject.LocalAuthority() && networkObject.isLocalObject() == false)
+            if (m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false)
                 return;
 
-            if (transform.rotation != lastSentRotation)
+            if (transform.rotation != m_LastSentRotation)
             {
-                lastSentRotation = transform.rotation;
+                m_LastSentRotation = transform.rotation;
 
                 float4 roundedRot = new float4();
 
@@ -45,7 +45,7 @@ namespace VRGame.Networking {
                 roundedRot.z = (float)Math.Round(transform.rotation.z, 3);
                 roundedRot.w = (float)Math.Round(transform.rotation.w, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), networkObject.m_ObjectID, ID, roundedRot));
+                NetworkingManager.s_Instance.SendNetworkMessage(NetworkTranslater.CreateRotationMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedRot));
             }
         }
 
@@ -54,7 +54,7 @@ namespace VRGame.Networking {
             quaternion rotation = new quaternion(x, y, z, w);
 
             transform.rotation = rotation;
-            lastSentRotation = rotation;
+            m_LastSentRotation = rotation;
         }
 
         public override void RecieveMessage(string recievedMessage)

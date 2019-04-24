@@ -10,15 +10,15 @@ namespace VRGame.Networking
     public class NetworkObjectEditor : Editor
     {
 
-        SerializedProperty m_objectName;
-        int m_objectID;
+        SerializedProperty m_ObjectName;
+        int m_ObjectID;
         SerializedProperty m_LocalAuthority;
         SerializedProperty m_ServerAuthority;
 
         private void OnEnable()
         {
-            m_objectName = serializedObject.FindProperty("m_ObjectName");
-            m_objectID = serializedObject.FindProperty("m_ObjectID").intValue;
+            m_ObjectName = serializedObject.FindProperty("m_ObjectName");
+            m_ObjectID = serializedObject.FindProperty("m_ObjectID").intValue;
             m_LocalAuthority = serializedObject.FindProperty("m_LocalAuthority");
             m_ServerAuthority = serializedObject.FindProperty("m_ServerAuthority");
         }
@@ -27,8 +27,8 @@ namespace VRGame.Networking
         {
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(m_objectName);
-            EditorGUILayout.LabelField(string.Format("Object Network ID: {0} ", m_objectID.ToString()), EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(m_ObjectName);
+            EditorGUILayout.LabelField(string.Format("Object Network ID: {0} ", m_ObjectID.ToString()), EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(m_LocalAuthority);
             EditorGUILayout.PropertyField(m_ServerAuthority);
 

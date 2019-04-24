@@ -10,7 +10,7 @@ namespace VRGame.Networking
     [DisallowMultipleComponent]
     public class NetworkingPosition : NetworkObjectComponent
     {
-        Vector3 lastSentPosition = Vector3.zero;
+        Vector3 m_LastSentPosition = Vector3.zero;
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
@@ -18,30 +18,30 @@ namespace VRGame.Networking
         [SerializeField]
         int m_ID;
 
-        Rigidbody rb;
+        Rigidbody m_RigidBody;
 
-        public override NetworkObject networkObject { get; protected set; }
+        public override NetworkObject m_NetworkObject { get; protected set; }
 
         void Start()
         {
-            rb = GetComponent<Rigidbody>();
-            networkObject = GetNetworkObjectForObject(this.transform);
+            m_RigidBody = GetComponent<Rigidbody>();
+            m_NetworkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
 
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if ((networkObject.LocalAuthority() && networkObject.isLocalObject() == false) || (networkObject.LocalAuthority() == false && networkObject.PlayerIsInteracting() == false))
+            if ((m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false) || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false))
             {
-                if (rb != null)
-                    rb.velocity = Vector3.zero;
+                if (m_RigidBody != null)
+                    m_RigidBody.velocity = Vector3.zero;
                 return;
             }
 
-            if (transform.position != lastSentPosition)
+            if (transform.position != m_LastSentPosition)
             {
-                lastSentPosition = transform.position;
+                m_LastSentPosition = transform.position;
 
                 float3 roundedPos = new float3();
 
@@ -49,7 +49,7 @@ namespace VRGame.Networking
                 roundedPos.y = (float)Math.Round(transform.position.y, 3);
                 roundedPos.z = (float)Math.Round(transform.position.z, 3);
 
-                NetworkingManager.Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), networkObject.m_ObjectID, ID, roundedPos));
+                NetworkingManager.s_Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
             }
         }
 
@@ -62,7 +62,7 @@ namespace VRGame.Networking
         {
             float3 position = new float3(x, y, z);
             transform.position = position;
-            lastSentPosition = position;
+            m_LastSentPosition = position;
         }
 
         public override void RecieveMessage(string recievedMessage)

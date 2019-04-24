@@ -10,27 +10,27 @@ using UnityEngine;
 public sealed class Logger
 {
     #region singleton
-    private static readonly Lazy<Logger> lazy =
+    private static readonly Lazy<Logger> s_Lazy =
         new Lazy<Logger>(() => new Logger());
 
-    public static Logger Instance { get { return lazy.Value; } }
+    public static Logger Instance { get { return s_Lazy.Value; } }
 
     private Logger()
     {
     }
     #endregion
 
-    bool initialized;
-    bool debugToConsole;
+    bool m_Initialized;
+    bool m_DebugToConsole;
 
     public void Init()
     {
-        if (initialized)
+        if (m_Initialized)
         {
             Debug.Log("Logger already initialized");
             return;
         }
-        initialized = true;
+        m_Initialized = true;
         Application.logMessageReceivedThreaded += HandleLogThreaded;
         Application.quitting += WriteApplicationLog;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR && DEVELOPMENT_BUILD
@@ -75,8 +75,8 @@ public sealed class Logger
             Debug.Log(_message);
         }
 
-        if(debugToConsole)
-            DebugConsole.Instance.WriteLine(string.Format("[{0}] {1}{2}", DateTime.Now, logTypeMessage, _message));
+        if(m_DebugToConsole)
+            DebugConsole.s_Instance.WriteLine(string.Format("[{0}] {1}{2}", DateTime.Now, logTypeMessage, _message));
     }
 
     public string DisplayLoggedText()

@@ -5,9 +5,9 @@ using UnityEngine;
 namespace VRGame.Networking
 {
     [AddComponentMenu("VR Networking/Network Player")]
-    public class NetworkPlayer : NetworkingBehavior
+    public class NetworkPlayer : MonoBehaviour
     {
-        [SerializeField] Behaviour[] componentsToDisable;
+        [SerializeField] Behaviour[] m_ComponentsToDisable;
 
         bool m_IsLocalPlayer;
         int m_PlayerID;
@@ -56,13 +56,13 @@ namespace VRGame.Networking
         {
             yield return new WaitForSeconds(1f);
 
-            if (NetworkingManager.Instance == null || NetworkingManager.Instance.IsConnected() == false)
+            if (NetworkingManager.s_Instance == null || NetworkingManager.s_Instance.IsConnected() == false)
                 yield break;
 
             if (m_IsLocalPlayer)
                 yield break;
 
-            foreach(var comp in componentsToDisable)
+            foreach(var comp in m_ComponentsToDisable)
             {
                 Debug.Log("Disabling " + comp.name);
                 comp.enabled = false;

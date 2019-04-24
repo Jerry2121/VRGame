@@ -15,7 +15,7 @@ using System.Net.Sockets;
 namespace VRGame.Networking
 {
 
-    public class NetworkServerJobs : MonoBehaviour
+    public class NetworkServer : MonoBehaviour
     {
         public UdpCNetworkDriver m_Driver;
         private NativeList<NetworkConnection> m_Connections;
@@ -81,13 +81,12 @@ namespace VRGame.Networking
                 while ((cmd = m_Driver.PopEventForConnection(m_Connections[i], out stream)) !=
                        NetworkEvent.Type.Empty)
                 {
-
-                    if(cmd == NetworkEvent.Type.Connect)
+                    if (cmd == NetworkEvent.Type.Connect)
                     {
                         Debug.Log("NetworkServer -- Client has connected");
                     }
 
-                    else if (cmd == NetworkEvent.Type.Data)
+                    if (cmd == NetworkEvent.Type.Data)
                     {
                         try
                         {
@@ -124,12 +123,16 @@ namespace VRGame.Networking
                     else if (cmd == NetworkEvent.Type.Disconnect)
                     {
                         Debug.Log("NetworkServer -- Client disconnected from server");
+                        m_MessageList.Add(NetworkTranslater.CreateDisconnectedMessage(m_Connections[i].InternalId + 1));
                         m_Connections[i] = default(NetworkConnection);
                     }
 
                     //don't send if there aren't any messages
                     if (currentMessages.Count <= 0)
-                        return;
+                    {
+                        SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()), i);
+                        continue;
+                    }
 
                     using (var writer = new DataStreamWriter(1024, Allocator.Temp))
                     {
@@ -176,6 +179,12 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Rotation:
+                    RotationMessage(recievedMessage);
+                    break;
+                case NetworkMessageContent.LoadedIn:
+                    LoadedInMessage(recievedMessage, i);
+                    break;
                 case NetworkMessageContent.None:
                     break;
                 default:
@@ -199,12 +208,27 @@ namespace VRGame.Networking
 
         void PositionMessage(string recievedMessage)
         {
-            Debug.Log(string.Format("NetworkServer -- PositionMessage: Got Position Message"));
+            //Debug.Log(string.Format("NetworkServer -- PositionMessage"));
 
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z);
 
-            m_NetworkedObjects[objectID].SetPosition(x, y, z);
+            if(componentID < 10) //The root gameobject's component should always have ID of < 10
+                m_NetworkedObjects[objectID].SetPosition(x, y, z);
             
+            //m_Players[clientID].SetPosition(x, y, z);
+
+            WriteMessage(recievedMessage);
+        }
+
+        void RotationMessage(string recievedMessage)
+        {
+            //Debug.Log(string.Format("NetworkServer -- RotationMessage"));
+
+            NetworkTranslater.TranslateRotationMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z, out float w);
+
+            if (componentID < 10) //The root gameobject's component should always have ID of < 10
+                m_NetworkedObjects[objectID].SetRotation(x, y, z, w);
+
             //m_Players[clientID].SetPosition(x, y, z);
 
             WriteMessage(recievedMessage);
@@ -219,11 +243,28 @@ namespace VRGame.Networking
             if (m_Connections[i] != null && m_Connections[i] != default(NetworkConnection))
                 ID = m_Connections[i].InternalId + 1;
 
+            
+                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+
+            /*if (m_Players.ContainsKey(ID) == false)
+            {
+                //m_Players.Add(ID, new ServerObject("Player"));
+
+                m_PlayerIDs.Add(ID);
+            }*/
+        }
+
+        void LoadedInMessage(string recievedMessage, int i)
+        {
+            if (NetworkTranslater.TranslateLoadedInMessage(recievedMessage, out int clientID) == false)
+                return;
+
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("NetworkServer -- LoadedInMessage: Recieved from client {0}", clientID));
+
             if (m_NetworkedObjects.Count > 0)
             {
                 List<string> messages = new List<string>();
-
-                messages.Add(NetworkTranslater.CreateIDMessageFromServer(ID));
 
                 /*foreach (var playerID in m_Players.Keys)
                 {
@@ -234,20 +275,11 @@ namespace VRGame.Networking
                 foreach (var objectID in m_NetworkedObjects.Keys)
                 {
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
-                    messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_clientID, objectID, networkedObject.m_objectType, networkedObject.m_Position));
+                    messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position));
                 }
 
-                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
+                WriteMessage(NetworkTranslater.CombineMessages(messages));
             }
-            else
-                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
-
-            /*if (m_Players.ContainsKey(ID) == false)
-            {
-                //m_Players.Add(ID, new ServerObject("Player"));
-
-                m_PlayerIDs.Add(ID);
-            }*/
         }
 
         void InstantiateMessage(string recievedMessage)

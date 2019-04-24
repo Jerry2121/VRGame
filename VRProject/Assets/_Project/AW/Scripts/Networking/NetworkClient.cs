@@ -11,34 +11,34 @@ using System.Timers;
 
 namespace VRGame.Networking
 {
-    class NetworkClient : NetworkingClient
+    class NetworkClient : MonoBehaviour
     {
-        int m_clientID = -1;
+        int m_ClientID = -1;
 
-        NetworkPlayer m_player;
+        NetworkPlayer m_Player;
 
         public UdpCNetworkDriver m_Driver;
         public NetworkConnection m_Connection;
         public bool m_Done;
 
-        List<string> messageList = new List<string>();
+        List<string> m_MessageList = new List<string>();
 
-        Timer connectionTimer;
+        Timer m_ConnectionTimer;
 
         void Start()
         {
             m_Driver = new UdpCNetworkDriver(new INetworkParameter[0]);
             m_Connection = default(NetworkConnection);
 
-            if(NetworkingManager.Instance.NetworkAddress() == null)
+            if(NetworkingManager.s_Instance.NetworkAddress() == null)
             {
                 Debug.Log("NetworkClient -- Start: Invalid IP address");
                 Disconnect();
-                NetworkingManager.Instance.Disconnect();
+                NetworkingManager.s_Instance.Disconnect();
                 return;
             }
 
-            var endpoint = new IPEndPoint(NetworkingManager.Instance.NetworkAddress(), 9000);
+            var endpoint = new IPEndPoint(NetworkingManager.s_Instance.NetworkAddress(), 9000);
             m_Connection = m_Driver.Connect(endpoint);
 
             WriteMessage("Connected");
@@ -46,16 +46,16 @@ namespace VRGame.Networking
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- Start: Client created");
 
-            connectionTimer = new Timer(15000);
-            connectionTimer.Elapsed += OnConnectionTimerDone;
-            connectionTimer.Enabled = true;
+            m_ConnectionTimer = new Timer(15000);
+            m_ConnectionTimer.Elapsed += OnConnectionTimerDone;
+            m_ConnectionTimer.Enabled = true;
         }
 
         public void OnDestroy()
         {
             m_Driver.Dispose();
-            connectionTimer.Stop();
-            connectionTimer.Dispose();
+            m_ConnectionTimer.Stop();
+            m_ConnectionTimer.Dispose();
         }
 
         void Update()
@@ -110,17 +110,17 @@ namespace VRGame.Networking
                     Debug.Log("NetworkClient -- Update: Client got disconnected from server");
                     m_Connection = default(NetworkConnection);
 
-                    NetworkingManager.Instance.Disconnect();
+                    NetworkingManager.s_Instance.Disconnect();
                 }
             }
 
             //send the first message in the message list
             try
             {
-                if (m_clientID == -1)
+                if (m_ClientID == -1)
                 {
-                    if (messageList.Count > 0)
-                        messageList.Clear(); //none of our messages have the proper ID, so clear them
+                    if (m_MessageList.Count > 0)
+                        m_MessageList.Clear(); //none of our messages have the proper ID, so clear them
                     string IDRequest = NetworkTranslater.CreateIDMessageFromClient();
 
                     Debug.Log("NetworkClient -- Update: Sending ID Request");
@@ -135,14 +135,14 @@ namespace VRGame.Networking
                 return;
             }
 
-            if(messageList.Count <= 0)
+            if(m_MessageList.Count <= 0)
             {
                 SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()));
             }
 
             else {
-                string allMessages = NetworkTranslater.CombineMessages(messageList);
-                messageList.Clear();
+                string allMessages = NetworkTranslater.CombineMessages(m_MessageList);
+                m_MessageList.Clear();
                 SendMessages(Encoding.UTF8.GetBytes(allMessages));
             }
 
@@ -155,13 +155,13 @@ namespace VRGame.Networking
 
         void OnConnectionTimerDone(object source, ElapsedEventArgs e)
         {
-            connectionTimer.Stop();
-            connectionTimer.Dispose();
+            m_ConnectionTimer.Stop();
+            m_ConnectionTimer.Dispose();
 
-            if(m_clientID == -1)
+            if(m_ClientID == -1)
             {
                 Debug.Log("NetworkClient -- Failed To Connect");
-                NetworkingManager.Instance.Disconnect();
+                NetworkingManager.s_Instance.Disconnect();
             }
         }
 
@@ -178,9 +178,9 @@ namespace VRGame.Networking
             }
         }
 
-        public override void WriteMessage(string message)
+        public virtual void WriteMessage(string message)
         {
-            messageList.Add(message);
+            m_MessageList.Add(message);
         }
 
 
@@ -229,10 +229,10 @@ namespace VRGame.Networking
             if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            if(clientID != m_clientID) //Make sure we aren't getting out own positions back
+            if(clientID != m_ClientID) //Make sure we aren't getting out own positions back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
             }
         }
 
@@ -244,10 +244,10 @@ namespace VRGame.Networking
             if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            if (clientID != m_clientID) //Make sure we aren't getting out own rotations back
+            if (clientID != m_ClientID) //Make sure we aren't getting out own rotations back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.Instance.networkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
             }
         }
 
@@ -256,18 +256,18 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
                 return;
 
-            if (NetworkingManager.Instance.playerDictionary.ContainsKey(clientID) || clientID == -1)
+            if (NetworkingManager.s_Instance.m_PlayerDictionary.ContainsKey(clientID) || clientID == -1)
                 return;
 
-            if (m_clientID != -1) //The message is for someone else
+            if (m_ClientID != -1) //The message is for someone else
             {
-                NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+                NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
                 return;
             }
 
-            NetworkingManager.Instance.playerDictionary.Add(clientID, null);
+            NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
 
-            m_clientID = clientID;
+            m_ClientID = clientID;
 
             Debug.Log(string.Format("NetworkClient -- IDMessage: Recieved ID of {0} from the server", clientID));
 
@@ -282,12 +282,12 @@ namespace VRGame.Networking
             //WriteMessage(NetworkTranslater.CreateInstantiateMessage(m_clientID, -1, "Player", Vector3.zero);
 
             //NetworkingManager.Instance.InstantiateOverNetwork("Player", Vector3.zero);
-            NetworkingManager.Instance.SwitchToOnlineScene();
+            NetworkingManager.s_Instance.SwitchToOnlineScene();
         }
 
         void InstantiateMessage(string recievedMessage)
         {
-            NetworkingManager.Instance.RecieveInstantiateMessage(recievedMessage);
+            NetworkingManager.s_Instance.RecieveInstantiateMessage(recievedMessage);
         }
 
         void DisconnectedMessage(string recievedMessage)
@@ -297,10 +297,10 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslateDisconnectedMessage(recievedMessage, out int clientID) == false)
                 return;
 
-            NetworkingManager.Instance.DestroyPlayer(clientID);
+            NetworkingManager.s_Instance.DestroyPlayer(clientID);
         }
 
-        public override void Disconnect()
+        public virtual void Disconnect()
         {
             m_Done = true;
         }
@@ -320,9 +320,9 @@ namespace VRGame.Networking
         //    }
         //}
         
-        public override int ClientID()
+        public virtual int ClientID()
         {
-            return m_clientID;
+            return m_ClientID;
         }
 
     }

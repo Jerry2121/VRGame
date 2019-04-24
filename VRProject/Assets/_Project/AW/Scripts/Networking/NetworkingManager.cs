@@ -10,52 +10,49 @@ namespace VRGame.Networking
     public class NetworkingManager : MonoBehaviour
     {
         [SerializeField]
-        GameObject[] spawnableGameObjects;
+        GameObject[] m_SpawnableGameObjects;
 
-        public static NetworkingManager Instance;
+        public static NetworkingManager s_Instance;
 
         public GameObject playerPrefab;
 
-        public Dictionary<int, NetworkPlayer> playerDictionary = new Dictionary<int, NetworkPlayer>();
-        public Dictionary<int, NetworkObject> networkedObjectDictionary = new Dictionary<int, NetworkObject>();
+        public Dictionary<int, NetworkPlayer> m_PlayerDictionary = new Dictionary<int, NetworkPlayer>();
+        public Dictionary<int, NetworkObject> m_NetworkedObjectDictionary = new Dictionary<int, NetworkObject>();
 
         [SerializeField]
         string m_NetworkAddress = "localhost";
         [SerializeField]
         int m_NetworkPort = 9000;
 
-        [SerializeField] SceneReference offlineScene;
-        [SerializeField] SceneReference onlineScene;
-
-        bool useJobClient;
-        bool useJobServer;
+        [SerializeField] SceneReference m_OfflineScene;
+        [SerializeField] SceneReference m_OnlineScene;
 
         [SerializeField] bool showGUI;
         [SerializeField] bool debug;
         [SerializeField] int offsetX;
         [SerializeField] int offsetY;
 
-        NetworkingClient m_Client;
+        NetworkClient m_Client;
 
         NetworkServer m_Server;
         bool m_Connected;
 
-        Dictionary<string, GameObject> spawnableObjectDictionary = new Dictionary<string, GameObject>();
+        Dictionary<string, GameObject> m_SpawnableObjectDictionary = new Dictionary<string, GameObject>();
 
         // Start is called before the first frame update
         void Start()
         {
-            if(Instance != null)
+            if(s_Instance != null)
             {
                 Debug.LogError("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
                 Destroy(this);
                 return;
             }
-            Instance = this;
-            DontDestroyOnLoad(Instance);
+            s_Instance = this;
+            DontDestroyOnLoad(s_Instance);
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            foreach(var GO in spawnableGameObjects)
+            foreach(var GO in m_SpawnableGameObjects)
             {
                 NetworkObject netSpawn = GO.GetComponent<NetworkObject>();
                 if(netSpawn == null)
@@ -68,7 +65,7 @@ namespace VRGame.Networking
                     Debug.LogError("NetworkingManager -- Start: GameObject has no objectName on NetworkObject!");
                     continue;
                 }
-                spawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
+                m_SpawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
 
                 Application.runInBackground = true;
             }
@@ -189,9 +186,9 @@ namespace VRGame.Networking
                 if (tempGO == null) return;
             }
             //otherwise see if it is a spawnable object
-            else if (spawnableObjectDictionary.ContainsKey(objectType))
+            else if (m_SpawnableObjectDictionary.ContainsKey(objectType))
             {
-                tempGO = Instantiate(spawnableObjectDictionary[objectType], new Vector3(x,y,z), Quaternion.identity);
+                tempGO = Instantiate(m_SpawnableObjectDictionary[objectType], new Vector3(x,y,z), Quaternion.identity);
             }
             //we couldn't spawn it. It likely is either not on the Manager, or doesn't have a NetworkObject component
             else
@@ -205,13 +202,13 @@ namespace VRGame.Networking
             NetworkObject netObj = tempGO.GetComponent<NetworkObject>();
             netObj.m_ObjectID = objectID;
 
-            if (networkedObjectDictionary.ContainsKey(objectID))
+            if (m_NetworkedObjectDictionary.ContainsKey(objectID))
             {
                 Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object" , objectID, objectType), tempGO);
                 Destroy(tempGO);
                 return;
             }
-            networkedObjectDictionary.Add(objectID, netObj);
+            m_NetworkedObjectDictionary.Add(objectID, netObj);
 
             if (clientID == ClientID())
                 netObj.SetLocal();
@@ -220,12 +217,12 @@ namespace VRGame.Networking
         GameObject InstantiatePlayer(int clientID, int objectID, string objectName, float x, float y, float z)
         {
             //If we have already set up the player, return
-            if (playerDictionary.ContainsKey(clientID) && playerDictionary[clientID] != null)
+            if (m_PlayerDictionary.ContainsKey(clientID) && m_PlayerDictionary[clientID] != null)
                 return null;
 
-            if (playerDictionary.ContainsKey(clientID) == false)
+            if (m_PlayerDictionary.ContainsKey(clientID) == false)
             {
-                playerDictionary.Add(clientID, null);
+                m_PlayerDictionary.Add(clientID, null);
             }
 
             //if(ID%2 == 0)
@@ -236,7 +233,7 @@ namespace VRGame.Networking
 
             NetworkPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<NetworkPlayer>();
 
-            playerDictionary[clientID] = player;
+            m_PlayerDictionary[clientID] = player;
             player.SetPlayerID(clientID);
 
             if (clientID == m_Client.ClientID()) //The message came from us, the local player
@@ -253,20 +250,20 @@ namespace VRGame.Networking
                 return;
             }
 
-            if(playerDictionary.ContainsKey(playerID) == false)
+            if(m_PlayerDictionary.ContainsKey(playerID) == false)
             {
                 Debug.LogError("NetworkingManager -- DestroyPlayer: Tried to destroy a player that is not in the dictionary");
                 return;
             }
             
-            GameObject player = playerDictionary[playerID].gameObject;
-            playerDictionary.Remove(playerID);
+            GameObject player = m_PlayerDictionary[playerID].gameObject;
+            m_PlayerDictionary.Remove(playerID);
 
             int objectID = player.GetComponent<NetworkObject>().m_ObjectID;
 
-            if (networkedObjectDictionary.ContainsKey(objectID))
+            if (m_NetworkedObjectDictionary.ContainsKey(objectID))
             {
-                networkedObjectDictionary.Remove(objectID);
+                m_NetworkedObjectDictionary.Remove(objectID);
             }
 
             Destroy(player);
@@ -316,12 +313,12 @@ namespace VRGame.Networking
                 StopClient();
 
             //Destroy all networked objects
-            foreach (var netObject in networkedObjectDictionary.Keys)
+            foreach (var netObject in m_NetworkedObjectDictionary.Keys)
             {
-                Destroy(networkedObjectDictionary[netObject].gameObject);
+                Destroy(m_NetworkedObjectDictionary[netObject].gameObject);
             }
-            networkedObjectDictionary.Clear();
-            playerDictionary.Clear();
+            m_NetworkedObjectDictionary.Clear();
+            m_PlayerDictionary.Clear();
             SwitchToOfflineScene();
         }
 
@@ -354,19 +351,19 @@ namespace VRGame.Networking
 
         public void SwitchToOfflineScene()
         {
-            SceneManager.LoadScene(offlineScene.Path);
+            SceneManager.LoadScene(m_OfflineScene.Path);
         }
 
         public void SwitchToOnlineScene()
         {
             if(m_Client != null)
-                SceneManager.LoadScene(onlineScene.Path);
+                SceneManager.LoadScene(m_OnlineScene.Path);
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
         {
             SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
-            if(scene.path == onlineScene.Path && m_Client != null)
+            if(scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 SpawnSceneObjectsOverNetwork();
                 InstantiateOverNetwork("Player", Vector3.zero);
@@ -419,8 +416,8 @@ namespace VRGame.Networking
 
         public static int ClientID()
         {
-            if(Instance.m_Client != null)
-                return Instance.m_Client.ClientID();
+            if(s_Instance.m_Client != null)
+                return s_Instance.m_Client.ClientID();
             return -1;
         }
 

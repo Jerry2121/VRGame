@@ -7,13 +7,13 @@ namespace VRGame.Networking
     public abstract class NetworkObjectComponent : MonoBehaviour
     {
 
-        public abstract NetworkObject networkObject { get; protected set; }
+        public abstract NetworkObject m_NetworkObject { get; protected set; }
         public abstract int ID { get; protected set; }
 
         public virtual void RegisterSelf()
         {
             //Debug.Log(string.Format("Registering for ID {0} insID is {1}", ID, this.GetInstanceID()));
-            networkObject.RegisterNetComponent(ID, this);
+            m_NetworkObject.RegisterNetComponent(ID, this);
         }
 
         public abstract void RecieveMessage(string recievedMessage);
@@ -23,7 +23,7 @@ namespace VRGame.Networking
         [ExecuteAlways]
         public virtual void SetNetworkObject(NetworkObject newNetworkObject)
         {
-            networkObject = newNetworkObject;
+            m_NetworkObject = newNetworkObject;
         }
 
         public virtual void Reset()
