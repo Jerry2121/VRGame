@@ -368,19 +368,22 @@ namespace VRGame.Networking
             SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
             if(scene.path == onlineScene.Path && m_Client != null)
             {
-                if (IsHost())
-                    SpawnSceneObjectsOverNetwork();
+                SpawnSceneObjectsOverNetwork();
                 InstantiateOverNetwork("Player", Vector3.zero);
             }
         }
 
+        /// <summary>
+        /// Respawns networked objects already in the scene so they get properly set up for networking
+        /// </summary>
         void SpawnSceneObjectsOverNetwork()
         {
             NetworkObject[] netObjects = GameObject.FindObjectsOfType<NetworkObject>();
 
             foreach(var netObject in netObjects)
             {
-                InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position);
+                if(IsHost()) //If we are the host we'll spawn them over the network, otherwise we will just destroy them,
+                    InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position);
                 Destroy(netObject.gameObject);
             }
 
