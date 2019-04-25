@@ -34,7 +34,7 @@ namespace VRGame.Networking
 
             unsafe
             {
-                if (GUILayout.Button("Register Network Children IDs"))
+                if (GUILayout.Button("Register Network Component IDs"))
                 {
                     NetworkObject netScript = ((NetworkObject)target);
                     int ID = 0;
