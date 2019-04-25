@@ -3443,6 +3443,7 @@ GameObject:
   - component: {fileID: 74695875405606966}
   - component: {fileID: 74695875405606967}
   - component: {fileID: 74695875405606964}
+  - component: {fileID: 821614196752770040}
   - component: {fileID: 74695875405606965}
   - component: {fileID: 74695875405606968}
   - component: {fileID: 74695875405606971}
@@ -3531,6 +3532,21 @@ MonoBehaviour:
   fadeInTexture: {fileID: 0}
   speedRotationIncrement: 0.05
   layerName: Default
+--- !u!114 &821614196752770040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74695875405606962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09489297ad323a7429d9ee488440f062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentsToDisable:
+  - {fileID: 74695875405606964}
+  - {fileID: 74695875405606967}
 --- !u!114 &74695875405606965
 MonoBehaviour:
   m_ObjectHideFlags: 0
