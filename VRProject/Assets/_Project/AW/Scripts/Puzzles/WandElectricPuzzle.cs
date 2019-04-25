@@ -18,9 +18,13 @@ public class WandElectricPuzzle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter -- Wand");
+
         Puzzle1Controller controller = other.GetComponentInParent<TrackElectricPuzzle>()?.puzzleController;
 
         if (controller == null) return;
+
+        Debug.Log("OnTriggerEnter -- Control not NULL");
 
         if (other.gameObject.tag == "P1Start" && !controller.PuzzleStarted && !controller.PuzzleCompleted && controller.PuzzlePoweredUp)
         {
