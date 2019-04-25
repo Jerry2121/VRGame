@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
+using NetworkObject = VRGame.Networking.NetworkObject;
 
 [RequireComponent(typeof(Animator))]
 
@@ -29,11 +31,16 @@ public class VrIkControl : MonoBehaviour
 
     public bool characterMove;
 
+    NetworkObject m_NetworkObject;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         characterMove = false;
+
+        m_NetworkObject = GetComponent<NetworkingPosition>() != null ? NetworkObjectComponent.GetNetworkObjectForObject(transform) : null;
+
     }
 
     void Update()
@@ -64,11 +71,15 @@ public class VrIkControl : MonoBehaviour
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
 
-        animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-        animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);
+        //Set positions of the hands if we are the local player, otherwise the network will set their position
+        if (m_NetworkObject != null && m_NetworkObject.LocalObjectWithAuthority())
+        {
+            animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);
 
-        animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
-        animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.rotation);
+            animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.rotation);
+        }
 
         // If the players foot is lower than the ground, position back up.
         // This will stop the tracking spaces movement from clipping the player through the ground.

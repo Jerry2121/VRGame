@@ -47,7 +47,7 @@ namespace VRGame.Networking
             return CheckParentsForNetworkObject(parent);
         }
 
-        protected static NetworkObject GetNetworkObjectForObject(Transform obj)
+        public static NetworkObject GetNetworkObjectForObject(Transform obj)
         {
             if (obj == null)
                 return null;

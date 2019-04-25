@@ -145,6 +145,11 @@ namespace VRGame.Networking {
             return m_LocalAuthority;
         }
 
+        public bool LocalObjectWithAuthority()
+        {
+            return m_LocalAuthority && m_IsLocalObject;
+        }
+
         public bool ServerAuthority()
         {
             return m_ServerAuthority;
