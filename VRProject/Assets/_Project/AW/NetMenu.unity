@@ -1015,6 +1015,18 @@ PrefabInstance:
       propertyPath: m_ShowGUI
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1321403880711187725, guid: 80a566a7c8906064dbc32260e483da3c,
+        type: 3}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_OnlineScene._asset
+      value: 
+      objectReference: {fileID: 102900000, guid: 8f2c74aee3c802f42b8edcbf0b239544,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680a2ffbaf98a7047825ace67da2a8ac, type: 3}
 --- !u!1 &472671173

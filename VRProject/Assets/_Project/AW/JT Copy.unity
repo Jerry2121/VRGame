@@ -3524,6 +3524,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NW_OVRPlayerController
       objectReference: {fileID: 0}
+    - target: {fileID: 74695875405606962, guid: 92198ede027c65d4884abb36cd313938,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 74695875405606969, guid: 92198ede027c65d4884abb36cd313938,
         type: 3}
       propertyPath: m_LocalPosition.x
