@@ -9,20 +9,12 @@ namespace VRGame.Networking
 
     public class NetworkingManager : MonoBehaviour
     {
-        [SerializeField]
-        GameObject[] m_SpawnableGameObjects;
+        [SerializeField] GameObject[] m_SpawnableGameObjects;
 
-        public static NetworkingManager s_Instance;
+        [SerializeField] GameObject playerPrefab;
 
-        public GameObject playerPrefab;
-
-        public Dictionary<int, NetworkPlayer> m_PlayerDictionary = new Dictionary<int, NetworkPlayer>();
-        public Dictionary<int, NetworkObject> m_NetworkedObjectDictionary = new Dictionary<int, NetworkObject>();
-
-        [SerializeField]
-        string m_NetworkAddress = "localhost";
-        [SerializeField]
-        int m_NetworkPort = 9000;
+        [SerializeField] string m_NetworkAddress = "localhost";
+        [SerializeField] int m_NetworkPort = 9000;
 
         [SerializeField] SceneReference m_OfflineScene;
         [SerializeField] SceneReference m_OnlineScene;
@@ -32,10 +24,15 @@ namespace VRGame.Networking
         [SerializeField] int m_OffsetX;
         [SerializeField] int m_OffsetY;
 
+        public static NetworkingManager s_Instance;
+
         NetworkClient m_Client;
 
         NetworkServer m_Server;
         bool m_Connected;
+
+        Dictionary<int, NetworkPlayer> m_PlayerDictionary = new Dictionary<int, NetworkPlayer>();
+        Dictionary<int, NetworkObject> m_NetworkedObjectDictionary = new Dictionary<int, NetworkObject>();
 
         Dictionary<string, GameObject> m_SpawnableObjectDictionary = new Dictionary<string, GameObject>();
 
@@ -165,6 +162,11 @@ namespace VRGame.Networking
                 return;
 
             m_Client.WriteMessage(message);
+        }
+
+        public void PassNetworkMessageToReciever(string recievedMessage, int objectID, int componentID)
+        {
+            m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
         }
 
         public void RecieveInstantiateMessage(string recievedMessage)

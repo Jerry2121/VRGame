@@ -232,7 +232,7 @@ namespace VRGame.Networking
             if(clientID != m_ClientID) //Make sure we aren't getting out own positions back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
             }
         }
 
@@ -247,7 +247,7 @@ namespace VRGame.Networking
             if (clientID != m_ClientID) //Make sure we aren't getting out own rotations back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
             }
         }
 
