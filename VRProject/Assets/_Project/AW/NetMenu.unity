@@ -666,6 +666,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7621736490306606718, guid: 23a8cabdeaa432342a1b3134e2fd6b0b,
+        type: 3}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 253583440114526318, guid: 208ea99fa3cb37f45be44e0f0224bb54,
+        type: 3}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 7621736490306606718, guid: 23a8cabdeaa432342a1b3134e2fd6b0b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680a2ffbaf98a7047825ace67da2a8ac, type: 3}
 --- !u!1 &936316254
