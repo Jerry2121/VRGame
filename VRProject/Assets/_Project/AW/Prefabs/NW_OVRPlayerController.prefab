@@ -3544,9 +3544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09489297ad323a7429d9ee488440f062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentsToDisable:
-  - {fileID: 74695875405606964}
+  m_ComponentsToDisableOnNetworkedPlayer:
   - {fileID: 74695875405606967}
+  - {fileID: 74695875405606964}
+  m_ComponentsToDisableOnLocalPlayer: []
 --- !u!114 &74695875405606965
 MonoBehaviour:
   m_ObjectHideFlags: 0

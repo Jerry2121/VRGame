@@ -27,10 +27,10 @@ namespace VRGame.Networking
         [SerializeField] SceneReference m_OfflineScene;
         [SerializeField] SceneReference m_OnlineScene;
 
-        [SerializeField] bool showGUI;
-        [SerializeField] bool debug;
-        [SerializeField] int offsetX;
-        [SerializeField] int offsetY;
+        [SerializeField] bool m_ShowGUI;
+        [SerializeField] bool m_Debug;
+        [SerializeField] int m_OffsetX;
+        [SerializeField] int m_OffsetY;
 
         NetworkClient m_Client;
 
@@ -80,11 +80,11 @@ namespace VRGame.Networking
 
         private void OnGUI()
         {
-            if (!showGUI)
+            if (!m_ShowGUI)
                 return;
 
-            int xpos = 10 + offsetX;
-            int ypos = 40 + offsetY;
+            int xpos = 10 + m_OffsetX;
+            int ypos = 40 + m_OffsetY;
             const int spacing = 24;
 
             if (m_Client == null && m_Server == null)
@@ -142,7 +142,7 @@ namespace VRGame.Networking
             }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            if (debug == false)
+            if (m_Debug == false)
                 return;
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Testing Client"))
@@ -297,7 +297,7 @@ namespace VRGame.Networking
                 Debug.Log("NetworkingManager -- StartClient: Client created.");
         }
 
-        void StartServer()
+        public void StartServer()
         {
                 m_Server = gameObject.AddComponent<NetworkServer>();
 

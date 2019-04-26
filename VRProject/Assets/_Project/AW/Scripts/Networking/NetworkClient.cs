@@ -256,16 +256,15 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
                 return;
 
-            if (NetworkingManager.s_Instance.m_PlayerDictionary.ContainsKey(clientID) || clientID == -1)
-                return;
+            //if (NetworkingManager.s_Instance.m_PlayerDictionary.ContainsKey(clientID) || clientID == -1)
+                //return;
+
+            //NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
 
             if (m_ClientID != -1) //The message is for someone else
             {
-                NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
                 return;
             }
-
-            NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
 
             m_ClientID = clientID;
 
