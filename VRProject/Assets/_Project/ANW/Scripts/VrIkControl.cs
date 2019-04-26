@@ -39,8 +39,7 @@ public class VrIkControl : MonoBehaviour
         animator = GetComponent<Animator>();
         characterMove = false;
 
-        m_NetworkObject = GetComponent<NetworkingPosition>() != null ? NetworkObjectComponent.GetNetworkObjectForObject(transform) : null;
-
+        m_NetworkObject = NetworkObjectComponent.GetNetworkObjectForObject(transform);
     }
 
     void Update()
@@ -71,8 +70,20 @@ public class VrIkControl : MonoBehaviour
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
 
-        //Set positions of the hands if we are the local player, otherwise the network will set their position
-        if (m_NetworkObject != null && m_NetworkObject.LocalObjectWithAuthority())
+        //If we are connected to the network, do checks, else just set hands to the VR hands
+        if (NetworkingManager.s_Instance != null && NetworkingManager.s_Instance.IsConnected())
+        {
+            //Set positions of the hands if we are the local player, otherwise the network will set their position
+            if (m_NetworkObject != null && m_NetworkObject.LocalObjectWithAuthority())
+            {
+                animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
+                animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);
+
+                animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+                animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.rotation);
+            }
+        }
+        else
         {
             animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
             animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);

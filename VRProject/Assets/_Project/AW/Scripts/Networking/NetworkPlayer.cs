@@ -7,7 +7,8 @@ namespace VRGame.Networking
     [AddComponentMenu("VR Networking/Network Player")]
     public class NetworkPlayer : MonoBehaviour
     {
-        [SerializeField] Behaviour[] m_ComponentsToDisable;
+        [SerializeField] Behaviour[] m_ComponentsToDisableOnNetworkedPlayer;
+        [SerializeField] Behaviour[] m_ComponentsToDisableOnLocalPlayer;
 
         bool m_IsLocalPlayer;
         int m_PlayerID;
@@ -60,21 +61,28 @@ namespace VRGame.Networking
                 yield break;
 
             if (m_IsLocalPlayer)
-                yield break;
-
-            foreach(var comp in m_ComponentsToDisable)
             {
-                Debug.Log("Disabling " + comp.name);
-                comp.enabled = false;
+                foreach (var comp in m_ComponentsToDisableOnLocalPlayer)
+                {
+                    Debug.Log("Disabling " + comp.name);
+                    comp.enabled = false;
+                }
             }
-
-            Rigidbody rb = GetComponent<Rigidbody>();
-            if(rb != null)
+            else
             {
-                rb.useGravity = false;
-                rb.velocity = Vector3.zero;
-            }
+                foreach (var comp in m_ComponentsToDisableOnNetworkedPlayer)
+                {
+                    Debug.Log("Disabling " + comp.name);
+                    comp.enabled = false;
+                }
 
+                Rigidbody rb = GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.useGravity = false;
+                    rb.velocity = Vector3.zero;
+                }
+            }
         }
 
     }

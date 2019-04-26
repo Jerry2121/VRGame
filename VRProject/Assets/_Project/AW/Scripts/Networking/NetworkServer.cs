@@ -278,7 +278,7 @@ namespace VRGame.Networking
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position));
                 }
 
-                WriteMessage(NetworkTranslater.CombineMessages(messages));
+                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
             }
         }
 

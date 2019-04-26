@@ -232,7 +232,7 @@ namespace VRGame.Networking
             if(clientID != m_ClientID) //Make sure we aren't getting out own positions back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
             }
         }
 
@@ -247,7 +247,7 @@ namespace VRGame.Networking
             if (clientID != m_ClientID) //Make sure we aren't getting out own rotations back
             {
                 //NetworkingManager.Instance.playerDictionary[clientID].RecievePositionMessage(xPos, yPos, zPos);
-                NetworkingManager.s_Instance.m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+                NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
             }
         }
 
@@ -256,16 +256,15 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslateIDMessage(recievedMessage, out int clientID) == false)
                 return;
 
-            if (NetworkingManager.s_Instance.m_PlayerDictionary.ContainsKey(clientID) || clientID == -1)
-                return;
+            //if (NetworkingManager.s_Instance.m_PlayerDictionary.ContainsKey(clientID) || clientID == -1)
+                //return;
+
+            //NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
 
             if (m_ClientID != -1) //The message is for someone else
             {
-                NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
                 return;
             }
-
-            NetworkingManager.s_Instance.m_PlayerDictionary.Add(clientID, null);
 
             m_ClientID = clientID;
 
