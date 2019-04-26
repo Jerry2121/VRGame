@@ -1012,6 +1012,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
       propertyPath: m_ShowGUI
       value: 1
       objectReference: {fileID: 0}
@@ -1027,6 +1032,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 102900000, guid: 8f2c74aee3c802f42b8edcbf0b239544,
         type: 3}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_SpawnableGameObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 7363809473730215133, guid: ea9773e5ec5b0b046b4d83bd45d6c36d,
+        type: 3}
+    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
+        type: 3}
+      propertyPath: m_OnlineScene._path
+      value: Assets/_Project/AW/JT Copy.unity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680a2ffbaf98a7047825ace67da2a8ac, type: 3}
 --- !u!1 &472671173
