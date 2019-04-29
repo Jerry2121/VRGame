@@ -50,7 +50,7 @@ public class Test2 : MonoBehaviour
     [ExecuteAlways]
     private void OnValidate()
     {
-        Debug.Log("OnValidate");
+        //Debug.Log("OnValidate");
     }
 
 }
