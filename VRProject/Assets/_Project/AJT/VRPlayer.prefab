@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09489297ad323a7429d9ee488440f062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1321403880709532597}
   m_ComponentsToDisableOnNetworkedPlayer:
   - {fileID: 1321403880704281773}
   - {fileID: 1321403880704088303}
