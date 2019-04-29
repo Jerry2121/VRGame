@@ -13,6 +13,7 @@ namespace VRGame.Networking
 
         public string m_ObjectType;
 
+        public int m_ObjectID;
         public int m_ClientID = 0; //Really only matters for player objects
 
         public void SetPosition(float x, float y, float z)
@@ -35,10 +36,11 @@ namespace VRGame.Networking
             m_ObjectType = objectType;
         }
 
-        public ServerObject(int clientID, string objectType, float x, float y, float z)
+        public ServerObject(int clientID, int objectID, string objectType, float x, float y, float z)
         {
             m_ObjectType = objectType;
             m_ClientID = clientID;
+            m_ObjectID = objectID;
 
             m_Position.x = x;
             m_Position.y = y;

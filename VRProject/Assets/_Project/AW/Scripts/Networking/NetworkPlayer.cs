@@ -7,6 +7,7 @@ namespace VRGame.Networking
     [AddComponentMenu("VR Networking/Network Player")]
     public class NetworkPlayer : MonoBehaviour
     {
+        [SerializeField] Camera playerCamera;
         [SerializeField] Behaviour[] m_ComponentsToDisableOnNetworkedPlayer;
         [SerializeField] Behaviour[] m_ComponentsToDisableOnLocalPlayer;
 
@@ -75,6 +76,9 @@ namespace VRGame.Networking
                     Debug.Log("Disabling " + comp.name);
                     comp.enabled = false;
                 }
+
+                if(playerCamera != null)
+                    playerCamera.targetDisplay = 8;
 
                 Rigidbody rb = GetComponent<Rigidbody>();
                 if (rb != null)
