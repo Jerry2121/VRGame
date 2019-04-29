@@ -155,12 +155,12 @@ namespace VRGame.Networking {
             return m_ServerAuthority;
         }
 
-        private unsafe void OnValidate()
-        {
-            Debug.Log("NetworkObject -- OnValidate: Checking For Network Components and setting IDs");
-            int ID = 0;
-            CheckForNetworkComponents(this.gameObject, &ID);
-        }
+        //private unsafe void OnValidate()
+        //{
+        //    Debug.Log("NetworkObject -- OnValidate: Checking For Network Components and setting IDs");
+        //    int ID = 0;
+        //    CheckForNetworkComponents(this.gameObject, &ID);
+        //}
 
     }
 
