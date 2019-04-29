@@ -124,6 +124,12 @@ namespace VRGame.Networking
                     {
                         Debug.Log("NetworkServer -- Client disconnected from server");
                         m_MessageList.Add(NetworkTranslater.CreateDisconnectedMessage(m_Connections[i].InternalId + 1));
+
+                        ServerObject playerObject = m_Players[(m_Connections[i].InternalId + 1)];
+
+                        m_Players.Remove(m_Connections[i].InternalId + 1);
+                        m_NetworkedObjects.Remove(playerObject.m_ObjectID);
+
                         m_Connections[i] = default(NetworkConnection);
                     }
 
@@ -294,8 +300,12 @@ namespace VRGame.Networking
 
             objectID = m_NetworkedObjects.Count /*+ 101*/;
 
-            m_NetworkedObjects.Add(objectID, new ServerObject(clientID, objectType, x, y, z));
-            
+            ServerObject serverObj = new ServerObject(clientID, objectID, objectType, x, y, z);
+
+            m_NetworkedObjects.Add(objectID, serverObj);
+
+            if (objectType == "Player")
+                m_Players.Add(clientID, serverObj);
             
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, x, y, z));
         }
