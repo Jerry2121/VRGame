@@ -76,7 +76,10 @@ namespace VRGame.Networking
                     Debug.Log("Disabling " + comp.name);
                     comp.enabled = false;
                 }
-                playerCamera.targetDisplay = 8;
+
+                if(playerCamera != null)
+                    playerCamera.targetDisplay = 8;
+
                 Rigidbody rb = GetComponent<Rigidbody>();
                 if (rb != null)
                 {
