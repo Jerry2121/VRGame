@@ -25,7 +25,7 @@ public class LeverScript : MonoBehaviour
         }
         if (this.transform.position.y >= MaxY)
         {
-            
+            this.transform.position = new Vector3(LevelPos.x, MaxY, LevelPos.z);
         }
         if (this.transform.position.y <= MinY)
         {
