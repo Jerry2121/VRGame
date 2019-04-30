@@ -404,12 +404,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78533882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.0665, y: 19.498, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.00000009337855, y: 0.7071069, z: 0.70710677, w: -0.00000008940696}
+  m_LocalPosition: {x: -0.00002905333, y: 0.017149992, z: -0.00004210112}
+  m_LocalScale: {x: 0.009999996, y: 0.009999996, z: 0.009999996}
   m_Children: []
-  m_Father: {fileID: 1765875719}
-  m_RootOrder: 2
+  m_Father: {fileID: 1700745971}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &78533884
 BoxCollider:
@@ -1235,7 +1235,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &180374975
 AudioSource:
@@ -3772,7 +3772,7 @@ Transform:
   m_LocalScale: {x: 0.3221794, y: 0.084073424, z: 0.14694369}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &569130543
 BoxCollider:
@@ -7203,7 +7203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1141884786
 Light:
@@ -7755,7 +7755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497984, guid: f4952206a68af1d469faf4d40de936bd, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 497984, guid: f4952206a68af1d469faf4d40de936bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8174,12 +8174,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316557670}
-  m_LocalRotation: {x: 0.00000009337849, y: -0.70710707, z: -0.7071066, w: -0.00000008940686}
-  m_LocalPosition: {x: -23.069405, y: 18.563408, z: -2.5104003}
-  m_LocalScale: {x: 100.000275, y: 100.00018, z: 100.00018}
+  m_LocalRotation: {x: 0.00000023841855, y: 5.6843412e-14, z: 1.13686824e-13, w: 1}
+  m_LocalPosition: {x: 0, y: -0.007954, z: -0.009388001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1765875719}
-  m_RootOrder: 3
+  m_Father: {fileID: 1700745971}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1316557672
 BoxCollider:
@@ -9152,7 +9152,7 @@ Transform:
   m_LocalScale: {x: 0.3221794, y: 0.084073424, z: 0.14694369}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1431992367
 BoxCollider:
@@ -9472,7 +9472,7 @@ Transform:
   m_LocalScale: {x: 0.3221794, y: 0.084073424, z: 0.14694369}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1476196557
 BoxCollider:
@@ -9733,20 +9733,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1494457660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6555022fb84b374a8c64d71979859c5, type: 3}
+  m_Script: {fileID: 11500000, guid: ff13be4792b3dff49a27226f0abea920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PuzzleStarted: 0
-  PuzzleCompleted: 0
-  PuzzlePoweredUp: 0
-  ProgressMade: 0
-  ProgressMade1: 0
-  ProgressMade2: 0
-  PuzzleWheel: {fileID: 116487858}
-  Puzzle1Light: {fileID: 1141884786}
-  PuzzlePowerUp: {fileID: 1678777002}
-  PuzzleWrong: {fileID: 1582063713}
-  PuzzleCompletedSound: {fileID: 180374975}
 --- !u!1 &1496187705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123056, guid: 08664425fe4b55a438efa73476965e3a,
@@ -9997,7 +9986,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1582063713
 AudioSource:
@@ -10316,7 +10305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1678777002
 AudioSource:
@@ -11084,6 +11073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1765875719}
+  - component: {fileID: 1765875718}
   m_Layer: 0
   m_Name: Puzzle1
   m_TagString: Untagged
@@ -11091,6 +11081,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1765875718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765875717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6555022fb84b374a8c64d71979859c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuzzleStarted: 0
+  PuzzleCompleted: 0
+  PuzzlePoweredUp: 0
+  ProgressMade: 0
+  ProgressMade1: 0
+  ProgressMade2: 0
+  PuzzleWheel: {fileID: 116487858}
+  Puzzle1Light: {fileID: 1141884786}
+  PuzzlePowerUp: {fileID: 1678777002}
+  PuzzleWrong: {fileID: 1582063713}
+  PuzzleCompletedSound: {fileID: 180374975}
 --- !u!4 &1765875719
 Transform:
   m_ObjectHideFlags: 0
@@ -11104,15 +11117,13 @@ Transform:
   m_Children:
   - {fileID: 1906727042}
   - {fileID: 1700745971}
-  - {fileID: 78533883}
-  - {fileID: 1316557671}
   - {fileID: 1141884785}
   - {fileID: 1431992366}
   - {fileID: 1832165899}
   - {fileID: 1476196556}
   - {fileID: 569130542}
-  - {fileID: 200334818}
   - {fileID: 1582063712}
+  - {fileID: 200334818}
   - {fileID: 180374974}
   - {fileID: 1678777001}
   m_Father: {fileID: 0}
@@ -11130,6 +11141,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 619425206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1789702995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5ade71969d5ba4140a71f0f9a9db4a93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1700745970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1789702998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789702995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbeb5a3ed1743440b7d4080fcc5bb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzleController: {fileID: 1765875718}
 --- !u!1001 &1790346728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11264,7 +11294,7 @@ Transform:
   m_LocalScale: {x: 0.3221794, y: 0.084073424, z: 0.14694369}
   m_Children: []
   m_Father: {fileID: 1765875719}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1832165900
 BoxCollider:

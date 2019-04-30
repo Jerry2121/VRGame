@@ -62,7 +62,7 @@ public class Puzzle1WheelController : MonoBehaviour
             //angle = Vector3.SignedAngle(transform.position, handDirection, transform.position);
         }
         
-        if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
             grabbedBy = null;
             grabbed = false;
