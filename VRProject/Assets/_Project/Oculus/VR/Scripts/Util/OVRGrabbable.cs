@@ -17,6 +17,8 @@ permissions and limitations under the License.
 using System;
 using UnityEngine;
 
+using VRGame.Networking;
+
 /// <summary>
 /// An object that can be grabbed and thrown by OVRGrabber.
 /// </summary>
@@ -36,6 +38,8 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
+
+    protected NetworkObject m_NetObj;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -117,6 +121,9 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        if (m_NetObj != null)
+            m_NetObj.SetPlayerInteracting(true);
     }
 
 	/// <summary>
@@ -130,6 +137,9 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+
+        if (m_NetObj != null)
+            m_NetObj.SetPlayerInteracting(false);
     }
 
     void Awake()
@@ -151,6 +161,8 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
+
+        m_NetObj = GetComponent<NetworkObject>();
     }
 
     void OnDestroy()
