@@ -14,7 +14,7 @@ namespace VRGame.Networking
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
-        [HideInInspector]
+        [HideInNormalInspector]
         [SerializeField]
         int m_ID;
 
