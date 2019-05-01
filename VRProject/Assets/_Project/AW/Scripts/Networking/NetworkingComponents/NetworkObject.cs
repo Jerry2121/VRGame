@@ -137,6 +137,9 @@ namespace VRGame.Networking {
 
         public void SetPlayerInteracting(bool playerInteracting)
         {
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("PlayerIsInteracting on {0} is {1}", gameObject.name, playerInteracting));
+
             m_PlayerInteracting = playerInteracting;
         }
 
