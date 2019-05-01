@@ -21,7 +21,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
         Pos3 = false;
         Pos1c.SetActive(true);
         Pos2c.SetActive(false);
-        Pos3c.SetActive(false);
+        Pos3c.SetActive(true);
         Pos4c.SetActive(false);
     }
 
