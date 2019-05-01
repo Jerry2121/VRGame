@@ -15,6 +15,7 @@ TagManager:
   - P1Wand
   - P1Progress1
   - P1Progress2
+  - CauldronFill
   layers:
   - Default
   - TransparentFX
