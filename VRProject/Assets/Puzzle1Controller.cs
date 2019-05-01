@@ -16,6 +16,8 @@ public class Puzzle1Controller : MonoBehaviour
     public AudioSource PuzzlePowerUp;
     public AudioSource PuzzleWrong;
     public AudioSource PuzzleCompletedSound;
+    public GameObject PuzzleLightingBolt;
+    public GameObject PuzzleLightingBolt2;
 
 
     private void Update()
@@ -23,6 +25,7 @@ public class Puzzle1Controller : MonoBehaviour
         if(!PuzzleCompleted && !PuzzleStarted && PuzzleWheel.GetComponent<Puzzle1WheelCollider>().Spins > 5 && !PuzzlePoweredUp)
         {
             PuzzlePoweredUp = true;
+            PuzzleLightingBolt.SetActive(true);
         }
         if (PuzzlePoweredUp && !ran1)
         {
@@ -39,6 +42,8 @@ public class Puzzle1Controller : MonoBehaviour
     public void PuzzleStart()
     {
         Puzzle1Light.color = new Color32(0, 57, 255, 255);
+        PuzzleLightingBolt.SetActive(false);
+        PuzzleLightingBolt2.SetActive(true);
         PuzzleStarted = true;
     }
 
