@@ -51,6 +51,8 @@ public class Puzzle1Controller : MonoBehaviour
     {
         Puzzle1Light.color = new Color32(255, 0, 0, 255);
         PuzzleWrong.Play();
+        PuzzleLightingBolt.SetActive(true);
+        PuzzleLightingBolt2.SetActive(false);
         PuzzleStarted = false;
         ProgressMade1 = false;
         ProgressMade2 = false;
