@@ -3018,6 +3018,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 487222115947977129, guid: effff6acb839ee444925663e01b12268,
+        type: 3}
+      propertyPath: cauldronFillStart.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 487222115947977129, guid: effff6acb839ee444925663e01b12268,
+        type: 3}
+      propertyPath: cauldronFillEnd.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 487222115947977129, guid: effff6acb839ee444925663e01b12268,
+        type: 3}
+      propertyPath: cauldronFill
+      value: 
+      objectReference: {fileID: 1668707378}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: effff6acb839ee444925663e01b12268, type: 3}
 --- !u!1001 &389764663
@@ -12444,6 +12459,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f1174680b6eec646bad64015b37aaa3, type: 3}
+--- !u!1 &1668707378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 487222114839230190, guid: effff6acb839ee444925663e01b12268,
+    type: 3}
+  m_PrefabInstance: {fileID: 378444102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678777000
 GameObject:
   m_ObjectHideFlags: 0

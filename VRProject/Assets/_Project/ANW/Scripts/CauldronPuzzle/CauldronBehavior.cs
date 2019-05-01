@@ -11,18 +11,22 @@ public class CauldronBehavior : MonoBehaviour
     public int mixtureNeededID;
 
     public GameObject cauldronMarking;
+    public GameObject cauldronFill;
 
     public Color32[] cauldronMarkingsArray;
-    // public Color32[] cauldronFillArray;
+    public Color32 cauldronFillStart;
+    public Color32 cauldronFillEnd;
 
-    float colorLerp;
-    bool lerping;
+    float markingLerp;
+    bool markingLerping;
+
+    float fillLerp;
 
 
     private void Start()
     {
-        lerping = false;
-        colorLerp = 0;
+        markingLerping = false;
+        markingLerp = 0;
         mixtureNeededID = Random.Range(0, 6);
         cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[Random.Range(0, 6)];
     }
@@ -35,14 +39,17 @@ public class CauldronBehavior : MonoBehaviour
             cauldronMarking.GetComponent<Renderer>().material.color = new Color32(0, 0, 0, 0);
         }
 
-        if (lerping)
+        fillLerp = correctMixturesCompleted / correctMixturesNeeded;
+        cauldronFill.GetComponent<Renderer>().material.color = Color.Lerp(cauldronFillStart, cauldronFillEnd, fillLerp);
+
+        if (markingLerping)
         {
-            colorLerp += Time.deltaTime / 2.0f;
-            cauldronMarking.GetComponent<Renderer>().material.color = Color.Lerp(cauldronMarking.GetComponent<Renderer>().material.color, cauldronMarkingsArray[mixtureNeededID], colorLerp);
-            if (colorLerp >= 1)
+            markingLerp += Time.deltaTime / 2.0f;
+            cauldronMarking.GetComponent<Renderer>().material.color = Color.Lerp(cauldronMarking.GetComponent<Renderer>().material.color, cauldronMarkingsArray[mixtureNeededID], markingLerp);
+            if (markingLerp >= 1)
             {
-                lerping = false;
-                colorLerp = 0;
+                markingLerping = false;
+                markingLerp = 0;
             }
         }
     }
@@ -75,7 +82,7 @@ public class CauldronBehavior : MonoBehaviour
             return;
         }
 
-        lerping = true;
+        markingLerping = true;
     }
 }
 
