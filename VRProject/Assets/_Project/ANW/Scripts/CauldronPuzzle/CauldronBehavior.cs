@@ -13,7 +13,7 @@ public class CauldronBehavior : MonoBehaviour
     public GameObject cauldronMarking;
 
     public Color32[] cauldronMarkingsArray;
-    public Color32[] cauldronFillArray;
+    // public Color32[] cauldronFillArray;
 
     float colorLerp;
     bool lerping;
@@ -21,6 +21,7 @@ public class CauldronBehavior : MonoBehaviour
 
     private void Start()
     {
+        lerping = false;
         colorLerp = 0;
         mixtureNeededID = Random.Range(0, 6);
         cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[Random.Range(0, 6)];
