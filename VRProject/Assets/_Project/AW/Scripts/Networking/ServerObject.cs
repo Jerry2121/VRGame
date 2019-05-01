@@ -46,7 +46,6 @@ namespace VRGame.Networking
             m_Position.y = y;
             m_Position.z = z;
         }
-
     }
 
 }

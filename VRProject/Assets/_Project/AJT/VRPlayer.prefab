@@ -1146,6 +1146,7 @@ MonoBehaviour:
   - {fileID: 1321403880709532597}
   - {fileID: 1321403880711220129}
   - {fileID: 1321403880711220134}
+  - {fileID: 1321403880716038917}
   m_ComponentsToDisableOnLocalPlayer: []
 --- !u!1 &1321403880711187727
 GameObject:

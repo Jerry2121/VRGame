@@ -13,7 +13,8 @@ namespace VRGame.Networking
         public virtual void RegisterSelf()
         {
             //Debug.Log(string.Format("Registering for ID {0} insID is {1}", ID, this.GetInstanceID()));
-            m_NetworkObject.RegisterNetComponent(ID, this);
+            if (m_NetworkObject.RegisterNetComponent(ID, this) == false)
+                Debug.Log(string.Format("Failed to register for ID {0}", ID), this.gameObject);
         }
 
         public abstract void RecieveMessage(string recievedMessage);

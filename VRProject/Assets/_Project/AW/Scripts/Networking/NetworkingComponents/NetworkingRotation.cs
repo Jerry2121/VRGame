@@ -14,7 +14,7 @@ namespace VRGame.Networking {
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
-        [HideInInspector]
+        [HideInNormalInspector]
         [SerializeField]
         int m_ID;
 
@@ -31,7 +31,7 @@ namespace VRGame.Networking {
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if (m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false)
+            if (m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false))
                 return;
 
             if (transform.rotation != m_LastSentRotation)

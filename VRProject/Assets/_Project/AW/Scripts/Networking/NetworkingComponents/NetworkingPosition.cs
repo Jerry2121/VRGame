@@ -14,7 +14,7 @@ namespace VRGame.Networking
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
-        [HideInInspector]
+        [HideInNormalInspector]
         [SerializeField]
         int m_ID;
 
@@ -38,9 +38,11 @@ namespace VRGame.Networking
                     m_RigidBody.velocity = Vector3.zero;
                 return;
             }
-
-            if (transform.position != m_LastSentPosition)
+            else if (transform.position != m_LastSentPosition)
             {
+                if (Debug.isDebugBuild)
+                    Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
+
                 m_LastSentPosition = transform.position;
 
                 float3 roundedPos = new float3();
