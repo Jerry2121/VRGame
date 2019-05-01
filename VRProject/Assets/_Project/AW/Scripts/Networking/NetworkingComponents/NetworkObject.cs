@@ -28,7 +28,7 @@ namespace VRGame.Networking {
         {
             if (m_NetComponents.ContainsKey(ID))
             {
-                Debug.LogError(string.Format("There is already a registered component for ID {0}", ID.ToString()));
+                Debug.LogError(string.Format("There is already a registered component for ID {0}", ID.ToString()), gameObject);
                 return false;
             }
 
