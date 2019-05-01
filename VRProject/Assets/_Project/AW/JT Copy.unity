@@ -5088,17 +5088,17 @@ PrefabInstance:
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1593165
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7013493
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.92749786
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300288230848432401, guid: 680a2ffbaf98a7047825ace67da2a8ac,
         type: 3}
@@ -10345,6 +10345,8 @@ MonoBehaviour:
   PuzzlePowerUp: {fileID: 1678777002}
   PuzzleWrong: {fileID: 1582063713}
   PuzzleCompletedSound: {fileID: 180374975}
+  PuzzleLightingBolt: {fileID: 0}
+  PuzzleLightingBolt2: {fileID: 0}
 --- !u!4 &1765875719
 Transform:
   m_ObjectHideFlags: 0

@@ -29,23 +29,21 @@ namespace VRGame.Networking
 
         public virtual void Reset()
         {
-            if(CheckParentsForNetworkObject(this.transform) == false)
+            if(CheckObjectForNetworkObject(this.transform) == false)
             {
-                Debug.LogError("NetworkObjectComponent -- No Parents of this object have a NetworkObject component!", this);
+                Debug.LogError("NetworkObjectComponent -- This object and its parents do not have a NetworkObject component!", this);
             }
         }
 
-        protected static bool CheckParentsForNetworkObject(Transform obj)
+        protected static bool CheckObjectForNetworkObject(Transform obj)
         {
-            Transform parent = obj.transform.parent;
-
-            if (parent == null)
+            if (obj == null)
                 return false;
 
-            if (parent.GetComponent<NetworkObject>() != null)
+            if (obj.GetComponent<NetworkObject>() != null)
                 return true;
 
-            return CheckParentsForNetworkObject(parent);
+            return CheckObjectForNetworkObject(obj.transform.parent);
         }
 
         public static NetworkObject GetNetworkObjectForObject(Transform obj)
