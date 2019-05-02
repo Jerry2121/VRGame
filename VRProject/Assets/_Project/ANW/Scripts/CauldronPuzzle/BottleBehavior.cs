@@ -7,26 +7,12 @@ public class BottleBehavior : MonoBehaviour
     public int liquidID;
     public Transform bottleTop;
     public Transform bottleBottom;
-
-    public float addToPourCooldown;
-    float pourCooldown;
+    public Transform bottleReset;
 
     public GameObject cauldronFill;
 
-    private void Start()
-    {
-        pourCooldown = 0f;
-    }
-
     private void Update()
     {
-        
-        if (pourCooldown > 0)
-        {
-            pourCooldown -= Time.deltaTime;
-            return;
-        }
-
         if (bottleBottom.transform.position.y > bottleTop.transform.position.y)
         {
             Debug.Log("The bottle is spilling.");
@@ -38,9 +24,18 @@ public class BottleBehavior : MonoBehaviour
                 {
                     Debug.Log("HIT!");
                     cauldronFill.GetComponent<CauldronBehavior>().CheckMixture(liquidID);
-                    pourCooldown = 5f;
                 }
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {        
+        if (collision.gameObject.tag == "CauldronFill")
+        {
+            Debug.Log("The bottle doesn't go in the cauldron.");
+            gameObject.transform.position = bottleReset.position;
+            gameObject.transform.rotation = bottleReset.rotation;
         }
     }
 }

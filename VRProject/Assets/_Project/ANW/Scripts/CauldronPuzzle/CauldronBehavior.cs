@@ -9,6 +9,8 @@ public class CauldronBehavior : MonoBehaviour
     public int correctMixturesNeeded;
     public int correctMixturesCompleted;
     public int mixtureNeededID;
+    public float addToMixCooldown;
+    float mixCooldown;
 
     public GameObject cauldronMarking;
     public GameObject cauldronFill;
@@ -22,9 +24,12 @@ public class CauldronBehavior : MonoBehaviour
 
     float fillLerp;
 
+    
+
 
     private void Start()
     {
+        mixCooldown = 0;
         markingLerping = false;
         markingLerp = 0;
         mixtureNeededID = Random.Range(0, 6);
@@ -33,13 +38,18 @@ public class CauldronBehavior : MonoBehaviour
 
     void Update()
     {
+        mixCooldown -= Time.deltaTime;
+        
+
         if (correctMixturesCompleted >= correctMixturesNeeded)
         {
             mixtureFinished = true;
             cauldronMarking.GetComponent<Renderer>().material.color = new Color32(0, 0, 0, 0);
         }
-
-        fillLerp = correctMixturesCompleted / correctMixturesNeeded;
+        Debug.Log("Correct Mixtures Completed: " + correctMixturesCompleted);
+        Debug.Log("Correct mixtures needed: " + correctMixturesNeeded);
+        fillLerp = (float)correctMixturesCompleted / correctMixturesNeeded;
+        Debug.Log(fillLerp);
         cauldronFill.GetComponent<Renderer>().material.color = Color.Lerp(cauldronFillStart, cauldronFillEnd, fillLerp);
 
         if (markingLerping)
@@ -56,6 +66,11 @@ public class CauldronBehavior : MonoBehaviour
 
     public void CheckMixture(int liquidID)
     {
+        if (mixCooldown > 0)
+        {
+            return;
+        }
+
         if (mixtureFinished)
         {
             return;
@@ -64,10 +79,13 @@ public class CauldronBehavior : MonoBehaviour
         if (liquidID == mixtureNeededID)
         {
             correctMixturesCompleted++;
+            mixCooldown = addToMixCooldown;
         }
-        else
+
+        else if (liquidID != mixtureNeededID)
         {
             correctMixturesCompleted = 0;
+            mixCooldown = addToMixCooldown;
         }
         UpdateMixture(liquidID);
     }
@@ -85,5 +103,3 @@ public class CauldronBehavior : MonoBehaviour
         markingLerping = true;
     }
 }
-
-
