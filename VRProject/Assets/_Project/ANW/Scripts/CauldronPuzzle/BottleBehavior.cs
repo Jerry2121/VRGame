@@ -9,8 +9,6 @@ public class BottleBehavior : MonoBehaviour
     public Transform bottleBottom;
     public Transform bottleReset;
 
-    public GameObject cauldronFill;
-
     private void Update()
     {
         if (bottleBottom.transform.position.y > bottleTop.transform.position.y)
@@ -20,10 +18,10 @@ public class BottleBehavior : MonoBehaviour
             if (Physics.Raycast(bottleTop.position, Vector3.down, out hit))
             {
                 Debug.DrawRay(bottleTop.position, Vector3.down, Color.red);
-                if (hit.collider.tag == "CauldronFill")
+                if (hit.collider.name == "CauldronFill")
                 {
                     Debug.Log("HIT!");
-                    cauldronFill.GetComponent<CauldronBehavior>().CheckMixture(liquidID);
+                    hit.collider.gameObject.GetComponent<CauldronBehavior>().CheckMixture(liquidID);
                 }
             }
         }
