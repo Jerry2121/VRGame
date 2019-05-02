@@ -16,6 +16,8 @@ namespace VRGame.Networking
         Instantiate,    // Ins
         Rotation,       // Rot
         LoadedIn,       // LIN
+        PuzzleStarted,  // PuS
+        PuzzleProgress, // PuP
         PuzzleComplete, // PuC
         Disconnected,   // Dco
     }
@@ -55,6 +57,9 @@ namespace VRGame.Networking
 
                 case "LIN":
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
+
+                case "PuS":
+                    return NetworkMessageContent.PuzzleStarted; //ClientID|ObjectID
 
                 case "PuC":                                     
                     return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)

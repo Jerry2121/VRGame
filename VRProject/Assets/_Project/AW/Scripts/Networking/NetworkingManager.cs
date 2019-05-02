@@ -41,7 +41,7 @@ namespace VRGame.Networking
         {
             if(s_Instance != null)
             {
-                Debug.LogError("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
+                Debug.LogWarning("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
                 Destroy(this);
                 return;
             }
@@ -310,6 +310,7 @@ namespace VRGame.Networking
 
         public void Disconnect()
         {
+            Debug.Log("Disconnect " + (this == s_Instance));
             if (m_Server != null)
                 StopHost();
             else
@@ -330,7 +331,8 @@ namespace VRGame.Networking
             if (m_Client != null)
             {
                 m_Client.Disconnect();
-                Destroy(m_Client, 1f);
+               // Debug.Log("Client =");
+                //Destroy(m_Client);
                 m_Client = null;
             }
 

@@ -46,7 +46,7 @@ namespace VRGame.Networking
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkClient -- Start: Client created");
 
-            m_ConnectionTimer = new Timer(15000);
+            m_ConnectionTimer = new Timer(15000/2);
             m_ConnectionTimer.Elapsed += OnConnectionTimerDone;
             m_ConnectionTimer.Enabled = true;
         }
@@ -71,6 +71,14 @@ namespace VRGame.Networking
 
             DataStreamReader stream;
             NetworkEvent.Type cmd;
+
+            if (m_Done)
+            {
+                m_Connection.Disconnect(m_Driver);
+                m_Connection = default(NetworkConnection);
+                Destroy(this);
+                return;
+            }
 
             while ((cmd = m_Connection.PopEvent(m_Driver, out stream)) !=
                    NetworkEvent.Type.Empty)
@@ -162,6 +170,7 @@ namespace VRGame.Networking
             {
                 Debug.Log("NetworkClient -- Failed To Connect");
                 NetworkingManager.s_Instance.Disconnect();
+                //GetComponent<NetworkingManager>().Disconnect();
             }
         }
 
@@ -178,7 +187,7 @@ namespace VRGame.Networking
             }
         }
 
-        public virtual void WriteMessage(string message)
+        public void WriteMessage(string message)
         {
             m_MessageList.Add(message);
         }
@@ -299,7 +308,7 @@ namespace VRGame.Networking
             NetworkingManager.s_Instance.DestroyPlayer(clientID);
         }
 
-        public virtual void Disconnect()
+        public void Disconnect()
         {
             m_Done = true;
         }
@@ -319,7 +328,7 @@ namespace VRGame.Networking
         //    }
         //}
         
-        public virtual int ClientID()
+        public int ClientID()
         {
             return m_ClientID;
         }
