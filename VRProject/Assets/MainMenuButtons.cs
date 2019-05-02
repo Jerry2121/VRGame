@@ -17,6 +17,7 @@ public class MainMenuButtons : MonoBehaviour
     public GameObject PutOnHeadSetCanvas;
     [Header("HostGameOptions")]
     public TMP_InputField WorldName;
+    public TMP_InputField PlayerUsername;
     public GameObject DifficultyDropDown;
     public Toggle AllowHintsToggle;
     public Toggle Allowsavingtoggle;
@@ -50,9 +51,10 @@ public class MainMenuButtons : MonoBehaviour
     }
     public void CreateGameTEST()
     {
-        if (string.IsNullOrWhiteSpace(WorldName.text) == false)
+        if (string.IsNullOrWhiteSpace(WorldName.text) == false && string.IsNullOrWhiteSpace(PlayerUsername.text) == false)
         {
             PlayerPrefs.SetString("WorldName", WorldName.text);
+            PlayerPrefs.SetString("PlayerUsername", PlayerUsername.text);
             PlayerPrefs.SetInt("Difficulty", DifficultyDropDown.GetComponent<TMP_Dropdown>().value);
             if (AllowHintsToggle.isOn)
             {
