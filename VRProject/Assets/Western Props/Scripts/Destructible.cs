@@ -33,9 +33,9 @@ public class Destructible : MonoBehaviour {
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject != grabbedBy && grabbed)
+        if (collision.gameObject != grabbedBy && grabbed)
         {
             Instantiate(destroyedVersion, transform.position, transform.rotation);
             Destroy(this.gameObject);
