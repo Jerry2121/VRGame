@@ -29,11 +29,12 @@ public class CauldronBehavior : MonoBehaviour
 
     private void Start()
     {
+        correctMixturesCompleted = 0;
         mixCooldown = 0;
         markingLerping = false;
         markingLerp = 0;
         mixtureNeededID = Random.Range(0, 6);
-        cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[Random.Range(0, 6)];
+        cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[mixtureNeededID];
     }
 
     void Update()
@@ -78,12 +79,14 @@ public class CauldronBehavior : MonoBehaviour
 
         if (liquidID == mixtureNeededID)
         {
+            Debug.Log("DING DING");
             correctMixturesCompleted++;
             mixCooldown = addToMixCooldown;
         }
 
         else if (liquidID != mixtureNeededID)
         {
+            Debug.Log("donk donk");
             correctMixturesCompleted = 0;
             mixCooldown = addToMixCooldown;
         }
