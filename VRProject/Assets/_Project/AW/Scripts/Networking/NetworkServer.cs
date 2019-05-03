@@ -179,17 +179,20 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Position:
                     PositionMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.Rotation:
+                    RotationMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.ClientID:
                     IDMessage(i);
                     return false;
                 case NetworkMessageContent.Instantiate:
                     InstantiateMessage(recievedMessage);
                     break;
-                case NetworkMessageContent.Rotation:
-                    RotationMessage(recievedMessage);
-                    break;
                 case NetworkMessageContent.LoadedIn:
                     LoadedInMessage(recievedMessage, i);
+                    break;
+                case NetworkMessageContent.PuzzleStarted:
+                    PuzzleStartedMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.None:
                     break;
@@ -203,11 +206,6 @@ namespace VRGame.Networking
         void MoveMessage(string recievedMessage)
         {
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float z);
-
-            //if (m_Players == null)
-            //return;
-
-            //NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
 
             WriteMessage(recievedMessage);
         }
@@ -308,6 +306,11 @@ namespace VRGame.Networking
                 m_Players.Add(clientID, serverObj);
             
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, x, y, z));
+        }
+
+        void PuzzleStartedMessage(string recievedMessage)
+        {
+            WriteMessage(recievedMessage);
         }
 
         public string ServerIPAddress()

@@ -40,8 +40,8 @@ namespace VRGame.Networking
             }
             else if (transform.position != m_LastSentPosition)
             {
-                if (Debug.isDebugBuild)
-                    Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
+                //if (Debug.isDebugBuild)
+                    //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
 
                 m_LastSentPosition = transform.position;
 
@@ -51,23 +51,16 @@ namespace VRGame.Networking
                 roundedPos.y = (float)Math.Round(transform.position.y, 3);
                 roundedPos.z = (float)Math.Round(transform.position.z, 3);
 
-                NetworkingManager.s_Instance.SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
+                SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
             }
         }
 
-        //public void RecieveMoveMessage(float xMov, float zMov)
-        //{
-        //    transform.Translate(xMov * 0.5f, 0, zMov * 0.5f);
-        //}
-
-        public void MoveTo(float x, float y, float z)
+        public override void SendNetworkMessage(string messageToSend)
         {
-            float3 position = new float3(x, y, z);
-            transform.position = position;
-            m_LastSentPosition = position;
+            NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
         }
 
-        public override void RecieveMessage(string recievedMessage)
+        public override void RecieveNetworkMessage(string recievedMessage)
         {
             //Debug.Log(" -- Recieved Pos Msg", this.gameObject);
 
@@ -76,6 +69,13 @@ namespace VRGame.Networking
 
             MoveTo(x, y, z);
 
+        }
+
+        public void MoveTo(float x, float y, float z)
+        {
+            float3 position = new float3(x, y, z);
+            transform.position = position;
+            m_LastSentPosition = position;
         }
 
         public override void RegisterSelf()

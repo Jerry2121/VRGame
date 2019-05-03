@@ -55,7 +55,7 @@ namespace VRGame.Networking {
                 return;
             }
 
-            m_NetComponents[componentID].RecieveMessage(recievedMessage);
+            m_NetComponents[componentID].RecieveNetworkMessage(recievedMessage);
         }
 
         [ExecuteInEditMode]
