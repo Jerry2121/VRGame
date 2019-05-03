@@ -16,6 +16,7 @@ TagManager:
   - P1Progress1
   - P1Progress2
   - CauldronFill
+  - Burnable
   layers:
   - Default
   - TransparentFX
