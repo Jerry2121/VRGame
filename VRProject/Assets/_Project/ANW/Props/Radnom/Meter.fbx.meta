@@ -15,9 +15,11 @@ ModelImporter:
     2300000: Arrow
     2300002: Meter
     2300004: Thing
+    2300006: //RootNode
     3300000: Arrow
     3300002: Meter
     3300004: Thing
+    3300006: //RootNode
     4300000: Thing
     4300002: Arrow
     4300004: Meter

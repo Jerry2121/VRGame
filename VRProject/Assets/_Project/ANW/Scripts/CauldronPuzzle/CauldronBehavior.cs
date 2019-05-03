@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CauldronBehavior : MonoBehaviour
 {
+    // Whether or not the mixture is finished
     public bool mixtureFinished;
 
+    // How many mixtures are needed? (set in the inspector)
     public int correctMixturesNeeded;
+    //How many mixtures have been completed?
     public int correctMixturesCompleted;
+    // What bottle needs to be poured into the cauldron
     public int mixtureNeededID;
     public float addToMixCooldown;
     float mixCooldown;
