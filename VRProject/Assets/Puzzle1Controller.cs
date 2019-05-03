@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
 
-public class Puzzle1Controller : MonoBehaviour
+public class Puzzle1Controller : NetworkedPuzzleController
 {
     public bool PuzzleStarted;
     public bool PuzzleCompleted;
@@ -19,6 +20,9 @@ public class Puzzle1Controller : MonoBehaviour
     public GameObject PuzzleLightingBolt;
     public GameObject PuzzleLightingBolt2;
 
+    public override int ID { get => m_ID; protected set => m_ID = value; }
+
+    private int m_ID;
 
     private void Update()
     {
@@ -26,6 +30,7 @@ public class Puzzle1Controller : MonoBehaviour
         {
             PuzzlePoweredUp = true;
             PuzzleLightingBolt.SetActive(true);
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleStartedMessage(NetworkingManager.ClientID(), m_ID));
         }
         if (PuzzlePoweredUp && !ran1)
         {
@@ -65,6 +70,39 @@ public class Puzzle1Controller : MonoBehaviour
         PuzzleCompletedSound.Play();
         PuzzleStarted = false;
         PuzzleCompleted = true;
+    }
+
+    public override void RecieveNetworkMessage(string recievedMessage)
+    {
+        switch (NetworkTranslater.GetMessageContentType(recievedMessage))
+        {
+            case NetworkMessageContent.PuzzleStarted:
+                PuzzlePoweredUp = true;
+                PuzzleLightingBolt.SetActive(true);
+                break;
+
+            case NetworkMessageContent.PuzzleProgress:
+                break;
+
+            case NetworkMessageContent.PuzzleComplete:
+                break;
+        }
+
+    }
+
+    public override void SendNetworkMessage(string messageToSend)
+    {
+        NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
+    }
+
+    public override void SetID(int newID)
+    {
+        if (newID > -1)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("Puzzle1Controller -- SetID: ID set to {0}", newID));
+            ID = newID;
+        }
     }
 
     //private void OnTriggerEnter(Collider other)

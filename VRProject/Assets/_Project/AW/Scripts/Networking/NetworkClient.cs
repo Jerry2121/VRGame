@@ -308,6 +308,14 @@ namespace VRGame.Networking
             NetworkingManager.s_Instance.DestroyPlayer(clientID);
         }
 
+        void PuzzleStartedMessage(string recievedMessage)
+        {
+            if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int puzzleID) == false)
+                return;
+
+            GameManager.s_Instance.PassPuzzleNetworkMessage(recievedMessage, puzzleID);
+        }
+
         public void Disconnect()
         {
             m_Done = true;

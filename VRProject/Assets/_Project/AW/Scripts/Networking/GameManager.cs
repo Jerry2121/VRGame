@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRGame.Networking;
 
+
 public class GameManager : MonoBehaviour
 {
-    static GameManager s_Instance;
+    public static GameManager s_Instance;
 
-    List<INetworkMessageReciever> m_PuzzleControllers;
+    [SerializeField]
+    NetworkedPuzzleController[] m_PuzzleControllers;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(s_Instance != null)
+        if (s_Instance != null)
         {
             Debug.LogWarning("GameManager -- Start: Instance was not equal to null! Destroying this component!");
             Destroy(this);
@@ -20,11 +22,15 @@ public class GameManager : MonoBehaviour
         }
         s_Instance = this;
 
+        for (int i = 0; i < m_PuzzleControllers.Length; i++)
+        {
+            m_PuzzleControllers[i].SetID(i);
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PassPuzzleNetworkMessage(string recievedMessage, int puzzleID)
     {
-        
+        m_PuzzleControllers[puzzleID].RecieveNetworkMessage(recievedMessage);
     }
 }

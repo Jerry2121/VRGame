@@ -21,7 +21,7 @@ namespace VRGame.Networking
 
         public abstract void SendNetworkMessage(string messageToSend);
 
-        public abstract void SetID(int ID);
+        public abstract void SetID(int newID);
 
         [ExecuteAlways]
         public virtual void SetNetworkObject(NetworkObject newNetworkObject)

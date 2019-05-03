@@ -59,10 +59,13 @@ namespace VRGame.Networking
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
 
                 case "PuS":
-                    return NetworkMessageContent.PuzzleStarted; //ClientID|ObjectID
+                    return NetworkMessageContent.PuzzleStarted; //ClientID|PuzzleID|PuS
+
+                case "PuP":
+                    return NetworkMessageContent.PuzzleProgress;
 
                 case "PuC":                                     
-                    return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC|Complete (0 for no, 1 for yes)
+                    return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC
 
                 case "Dco":                                     
                     return NetworkMessageContent.Disconnected;  // ClientID||Dco
@@ -301,6 +304,23 @@ namespace VRGame.Networking
             return false;
         }
 
+        public static bool TranslatePuzzleStartedMessage(string message, out int clientID, out int puzzleID)
+        {
+            clientID = puzzleID = -1;
+            if(GetMessageContentType(message) != NetworkMessageContent.PuzzleStarted)
+            {
+                Debug.LogError("NOOOOOOO");
+                return false;
+            }
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out puzzleID))
+                return true;
+
+            return false;
+        }
+
         #endregion
 
         #region CreateMessage
@@ -368,6 +388,11 @@ namespace VRGame.Networking
         public static string CreateDisconnectedMessage(int clientID)
         {
             return string.Format("{0}||Dco", clientID);
+        }
+
+        public static string CreatePuzzleStartedMessage(int clientID, int puzzleID)
+        {
+            return string.Format("{0}|{1}|PuS", clientID, puzzleID);
         }
 
         #endregion
