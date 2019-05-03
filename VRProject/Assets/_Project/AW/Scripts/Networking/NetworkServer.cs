@@ -207,11 +207,6 @@ namespace VRGame.Networking
         {
             NetworkTranslater.TranslateMoveMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float z);
 
-            //if (m_Players == null)
-            //return;
-
-            //NetworkingManager.Instance.playerDictionary[playerID].RecieveMoveMessage(x, z);
-
             WriteMessage(recievedMessage);
         }
 

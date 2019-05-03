@@ -6468,6 +6468,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108004163}
   m_Mesh: {fileID: 4300000, guid: 2797a1e5240980a41a5c432cb694063d, type: 3}
+--- !u!1 &1135754184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135754185}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1135754185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135754184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.448975, y: -19.616467, z: 2.2140265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141884784
 GameObject:
   m_ObjectHideFlags: 0
@@ -9994,8 +10024,8 @@ MonoBehaviour:
   PuzzlePowerUp: {fileID: 1678777002}
   PuzzleWrong: {fileID: 1582063713}
   PuzzleCompletedSound: {fileID: 180374975}
-  PuzzleLightingBolt: {fileID: 0}
-  PuzzleLightingBolt2: {fileID: 0}
+  PuzzleLightingBolt: {fileID: 1135754184}
+  PuzzleLightingBolt2: {fileID: 1135754184}
 --- !u!4 &1765875719
 Transform:
   m_ObjectHideFlags: 0
