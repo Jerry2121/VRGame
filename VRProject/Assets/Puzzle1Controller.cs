@@ -77,14 +77,17 @@ public class Puzzle1Controller : NetworkedPuzzleController
         switch (NetworkTranslater.GetMessageContentType(recievedMessage))
         {
             case NetworkMessageContent.PuzzleStarted:
+                Debug.Log("Puzzle1Controller -- RecieveNetworkMessage: Recieved PuzzleStarted message");
                 PuzzlePoweredUp = true;
                 PuzzleLightingBolt.SetActive(true);
                 break;
 
             case NetworkMessageContent.PuzzleProgress:
+                Debug.Log("Puzzle1Controller -- RecieveNetworkMessage: Recieved PuzzleProgress message");
                 break;
 
             case NetworkMessageContent.PuzzleComplete:
+                Debug.Log("Puzzle1Controller -- RecieveNetworkMessage: Recieved PuzzleComplete message");
                 break;
         }
 
