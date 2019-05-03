@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VRGame.Networking
 {
-    public abstract class NetworkObjectComponent : MonoBehaviour
+    public abstract class NetworkObjectComponent : MonoBehaviour, INetworkMessageReciever
     {
 
         public abstract NetworkObject m_NetworkObject { get; protected set; }
@@ -17,7 +17,9 @@ namespace VRGame.Networking
                 Debug.Log(string.Format("Failed to register for ID {0}", ID), this.gameObject);
         }
 
-        public abstract void RecieveMessage(string recievedMessage);
+        public abstract void RecieveNetworkMessage(string recievedMessage);
+
+        public abstract void SendNetworkMessage(string messageToSend);
 
         public abstract void SetID(int ID);
 
