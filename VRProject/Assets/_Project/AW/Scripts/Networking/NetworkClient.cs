@@ -214,6 +214,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.Rotation:
                     RotationMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.PuzzleStarted:
+                    PuzzleStartedMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.Disconnected:
                     DisconnectedMessage(recievedMessage);
                     break;
@@ -294,6 +297,7 @@ namespace VRGame.Networking
 
         void PuzzleStartedMessage(string recievedMessage)
         {
+            Debug.Log("Client GOT MESAGEWFALUG");
             if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int puzzleID) == false)
                 return;
 
