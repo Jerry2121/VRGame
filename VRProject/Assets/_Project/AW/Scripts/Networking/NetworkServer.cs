@@ -310,7 +310,6 @@ namespace VRGame.Networking
 
         void PuzzleStartedMessage(string recievedMessage)
         {
-            Debug.Log("SERVER GOT PUZZLE STARTED!!!!");
             WriteMessage(recievedMessage);
         }
 

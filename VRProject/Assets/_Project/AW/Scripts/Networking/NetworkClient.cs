@@ -297,7 +297,6 @@ namespace VRGame.Networking
 
         void PuzzleStartedMessage(string recievedMessage)
         {
-            Debug.Log("Client GOT MESAGEWFALUG");
             if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int puzzleID) == false)
                 return;
 
