@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Puzzle1WheelController : MonoBehaviour
 {
+    public GameObject wheel;
     public Vector3 Wheelposition;
     public float WheelRotateX;
     public float WheelRotateY;
@@ -51,8 +52,8 @@ public class Puzzle1WheelController : MonoBehaviour
             //Debug.Log("Hand forward prior = " + transform.forward);
 
             float rot = Vector3.SignedAngle(forward, handDirection, new Vector3(1,0,0));
-            Quaternion rotation = Quaternion.Euler(rot + 180, 0, 0);
-            transform.rotation = rotation;
+            Quaternion rotation = Quaternion.Euler(0, 270, -rot + 180);
+            wheel.transform.rotation = rotation;
            // Debug.Log("Dir: " + handDirection);
            // Debug.Log("Angle = " + rot);
             //transform.LookAt(transform.position + handDirection);

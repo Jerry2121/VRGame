@@ -34,8 +34,8 @@ public sealed class Logger
         Application.logMessageReceivedThreaded += HandleLogThreaded;
         Application.quitting += WriteApplicationLog;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR && DEVELOPMENT_BUILD
-        DebugConsole.Instance.WriteLine("Checking Console");
-        debugToConsole = true;
+        DebugConsole.s_Instance.WriteLine("Checking Console");
+        m_DebugToConsole = true;
 #endif
         Debug.Log("Logger initialized");
     }
