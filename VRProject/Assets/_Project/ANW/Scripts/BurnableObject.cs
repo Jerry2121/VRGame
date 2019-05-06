@@ -9,13 +9,14 @@ public class BurnableObject : MonoBehaviour
     // How long the player will burn annoyingly for.
     public float playerBurnDuration;
     // how long the player has been burning for already.
+    [SerializeField]
     float playerBurningDuration;
 
     // How long the object has been in contact with fire.
-    [HideInInspector] public float burnTimer;
+    public float burnTimer;
     // How long the object needs to stay in contact with fire to ignite.
     public float burnPoint;
-
+    [SerializeField]
     // Is the object burning?
     bool burningDown;
     // How long has the object BEEN burning?    
@@ -44,8 +45,10 @@ public class BurnableObject : MonoBehaviour
                 burnDownTimer += Time.deltaTime;
                 if (burnDownTimer > burnDownTime)
                 {
-                    Instantiate(destroyedVersion, transform.position, transform.rotation);
+                    burningDown = false;
                     Destroy(this.gameObject);
+                    Instantiate(destroyedVersion, transform.position, transform.rotation);
+                    
                 }
             }
 
@@ -56,6 +59,8 @@ public class BurnableObject : MonoBehaviour
                 {
                     particleEffects.SetActive(false);
                     burnRadius.SetActive(false);
+                    burningDown = false;
+                    playerBurningDuration = 0;
                 }
             }
                 return;
@@ -86,6 +91,7 @@ public class BurnableObject : MonoBehaviour
 
         if (burnTimer >= burnPoint)
         {
+            burnTimer = 0;
             burningDown = true;
             Burn();
         }
