@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRGame.Networking;
 
-public class Puzzle1Controller : NetworkedPuzzleController
+public class Puzzle1Controller : NetworkObjectComponent
 {
     public bool PuzzleStarted;
     public bool PuzzleCompleted;
@@ -11,7 +11,7 @@ public class Puzzle1Controller : NetworkedPuzzleController
     public bool ProgressMade;
     public bool ProgressMade1;
     public bool ProgressMade2;
-    public GameObject PuzzleWheel;
+    public Puzzle1WheelController m_WheelController;
     public Light Puzzle1Light;
     private bool ran1;
     public AudioSource PuzzlePowerUp;
@@ -21,16 +21,25 @@ public class Puzzle1Controller : NetworkedPuzzleController
     public GameObject PuzzleLightingBolt2;
 
     public override int ID { get => m_ID; protected set => m_ID = value; }
+    [HideInNormalInspector]
+    [SerializeField]
+    int m_ID;
 
-    private int m_ID;
+    public override NetworkObject m_NetworkObject { get; protected set; }
+
+    void Start()
+    {
+        m_NetworkObject = GetNetworkObjectForObject(this.transform);
+        RegisterSelf();
+    }
 
     private void Update()
     {
-        if(!PuzzleCompleted && !PuzzleStarted && PuzzleWheel.GetComponent<Puzzle1WheelCollider>().Spins > 5 && !PuzzlePoweredUp)
+        if(!PuzzleCompleted && !PuzzleStarted && m_WheelController.spins > 5 && !PuzzlePoweredUp)
         {
             PuzzlePoweredUp = true;
             PuzzleLightingBolt.SetActive(true);
-            SendNetworkMessage(NetworkTranslater.CreatePuzzleStartedMessage(NetworkingManager.ClientID(), m_ID));
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleStartedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
         }
         if (PuzzlePoweredUp && !ran1)
         {
@@ -107,6 +116,21 @@ public class Puzzle1Controller : NetworkedPuzzleController
                 Debug.Log(string.Format("Puzzle1Controller -- SetID: ID set to {0}", newID));
             ID = newID;
         }
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+    }
+
+    public override void RegisterSelf()
+    {
+        base.RegisterSelf();
+    }
+
+    public override void SetNetworkObject(NetworkObject newNetworkObject)
+    {
+        base.SetNetworkObject(newNetworkObject);
     }
 
     //private void OnTriggerEnter(Collider other)

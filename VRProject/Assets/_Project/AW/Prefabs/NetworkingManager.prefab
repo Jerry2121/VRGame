@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 100656, guid: bf9f4253a04c3724e8628d1f0046c866, type: 3}
   - {fileID: 104670, guid: 06570ef7d42fd0940a7181d33ef3e3e2, type: 3}
   - {fileID: 104822, guid: 2542c0c9b732a7443b932fdee19d5cc8, type: 3}
-  - {fileID: 5277829446006531619, guid: 58dd50e98bcf70f4eb724250d55c6b9d, type: 3}
+  - {fileID: 4413727322204654220, guid: f689d4da0eb9d1a40a3d0959b0d0ffc8, type: 3}
   playerPrefab: {fileID: 1321403880711187725, guid: 80a566a7c8906064dbc32260e483da3c,
     type: 3}
   m_NetworkAddress: 10.47.1.42

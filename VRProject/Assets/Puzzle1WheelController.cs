@@ -9,6 +9,7 @@ public class Puzzle1WheelController : MonoBehaviour
     //public float WheelRotateX;
     //public float WheelRotateY;
     // Start is called before the first frame update
+    public int spins;
 
     public GameObject grabbedBy;
     public bool grabbed;

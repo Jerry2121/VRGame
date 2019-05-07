@@ -59,7 +59,7 @@ namespace VRGame.Networking
                     return NetworkMessageContent.LoadedIn;      // ClientID||LIN
 
                 case "PuS":
-                    return NetworkMessageContent.PuzzleStarted; //ClientID|PuzzleID|PuS
+                    return NetworkMessageContent.PuzzleStarted; //ClientID|ObjectID|PuS
 
                 case "PuP":
                     return NetworkMessageContent.PuzzleProgress;
@@ -304,9 +304,9 @@ namespace VRGame.Networking
             return false;
         }
 
-        public static bool TranslatePuzzleStartedMessage(string message, out int clientID, out int puzzleID)
+        public static bool TranslatePuzzleStartedMessage(string message, out int clientID, out int objectID, out int componentID)
         {
-            clientID = puzzleID = -1;
+            clientID = objectID = componentID = -1;
             if(GetMessageContentType(message) != NetworkMessageContent.PuzzleStarted)
             {
                 Debug.LogError("NOOOOOOO");
@@ -315,7 +315,7 @@ namespace VRGame.Networking
 
             string[] splitMessage = message.Split('|');
 
-            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out puzzleID))
+            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID) && int.TryParse(splitMessage[3], out componentID))
                 return true;
 
             return false;
@@ -390,9 +390,9 @@ namespace VRGame.Networking
             return string.Format("{0}||Dco", clientID);
         }
 
-        public static string CreatePuzzleStartedMessage(int clientID, int puzzleID)
+        public static string CreatePuzzleStartedMessage(int clientID, int objectID, int componentID)
         {
-            return string.Format("{0}|{1}|PuS", clientID, puzzleID);
+            return string.Format("{0}|{1}|PuS|{2}", clientID, objectID, componentID);
         }
 
         #endregion
