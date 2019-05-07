@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164244496}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.22, z: 0.000000029802322}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0.000000029802322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487222114809664751}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!1 &384620409738331228
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +254,6 @@ MonoBehaviour:
   bottleTop: {fileID: 5022908871430177092}
   bottleBottom: {fileID: 5022908872743471318}
   bottleReset: {fileID: 5022908871555909634}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &487222114527219971
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +417,7 @@ Transform:
   - {fileID: 487222114527219968}
   - {fileID: 487222115384168014}
   - {fileID: 1164244497}
+  - {fileID: 5500461644431705693}
   m_Father: {fileID: 7016139236330111574}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -573,7 +573,6 @@ MonoBehaviour:
   bottleTop: {fileID: 487222114527219968}
   bottleBottom: {fileID: 487222115384168014}
   bottleReset: {fileID: 5022908871436196087}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &487222114832983175
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +767,6 @@ MonoBehaviour:
   bottleTop: {fileID: 5022908872624292224}
   bottleBottom: {fileID: 5022908872578305888}
   bottleReset: {fileID: 5022908873109315386}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &487222114839230190
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +782,7 @@ GameObject:
   - component: {fileID: 487222115947977129}
   m_Layer: 0
   m_Name: CauldronFill
-  m_TagString: CauldronFill
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1172,7 +1170,6 @@ MonoBehaviour:
   bottleTop: {fileID: 5022908871253706051}
   bottleBottom: {fileID: 5022908872871152039}
   bottleReset: {fileID: 5022908872813689658}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &487222115384168001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1394,6 @@ MonoBehaviour:
   bottleTop: {fileID: 5022908872385970197}
   bottleBottom: {fileID: 5022908872396419240}
   bottleReset: {fileID: 5022908871444382089}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &487222116141853015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1681,6 @@ MonoBehaviour:
   bottleTop: {fileID: 5022908873359822065}
   bottleBottom: {fileID: 5022908872401610342}
   bottleReset: {fileID: 5022908872541180239}
-  cauldronFill: {fileID: 487222114839230190}
 --- !u!1 &1418068845588736855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1740,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 487222115007500416}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2466326304352529813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5500461644431705693}
+  m_Layer: 0
+  m_Name: SnapOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5500461644431705693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466326304352529813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.22, z: 0.000000029802322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 487222114809664751}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2605559166448973750
 GameObject:
