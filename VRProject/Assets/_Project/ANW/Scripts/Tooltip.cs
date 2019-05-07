@@ -15,7 +15,7 @@ public class Tooltip : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            ToolTipCanvas.SetActive(!ToolTipCanvas.activeSelf);
+            ToolTipCanvas.GetComponent<Canvas>().enabled = !ToolTipCanvas.GetComponent<Canvas>().enabled;
         }
     }
 }
