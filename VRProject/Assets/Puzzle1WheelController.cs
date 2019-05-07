@@ -51,7 +51,7 @@ public class Puzzle1WheelController : MonoBehaviour
 
             //Debug.Log("Hand forward prior = " + transform.forward);
 
-            float rot = Vector3.SignedAngle(forward, handDirection, new Vector3(1,0,0));
+            float rot = Vector3.SignedAngle(new Vector3(0,0,1), handDirection, new Vector3(1,0,0));
             Quaternion rotation = Quaternion.Euler(0, 270, -rot + 180 + 105);
             wheel.transform.rotation = rotation;
            // Debug.Log("Dir: " + handDirection);
