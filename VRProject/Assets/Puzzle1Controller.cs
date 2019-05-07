@@ -78,6 +78,7 @@ public class Puzzle1Controller : NetworkedPuzzleController
         {
             case NetworkMessageContent.PuzzleStarted:
                 Debug.Log("Puzzle1Controller -- RecieveNetworkMessage: Recieved PuzzleStarted message");
+                if (PuzzlePoweredUp) return;
                 PuzzlePoweredUp = true;
                 PuzzleLightingBolt.SetActive(true);
                 break;

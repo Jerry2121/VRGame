@@ -15,6 +15,14 @@ public class MeterAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(P1Wheel == null)
+        {
+            P1Wheel = GameObject.Find("P1Wheel(Clone)");
+            return;
+        }
+        if (ran)
+            return;
+
         if (P1Wheel.GetComponent<Puzzle1WheelCollider>().Spins == 1)
         {
             this.gameObject.GetComponent<Animator>().SetBool("Spin1", true);

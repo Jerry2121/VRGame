@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Puzzle1WheelController : MonoBehaviour
 {
-    public GameObject wheel;
-    public Vector3 Wheelposition;
-    public float WheelRotateX;
-    public float WheelRotateY;
+    //public GameObject wheel;
+    //public Vector3 Wheelposition;
+    //public float WheelRotateX;
+    //public float WheelRotateY;
     // Start is called before the first frame update
 
     public GameObject grabbedBy;
     public bool grabbed;
 
-    public float angle;
-    Vector3 forward;
+    //public float angle;
+    //Vector3 forward;
 
     void Start()
     {
-        Wheelposition = this.transform.position;
-        forward = transform.forward;
+        //Wheelposition = this.transform.position;
+        //forward = transform.forward;
     }
 
     // Update is called once per frame
@@ -53,7 +53,7 @@ public class Puzzle1WheelController : MonoBehaviour
 
             float rot = Vector3.SignedAngle(new Vector3(0,0,1), handDirection, new Vector3(1,0,0));
             Quaternion rotation = Quaternion.Euler(0, 270, -rot + 180 + 105);
-            wheel.transform.rotation = rotation;
+            transform.rotation = rotation;
            // Debug.Log("Dir: " + handDirection);
            // Debug.Log("Angle = " + rot);
             //transform.LookAt(transform.position + handDirection);
