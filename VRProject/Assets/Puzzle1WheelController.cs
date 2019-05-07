@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
 
 public class Puzzle1WheelController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Puzzle1WheelController : MonoBehaviour
     public GameObject grabbedBy;
     public bool grabbed;
 
+    NetworkObject m_NetworkObject;
+
     //public float angle;
     //Vector3 forward;
 
@@ -21,6 +24,7 @@ public class Puzzle1WheelController : MonoBehaviour
     {
         //Wheelposition = this.transform.position;
         //forward = transform.forward;
+        m_NetworkObject = GetComponent<NetworkObjectComponent>().m_NetworkObject;
     }
 
     // Update is called once per frame
@@ -68,6 +72,7 @@ public class Puzzle1WheelController : MonoBehaviour
         {
             grabbedBy = null;
             grabbed = false;
+            m_NetworkObject.SetPlayerInteracting(false);
         }
     }
 
@@ -77,6 +82,7 @@ public class Puzzle1WheelController : MonoBehaviour
         {
             grabbedBy = other.gameObject;
             grabbed = true;
+            m_NetworkObject.SetPlayerInteracting(true);
         }
     }
 }
