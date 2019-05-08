@@ -24,7 +24,7 @@ public class Puzzle1WheelController : MonoBehaviour
     {
         //Wheelposition = this.transform.position;
         //forward = transform.forward;
-        m_NetworkObject = GetComponent<NetworkObjectComponent>().m_NetworkObject;
+        m_NetworkObject = NetworkObjectComponent.GetNetworkObjectForObject(transform);
     }
 
     // Update is called once per frame
