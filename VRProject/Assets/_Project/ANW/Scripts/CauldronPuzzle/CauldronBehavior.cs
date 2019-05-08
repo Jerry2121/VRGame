@@ -21,7 +21,8 @@ public class CauldronBehavior : NetworkObjectComponent
     public GameObject cauldronFill;
 
     public GameObject paper;
-    public Material[] paperMarkings;
+    [HideInInspector] public Material[] paperMarkings;
+    public Material[] paperMarkingsArray;
     public Material paperNullMarking;
 
     public Color32[] cauldronMarkingsArray;    
@@ -47,6 +48,7 @@ public class CauldronBehavior : NetworkObjectComponent
         markingLerp = 0;
         mixtureNeededID = Random.Range(0, 6);
         cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[mixtureNeededID];
+        paperMarkings = paper.GetComponent<Renderer>().materials;
     }
 
     void Update()
@@ -92,7 +94,8 @@ public class CauldronBehavior : NetworkObjectComponent
         if (liquidID == mixtureNeededID)
         {
             correctMixturesCompleted++;
-            paper.GetComponent<MeshRenderer>().materials[correctMixturesCompleted] = paperMarkings[liquidID];
+            paperMarkings[correctMixturesCompleted] = paperMarkingsArray[liquidID];
+            paper.GetComponent<Renderer>().materials = paperMarkings;
             mixCooldown = addToMixCooldown;
         }
 
@@ -101,8 +104,9 @@ public class CauldronBehavior : NetworkObjectComponent
             correctMixturesCompleted = 0;
             for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
             {
-                paper.GetComponent<MeshRenderer>().materials[i] = paperNullMarking;
+                paperMarkings[i] = paperNullMarking;
             }
+            paper.GetComponent<Renderer>().materials = paperMarkings;
             mixCooldown = addToMixCooldown;
         }
         UpdateMixture(liquidID);
