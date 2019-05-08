@@ -33,6 +33,7 @@ public class TooltipBehavior : MonoBehaviour
             if (hit.collider.gameObject.GetComponent<Tooltip>() == true)
             {
                 InteractionIndicator.transform.position = hit.collider.gameObject.transform.position + new Vector3(0, 1.3f, 0);
+                InteractionIndicator.GetComponent<LookAtPlayer>().LookNow();
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log("Did Hit");
                 if(name == "LeftHandAnchor")
