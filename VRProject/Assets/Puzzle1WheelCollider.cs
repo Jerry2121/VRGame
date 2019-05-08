@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Puzzle1WheelCollider : MonoBehaviour
 {
-    public int Spins;
+    //public int Spins;
     public bool Pos1;
     public bool Pos2;
     public bool Pos3;
@@ -13,6 +13,9 @@ public class Puzzle1WheelCollider : MonoBehaviour
     public GameObject Pos2c;
     public GameObject Pos3c;
     public GameObject Pos4c;
+
+    Puzzle1WheelController m_WheelController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,8 @@ public class Puzzle1WheelCollider : MonoBehaviour
         Pos2c.SetActive(false);
         Pos3c.SetActive(true);
         Pos4c.SetActive(false);
+
+        m_WheelController = GetComponent<Puzzle1WheelController>();
     }
 
     // Update is called once per frame
@@ -32,7 +37,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "P1HandlePos1" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == false && Pos2 == false && Pos3 == false)
+        if(other.gameObject.tag == "P1HandlePos1" && Pos1 == false && Pos2 == false && Pos3 == false)
         {
             Pos1 = true;
             Pos2 = false;
@@ -43,7 +48,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(false);
             Pos4c.SetActive(false);
         }
-        if (other.gameObject.tag == "P1HandlePos2" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == true && !SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos2" && Pos1 == true && !SecondTrack)
         {
             Pos1 = true;
             Pos2 = true;
@@ -53,7 +58,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(true);
             Pos4c.SetActive(false);
         }
-        if (other.gameObject.tag == "P1HandlePos3" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == true && Pos2 == true && !SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos3" && Pos1 == true && Pos2 == true && !SecondTrack)
         {
             Pos1 = true;
             Pos2 = true;
@@ -63,7 +68,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(false);
             Pos4c.SetActive(true);
         }
-        if (other.gameObject.tag == "P1HandlePos4" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == true && Pos2 == true && Pos3 == true && !SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos4" && Pos1 == true && Pos2 == true && Pos3 == true && !SecondTrack)
         {
             Pos1 = false;
             Pos2 = false;
@@ -72,9 +77,10 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos2c.SetActive(false);
             Pos3c.SetActive(false);
             Pos4c.SetActive(false);
-            Spins++;
+            m_WheelController.spins++;
         }
-        if(other.gameObject.tag == "P1HandlePos3" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == false && Pos2 == false && Pos3 == false)
+
+        if(other.gameObject.tag == "P1HandlePos3" && Pos1 == false && Pos2 == false && Pos3 == false)
         {
             Pos3 = true;
             Pos2 = false;
@@ -85,7 +91,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(false);
             Pos4c.SetActive(false);
         }
-        if (other.gameObject.tag == "P1HandlePos2" && GetComponent<Puzzle1WheelController>().grabbed && Pos3 == true && SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos2" && Pos3 == true && SecondTrack)
         {
             Pos3 = true;
             Pos2 = true;
@@ -95,7 +101,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(false);
             Pos4c.SetActive(false);
         }
-        if (other.gameObject.tag == "P1HandlePos1" && GetComponent<Puzzle1WheelController>().grabbed && Pos3 == true && Pos2 == true && SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos1" && Pos3 == true && Pos2 == true && SecondTrack)
         {
             Pos3 = true;
             Pos2 = true;
@@ -105,7 +111,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos3c.SetActive(false);
             Pos4c.SetActive(true);
         }
-        if (other.gameObject.tag == "P1HandlePos4" && GetComponent<Puzzle1WheelController>().grabbed && Pos1 == true && Pos2 == true && Pos3 == true && SecondTrack)
+        if (other.gameObject.tag == "P1HandlePos4" && Pos1 == true && Pos2 == true && Pos3 == true && SecondTrack)
         {
             Pos1 = false;
             Pos2 = false;
@@ -114,7 +120,7 @@ public class Puzzle1WheelCollider : MonoBehaviour
             Pos2c.SetActive(false);
             Pos3c.SetActive(true);
             Pos4c.SetActive(false);
-            Spins++;
+            m_WheelController.spins++;
         }
     }
 }

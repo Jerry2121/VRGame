@@ -162,7 +162,7 @@ public class OVRGrabbable : MonoBehaviour
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
 
-        m_NetObj = GetComponent<NetworkObject>();
+        m_NetObj = GetComponent<NetworkObjectComponent>().m_NetworkObject;
     }
 
     void OnDestroy()
