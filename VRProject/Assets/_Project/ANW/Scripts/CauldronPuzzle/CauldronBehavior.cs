@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
 
-public class CauldronBehavior : MonoBehaviour
+public class CauldronBehavior : NetworkObjectComponent
 {
     // Whether or not the mixture is finished
     public bool mixtureFinished;
@@ -19,7 +20,11 @@ public class CauldronBehavior : MonoBehaviour
     public GameObject cauldronMarking;
     public GameObject cauldronFill;
 
-    public Color32[] cauldronMarkingsArray;
+    public GameObject paper;
+    public Material[] paperMarkings;
+    public Material paperNullMarking;
+
+    public Color32[] cauldronMarkingsArray;    
     public Color32 cauldronFillStart;
     public Color32 cauldronFillEnd;
 
@@ -28,8 +33,11 @@ public class CauldronBehavior : MonoBehaviour
 
     float fillLerp;
 
-    
-
+    public override NetworkObject m_NetworkObject { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+    public override int ID { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+    [HideInNormalInspector]
+    [SerializeField]
+    int m_ID;
 
     private void Start()
     {
@@ -83,15 +91,18 @@ public class CauldronBehavior : MonoBehaviour
 
         if (liquidID == mixtureNeededID)
         {
-            Debug.Log("DING DING");
             correctMixturesCompleted++;
+            paper.GetComponent<MeshRenderer>().materials[correctMixturesCompleted] = paperMarkings[liquidID];
             mixCooldown = addToMixCooldown;
         }
 
         else if (liquidID != mixtureNeededID)
         {
-            Debug.Log("donk donk");
             correctMixturesCompleted = 0;
+            for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
+            {
+                paper.GetComponent<MeshRenderer>().materials[i] = paperNullMarking;
+            }
             mixCooldown = addToMixCooldown;
         }
         UpdateMixture(liquidID);
@@ -108,5 +119,20 @@ public class CauldronBehavior : MonoBehaviour
         }
 
         markingLerping = true;
+    }
+
+    public override void RecieveNetworkMessage(string recievedMessage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SendNetworkMessage(string messageToSend)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SetID(int newID)
+    {
+        throw new System.NotImplementedException();
     }
 }
