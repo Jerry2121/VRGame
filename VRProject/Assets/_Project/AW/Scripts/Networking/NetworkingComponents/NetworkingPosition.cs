@@ -34,8 +34,8 @@ namespace VRGame.Networking
             //If the object is controlled by its local client, and this isn't an object local to us, return
             if ((m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false) || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false))
             {
-                if (m_RigidBody != null)
-                    m_RigidBody.velocity = Vector3.zero;
+                //if (m_RigidBody != null)
+                    //m_RigidBody.velocity = Vector3.zero;
                 return;
             }
             else if (transform.position != m_LastSentPosition)
