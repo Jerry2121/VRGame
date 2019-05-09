@@ -8,14 +8,14 @@ public class TooltipBehavior : MonoBehaviour
 {
     public GameObject InteractionIndicator;
     public GameObject ToolTipCanvas;
-    private GameObject ToolTipGameObject;
-    private GameObject HintGameObject;
-    private GameObject HintDesc;
+    public GameObject ToolTipGameObject;
+    public GameObject HintGameObject;
+    public GameObject HintDesc;
     private GameObject ToolTipName;
     private GameObject ToolTipDesc;
     private GameObject ToolTipGrabbable;
-    private bool HintActive;
-    private bool ToolTipActive;
+    public bool HintActive;
+    public bool ToolTipActive;
     public static bool interactL = false;
     public static bool interactR = false;
     private void Start()
@@ -25,9 +25,6 @@ public class TooltipBehavior : MonoBehaviour
         ToolTipName = GameObject.Find("ToolTipName");
         ToolTipDesc = GameObject.Find("ToolTipDesc");
         ToolTipGrabbable = GameObject.Find("ToolTipGrabbable");
-        ToolTipGameObject = GameObject.Find("ToolTipInfo");
-        HintGameObject = GameObject.Find("HintInfo");
-        HintDesc = GameObject.Find("HintDesc");
     }
     // do a raycast
     // if (hit.gameObject.GetComponent<Tooltip>() == true)
@@ -67,7 +64,7 @@ public class TooltipBehavior : MonoBehaviour
                     InteractionIndicator.transform.position = hit.collider.gameObject.transform.position + new Vector3(0, 20, 0);
                 return;
             }
-            if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.X))
+            if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.X) && !ToolTipActive)
             {
                 ToolTipName.GetComponent<TextMeshProUGUI>().text = "Name: " + hit.collider.gameObject.GetComponent<Tooltip>().name;
                 ToolTipDesc.GetComponent<TextMeshProUGUI>().text = "Description: " + hit.collider.gameObject.GetComponent<Tooltip>().Description;
@@ -80,7 +77,7 @@ public class TooltipBehavior : MonoBehaviour
                     ToolTipGrabbable.GetComponent<TextMeshProUGUI>().text = "Grabbable: False";
                 }
                 hit.collider.gameObject.GetComponent<Outline>().enabled = true;
-                ToolTipCanvas.GetComponent<Canvas>().enabled = true;
+                ToolTipCanvas.GetComponent<Canvas>().enabled = !ToolTipCanvas.GetComponent<Canvas>().enabled;
                 ToolTipActive = true;
             }
             if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.Y) && !HintActive)
