@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using cakeslice;
 
 public class TooltipBehavior : MonoBehaviour
 {
@@ -35,7 +36,6 @@ public class TooltipBehavior : MonoBehaviour
                 InteractionIndicator.transform.position = hit.collider.gameObject.transform.position + new Vector3(0, 1.3f, 0);
                 InteractionIndicator.GetComponent<LookAtPlayer>().LookNow();
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                Debug.Log("Did Hit");
                 if(name == "LeftHandAnchor")
                 {
                     interactL = true;
@@ -71,15 +71,13 @@ public class TooltipBehavior : MonoBehaviour
                 {
                     ToolTipGrabbable.GetComponent<TextMeshProUGUI>().text = "Grabbable: False";
                 }
-                Debug.Log("Pressed Button X");
+                hit.collider.gameObject.GetComponent<Outline>().enabled = !hit.collider.gameObject.GetComponent<Outline>().enabled;
                 ToolTipCanvas.GetComponent<Canvas>().enabled = !ToolTipCanvas.GetComponent<Canvas>().enabled;
             }
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
-            
         }
     }
 }
