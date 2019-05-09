@@ -29,7 +29,7 @@ public class BottleBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {        
-        if (collision.gameObject.tag == "CauldronFill")
+        if (collision.gameObject.GetComponent<CauldronBehavior>() == true)
         {
             Debug.Log("The bottle doesn't go in the cauldron.");
             gameObject.transform.position = bottleReset.position;

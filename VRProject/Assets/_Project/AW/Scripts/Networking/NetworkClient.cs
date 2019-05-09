@@ -297,10 +297,10 @@ namespace VRGame.Networking
 
         void PuzzleStartedMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int puzzleID) == false)
+            if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            GameManager.s_Instance.PassPuzzleNetworkMessage(recievedMessage, puzzleID);
+            NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
         }
 
         public void Disconnect()
