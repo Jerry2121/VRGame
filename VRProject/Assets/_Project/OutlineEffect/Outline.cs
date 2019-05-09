@@ -29,6 +29,8 @@ using System.Collections.Generic;
 namespace cakeslice
 {
     [ExecuteInEditMode]
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Turnoffoutline))]
     [RequireComponent(typeof(Renderer))]
     public class Outline : MonoBehaviour
     {
@@ -41,6 +43,10 @@ namespace cakeslice
         public int originalLayer;
         [HideInInspector]
         public Material[] originalMaterials;
+
+        private void Start()
+        {
+        }
 
         private void Awake()
         {

@@ -11,7 +11,7 @@ namespace VRGame.Networking
     {
         [SerializeField] GameObject[] m_SpawnableGameObjects;
 
-        [SerializeField] GameObject playerPrefab;
+        [SerializeField] GameObject m_playerPrefab;
 
         [SerializeField] string m_NetworkAddress = "localhost";
         [SerializeField] int m_NetworkPort = 9000;
@@ -234,7 +234,7 @@ namespace VRGame.Networking
             //    //spawn player 2
 
 
-            NetworkPlayer player = Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<NetworkPlayer>();
+            NetworkPlayer player = Instantiate(m_playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<NetworkPlayer>();
 
             m_PlayerDictionary[clientID] = player;
             player.SetPlayerID(clientID);
@@ -371,7 +371,7 @@ namespace VRGame.Networking
             if(scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 SpawnSceneObjectsOverNetwork();
-                InstantiateOverNetwork("Player", Vector3.zero);
+                InstantiateOverNetwork("Player", new Vector3(0,1,0));
             }
         }
 

@@ -8,9 +8,14 @@ public class TooltipBehavior : MonoBehaviour
 {
     public GameObject InteractionIndicator;
     public GameObject ToolTipCanvas;
+    private GameObject ToolTipGameObject;
+    private GameObject HintGameObject;
+    private GameObject HintDesc;
     private GameObject ToolTipName;
     private GameObject ToolTipDesc;
     private GameObject ToolTipGrabbable;
+    private bool HintActive;
+    private bool ToolTipActive;
     public static bool interactL = false;
     public static bool interactR = false;
     private void Start()
@@ -20,6 +25,9 @@ public class TooltipBehavior : MonoBehaviour
         ToolTipName = GameObject.Find("ToolTipName");
         ToolTipDesc = GameObject.Find("ToolTipDesc");
         ToolTipGrabbable = GameObject.Find("ToolTipGrabbable");
+        ToolTipGameObject = GameObject.Find("ToolTipInfo");
+        HintGameObject = GameObject.Find("HintInfo");
+        HintDesc = GameObject.Find("HintDesc");
     }
     // do a raycast
     // if (hit.gameObject.GetComponent<Tooltip>() == true)
@@ -71,13 +79,36 @@ public class TooltipBehavior : MonoBehaviour
                 {
                     ToolTipGrabbable.GetComponent<TextMeshProUGUI>().text = "Grabbable: False";
                 }
-                hit.collider.gameObject.GetComponent<Outline>().enabled = !hit.collider.gameObject.GetComponent<Outline>().enabled;
-                ToolTipCanvas.GetComponent<Canvas>().enabled = !ToolTipCanvas.GetComponent<Canvas>().enabled;
+                hit.collider.gameObject.GetComponent<Outline>().enabled = true;
+                ToolTipCanvas.GetComponent<Canvas>().enabled = true;
+                ToolTipActive = true;
+            }
+            if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.Y) && !HintActive)
+            {
+                HintActive = true;
             }
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+        }
+        if (HintActive)
+        {
+            ToolTipGameObject.SetActive(false);
+            HintGameObject.SetActive(true);
+            HintDesc.GetComponent<TextMeshProUGUI>().text = "Description: " + hit.collider.gameObject.GetComponent<Tooltip>().HintDescription;
+            if (OVRInput.GetUp(OVRInput.RawButton.Y) && HintActive)
+            {
+                HintGameObject.SetActive(false);
+                ToolTipGameObject.SetActive(true);
+                HintActive = false;
+            }
+        }
+        if (ToolTipActive && OVRInput.GetUp(OVRInput.RawButton.X))
+        {
+            ToolTipCanvas.GetComponent<Canvas>().enabled = false;
+            hit.collider.gameObject.GetComponent<Outline>().enabled = false;
+            ToolTipActive = false;
         }
     }
 }
