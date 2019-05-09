@@ -12,6 +12,8 @@ namespace VRGame.Networking
     {
         Vector3 m_LastSentPosition = Vector3.zero;
 
+        bool localControl; //If the object is currently under local control
+
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
         [HideInNormalInspector]
@@ -32,7 +34,7 @@ namespace VRGame.Networking
         void FixedUpdate()
         {
             //If the object is controlled by its local client, and this isn't an object local to us, return
-            if ((m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false) || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false))
+            if (((m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false) || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false)) && localControl == false)
             {
                 //if (m_RigidBody != null)
                     //m_RigidBody.velocity = Vector3.zero;
@@ -41,7 +43,10 @@ namespace VRGame.Networking
             else if (transform.position != m_LastSentPosition)
             {
                 //if (Debug.isDebugBuild)
-                    //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
+                //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
+
+                if (localControl == false)
+                    localControl = true;
 
                 m_LastSentPosition = transform.position;
 
@@ -66,6 +71,8 @@ namespace VRGame.Networking
 
             if (NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componenentID, out float x, out float y, out float z) == false)
                 return;
+
+            localControl = false;
 
             MoveTo(x, y, z);
 
