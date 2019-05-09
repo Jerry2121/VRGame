@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
 [DisallowMultipleComponent]
+[RequireComponent(typeof(Outline))]
 public class Tooltip : MonoBehaviour
 {
     public string Name;
