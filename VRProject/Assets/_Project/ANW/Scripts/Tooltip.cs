@@ -10,6 +10,7 @@ public class Tooltip : MonoBehaviour
     public bool Grabbable;
     [Header("Max 64 Characters (INCLUDES SPACES)")]
     public string Description;
+    public string HintDescription;
     // public TextMesh tooltip;
     // public TextMesh hint;
 
