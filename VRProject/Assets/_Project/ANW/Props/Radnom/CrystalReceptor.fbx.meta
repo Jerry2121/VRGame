@@ -1,71 +1,15 @@
 fileFormatVersion: 2
-guid: 28051547a21b3ee40899a34d172eecb1
+guid: 89d47cf9b67326c498ea6936dc09fc73
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Button1
-    100004: Button2
-    100006: Button3
-    100008: Button4
-    100010: Button5
-    100012: Button6
-    100014: Button7
-    100016: Button8
-    100018: Button9
-    100020: ButtonA
     400000: //RootNode
-    400002: Button1
-    400004: Button2
-    400006: Button3
-    400008: Button4
-    400010: Button5
-    400012: Button6
-    400014: Button7
-    400016: Button8
-    400018: Button9
-    400020: ButtonA
-    2100000: Box
-    2100002: Light5
-    2100004: Light4
-    2100006: Light3
-    2100008: Light2
-    2100010: Light1
-    2100012: MasterLight
+    2100000: No Name
     2300000: //RootNode
-    2300002: Button1
-    2300004: Button2
-    2300006: Button3
-    2300008: Button4
-    2300010: Button5
-    2300012: Button6
-    2300014: Button7
-    2300016: Button8
-    2300018: Button9
-    2300020: ButtonA
     3300000: //RootNode
-    3300002: Button1
-    3300004: Button2
-    3300006: Button3
-    3300008: Button4
-    3300010: Button5
-    3300012: Button6
-    3300014: Button7
-    3300016: Button8
-    3300018: Button9
-    3300020: ButtonA
-    4300000: Cube
-    4300002: PowerBreaker
-    4300004: Button2
-    4300006: Button3
-    4300008: Button4
-    4300010: Button5
-    4300012: Button6
-    4300014: Button7
-    4300016: Button8
-    4300018: Button9
-    4300020: ButtonA
-    4300022: Button1
+    4300000: CrystalAccepter
+    4300002: CrystalReceptor
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -97,7 +41,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.15
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
