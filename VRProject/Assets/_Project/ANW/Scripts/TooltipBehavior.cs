@@ -11,11 +11,13 @@ public class TooltipBehavior : MonoBehaviour
     public GameObject ToolTipGameObject;
     public GameObject HintGameObject;
     public GameObject HintDesc;
+    public GameObject LeftHandAnchor;
+    public GameObject RightHandAnchor;
     private GameObject ToolTipName;
     private GameObject ToolTipDesc;
     private GameObject ToolTipGrabbable;
-    public bool HintActive;
-    public bool ToolTipActive;
+    public static bool HintActive;
+    public static bool ToolTipActive;
     public static bool interactL = false;
     public static bool interactR = false;
     private void Start()
@@ -31,7 +33,6 @@ public class TooltipBehavior : MonoBehaviour
     // { hit.gameObject.GetComponent<Tooltip>() }
     private void Update()
     {
-
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5))
@@ -60,8 +61,20 @@ public class TooltipBehavior : MonoBehaviour
                 {
                     interactR = false;
                 }
+                if (interactL)
+                {
+                    RightHandAnchor.GetComponent<TooltipBehavior>().enabled = false;
+                }
+                if (interactR)
+                {
+                    LeftHandAnchor.GetComponent<TooltipBehavior>().enabled = false;
+                }
                 if(!interactL && !interactR)
+                {
                     InteractionIndicator.transform.position = hit.collider.gameObject.transform.position + new Vector3(0, 20, 0);
+                    LeftHandAnchor.GetComponent<TooltipBehavior>().enabled = true;
+                    RightHandAnchor.GetComponent<TooltipBehavior>().enabled = true;
+                }
                 return;
             }
             if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.X) && !ToolTipActive)
@@ -80,32 +93,30 @@ public class TooltipBehavior : MonoBehaviour
                 ToolTipCanvas.GetComponent<Canvas>().enabled = !ToolTipCanvas.GetComponent<Canvas>().enabled;
                 ToolTipActive = true;
             }
+            else if (ToolTipActive && OVRInput.GetUp(OVRInput.RawButton.X) && !HintActive)
+            {
+                Debug.Log("foo");
+                ToolTipCanvas.GetComponent<Canvas>().enabled = false;
+                hit.collider.gameObject.GetComponent<Outline>().enabled = false;
+                ToolTipActive = false;
+            }
             if (hit.collider.gameObject.GetComponent<Tooltip>() == true && OVRInput.GetUp(OVRInput.RawButton.Y) && !HintActive)
             {
                 HintActive = true;
+                ToolTipGameObject.SetActive(false);
+                HintGameObject.SetActive(true);
+                HintDesc.GetComponent<TextMeshProUGUI>().text = "Description: " + hit.collider.gameObject.GetComponent<Tooltip>().HintDescription;
             }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-        }
-        if (HintActive)
-        {
-            ToolTipGameObject.SetActive(false);
-            HintGameObject.SetActive(true);
-            HintDesc.GetComponent<TextMeshProUGUI>().text = "Description: " + hit.collider.gameObject.GetComponent<Tooltip>().HintDescription;
-            if (OVRInput.GetUp(OVRInput.RawButton.Y) && HintActive)
+            else if (OVRInput.GetUp(OVRInput.RawButton.Y) && HintActive)
             {
                 HintGameObject.SetActive(false);
                 ToolTipGameObject.SetActive(true);
                 HintActive = false;
             }
         }
-        if (ToolTipActive && OVRInput.GetUp(OVRInput.RawButton.X))
+        else
         {
-            ToolTipCanvas.GetComponent<Canvas>().enabled = false;
-            hit.collider.gameObject.GetComponent<Outline>().enabled = false;
-            ToolTipActive = false;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
         }
     }
 }
