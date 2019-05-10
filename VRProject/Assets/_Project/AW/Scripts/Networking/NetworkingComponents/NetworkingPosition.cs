@@ -90,7 +90,7 @@ namespace VRGame.Networking
         public void MoveTo(float x, float y, float z)
         {
             float3 position = new float3(x, y, z);
-            transform.Translate((Vector3)position - transform.position);
+            transform.Translate((Vector3)position - transform.position, Space.Self);
             //transform.position = position;
             m_LastSentPosition = position;
         }
