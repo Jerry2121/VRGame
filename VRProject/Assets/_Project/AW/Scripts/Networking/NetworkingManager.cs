@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -371,7 +372,7 @@ namespace VRGame.Networking
             if(scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 SpawnSceneObjectsOverNetwork();
-                InstantiateOverNetwork("Player", new Vector3(0,1,0));
+                StartCoroutine(SpawnPlayer(new float3(0,1,0)));
             }
         }
 
@@ -389,6 +390,12 @@ namespace VRGame.Networking
                 Destroy(netObject.gameObject);
             }
 
+        }
+
+        IEnumerator SpawnPlayer(float3 spawnPosition)
+        {
+            yield return new WaitForSeconds(0.5f);
+            InstantiateOverNetwork("Player", spawnPosition);
         }
 
         public IPAddress NetworkAddress()
