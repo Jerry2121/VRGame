@@ -21,7 +21,7 @@ namespace VRGame.Networking
         int m_ID;
 
         Rigidbody m_RigidBody;
-
+        bool m_WasGravity;
         public override NetworkObject m_NetworkObject { get; protected set; }
 
         void Start()
@@ -47,6 +47,9 @@ namespace VRGame.Networking
 
                 if (localControl == false)
                     localControl = true;
+
+                if (m_RigidBody != null)
+                    m_RigidBody.useGravity = m_WasGravity;
 
                 m_LastSentPosition = transform.position;
 
@@ -74,6 +77,12 @@ namespace VRGame.Networking
 
             localControl = false;
 
+            if (m_RigidBody != null)
+            {
+                m_WasGravity = m_RigidBody.useGravity;
+                m_RigidBody.useGravity = false;
+            }
+
             MoveTo(x, y, z);
 
         }
@@ -81,7 +90,8 @@ namespace VRGame.Networking
         public void MoveTo(float x, float y, float z)
         {
             float3 position = new float3(x, y, z);
-            transform.position = position;
+            transform.Translate((Vector3)position - transform.position);
+            //transform.position = position;
             m_LastSentPosition = position;
         }
 
