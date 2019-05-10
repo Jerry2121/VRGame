@@ -27,6 +27,10 @@ namespace VRGame.Networking
         void Start()
         {
             m_RigidBody = GetComponent<Rigidbody>();
+            if (m_RigidBody != null)
+            {
+                m_WasGravity = m_RigidBody.useGravity;
+            }
             m_NetworkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
         }
@@ -78,10 +82,7 @@ namespace VRGame.Networking
             localControl = false;
 
             if (m_RigidBody != null)
-            {
-                m_WasGravity = m_RigidBody.useGravity;
                 m_RigidBody.useGravity = false;
-            }
 
             MoveTo(x, y, z);
 
@@ -90,8 +91,8 @@ namespace VRGame.Networking
         public void MoveTo(float x, float y, float z)
         {
             float3 position = new float3(x, y, z);
-            transform.Translate((Vector3)position - transform.position, Space.World);
-            //transform.position = position;
+            //transform.Translate((Vector3)position - transform.position, Space.World);
+            transform.position = position;
             m_LastSentPosition = position;
         }
 
