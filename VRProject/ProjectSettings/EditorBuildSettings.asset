@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/AW/NetMenu.unity
     guid: 9dce18dcd29f77347905b9f41ec48748
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/AW/NetworkingTest.unity
     guid: bae7e2dfd1af72e4a8663d545d0a10df
   - enabled: 1
     path: Assets/_Project/AW/JT2Copy.unity
     guid: 85de6529960815348b75abec20379767
   - enabled: 0
-    path: Assets/_Project/AW/JT Copy.unity
-    guid: 8f2c74aee3c802f42b8edcbf0b239544
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
