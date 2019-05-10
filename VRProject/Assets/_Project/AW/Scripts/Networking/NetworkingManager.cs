@@ -394,7 +394,7 @@ namespace VRGame.Networking
 
         IEnumerator SpawnPlayer(float3 spawnPosition)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.0f);
             InstantiateOverNetwork("Player", spawnPosition);
         }
 
