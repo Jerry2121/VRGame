@@ -9,11 +9,11 @@ public class CauldronBehavior : NetworkObjectComponent
     public bool mixtureFinished;
 
     // How many mixtures are needed? (set in the inspector)
-    public int correctMixturesNeeded;
+    [HideInInspector]public int correctMixturesNeeded = 5;
     //How many mixtures have been completed?
-    public int correctMixturesCompleted;
+    [HideInInspector]public int correctMixturesCompleted;
     // What bottle needs to be poured into the cauldron
-    public int mixtureNeededID;
+    [HideInInspector]public int mixtureNeededID;
     public float addToMixCooldown;
     float mixCooldown;
 
@@ -34,6 +34,9 @@ public class CauldronBehavior : NetworkObjectComponent
 
     float fillLerp;
 
+    public GameObject powerBreaker;
+    public bool buttonMix;
+
     public override NetworkObject m_NetworkObject { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
     public override int ID { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
     [HideInNormalInspector]
@@ -49,6 +52,7 @@ public class CauldronBehavior : NetworkObjectComponent
         mixtureNeededID = Random.Range(0, 6);
         cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[mixtureNeededID];
         paperMarkings = paper.GetComponent<Renderer>().materials;
+        powerBreaker = GameObject.Find("PowerBreaker");
     }
 
     void Update()
@@ -60,6 +64,17 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             mixtureFinished = true;
             cauldronMarking.GetComponent<Renderer>().material.color = new Color32(0, 0, 0, 0);
+            if (!buttonMix)
+            {
+                for (int i = 0; i < powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored.Length; i++)
+                {
+                    int tmp = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[i];
+                    int j = Random.Range(i, powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored.Length);
+                    powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[i] = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[j];
+                    powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[j] = tmp;
+                }
+                
+            }
         }
         Debug.Log("Correct Mixtures Completed: " + correctMixturesCompleted);
         Debug.Log("Correct mixtures needed: " + correctMixturesNeeded);
@@ -93,10 +108,12 @@ public class CauldronBehavior : NetworkObjectComponent
 
         if (liquidID == mixtureNeededID)
         {
+            powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = liquidID;
             correctMixturesCompleted++;
             paperMarkings[correctMixturesCompleted] = paperMarkingsArray[liquidID];
             paper.GetComponent<Renderer>().materials = paperMarkings;
             mixCooldown = addToMixCooldown;
+            
         }
 
         else if (liquidID != mixtureNeededID)
