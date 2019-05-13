@@ -1049,7 +1049,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0cb9e33a9d47be546ad69b2e27aa44c7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1111,12 +1111,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5aea291451f3d204991a12fa1691a1d3, type: 2}
   - {fileID: 2100000, guid: b60b285e38daf8b40b4a78d4a414d075, type: 2}
   paperMarkingsArray:
-  - {fileID: 2100000, guid: bb731e0c9bb5314428972ec92a373c2f, type: 2}
-  - {fileID: 2100000, guid: 1d7c4eaad4235e2469e56d308712ebd1, type: 2}
-  - {fileID: 2100000, guid: dca4a3f3decc58e42b9f9fc310c37aaa, type: 2}
-  - {fileID: 2100000, guid: b60b285e38daf8b40b4a78d4a414d075, type: 2}
-  - {fileID: 2100000, guid: 5aea291451f3d204991a12fa1691a1d3, type: 2}
-  - {fileID: 2100000, guid: d94f1f5a690dc6643b6e4d862d4db989, type: 2}
+  - {fileID: 2100000, guid: 49b6db6f2ec2fd1438cab01b23de2655, type: 2}
+  - {fileID: 2100000, guid: b482db0ce4b1bf4458ef2bfd30c1d021, type: 2}
+  - {fileID: 2100000, guid: 2afd14d4bb7e7434f9539862835a496e, type: 2}
+  - {fileID: 2100000, guid: b9fe55b510aa555458578b9e367c69bd, type: 2}
+  - {fileID: 2100000, guid: ba4d1a49435de274fb2208d0041bfb75, type: 2}
+  - {fileID: 2100000, guid: 46c72cc7bbb8ab44793d121ae7feb04d, type: 2}
   paperNullMarking: {fileID: 2100000, guid: 7ac400bfcdb437f478d484ccb312f583, type: 2}
   cauldronMarkingsArray:
   - serializedVersion: 2
@@ -1137,6 +1137,8 @@ MonoBehaviour:
   cauldronFillEnd:
     serializedVersion: 2
     rgba: 4278255360
+  powerBreaker: {fileID: 0}
+  buttonMix: 0
   m_ID: 0
 --- !u!1 &487222114867079833
 GameObject:
