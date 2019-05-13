@@ -27,8 +27,9 @@ namespace VRGame.Networking
 
         public static NetworkingManager s_Instance;
 
-        NetworkClient m_Client;
+        GameObject m_LocalPlayer;
 
+        NetworkClient m_Client;
         NetworkServer m_Server;
         bool m_Connected;
 
@@ -240,8 +241,11 @@ namespace VRGame.Networking
             m_PlayerDictionary[clientID] = player;
             player.SetPlayerID(clientID);
 
-            if (clientID == m_Client.ClientID()) //The message came from us, the local player
+            if (clientID == ClientID()) //The message came from us, the local player
+            { 
                 player.SetIsLocalPlayer();
+                m_LocalPlayer = player.gameObject;
+            }
 
             return player.gameObject;
         }
@@ -431,6 +435,11 @@ namespace VRGame.Networking
             if(s_Instance.m_Client != null)
                 return s_Instance.m_Client.ClientID();
             return -1;
+        }
+
+        public static GameObject GetLocalPlayer()
+        {
+            return s_Instance.m_LocalPlayer;
         }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

@@ -134,8 +134,11 @@ namespace VRGame.Networking
 
             string[] splitMessage = recievedMessage.Split('|');
 
-            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID))
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID))
+            {
                 return true;
+            }
 
             else return false;
         }
@@ -149,8 +152,12 @@ namespace VRGame.Networking
 
             string[] splitMessage = recievedMessage.Split('|');
 
-            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID) && int.TryParse(splitMessage[3], out componentID))
+            if (int.TryParse(splitMessage[0], out clientID) && 
+                int.TryParse(splitMessage[1], out objectID) && 
+                int.TryParse(splitMessage[3], out componentID))
+            {
                 return true;
+            }
 
             else return false;
         }
@@ -315,11 +322,36 @@ namespace VRGame.Networking
 
             string[] splitMessage = message.Split('|');
 
-            if (int.TryParse(splitMessage[0], out clientID) && int.TryParse(splitMessage[1], out objectID) && int.TryParse(splitMessage[3], out componentID))
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID) &&
+                int.TryParse(splitMessage[3], out componentID))
+            {
                 return true;
+            }
 
             return false;
         }
+
+        public static bool TranslatePuzzleProgressMessage(string message, out int clientID, out int objectID, out int componentID, out int numOne)
+        {
+            clientID = objectID = componentID = numOne = -1;
+
+            if (GetMessageContentType(message) != NetworkMessageContent.PuzzleProgress)
+                return false;
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID) &&
+                int.TryParse(splitMessage[3], out componentID) &&
+                int.TryParse(splitMessage[4], out numOne))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         #endregion
 
@@ -393,6 +425,11 @@ namespace VRGame.Networking
         public static string CreatePuzzleStartedMessage(int clientID, int objectID, int componentID)
         {
             return string.Format("{0}|{1}|PuS|{2}", clientID, objectID, componentID);
+        }
+
+        public static string CreatePuzzleProgressMessage(int clientID, int objectID, int componentID, int numOne)
+        {
+            return string.Format("{0}|{1}|PuP|{2}|{3}", clientID, objectID, componentID, numOne);
         }
 
         #endregion
