@@ -66,6 +66,7 @@ public class CauldronBehavior : NetworkObjectComponent
             cauldronMarking.GetComponent<Renderer>().material.color = new Color32(0, 0, 0, 0);
             if (buttonMix)
             {
+                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored;
                 for (int i = 0; i < powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored.Length; i++)
                 {
                     int tmp = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[i];
@@ -73,6 +74,7 @@ public class CauldronBehavior : NetworkObjectComponent
                     powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[i] = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[j];
                     powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[j] = tmp;
                 }
+                powerBreaker.GetComponent<PowerBreakerBehavior>().PaintLights();
 
                 buttonMix = false;
             }
