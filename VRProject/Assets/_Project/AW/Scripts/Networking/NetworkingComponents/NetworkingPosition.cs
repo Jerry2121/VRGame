@@ -53,7 +53,7 @@ namespace VRGame.Networking
                     localControl = true;
 
                 if (m_RigidBody != null)
-                    m_RigidBody.useGravity = false;
+                    m_RigidBody.useGravity = m_WasGravity;
 
                 m_LastSentPosition = transform.position;
 
@@ -82,7 +82,7 @@ namespace VRGame.Networking
             localControl = false;
 
             if (m_RigidBody != null)
-                m_RigidBody.useGravity = m_WasGravity;
+                m_RigidBody.useGravity = false;
 
             MoveTo(x, y, z);
 
