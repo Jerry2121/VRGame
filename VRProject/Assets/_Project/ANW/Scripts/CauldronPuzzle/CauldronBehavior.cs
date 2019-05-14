@@ -79,8 +79,6 @@ public class CauldronBehavior : NetworkObjectComponent
                 buttonMix = false;
             }
         }
-        Debug.Log("Correct Mixtures Completed: " + correctMixturesCompleted);
-        Debug.Log("Correct mixtures needed: " + correctMixturesNeeded);
         fillLerp = (float)correctMixturesCompleted / correctMixturesNeeded;
         Debug.Log(fillLerp);
         cauldronFill.GetComponent<Renderer>().material.color = Color.Lerp(cauldronFillStart, cauldronFillEnd, fillLerp);

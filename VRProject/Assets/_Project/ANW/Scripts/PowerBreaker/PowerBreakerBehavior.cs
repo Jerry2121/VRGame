@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
 
 public class PowerBreakerBehavior : MonoBehaviour
 {
@@ -20,13 +21,32 @@ public class PowerBreakerBehavior : MonoBehaviour
     public GameObject[] buttonLights;
     public Color32[] buttonLightsColors;
 
+    public bool puzzleCompleted;
+
+    private void Update()
+    {
+        if (correctMatchesCompleted == 5)
+        {
+            if (!puzzleCompleted)
+            {
+                CompletePuzzle();
+            }   
+            return;
+        }
+
+        numericButtonPressed.GetComponent<Outline>().enabled = true;
+        coloredButtonPressed.GetComponent<Outline>().enabled = true;
+
+        if (numericButtonPressed != null && coloredButtonPressed != null)
+        {
+            CheckButtonMatch();
+        }
+    }
     public void CheckButtonMatch()
     {
         if (numericButtonPressedID == coloredButtonPressedID)
         {
             correctMatchesCompleted++;
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(numericButtonPressed.transform.position, coloredButtonPressed.transform.position);
 
             numericButtonPressed.GetComponent<ButtonBehavior>().matchFound = true;
             numericButtonPressed = null;
@@ -55,6 +75,10 @@ public class PowerBreakerBehavior : MonoBehaviour
             buttonLights[i - 2].GetComponent<Light>().color = buttonLightsColors[tempInt];
         }
 
+        tempMaterials[7] = buttonLightsMaterials[0];
+
+        buttonLights[5].GetComponent<Light>().color = buttonLightsColors[0];
+
         for (int i = 0; i < buttonsNumeric.Length; i++)
         {
             buttonsNumeric[i].GetComponent<ButtonBehavior>().buttonID = buttonIDsNumeric[i];
@@ -66,5 +90,25 @@ public class PowerBreakerBehavior : MonoBehaviour
         }
 
         gameObject.GetComponent<MeshRenderer>().materials = tempMaterials;
+    }
+
+    public void CompletePuzzle()
+    {
+        Material[] tempMaterial = gameObject.GetComponent<MeshRenderer>().materials;
+        tempMaterial[7].color = buttonLightsColors[3];
+        buttonLights[5].GetComponent<Light>().color = buttonLightsColors[3];
+        for (int i = 2; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
+        {
+            buttonLights[i - 2].GetComponent<Light>().color = buttonLightsColors[3];
+            tempMaterial[i].color = buttonLightsColors[3];
+        }
+        gameObject.GetComponent<MeshRenderer>().materials = tempMaterial;
+        puzzleCompleted = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(numericButtonPressed.transform.position, coloredButtonPressed.transform.position);
     }
 }
