@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 7170208580388317716}
   - component: {fileID: 7170208580388317707}
   - component: {fileID: 6185540612106272924}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
