@@ -96,7 +96,7 @@ namespace VRGame.Networking
                             //stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
 
                             byte[] messageBytes = stream.ReadBytesAsArray(ref readerCtx, length);
-                            
+
                             //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
 
                             string recievedMessage = Encoding.UTF8.GetString(messageBytes);
@@ -140,18 +140,15 @@ namespace VRGame.Networking
                         continue;
                     }
 
-                    using (var writer = new DataStreamWriter(1024, Allocator.Temp))
-                    {
-                        string allMessages = NetworkTranslater.CombineMessages(currentMessages);
-                        SendMessages(Encoding.UTF8.GetBytes(allMessages), i);
-                    }
+                    string allMessages = NetworkTranslater.CombineMessages(currentMessages);
+                    SendMessages(Encoding.UTF8.GetBytes(allMessages), i);
                 }
             }
         }
 
         void SendMessages(byte[] buffer, int i)
         {
-            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            using (var writer = new DataStreamWriter(1024 * 64, Allocator.Temp))
             {
                 writer.Write(buffer);
 

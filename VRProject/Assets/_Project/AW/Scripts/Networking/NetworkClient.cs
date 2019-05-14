@@ -176,7 +176,7 @@ namespace VRGame.Networking
 
         void SendMessages(byte[] buffer)
         {
-            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            using (var writer = new DataStreamWriter(1024 * 64, Allocator.Temp))
             {
                 writer.Write(buffer);
 
@@ -191,7 +191,6 @@ namespace VRGame.Networking
         {
             m_MessageList.Add(message);
         }
-
 
         void TranslateMessage(string recievedMessage)
         {
