@@ -20,6 +20,9 @@ public class TooltipBehavior : MonoBehaviour
     public static bool ToolTipActive;
     public static bool interactL = false;
     public static bool interactR = false;
+    public Transform LeftHandOffset;
+    public Transform RightHandOffset;
+
     private void Start()
     {
         InteractionIndicator = GameObject.Find("InteractionIndicator");

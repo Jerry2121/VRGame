@@ -11,7 +11,9 @@ public class PowerBreakerBehavior : MonoBehaviour
 
     public int correctMatchesCompleted;
 
+    public GameObject numericButtonPressed;
     public int numericButtonPressedID;
+    public GameObject coloredButtonPressed;
     public int coloredButtonPressedID;
 
     public Material[] buttonLightsMaterials;
@@ -23,11 +25,21 @@ public class PowerBreakerBehavior : MonoBehaviour
         if (numericButtonPressedID == coloredButtonPressedID)
         {
             correctMatchesCompleted++;
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(numericButtonPressed.transform.position, coloredButtonPressed.transform.position);
+
+            numericButtonPressed.GetComponent<ButtonBehavior>().matchFound = true;
+            numericButtonPressed = null;
+
+            coloredButtonPressed.GetComponent<ButtonBehavior>().matchFound = true;
+            coloredButtonPressed = null;
         }
 
         else if (numericButtonPressedID != coloredButtonPressedID)
         {
             correctMatchesCompleted = 0;
+            numericButtonPressed = null;
+            coloredButtonPressed = null;
         }
     }
 
@@ -35,12 +47,12 @@ public class PowerBreakerBehavior : MonoBehaviour
     {
         Material[] tempMaterials = gameObject.GetComponent<MeshRenderer>().materials;
 
-        for (int i = 1; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
+        for (int i = 2; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
         {
-            int tempInt = buttonIDsColored[i - 1];
+            int tempInt = buttonIDsColored[i - 2];
             gameObject.GetComponent<MeshRenderer>().materials[i] = buttonLightsMaterials[tempInt];
-            buttonLights[i - 1].SetActive(true);
-            buttonLights[i - 1].GetComponent<Light>().color = buttonLightsColors[tempInt];
+            buttonLights[i - 2].SetActive(true);
+            buttonLights[i - 2].GetComponent<Light>().color = buttonLightsColors[tempInt];
         }
 
         for (int i = 0; i < buttonsNumeric.Length; i++)
