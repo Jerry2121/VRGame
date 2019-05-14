@@ -96,7 +96,7 @@ namespace VRGame.Networking
                             //stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
 
                             byte[] messageBytes = stream.ReadBytesAsArray(ref readerCtx, length);
-                            
+
                             //Debug.LogFormat("NetworkServer -- message bytes is {0}", BitConverter.ToString(messageBytes));
 
                             string recievedMessage = Encoding.UTF8.GetString(messageBytes);
@@ -140,18 +140,15 @@ namespace VRGame.Networking
                         continue;
                     }
 
-                    using (var writer = new DataStreamWriter(1024, Allocator.Temp))
-                    {
-                        string allMessages = NetworkTranslater.CombineMessages(currentMessages);
-                        SendMessages(Encoding.UTF8.GetBytes(allMessages), i);
-                    }
+                    string allMessages = NetworkTranslater.CombineMessages(currentMessages);
+                    SendMessages(Encoding.UTF8.GetBytes(allMessages), i);
                 }
             }
         }
 
         void SendMessages(byte[] buffer, int i)
         {
-            using (var writer = new DataStreamWriter(1024, Allocator.Temp))
+            using (var writer = new DataStreamWriter(1024 * 64, Allocator.Temp))
             {
                 writer.Write(buffer);
 
@@ -279,7 +276,7 @@ namespace VRGame.Networking
                 foreach (var objectID in m_NetworkedObjects.Keys)
                 {
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
-                    messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position));
+                    messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position, networkedObject.m_Rotation.value));
                 }
 
                 SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
@@ -288,7 +285,7 @@ namespace VRGame.Networking
 
         void InstantiateMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType,  out float x, out float y, out float z);
+            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType,  out float posX, out float posY, out float posZ, out float rotX, out float rotY, out float rotZ, out float rotW);
             
             //if (objectName == "Player")
             //return; //Players are setup when we get an ID message from the client
@@ -298,14 +295,14 @@ namespace VRGame.Networking
 
             objectID = m_NetworkedObjects.Count /*+ 101*/;
 
-            ServerObject serverObj = new ServerObject(clientID, objectID, objectType, x, y, z);
+            ServerObject serverObj = new ServerObject(clientID, objectID, objectType, posX, posY, posZ, rotX, rotY, rotZ, rotW);
 
             m_NetworkedObjects.Add(objectID, serverObj);
 
             if (objectType == "Player")
                 m_Players.Add(clientID, serverObj);
             
-            WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, x, y, z));
+            WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }
 
         void PuzzleStartedMessage(string recievedMessage)

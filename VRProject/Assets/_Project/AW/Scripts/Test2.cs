@@ -44,7 +44,7 @@ public class Test2 : MonoBehaviour
     {
         float foo = UnityEngine.Random.Range(-10, 10);
         float boo = UnityEngine.Random.Range(-10, 10);
-        NetworkingManager.s_Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo);
+        NetworkingManager.s_Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo, 0,0,0,0);
     }
 
     [ExecuteAlways]

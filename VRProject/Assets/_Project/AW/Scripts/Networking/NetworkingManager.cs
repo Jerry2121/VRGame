@@ -27,8 +27,9 @@ namespace VRGame.Networking
 
         public static NetworkingManager s_Instance;
 
-        NetworkClient m_Client;
+        GameObject m_LocalPlayer;
 
+        NetworkClient m_Client;
         NetworkServer m_Server;
         bool m_Connected;
 
@@ -173,26 +174,29 @@ namespace VRGame.Networking
 
         public void RecieveInstantiateMessage(string recievedMessage)
         {
-            if (NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType, out float x, out float y, out float z) == false)
+            if (NetworkTranslater.TranslateInstantiateMessage(
+                recievedMessage, out int clientID, out int objectID, out string objectType, out float posX, out float posY, out float posZ, out float rotX, out float rotY, out float rotZ, out float rotW) == false)
                 return;
 
             if (objectID == -1) //The message does not have a valid objectID
                 return;
 
             GameObject tempGO;
+            float3 position = new float3(posX, posY, posZ);
+            quaternion rotation = new quaternion(rotX, rotY, rotZ, rotW);
 
             Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
 
             //Do unique player stuff
             if (objectType == "Player")
             {
-                tempGO = InstantiatePlayer(clientID, objectID, objectType, x, y, z);
+                tempGO = InstantiatePlayer(clientID, objectID, objectType, position, rotation);
                 if (tempGO == null) return;
             }
             //otherwise see if it is a spawnable object
             else if (m_SpawnableObjectDictionary.ContainsKey(objectType))
             {
-                tempGO = Instantiate(m_SpawnableObjectDictionary[objectType], new Vector3(x,y,z), Quaternion.identity);
+                tempGO = Instantiate(m_SpawnableObjectDictionary[objectType], position, rotation);
             }
             //we couldn't spawn it. It likely is either not on the Manager, or doesn't have a NetworkObject component
             else
@@ -218,7 +222,7 @@ namespace VRGame.Networking
                 netObj.SetLocal();
         }
 
-        GameObject InstantiatePlayer(int clientID, int objectID, string objectName, float x, float y, float z)
+        GameObject InstantiatePlayer(int clientID, int objectID, string objectName, float3 position, quaternion rotation)
         {
             //If we have already set up the player, return
             if (m_PlayerDictionary.ContainsKey(clientID) && m_PlayerDictionary[clientID] != null)
@@ -235,13 +239,16 @@ namespace VRGame.Networking
             //    //spawn player 2
 
 
-            NetworkPlayer player = Instantiate(m_playerPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<NetworkPlayer>();
+            NetworkPlayer player = Instantiate(m_playerPrefab, position, rotation).GetComponent<NetworkPlayer>();
 
             m_PlayerDictionary[clientID] = player;
             player.SetPlayerID(clientID);
 
-            if (clientID == m_Client.ClientID()) //The message came from us, the local player
+            if (clientID == ClientID()) //The message came from us, the local player
+            { 
                 player.SetIsLocalPlayer();
+                m_LocalPlayer = player.gameObject;
+            }
 
             return player.gameObject;
         }
@@ -273,15 +280,15 @@ namespace VRGame.Networking
             Destroy(player);
         }
 
-        public void InstantiateOverNetwork(string objectName, float x, float y, float z)
+        public void InstantiateOverNetwork(string objectName, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float rotW)
         {
             if(m_Client != null)
-                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID(), -1, objectName, x, y, z));
+                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID(), -1, objectName, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }
 
-        public void InstantiateOverNetwork(string objectName, Vector3 position)
+        public void InstantiateOverNetwork(string objectName, float3 position, quaternion rotation)
         {
-            InstantiateOverNetwork(objectName, position.x, position.y, position.z);
+            InstantiateOverNetwork(objectName, position.x, position.y, position.z, rotation.value.x, rotation.value.y, rotation.value.z, rotation.value.w);
         }
 
         public void StartHost()
@@ -372,7 +379,7 @@ namespace VRGame.Networking
             if(scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 SpawnSceneObjectsOverNetwork();
-                StartCoroutine(SpawnPlayer(new float3(0,1,0)));
+                StartCoroutine(SpawnPlayer(new float3(0,1,0), quaternion.identity));
             }
         }
 
@@ -386,16 +393,16 @@ namespace VRGame.Networking
             foreach(var netObject in netObjects)
             {
                 if(IsHost()) //If we are the host we'll spawn them over the network, otherwise we will just destroy them,
-                    InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position);
+                    InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position, netObject.transform.rotation);
                 Destroy(netObject.gameObject);
             }
 
         }
 
-        IEnumerator SpawnPlayer(float3 spawnPosition)
+        IEnumerator SpawnPlayer(float3 spawnPosition, quaternion rotation)
         {
             yield return new WaitForSeconds(1.0f);
-            InstantiateOverNetwork("Player", spawnPosition);
+            InstantiateOverNetwork("Player", spawnPosition, rotation);
         }
 
         public IPAddress NetworkAddress()
@@ -431,6 +438,11 @@ namespace VRGame.Networking
             if(s_Instance.m_Client != null)
                 return s_Instance.m_Client.ClientID();
             return -1;
+        }
+
+        public static GameObject GetLocalPlayer()
+        {
+            return s_Instance.m_LocalPlayer;
         }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
