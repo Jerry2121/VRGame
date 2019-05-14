@@ -78,8 +78,10 @@ public class Puzzle1WheelController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "VRHands" && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        Debug.Log("COLLIDED WITH " + other.name + ", has right tag? " + (other.tag == "VRHands").ToString());
+        if (other.gameObject.tag == "VRHands" && (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger)))
         {
+            Debug.Log("IF ENTERED");
             grabbedBy = other.gameObject;
             grabbed = true;
             m_NetworkObject.SetPlayerInteracting(true);
