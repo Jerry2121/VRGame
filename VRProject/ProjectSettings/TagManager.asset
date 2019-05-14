@@ -45,8 +45,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - PlayerHands
+  - NoPlayerCollision
   - 
   - 
   - TemporaryPlayerCulling
