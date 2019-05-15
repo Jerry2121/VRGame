@@ -25,6 +25,7 @@ namespace VRGame.Networking
 
         Dictionary<int, ServerObject> m_Players = new Dictionary<int, ServerObject>();
         Dictionary<int, ServerObject> m_NetworkedObjects = new Dictionary<int, ServerObject>();
+        Dictionary<int, ServerPuzzle> m_Puzzles = new Dictionary<int, ServerPuzzle>();
 
         void Start()
         {
@@ -191,6 +192,12 @@ namespace VRGame.Networking
                 case NetworkMessageContent.PuzzleStarted:
                     PuzzleStartedMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.PuzzleProgress:
+                    PuzzleProgressMessage(recievedMessage);
+                    break;
+                case NetworkMessageContent.PuzzleComplete:
+                    PuzzleCompleteMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.None:
                     break;
                 default:
@@ -278,6 +285,16 @@ namespace VRGame.Networking
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position, networkedObject.m_Rotation.value));
                 }
+                foreach(var objectID in m_Puzzles.Keys)
+                {
+                    ServerPuzzle puzzle = m_Puzzles[objectID];
+                    if (puzzle.m_Started)
+                        messages.Add(NetworkTranslater.CreatePuzzleStartedMessage(0, objectID, puzzle.m_ComponentID));
+                    if(puzzle.m_Progress != -1)
+                        messages.Add(NetworkTranslater.CreatePuzzleProgressMessage(0, objectID, puzzle.m_ComponentID, puzzle.m_Progress));
+                    if(puzzle.m_Complete)
+                        messages.Add(NetworkTranslater.CreatePuzzleCompleteMessage(0, objectID, puzzle.m_ComponentID));
+                }
 
                 SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
             }
@@ -308,6 +325,56 @@ namespace VRGame.Networking
         void PuzzleStartedMessage(string recievedMessage)
         {
             WriteMessage(recievedMessage);
+
+            if(NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
+            {
+                if (m_Puzzles.ContainsKey(objectID) == false)
+                {
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
+                    {
+                        m_Started = true
+                    };
+                }
+                else
+                    m_Puzzles[objectID].m_Started = true;
+            }
+
+        }
+
+        private void PuzzleProgressMessage(string recievedMessage)
+        {
+            WriteMessage(recievedMessage);
+
+            if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+            {
+                if (m_Puzzles.ContainsKey(objectID) == false)
+                {
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
+                    {
+                        m_Progress = numOne
+                };
+            }
+            else
+                m_Puzzles[objectID].m_Progress = numOne;
+            }
+        }
+
+        private void PuzzleCompleteMessage(string recievedMessage)
+        {
+            WriteMessage(recievedMessage);
+
+            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
+            {
+                if (m_Puzzles.ContainsKey(objectID) == false)
+                {
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
+                    {
+                        m_Complete = true
+                    };
+                }
+                else
+                    m_Puzzles[objectID].m_Complete = true;
+            }
         }
 
         public string ServerIPAddress()

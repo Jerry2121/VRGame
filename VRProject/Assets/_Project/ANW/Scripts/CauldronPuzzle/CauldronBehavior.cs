@@ -57,10 +57,16 @@ public class CauldronBehavior : NetworkObjectComponent
         mixCooldown = 0;
         markingLerping = false;
         markingLerp = 0;
-        mixtureNeededID = Random.Range(0, 6);
-        cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[mixtureNeededID];
+        //mixtureNeededID = Random.Range(0, 6);
+        //cauldronMarking.GetComponent<Renderer>().material.color = cauldronMarkingsArray[mixtureNeededID];
         paperMarkings = paper.GetComponent<Renderer>().materials;
         powerBreaker = GameObject.Find("PowerBreaker");
+
+        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
+            return;
+
+        UpdateMixture(-1);
+
     }
 
     void Update()

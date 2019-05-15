@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Unity.Mathematics;
@@ -356,7 +357,6 @@ namespace VRGame.Networking
             return false;
         }
 
-
         #endregion
 
         #region CreateMessage
@@ -424,6 +424,10 @@ namespace VRGame.Networking
         public static string CreatePuzzleProgressMessage(int clientID, int objectID, int componentID, int numOne)
         {
             return string.Format("{0}|{1}|PuP|{2}|{3}", clientID, objectID, componentID, numOne);
+        }
+        public static string CreatePuzzleCompleteMessage(int v, int objectID, int m_ComponentID)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
