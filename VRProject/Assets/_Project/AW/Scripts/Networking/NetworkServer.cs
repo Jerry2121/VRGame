@@ -220,9 +220,9 @@ namespace VRGame.Networking
 
             NetworkTranslater.TranslatePositionMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out float x, out float y, out float z);
 
-            if(componentID < 10) //The root gameobject's component should always have ID of < 10
+            if (componentID < 10) //The root gameobject's component should always have ID of < 10
                 m_NetworkedObjects[objectID].SetPosition(x, y, z);
-            
+
             //m_Players[clientID].SetPosition(x, y, z);
 
             WriteMessage(recievedMessage);
@@ -251,8 +251,8 @@ namespace VRGame.Networking
             if (m_Connections[i] != null && m_Connections[i] != default(NetworkConnection))
                 ID = m_Connections[i].InternalId + 1;
 
-            
-                SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
+
+            SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CreateIDMessageFromServer(ID)), i);
 
             /*if (m_Players.ContainsKey(ID) == false)
             {
@@ -285,14 +285,16 @@ namespace VRGame.Networking
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position, networkedObject.m_Rotation.value));
                 }
-                foreach(var objectID in m_Puzzles.Keys)
+                foreach (var objectID in m_Puzzles.Keys)
                 {
                     ServerPuzzle puzzle = m_Puzzles[objectID];
                     if (puzzle.m_Started)
                         messages.Add(NetworkTranslater.CreatePuzzleStartedMessage(0, objectID, puzzle.m_ComponentID));
-                    if(puzzle.m_Progress != -1)
+                    if (puzzle.m_Progress != -1)
+                    {
                         messages.Add(NetworkTranslater.CreatePuzzleProgressMessage(0, objectID, puzzle.m_ComponentID, puzzle.m_Progress));
-                    if(puzzle.m_Complete)
+                    }
+                    if (puzzle.m_Complete)
                         messages.Add(NetworkTranslater.CreatePuzzleCompleteMessage(0, objectID, puzzle.m_ComponentID));
                 }
 
@@ -302,8 +304,8 @@ namespace VRGame.Networking
 
         void InstantiateMessage(string recievedMessage)
         {
-            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType,  out float posX, out float posY, out float posZ, out float rotX, out float rotY, out float rotZ, out float rotW);
-            
+            NetworkTranslater.TranslateInstantiateMessage(recievedMessage, out int clientID, out int objectID, out string objectType, out float posX, out float posY, out float posZ, out float rotX, out float rotY, out float rotZ, out float rotW);
+
             //if (objectName == "Player")
             //return; //Players are setup when we get an ID message from the client
 
@@ -318,7 +320,7 @@ namespace VRGame.Networking
 
             if (objectType == "Player")
                 m_Players.Add(clientID, serverObj);
-            
+
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }
 
@@ -326,14 +328,13 @@ namespace VRGame.Networking
         {
             WriteMessage(recievedMessage);
 
-            if(NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
+            if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
             {
                 if (m_Puzzles.ContainsKey(objectID) == false)
                 {
-                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
-                    {
-                        m_Started = true
-                    };
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID);
+                    puzzle.m_Started = true;
+                    m_Puzzles.Add(objectID, puzzle);
                 }
                 else
                     m_Puzzles[objectID].m_Started = true;
@@ -349,13 +350,12 @@ namespace VRGame.Networking
             {
                 if (m_Puzzles.ContainsKey(objectID) == false)
                 {
-                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
-                    {
-                        m_Progress = numOne
-                };
-            }
-            else
-                m_Puzzles[objectID].m_Progress = numOne;
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID);
+                    puzzle.m_Progress = numOne;
+                    m_Puzzles.Add(objectID, puzzle);
+                }
+                else
+                    m_Puzzles[objectID].m_Progress = numOne;
             }
         }
 
@@ -367,10 +367,9 @@ namespace VRGame.Networking
             {
                 if (m_Puzzles.ContainsKey(objectID) == false)
                 {
-                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID)
-                    {
-                        m_Complete = true
-                    };
+                    ServerPuzzle puzzle = new ServerPuzzle(objectID, componentID);
+                    puzzle.m_Complete = true;
+                    m_Puzzles.Add(objectID, puzzle);
                 }
                 else
                     m_Puzzles[objectID].m_Complete = true;
