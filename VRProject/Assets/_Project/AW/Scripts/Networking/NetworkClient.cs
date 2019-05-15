@@ -305,6 +305,9 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
+            if (clientID == ClientID())
+                return;
+
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
         }
 
@@ -313,12 +316,18 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne) == false)
                 return;
 
+            if (clientID == ClientID())
+                return;
+
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
         }
 
         void PuzzleCompleteMessage(string recievedMessage)
         {
             if (NetworkTranslater.TranslatePuzzleCompleteMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
+                return;
+
+            if (clientID == ClientID())
                 return;
 
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);

@@ -51,7 +51,7 @@ namespace VRGame.Networking {
         {
             if (m_NetComponents.ContainsKey(componentID) == false)
             {
-                Debug.LogError("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary");
+                Debug.LogError(string.Format("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary. ID was {0}", componentID));
                 return;
             }
 
