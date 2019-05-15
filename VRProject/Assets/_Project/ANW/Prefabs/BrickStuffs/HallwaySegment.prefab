@@ -61,7 +61,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -195,7 +195,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -214,6 +214,9 @@ GameObject:
   - component: {fileID: 6126337453773494987}
   - component: {fileID: 6126337453774297835}
   - component: {fileID: 6126337453775263787}
+  - component: {fileID: 4818628994931270092}
+  - component: {fileID: 3008885580873991655}
+  - component: {fileID: 4792423950734105964}
   m_Layer: 0
   m_Name: BrickHallway
   m_TagString: Untagged
@@ -280,6 +283,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4818628994931270092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126337453773063915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0049999985, y: 0.070000015, z: 0.001268844}
+  m_Center: {x: -2.9802322e-10, y: 9.631871e-17, z: 0.008115583}
+--- !u!65 &3008885580873991655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126337453773063915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0006200334, y: 0.070000015, z: 0.008750001}
+  m_Center: {x: -0.002189981, y: 3.0501341e-16, z: 0.004375001}
+--- !u!65 &4792423950734105964
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126337453773063915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0006261319, y: 0.070000015, z: 0.008750001}
+  m_Center: {x: 0.002186931, y: 2.4600621e-16, z: 0.004375001}
 --- !u!1 &6284628361017209948
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +333,9 @@ GameObject:
   - component: {fileID: 6284628361016846460}
   - component: {fileID: 6284628361020270684}
   - component: {fileID: 6284628361019140764}
+  - component: {fileID: 6707115140904800394}
+  - component: {fileID: 2348422826878490145}
+  - component: {fileID: 4060753476137156116}
   m_Layer: 0
   m_Name: BrickDoorway
   m_TagString: Untagged
@@ -357,6 +402,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6707115140904800394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284628361017209948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010000003, y: 0.010000022, z: 0.0025236385}
+  m_Center: {x: -1.1638839e-22, y: -0.000000009536704, z: 0.008738186}
+--- !u!65 &2348422826878490145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284628361017209948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.003152768, y: 0.0100000035, z: 0.007422262}
+  m_Center: {x: 0.0034236142, y: -0.000000059604425, z: 0.0037111319}
+--- !u!65 &4060753476137156116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284628361017209948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0031427257, y: 0.0100000035, z: 0.0073603624}
+  m_Center: {x: -0.003428633, y: -0.000000059604428, z: 0.0036801824}
 --- !u!1 &6724635339792887739
 GameObject:
   m_ObjectHideFlags: 0
@@ -19242,7 +19326,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -19501,7 +19585,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
