@@ -105,10 +105,4 @@ public class PowerBreakerBehavior : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().materials = tempMaterial;
         puzzleCompleted = true;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(numericButtonPressed.transform.position, coloredButtonPressed.transform.position);
-    }
 }
