@@ -357,6 +357,27 @@ namespace VRGame.Networking
             return false;
         }
 
+        public static bool TranslatePuzzleCompleteMessage(string message, out int clientID, out int objectID, out int componentID)
+        {
+            clientID = objectID = componentID = -1;
+            if (GetMessageContentType(message) != NetworkMessageContent.PuzzleComplete)
+            {
+                Debug.LogError("NOOOOOOO");
+                return false;
+            }
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID) &&
+                int.TryParse(splitMessage[3], out componentID))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region CreateMessage

@@ -363,7 +363,7 @@ namespace VRGame.Networking
         {
             WriteMessage(recievedMessage);
 
-            if (NetworkTranslater.GetIDsFromMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
+            if (NetworkTranslater.TranslatePuzzleCompleteMessage(recievedMessage, out int clientID, out int objectID, out int componentID))
             {
                 if (m_Puzzles.ContainsKey(objectID) == false)
                 {
