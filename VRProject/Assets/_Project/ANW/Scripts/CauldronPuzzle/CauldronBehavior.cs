@@ -164,6 +164,8 @@ public class CauldronBehavior : NetworkObjectComponent
     {
         if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
+            Debug.LogError("CAULDRON RECIEVED PROGRESS");
+
             mixtureNeededID = numOne;
             markingLerping = true;
         }
