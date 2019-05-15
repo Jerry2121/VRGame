@@ -69,11 +69,18 @@ namespace VRGame.Networking {
 
             foreach (var netObjComp in obj.GetComponents<NetworkObjectComponent>())
             {
-                if (netObjComp != null)
+                try
                 {
-                    netObjComp.SetID(*ID);
-                    *ID = *ID + 1;
-                    netObjComp.SetNetworkObject(this);
+                    if (netObjComp != null)
+                    {
+                        netObjComp.SetID(*ID);
+                        *ID = *ID + 1;
+                        netObjComp.SetNetworkObject(this);
+                    }
+                }
+                catch(System.NotImplementedException ex)
+                {
+                    Debug.LogWarning("NetworkObject -- CheckForNetworkComponents: A NetworkObjectComponent's ID cannot be set because SetID is has not been implemented");
                 }
             }
 
@@ -102,11 +109,18 @@ namespace VRGame.Networking {
 
             foreach (var netObjComp in obj.GetComponents<NetworkObjectComponent>())
             {
-                if (netObjComp != null)
+                try
                 {
-                    netObjComp.SetID(*ID);
-                    *ID = *ID + 1;
-                    netObjComp.SetNetworkObject(this);
+                    if (netObjComp != null)
+                    {
+                        netObjComp.SetID(*ID);
+                        *ID = *ID + 1;
+                        netObjComp.SetNetworkObject(this);
+                    }
+                }
+                catch (System.NotImplementedException ex)
+                {
+                    Debug.LogWarning("NetworkObject -- CheckForNetworkComponentsInChildrenRecursively: A NetworkObjectComponent's ID cannot be set because SetID is has not been implemented");
                 }
             }
 

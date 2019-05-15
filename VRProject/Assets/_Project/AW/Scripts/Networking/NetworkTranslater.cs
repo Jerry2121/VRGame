@@ -62,7 +62,7 @@ namespace VRGame.Networking
                     return NetworkMessageContent.PuzzleStarted; //ClientID|ObjectID|PuS
 
                 case "PuP":
-                    return NetworkMessageContent.PuzzleProgress;
+                    return NetworkMessageContent.PuzzleProgress;//ClientID|ObjectID|PuP|ComponentID|NumOne
 
                 case "PuC":                                     
                     return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC

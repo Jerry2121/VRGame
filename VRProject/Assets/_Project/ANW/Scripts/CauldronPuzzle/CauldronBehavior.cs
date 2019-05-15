@@ -10,10 +10,15 @@ public class CauldronBehavior : NetworkObjectComponent
 
     // How many mixtures are needed? (set in the inspector)
     [HideInInspector]public int correctMixturesNeeded = 5;
+
     //How many mixtures have been completed?
     [HideInInspector]public int correctMixturesCompleted;
+
     // What bottle needs to be poured into the cauldron
     [HideInInspector]public int mixtureNeededID;
+
+    int[] previousMixtures = new int[5];
+
     public float addToMixCooldown;
     float mixCooldown;
 
@@ -37,14 +42,17 @@ public class CauldronBehavior : NetworkObjectComponent
     public GameObject powerBreaker;
     public bool buttonMix;
 
-    public override NetworkObject m_NetworkObject { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
-    public override int ID { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+    public override NetworkObject m_NetworkObject { get; protected set; }
+    public override int ID { get => m_ID; protected set => m_ID = value; }
     [HideInNormalInspector]
     [SerializeField]
     int m_ID;
 
     private void Start()
     {
+        m_NetworkObject = GetNetworkObjectForObject(this.transform);
+        RegisterSelf();
+
         correctMixturesCompleted = 0;
         mixCooldown = 0;
         markingLerping = false;
@@ -58,7 +66,6 @@ public class CauldronBehavior : NetworkObjectComponent
     void Update()
     {
         mixCooldown -= Time.deltaTime;
-        
 
         if (correctMixturesCompleted >= correctMixturesNeeded)
         {
@@ -79,8 +86,9 @@ public class CauldronBehavior : NetworkObjectComponent
                 buttonMix = false;
             }
         }
+
         fillLerp = (float)correctMixturesCompleted / correctMixturesNeeded;
-        Debug.Log(fillLerp);
+        //Debug.Log(fillLerp);
         cauldronFill.GetComponent<Renderer>().material.color = Color.Lerp(cauldronFillStart, cauldronFillEnd, fillLerp);
 
         if (markingLerping)
@@ -97,15 +105,13 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public void CheckMixture(int liquidID)
     {
-        if (mixCooldown > 0)
+        if (mixCooldown > 0 || mixtureFinished)
         {
             return;
         }
 
-        if (mixtureFinished)
-        {
+        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
             return;
-        }
 
         if (liquidID == mixtureNeededID)
         {
@@ -118,9 +124,7 @@ public class CauldronBehavior : NetworkObjectComponent
             {
                 buttonMix = true;
             }
-            
         }
-
         else if (liquidID != mixtureNeededID)
         {
             correctMixturesCompleted = 0;
@@ -131,10 +135,11 @@ public class CauldronBehavior : NetworkObjectComponent
             paper.GetComponent<Renderer>().materials = paperMarkings;
             mixCooldown = addToMixCooldown;
         }
+
         UpdateMixture(liquidID);
     }
 
-    public void UpdateMixture(int liquidID)
+    void UpdateMixture(int liquidID)
     {
         mixtureNeededID = Random.Range(0, 6);
         
@@ -144,21 +149,48 @@ public class CauldronBehavior : NetworkObjectComponent
             return;
         }
 
+        SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
+
         markingLerping = true;
     }
 
     public override void RecieveNetworkMessage(string recievedMessage)
     {
-        throw new System.NotImplementedException();
+        if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        {
+            mixtureNeededID = numOne;
+            markingLerping = true;
+        }
     }
 
     public override void SendNetworkMessage(string messageToSend)
     {
-        throw new System.NotImplementedException();
+        NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
     }
 
     public override void SetID(int newID)
     {
-        throw new System.NotImplementedException();
+        if (newID > -1)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("CauldronBehaviour -- SetID: ID set to {0}", newID));
+            ID = newID;
+        }
+    }
+
+    public override void RegisterSelf()
+    {
+        base.RegisterSelf();
+    }
+
+    [ExecuteAlways]
+    public override void SetNetworkObject(NetworkObject newNetworkObject)
+    {
+        base.SetNetworkObject(newNetworkObject);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
     }
 }
