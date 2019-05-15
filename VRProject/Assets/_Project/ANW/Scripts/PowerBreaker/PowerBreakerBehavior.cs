@@ -17,6 +17,7 @@ public class PowerBreakerBehavior : MonoBehaviour
     public GameObject coloredButtonPressed;
     public int coloredButtonPressedID;
 
+    public Material powerBreakerMaterial;
     public Material[] buttonLightsMaterials;
     public GameObject[] buttonLights;
     public Color32[] buttonLightsColors;
@@ -34,9 +35,6 @@ public class PowerBreakerBehavior : MonoBehaviour
             return;
         }
 
-        numericButtonPressed.GetComponent<Outline>().enabled = true;
-        coloredButtonPressed.GetComponent<Outline>().enabled = true;
-
         if (numericButtonPressed != null && coloredButtonPressed != null)
         {
             CheckButtonMatch();
@@ -48,16 +46,15 @@ public class PowerBreakerBehavior : MonoBehaviour
         {
             correctMatchesCompleted++;
 
-            numericButtonPressed.GetComponent<ButtonBehavior>().matchFound = true;
-            numericButtonPressed = null;
+            numericButtonPressed.GetComponent<ButtonBehavior>().matchFound = coloredButtonPressed;
+            coloredButtonPressed.GetComponent<ButtonBehavior>().matchFound = numericButtonPressed;
 
-            coloredButtonPressed.GetComponent<ButtonBehavior>().matchFound = true;
+            numericButtonPressed = null;
             coloredButtonPressed = null;
         }
 
         else if (numericButtonPressedID != coloredButtonPressedID)
         {
-            correctMatchesCompleted = 0;
             numericButtonPressed = null;
             coloredButtonPressed = null;
         }
@@ -67,15 +64,17 @@ public class PowerBreakerBehavior : MonoBehaviour
     {
         Material[] tempMaterials = gameObject.GetComponent<MeshRenderer>().materials;
 
-        for (int i = 2; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
+        for (int i = 1; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
         {
-            int tempInt = buttonIDsColored[i - 2];
-            gameObject.GetComponent<MeshRenderer>().materials[i] = buttonLightsMaterials[tempInt];
-            buttonLights[i - 2].SetActive(true);
-            buttonLights[i - 2].GetComponent<Light>().color = buttonLightsColors[tempInt];
+            int tempInt = buttonIDsColored[i - 1];
+            tempMaterials[i] = buttonLightsMaterials[tempInt];
+            buttonLights[i - 1].SetActive(true);
+            buttonLights[i - 1].GetComponent<Light>().color = buttonLightsColors[tempInt];
         }
 
-        tempMaterials[7] = buttonLightsMaterials[0];
+        tempMaterials[0] = buttonLightsMaterials[0];
+        tempMaterials[6] = powerBreakerMaterial;
+        System.Array.Reverse(tempMaterials);
 
         buttonLights[5].GetComponent<Light>().color = buttonLightsColors[0];
 
@@ -95,11 +94,11 @@ public class PowerBreakerBehavior : MonoBehaviour
     public void CompletePuzzle()
     {
         Material[] tempMaterial = gameObject.GetComponent<MeshRenderer>().materials;
-        tempMaterial[7].color = buttonLightsColors[3];
+        tempMaterial[6].color = buttonLightsColors[3];
         buttonLights[5].GetComponent<Light>().color = buttonLightsColors[3];
-        for (int i = 2; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
+        for (int i = 1; i < gameObject.GetComponent<MeshRenderer>().materials.Length - 1; i++)
         {
-            buttonLights[i - 2].GetComponent<Light>().color = buttonLightsColors[3];
+            buttonLights[i - 1].GetComponent<Light>().color = buttonLightsColors[3];
             tempMaterial[i].color = buttonLightsColors[3];
         }
         gameObject.GetComponent<MeshRenderer>().materials = tempMaterial;

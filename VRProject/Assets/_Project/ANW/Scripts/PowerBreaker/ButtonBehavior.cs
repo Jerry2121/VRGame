@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using cakeslice;
 
 public class ButtonBehavior : MonoBehaviour
 {
     public GameObject powerBreaker;
     public string buttonType;
     public int buttonID;
-    public bool matchFound;
+    public GameObject matchFound;
 
     public void ButtonPressed()
     {
-        if (matchFound)
+        if (matchFound != null)
         {
             return;
         }
