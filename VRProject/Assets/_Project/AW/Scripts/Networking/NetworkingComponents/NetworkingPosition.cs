@@ -22,7 +22,7 @@ namespace VRGame.Networking
         int m_ID;
 
         Rigidbody m_RigidBody;
-        bool m_WasGravity;
+        bool m_WasKinematic;
         public override NetworkObject m_NetworkObject { get; protected set; }
 
         void Start()
@@ -30,7 +30,7 @@ namespace VRGame.Networking
             m_RigidBody = GetComponent<Rigidbody>();
             if (m_RigidBody != null)
             {
-                m_WasGravity = m_RigidBody.useGravity;
+                m_WasKinematic = m_RigidBody.isKinematic;
             }
             m_NetworkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
@@ -66,7 +66,7 @@ namespace VRGame.Networking
         void SendPosition()
         {
             if (m_RigidBody != null)
-                m_RigidBody.useGravity = m_WasGravity;
+                m_RigidBody.isKinematic = m_WasKinematic;
 
             m_LastSentPosition = transform.position;
 
@@ -95,7 +95,7 @@ namespace VRGame.Networking
             localControl = false;
 
             if (m_RigidBody != null)
-                m_RigidBody.useGravity = false;
+                m_RigidBody.isKinematic = true;
 
             MoveTo(x, y, z);
 
