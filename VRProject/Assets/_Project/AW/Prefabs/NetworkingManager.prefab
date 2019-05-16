@@ -71,8 +71,8 @@ MonoBehaviour:
     _asset: {fileID: 102900000, guid: 9dce18dcd29f77347905b9f41ec48748, type: 3}
     _path: Assets/_Project/AW/NetMenu.unity
   m_OnlineScene:
-    _asset: {fileID: 102900000, guid: 93c5760fb4ec3114d9c1d629fc1af78a, type: 3}
-    _path: Assets/_Project/AW/JTCopy.unity
+    _asset: {fileID: 102900000, guid: 7a8bd8040fe2f0347bd669fa8781b4f2, type: 3}
+    _path: Assets/_Project/AW/NewJT2Clone.unity
   m_ShowGUI: 1
   m_Debug: 0
   m_OffsetX: 0
