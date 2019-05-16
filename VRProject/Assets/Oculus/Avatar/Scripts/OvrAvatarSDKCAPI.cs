@@ -1060,7 +1060,11 @@ namespace Oculus.Avatar
         // Renaming the outward facing method to remove Internal from name
         public static void ovrAvatar_SetForceASTCTextures(bool value)
         {
-            ovrAvatar_SetInternalForceASTCTextures(value);
+            try
+            {
+                ovrAvatar_SetInternalForceASTCTextures(value);
+            }
+            catch (DllNotFoundException) { }
         }
 
         [DllImport(LibFile, CallingConvention = CallingConvention.Cdecl)]

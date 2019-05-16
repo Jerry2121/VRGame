@@ -53,8 +53,11 @@ public class OvrAvatarSDKManager : MonoBehaviour
             AvatarLogger.Log("No Oculus Rift App ID has been provided. Go to Oculus Avatar > Edit Configuration to supply one", OvrAvatarSettings.Instance);
             appId = "0";
         }
-
-        CAPI.ovrAvatar_Initialize(appId);
+        try
+        {
+            CAPI.ovrAvatar_Initialize(appId);
+        }
+        catch (DllNotFoundException) { }
 #endif
         specificationCallbacks = new Dictionary<UInt64, HashSet<specificationCallback>>();
         assetLoadedCallbacks = new Dictionary<UInt64, HashSet<assetLoadedCallback>>();
@@ -64,7 +67,11 @@ public class OvrAvatarSDKManager : MonoBehaviour
 
     void OnDestroy()
     {
-        CAPI.ovrAvatar_Shutdown();
+        try
+        {
+            CAPI.ovrAvatar_Shutdown();
+        }
+        catch (DllNotFoundException) { }
     }
 
 	// Update is called once per frame
