@@ -64,8 +64,8 @@ public class CauldronBehavior : NetworkObjectComponent
         paperMarkings = paper.GetComponent<Renderer>().materials;
         powerBreaker = GameObject.Find("PowerBreaker");
 
-        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-            return;
+        //if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
+          //  return;
 
         UpdateMixture(-1);
 
@@ -117,8 +117,8 @@ public class CauldronBehavior : NetworkObjectComponent
             return;
         }
 
-        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-            return;
+        //if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
+          //  return;
 
         if (liquidID == mixtureNeededID)
         {
@@ -157,7 +157,7 @@ public class CauldronBehavior : NetworkObjectComponent
             return;
         }
 
-        SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
+        //SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
 
         markingLerping = true;
     }
