@@ -13,6 +13,7 @@ namespace VRGame.Networking
         Vector3 m_LastSentPosition = Vector3.zero;
 
         bool localControl; //If the object is currently under local control
+        bool sentPositionRecently;
 
         public override int ID { get => m_ID; protected set => m_ID = value; }
 
@@ -41,10 +42,10 @@ namespace VRGame.Networking
             if (((m_NetworkObject.LocalAuthority() && m_NetworkObject.isLocalObject() == false) || (m_NetworkObject.LocalAuthority() == false && m_NetworkObject.PlayerIsInteracting() == false)) && localControl == false)
             {
                 //if (m_RigidBody != null)
-                    //m_RigidBody.velocity = Vector3.zero;
+                //m_RigidBody.velocity = Vector3.zero;
                 return;
             }
-            else if ((transform.position != m_LastSentPosition) || localControl)
+            else if (transform.position != m_LastSentPosition)
             {
                 //if (Debug.isDebugBuild)
                 //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
@@ -52,22 +53,32 @@ namespace VRGame.Networking
                 if (localControl == false)
                     localControl = true;
 
-                if (m_RigidBody != null)
-                    m_RigidBody.useGravity = m_WasGravity;
-
-                m_LastSentPosition = transform.position;
-
-                float3 roundedPos = new float3();
-
-                roundedPos.x = (float)Math.Round(transform.position.x, 3);
-                roundedPos.y = (float)Math.Round(transform.position.y, 3);
-                roundedPos.z = (float)Math.Round(transform.position.z, 3);
-
-                SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
+                SendPosition();
+            }
+            else if (localControl && sentPositionRecently == false)
+            {
+                sentPositionRecently = true;
+                SendPosition();
+                StartCoroutine(ResetSentPositionRecently());
             }
         }
 
+        void SendPosition()
+        {
+            if (m_RigidBody != null)
+                m_RigidBody.useGravity = m_WasGravity;
 
+            m_LastSentPosition = transform.position;
+
+            float3 roundedPos = new float3();
+
+            roundedPos.x = (float)Math.Round(transform.position.x, 3);
+            roundedPos.y = (float)Math.Round(transform.position.y, 3);
+            roundedPos.z = (float)Math.Round(transform.position.z, 3);
+
+            SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
+
+        }
 
         public override void SendNetworkMessage(string messageToSend)
         {
@@ -96,6 +107,12 @@ namespace VRGame.Networking
             //transform.Translate((Vector3)position - transform.position, Space.World);
             transform.position = position;
             m_LastSentPosition = position;
+        }
+
+        IEnumerator ResetSentPositionRecently()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            sentPositionRecently = false;
         }
 
         public override void RegisterSelf()
