@@ -31,6 +31,7 @@ namespace VRGame.Networking
             if (m_RigidBody != null)
             {
                 m_WasKinematic = m_RigidBody.isKinematic;
+                m_UsedGravity = m_RigidBody.useGravity;
             }
             m_NetworkObject = GetNetworkObjectForObject(this.transform);
             RegisterSelf();
@@ -60,14 +61,15 @@ namespace VRGame.Networking
                 sentPositionRecently = true;
                 SendPosition();
                 StartCoroutine(ResetSentPositionRecently());
+                if (m_RigidBody != null)
+                {
+                    m_RigidBody.isKinematic = m_WasKinematic;
+                }
             }
         }
 
         void SendPosition()
         {
-            if (m_RigidBody != null)
-                m_RigidBody.isKinematic = m_WasKinematic;
-
             m_LastSentPosition = transform.position;
 
             float3 roundedPos = new float3();
