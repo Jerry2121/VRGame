@@ -5,6 +5,8 @@ using cakeslice;
 
 public class PowerBreakerBehavior : MonoBehaviour
 {
+    public GameObject[] wires;
+
     public GameObject[] buttonsNumeric;
     public int[] buttonIDsNumeric;
     public GameObject[] buttonsColored;
@@ -45,6 +47,7 @@ public class PowerBreakerBehavior : MonoBehaviour
         if (numericButtonPressedID == coloredButtonPressedID)
         {
             correctMatchesCompleted++;
+            InstantiateWire(numericButtonPressed, coloredButtonPressed);
 
             numericButtonPressed.GetComponent<ButtonBehavior>().matchFound = coloredButtonPressed;
             coloredButtonPressed.GetComponent<ButtonBehavior>().matchFound = numericButtonPressed;
@@ -103,5 +106,133 @@ public class PowerBreakerBehavior : MonoBehaviour
         }
         gameObject.GetComponent<MeshRenderer>().materials = tempMaterial;
         puzzleCompleted = true;
+    }
+
+    public void InstantiateWire(GameObject originLeft, GameObject originRight)
+    {
+        if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonA")
+        {
+            wires[0].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonB")
+        {
+            wires[1].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonC")
+        {
+            wires[2].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonD")
+        {
+            wires[3].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonE")
+        {
+            wires[4].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonA")
+        {
+            wires[5].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonB")
+        {
+            wires[6].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonC")
+        {
+            wires[7].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonD")
+        {
+            wires[8].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonE")
+        {
+            wires[9].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonA")
+        {
+            wires[10].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonB")
+        {
+            wires[11].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonC")
+        {
+            wires[12].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonD")
+        {
+            wires[13].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonE")
+        {
+            wires[14].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonA")
+        {
+            wires[15].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonB")
+        {
+            wires[16].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonC")
+        {
+            wires[17].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonD")
+        {
+            wires[18].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonE")
+        {
+            wires[19].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonA")
+        {
+            wires[20].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonB")
+        {
+            wires[21].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonC")
+        {
+            wires[22].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonD")
+        {
+            wires[23].gameObject.SetActive(true);
+        }
+
+        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonE")
+        {
+            wires[24].gameObject.SetActive(true);
+        }
     }
 }
