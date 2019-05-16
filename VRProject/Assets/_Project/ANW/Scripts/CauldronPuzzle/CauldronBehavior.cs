@@ -15,7 +15,7 @@ public class CauldronBehavior : NetworkObjectComponent
     [HideInInspector]public int correctMixturesCompleted;
 
     // What bottle needs to be poured into the cauldron
-    [HideInInspector]public int mixtureNeededID;
+    [HideInInspector]public int mixtureNeededID -1;
 
     int[] previousMixtures = new int[5];
 
@@ -164,19 +164,23 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void RecieveNetworkMessage(string recievedMessage)
     {
-        if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
             Debug.LogError("CAULDRON RECIEVED PROGRESS");
 
+            if (mixtureNeededID != -1)
+            {
                 powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = mixtureNeededID;
                 powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric[correctMixturesCompleted] = mixtureNeededID;
                 correctMixturesCompleted++;
                 paperMarkings[correctMixturesCompleted] = paperMarkingsArray[mixtureNeededID];
                 paper.GetComponent<Renderer>().materials = paperMarkings;
-                if (correctMixturesCompleted == 5)
-                {
-                    buttonMix = true;
-                }
+            }
+
+            if (correctMixturesCompleted == 5)
+            {
+                buttonMix = true;
+            }
 
             mixtureNeededID = numOne;
             markingLerping = true;
