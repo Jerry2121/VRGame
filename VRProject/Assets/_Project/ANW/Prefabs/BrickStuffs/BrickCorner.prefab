@@ -145,6 +145,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8610372889150525761}
     m_Modifications:
+    - target: {fileID: 8120453887927698528, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_Name
+      value: TorchSconce (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8120453887927343168, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,20 +205,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.00002
       objectReference: {fileID: 0}
-    - target: {fileID: 8120453887927698528, guid: 5b6077a69ef8568489193245e738c4cc,
-        type: 3}
-      propertyPath: m_Name
-      value: TorchSconce (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2563520069084883466, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458760398153782054, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6077a69ef8568489193245e738c4cc, type: 3}
@@ -230,6 +230,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8610372889150525761}
     m_Modifications:
+    - target: {fileID: 8120453887927698528, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_Name
+      value: TorchSconce
+      objectReference: {fileID: 0}
     - target: {fileID: 8120453887927343168, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -285,20 +290,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120453887927698528, guid: 5b6077a69ef8568489193245e738c4cc,
-        type: 3}
-      propertyPath: m_Name
-      value: TorchSconce
-      objectReference: {fileID: 0}
     - target: {fileID: 2563520069084883466, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6458760398153782054, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6077a69ef8568489193245e738c4cc, type: 3}
