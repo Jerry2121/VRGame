@@ -112,6 +112,7 @@ public class PowerBreakerBehavior : MonoBehaviour
     {
         for (int i = 0; i < wires.Length; i++)
         {
+            correctMatchesCompleted = 0;
             wires[i].gameObject.SetActive(false);
         }
 
