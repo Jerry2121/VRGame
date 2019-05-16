@@ -168,6 +168,16 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             Debug.LogError("CAULDRON RECIEVED PROGRESS");
 
+                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = mixtureNeededID;
+                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric[correctMixturesCompleted] = mixtureNeededID;
+                correctMixturesCompleted++;
+                paperMarkings[correctMixturesCompleted] = paperMarkingsArray[mixtureNeededID];
+                paper.GetComponent<Renderer>().materials = paperMarkings;
+                if (correctMixturesCompleted == 5)
+                {
+                    buttonMix = true;
+                }
+
             mixtureNeededID = numOne;
             markingLerping = true;
         }
