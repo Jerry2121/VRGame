@@ -26,7 +26,7 @@ namespace VRGame.Networking {
 
         public bool RegisterNetComponent(int ID, NetworkObjectComponent component)
         {
-            Debug.LogError(string.Format("ID OF {0} REGISTERED", ID));
+            Debug.LogError(string.Format("ID OF {0} REGISTERED", ID), gameObject);
 
             if (m_NetComponents.ContainsKey(ID))
             {
@@ -53,7 +53,7 @@ namespace VRGame.Networking {
         {
             if (m_NetComponents.ContainsKey(componentID) == false)
             {
-                Debug.LogError(string.Format("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary. ID was {0}", componentID));
+                Debug.LogError(string.Format("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary. ID was {0}", componentID), gameObject);
                 return;
             }
 
@@ -154,7 +154,7 @@ namespace VRGame.Networking {
         public void SetPlayerInteracting(bool playerInteracting)
         {
             if (Debug.isDebugBuild)
-                Debug.Log(string.Format("PlayerIsInteracting on {0} is {1}", gameObject.name, playerInteracting));
+                Debug.Log(string.Format("PlayerIsInteracting on {0} is {1}", gameObject.name, playerInteracting), gameObject);
 
             m_PlayerInteracting = playerInteracting;
         }

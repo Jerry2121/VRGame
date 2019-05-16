@@ -30,7 +30,7 @@ namespace VRGame.Networking
         public void SetIsLocalPlayer()
         {
             if (m_IsLocalPlayer)
-                Debug.LogWarning("TempPlayer -- SetIsLocalPlayer: isLocalPlayer already set! This should not be called on a setup player!");
+                Debug.LogWarning("TempPlayer -- SetIsLocalPlayer: isLocalPlayer already set! This should not be called on a setup player!", gameObject);
             m_IsLocalPlayer = true;
         }
 
@@ -65,7 +65,8 @@ namespace VRGame.Networking
             {
                 foreach (var comp in m_ComponentsToDisableOnLocalPlayer)
                 {
-                    Debug.Log("Disabling " + comp.name);
+                    //if(Debug.isDebugBuild)
+                    //    Debug.Log("Disabling " + comp.name);
                     comp.enabled = false;
                 }
             }
@@ -73,7 +74,8 @@ namespace VRGame.Networking
             {
                 foreach (var comp in m_ComponentsToDisableOnNetworkedPlayer)
                 {
-                    Debug.Log("Disabling " + comp.name);
+                    //if(Debug.isDebugBuild)
+                    //  Debug.Log("Disabling " + comp.name);
                     comp.enabled = false;
                 }
 

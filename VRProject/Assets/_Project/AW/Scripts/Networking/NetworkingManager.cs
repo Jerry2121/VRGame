@@ -43,7 +43,7 @@ namespace VRGame.Networking
         {
             if(s_Instance != null)
             {
-                Debug.LogWarning("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!");
+                Debug.LogWarning("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!", gameObject);
                 Destroy(this);
                 return;
             }
@@ -62,6 +62,11 @@ namespace VRGame.Networking
                 if(string.IsNullOrWhiteSpace(netSpawn.m_ObjectName))
                 {
                     Debug.LogError("NetworkingManager -- Start: GameObject has no objectName on NetworkObject!");
+                    continue;
+                }
+                if (m_SpawnableObjectDictionary.ContainsKey(netSpawn.m_ObjectName))
+                {
+                    Debug.LogError(string.Format("NetworkingManager -- Start: The Spawnable Object Dictioary already contains an entry for {0}!", netSpawn.m_ObjectName));
                     continue;
                 }
                 m_SpawnableObjectDictionary.Add(netSpawn.m_ObjectName, GO);
@@ -185,7 +190,8 @@ namespace VRGame.Networking
             float3 position = new float3(posX, posY, posZ);
             quaternion rotation = new quaternion(rotX, rotY, rotZ, rotW);
 
-            Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
+            if(Debug.isDebugBuild)
+                Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
 
             //Do unique player stuff
             if (objectType == "Player")
@@ -257,7 +263,7 @@ namespace VRGame.Networking
         {
             if (playerID == ClientID())
             {
-                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected player");
+                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected player, not on our own player");
                 return;
             }
 
@@ -318,7 +324,6 @@ namespace VRGame.Networking
 
         public void Disconnect()
         {
-            Debug.Log("Disconnect " + (this == s_Instance));
             if (m_Server != null)
                 StopHost();
             else

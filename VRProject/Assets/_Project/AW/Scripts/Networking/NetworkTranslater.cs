@@ -238,7 +238,7 @@ namespace VRGame.Networking
         {
             if (GetMessageContentType(message) != NetworkMessageContent.ClientID)
             {
-                Debug.LogError("NOOOOOOO");
+                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 clientID = -1;
                 return false;
             }
@@ -256,7 +256,7 @@ namespace VRGame.Networking
         {
             if (GetMessageContentType(message) != NetworkMessageContent.LoadedIn)
             {
-                Debug.LogError("NOOOOOOO");
+                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 clientID = -1;
                 return false;
             }
@@ -302,7 +302,7 @@ namespace VRGame.Networking
         {
             if (GetMessageContentType(message) != NetworkMessageContent.Disconnected)
             {
-                Debug.LogError("NOOOOOOO");
+                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 clientID = -1;
                 return false;
             }
@@ -321,7 +321,7 @@ namespace VRGame.Networking
             clientID = objectID = componentID = -1;
             if(GetMessageContentType(message) != NetworkMessageContent.PuzzleStarted)
             {
-                Debug.LogError("NOOOOOOO");
+                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 return false;
             }
 
@@ -362,7 +362,7 @@ namespace VRGame.Networking
             clientID = objectID = componentID = -1;
             if (GetMessageContentType(message) != NetworkMessageContent.PuzzleComplete)
             {
-                Debug.LogError("NOOOOOOO");
+                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 return false;
             }
 

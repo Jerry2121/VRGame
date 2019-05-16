@@ -32,7 +32,7 @@ namespace VRGame.Networking
             m_Driver = new UdpCNetworkDriver(new INetworkParameter[0]);
 
             if (m_Driver.Bind(new IPEndPoint(IPAddress.Any, 9000)) != 0)
-                Debug.Log("NetworkServer -- Failed to bind to port 9000");
+                Debug.LogError("NetworkServer -- Failed to bind to port 9000");
             else
                 m_Driver.Listen();
 
@@ -84,7 +84,7 @@ namespace VRGame.Networking
                 {
                     if (cmd == NetworkEvent.Type.Connect)
                     {
-                        Debug.Log("NetworkServer -- Client has connected");
+                        Debug.Log("NetworkServer -- A Client has connected");
                     }
 
                     if (cmd == NetworkEvent.Type.Data)
@@ -123,7 +123,7 @@ namespace VRGame.Networking
                     }
                     else if (cmd == NetworkEvent.Type.Disconnect)
                     {
-                        Debug.Log("NetworkServer -- Client disconnected from server");
+                        Debug.Log("NetworkServer --A  Client has disconnected from server");
                         m_MessageList.Add(NetworkTranslater.CreateDisconnectedMessage(m_Connections[i].InternalId + 1));
 
                         ServerObject playerObject = m_Players[(m_Connections[i].InternalId + 1)];

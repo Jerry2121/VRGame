@@ -65,7 +65,7 @@ namespace VRGame.Networking
             if (m_Connection.IsCreated == false)
             {
                 if (!m_Done && Debug.isDebugBuild)
-                    Debug.Log("NetworkClient -- Update: Something went wrong during connect");
+                    Debug.LogError("NetworkClient -- Update: Something went wrong during connect");
                 return;
             }
 
