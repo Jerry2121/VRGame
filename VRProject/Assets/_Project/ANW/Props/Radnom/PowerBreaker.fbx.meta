@@ -38,6 +38,8 @@ ModelImporter:
     100064: PowerBreaker.001
     100066: Wand
     100068: Wheel
+    100070: Button1.002
+    100072: ButtonX
     400000: //RootNode
     400002: Button1
     400004: Button2
@@ -73,6 +75,8 @@ ModelImporter:
     400064: PowerBreaker.001
     400066: Wand
     400068: Wheel
+    400070: Button1.002
+    400072: ButtonX
     2100000: Box
     2100002: Light5
     2100004: Light4
@@ -130,6 +134,8 @@ ModelImporter:
     2300064: PowerBreaker.001
     2300066: Wand
     2300068: Wheel
+    2300070: Button1.002
+    2300072: ButtonX
     3300000: //RootNode
     3300002: Button1
     3300004: Button2
@@ -165,6 +171,8 @@ ModelImporter:
     3300064: PowerBreaker.001
     3300066: Wand
     3300068: Wheel
+    3300070: Button1.002
+    3300072: ButtonX
     4300000: Cube
     4300002: PowerBreaker
     4300004: Button2
@@ -200,6 +208,8 @@ ModelImporter:
     4300064: bowlFillShape
     4300066: bucketFillShape
     4300068: cauldronFillShape
+    4300070: ButtonX
+    4300072: Button1.002
   externalObjects: {}
   materials:
     importMaterials: 1

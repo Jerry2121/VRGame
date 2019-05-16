@@ -17,6 +17,11 @@ public class ButtonBehavior : MonoBehaviour
             return;
         }
 
+        if (gameObject.name == "ButtonX")
+        {
+            powerBreaker.GetComponent<PowerBreakerBehavior>().ResetPuzzle();
+        }
+
         if (buttonType == "Numeric")
         {
             powerBreaker.GetComponent<PowerBreakerBehavior>().numericButtonPressed = this.gameObject;

@@ -108,6 +108,24 @@ public class PowerBreakerBehavior : MonoBehaviour
         puzzleCompleted = true;
     }
 
+    public void ResetPuzzle()
+    {
+        for (int i = 0; i < wires.Length; i++)
+        {
+            wires[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < buttonsNumeric.Length; i++)
+        {
+            buttonsNumeric[i].GetComponent<ButtonBehavior>().matchFound = null;
+        }
+
+        for (int i = 0; i < buttonsColored.Length; i++)
+        {
+            buttonsColored[i].GetComponent<ButtonBehavior>().matchFound = null;
+        }
+    }
+
     public void InstantiateWire(GameObject originLeft, GameObject originRight)
     {
         if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonA")
