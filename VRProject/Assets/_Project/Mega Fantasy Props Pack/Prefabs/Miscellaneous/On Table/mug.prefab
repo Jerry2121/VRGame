@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 5861365345020364616}
   - component: {fileID: 2344064969603479492}
   - component: {fileID: 7574136828701557440}
+  - component: {fileID: 5419140051039297139}
+  - component: {fileID: 1837164345946244909}
+  - component: {fileID: 4954092307651190745}
   m_Layer: 0
   m_Name: mug
   m_TagString: Untagged
@@ -174,6 +177,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &5419140051039297139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfba0e8e7f9442c4ab8a352455948c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1837164345946244909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &4954092307651190745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f49ddb59b049d4db0e608a61cb3490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wooden Mug
+  Grabbable: 1
+  Description: A wooden mug used for holding liquids
+  HintDescription: 
 --- !u!1 &8624831850140509528
 GameObject:
   m_ObjectHideFlags: 0

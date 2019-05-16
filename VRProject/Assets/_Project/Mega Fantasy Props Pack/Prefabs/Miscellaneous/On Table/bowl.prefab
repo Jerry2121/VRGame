@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 4935556107774965499}
   - component: {fileID: 2426454610770330532}
   - component: {fileID: 5768007559091439500}
+  - component: {fileID: 3321724435222706326}
+  - component: {fileID: 2986440319866400737}
+  - component: {fileID: 1144599458889801158}
   m_Layer: 0
   m_Name: bowl
   m_TagString: Untagged
@@ -172,3 +175,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &3321724435222706326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfba0e8e7f9442c4ab8a352455948c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2986440319866400737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &1144599458889801158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f49ddb59b049d4db0e608a61cb3490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wooden Bowl
+  Grabbable: 1
+  Description: A wooden bowl used for holding food
+  HintDescription: 

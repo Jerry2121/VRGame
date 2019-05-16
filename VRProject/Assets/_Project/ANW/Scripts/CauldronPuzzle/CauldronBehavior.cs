@@ -81,7 +81,6 @@ public class CauldronBehavior : NetworkObjectComponent
             cauldronMarking.GetComponent<Renderer>().material.color = new Color32(0, 0, 0, 0);
             if (buttonMix)
             {
-                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored;
                 for (int i = 0; i < powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored.Length; i++)
                 {
                     int tmp = powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[i];
@@ -124,6 +123,7 @@ public class CauldronBehavior : NetworkObjectComponent
         if (liquidID == mixtureNeededID)
         {
             powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = liquidID;
+            powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric[correctMixturesCompleted] = liquidID;
             correctMixturesCompleted++;
             paperMarkings[correctMixturesCompleted] = paperMarkingsArray[liquidID];
             paper.GetComponent<Renderer>().materials = paperMarkings;

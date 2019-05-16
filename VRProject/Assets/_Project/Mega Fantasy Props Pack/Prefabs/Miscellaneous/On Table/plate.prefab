@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 6301061201033022470}
   - component: {fileID: 9059660248164674564}
   - component: {fileID: 7797541169436066598}
+  - component: {fileID: 4453189100276757691}
+  - component: {fileID: 6553160845294969540}
+  - component: {fileID: 5325230164655728629}
   m_Layer: 0
   m_Name: plate
   m_TagString: Untagged
@@ -172,3 +175,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &4453189100276757691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfba0e8e7f9442c4ab8a352455948c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6553160845294969540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &5325230164655728629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f49ddb59b049d4db0e608a61cb3490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wooden Plate
+  Grabbable: 1
+  Description: A wooden plate used for holding food and other things
+  HintDescription: 

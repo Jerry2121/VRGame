@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 4216986826870989165}
   - component: {fileID: 2294217620452070131}
   - component: {fileID: 3089090145802281248}
+  - component: {fileID: 7030926672909845336}
+  - component: {fileID: 3430786723252483993}
+  - component: {fileID: 8396679803333178496}
   m_Layer: 0
   m_Name: bottle.001
   m_TagString: Untagged
@@ -175,6 +178,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &7030926672909845336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfba0e8e7f9442c4ab8a352455948c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3430786723252483993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &8396679803333178496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f49ddb59b049d4db0e608a61cb3490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bottle
+  Grabbable: 1
+  Description: A bottle filled with water
+  HintDescription: 
 --- !u!1 &2798246275370833550
 GameObject:
   m_ObjectHideFlags: 0

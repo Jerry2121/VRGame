@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 7673289314972210118}
   - component: {fileID: 7673289314969342950}
   - component: {fileID: 7673289314970439974}
+  - component: {fileID: 3249236881630128354}
+  - component: {fileID: 5215437196537897259}
   m_Layer: 0
   m_Name: BrickCorner
   m_TagString: Untagged
@@ -110,6 +112,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3249236881630128354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673289314972700646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0053125042, y: 0.010027112, z: 0.010000004}
+  m_Center: {x: 0.0023437496, y: -0.000013527274, z: 0.0050000013}
+--- !u!65 &5215437196537897259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673289314972700646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0006385225, y: 0.07508866, z: 0.010000004}
+  m_Center: {x: 0.0000067589435, y: -0.04245566, z: 0.0050000013}
 --- !u!1001 &3953315035086704609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +204,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563520069084883466, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458760398153782054, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6077a69ef8568489193245e738c4cc, type: 3}
@@ -250,6 +288,16 @@ PrefabInstance:
     - target: {fileID: 8120453887927343168, guid: 5b6077a69ef8568489193245e738c4cc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563520069084883466, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458760398153782054, guid: 5b6077a69ef8568489193245e738c4cc,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
