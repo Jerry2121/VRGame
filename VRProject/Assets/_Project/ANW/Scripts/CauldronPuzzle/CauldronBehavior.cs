@@ -15,7 +15,7 @@ public class CauldronBehavior : NetworkObjectComponent
     [HideInInspector]public int correctMixturesCompleted;
 
     // What bottle needs to be poured into the cauldron
-    [HideInInspector]public int mixtureNeededID -1;
+    [HideInInspector]public int mixtureNeededID = -1;
 
     int[] previousMixtures = new int[5];
 
