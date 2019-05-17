@@ -64,9 +64,6 @@ public class CauldronBehavior : NetworkObjectComponent
         paperMarkings = paper.GetComponent<Renderer>().materials;
         powerBreaker = GameObject.Find("PowerBreaker");
 
-        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-            return;
-
         mixtureNeededID = 0;
         markingLerping = true;
 
