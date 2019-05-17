@@ -168,6 +168,9 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             Debug.LogError("CAULDRON RECIEVED PROGRESS");
 
+            if (numOne != mixtureNeededID)
+                return;
+
             if (mixtureNeededID != -1)
             {
                 powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = mixtureNeededID;
@@ -204,7 +207,6 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void RegisterSelf()
     {
-        Debug.Log("REGISTERING " + gameObject.name);
         base.RegisterSelf();
     }
 
