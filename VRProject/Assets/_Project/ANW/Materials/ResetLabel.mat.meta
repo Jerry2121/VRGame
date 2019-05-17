@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:VRProject/Assets/_Project/ANW/Materials/ResetLabel.mat.meta
 guid: 05c1034322658734092fac5c9948d077
 NativeFormatImporter:
+=======
+guid: 2dd2897276f38ba409f0301f943a536b
+DefaultImporter:
+>>>>>>> Networking:VRProject/Assets/Database Control Free/Demos/UnityScript/DCF_UnityScript_Demo.unitypackage.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

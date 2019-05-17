@@ -9,13 +9,13 @@ public class CauldronBehavior : NetworkObjectComponent
     public bool mixtureFinished;
 
     // How many mixtures are needed? (set in the inspector)
-    [HideInInspector]public int correctMixturesNeeded = 5;
+    int correctMixturesNeeded = 5;
 
     //How many mixtures have been completed?
     [HideInInspector]public int correctMixturesCompleted;
 
     // What bottle needs to be poured into the cauldron
-    [HideInInspector]public int mixtureNeededID;
+    int mixtureNeededID = -1;
 
     int[] previousMixtures = new int[5];
 
@@ -64,10 +64,8 @@ public class CauldronBehavior : NetworkObjectComponent
         paperMarkings = paper.GetComponent<Renderer>().materials;
         powerBreaker = GameObject.Find("PowerBreaker");
 
-        //if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-          //  return;
-
-        UpdateMixture(-1);
+        mixtureNeededID = 0;
+        markingLerping = true;
 
     }
 
@@ -135,13 +133,8 @@ public class CauldronBehavior : NetworkObjectComponent
         }
         else if (liquidID != mixtureNeededID)
         {
-            correctMixturesCompleted = 0;
-            for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
-            {
-                paperMarkings[i] = paperNullMarking;
-            }
-            paper.GetComponent<Renderer>().materials = paperMarkings;
-            mixCooldown = addToMixCooldown;
+            ResetPuzzle();
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
         }
 
         UpdateMixture(liquidID);
@@ -162,14 +155,47 @@ public class CauldronBehavior : NetworkObjectComponent
         markingLerping = true;
     }
 
+    void ResetPuzzle()
+    {
+        correctMixturesCompleted = 0;
+        for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
+        {
+            paperMarkings[i] = paperNullMarking;
+        }
+        paper.GetComponent<Renderer>().materials = paperMarkings;
+        mixCooldown = addToMixCooldown;
+    }
+
     public override void RecieveNetworkMessage(string recievedMessage)
     {
-        if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
             Debug.LogError("CAULDRON RECIEVED PROGRESS");
 
+            if (numOne == mixtureNeededID)
+                return;
+
+            if (mixtureNeededID != -1)
+            {
+                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsColored[correctMixturesCompleted] = mixtureNeededID;
+                powerBreaker.GetComponent<PowerBreakerBehavior>().buttonIDsNumeric[correctMixturesCompleted] = mixtureNeededID;
+                correctMixturesCompleted++;
+                paperMarkings[correctMixturesCompleted] = paperMarkingsArray[mixtureNeededID];
+                paper.GetComponent<Renderer>().materials = paperMarkings;
+            }
+
+            if (correctMixturesCompleted == 5)
+            {
+                buttonMix = true;
+            }
+
             mixtureNeededID = numOne;
             markingLerping = true;
+        }
+        else if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
+        {
+            Debug.LogError("PUZZLE RECIEVE FAILURE");
+            ResetPuzzle();
         }
     }
 

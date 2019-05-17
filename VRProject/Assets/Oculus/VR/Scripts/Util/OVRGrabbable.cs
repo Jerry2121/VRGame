@@ -123,7 +123,10 @@ public class OVRGrabbable : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
         if (m_NetObj != null)
+        {
             m_NetObj.SetPlayerInteracting(true);
+            m_NetObj.m_Grabbed = true;
+        }
     }
 
 	/// <summary>
@@ -139,7 +142,10 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = null;
 
         if (m_NetObj != null)
+        {
             m_NetObj.SetPlayerInteracting(false);
+            m_NetObj.m_Grabbed = false;
+        }
     }
 
     void Awake()

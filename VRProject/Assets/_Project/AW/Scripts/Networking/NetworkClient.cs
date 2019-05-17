@@ -219,6 +219,9 @@ namespace VRGame.Networking
                 case NetworkMessageContent.PuzzleProgress:
                     PuzzleProgressMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.PuzzleFailed:
+                    PuzzleFailedMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.PuzzleComplete:
                     PuzzleCompleteMessage(recievedMessage);
                     break;
@@ -314,6 +317,17 @@ namespace VRGame.Networking
         void PuzzleProgressMessage(string recievedMessage)
         {
             if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne) == false)
+                return;
+
+            if (clientID == ClientID())
+                return;
+
+            NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
+        }
+
+        void PuzzleFailedMessage(string recievedMessage)
+        {
+            if (NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
             if (clientID == ClientID())
