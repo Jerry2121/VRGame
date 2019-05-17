@@ -168,7 +168,7 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             Debug.LogError("CAULDRON RECIEVED PROGRESS");
 
-            if (numOne != mixtureNeededID)
+            if (numOne == mixtureNeededID)
                 return;
 
             if (mixtureNeededID != -1)
