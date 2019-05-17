@@ -124,8 +124,8 @@ public class OVRGrabbable : MonoBehaviour
 
         if (m_NetObj != null)
         {
-            m_NetObj.m_Grabbed = true;
             m_NetObj.SetPlayerInteracting(true);
+            m_NetObj.m_Grabbed = true;
         }
     }
 
@@ -143,8 +143,8 @@ public class OVRGrabbable : MonoBehaviour
 
         if (m_NetObj != null)
         {
-            m_NetObj.m_Grabbed = false;
             m_NetObj.SetPlayerInteracting(false);
+            m_NetObj.m_Grabbed = false;
         }
     }
 

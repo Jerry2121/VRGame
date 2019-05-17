@@ -192,8 +192,9 @@ public class CauldronBehavior : NetworkObjectComponent
             mixtureNeededID = numOne;
             markingLerping = true;
         }
-        if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
+        else if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
         {
+            Debug.LogError("PUZZLE RECIEVE FAILURE");
             ResetPuzzle();
         }
     }
