@@ -14,6 +14,7 @@ namespace VRGame.Networking {
         public string m_ObjectName;
 
         public int m_ObjectID;
+        public bool m_Grabbed;
 
         [SerializeField] bool m_LocalAuthority;
         [SerializeField] bool m_ServerAuthority;

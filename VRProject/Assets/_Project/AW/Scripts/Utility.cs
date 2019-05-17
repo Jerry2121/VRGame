@@ -25,4 +25,13 @@ public static class Utility
         }
 
     }
+
+    public static bool IsObjectGrabbed(GameObject obj)
+    {
+        OVRGrabbable ovrGrabbable = obj.GetComponent<OVRGrabbable>();
+        if (ovrGrabbable != null)
+            return ovrGrabbable.isGrabbed;
+        else return false;
+    }
+
 }

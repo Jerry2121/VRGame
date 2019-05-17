@@ -9,13 +9,13 @@ public class CauldronBehavior : NetworkObjectComponent
     public bool mixtureFinished;
 
     // How many mixtures are needed? (set in the inspector)
-    [HideInInspector]public int correctMixturesNeeded = 5;
+    int correctMixturesNeeded = 5;
 
     //How many mixtures have been completed?
     [HideInInspector]public int correctMixturesCompleted;
 
     // What bottle needs to be poured into the cauldron
-    [HideInInspector]public int mixtureNeededID = -1;
+    int mixtureNeededID = -1;
 
     int[] previousMixtures = new int[5];
 
