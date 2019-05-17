@@ -52,7 +52,7 @@ namespace VRGame.Networking {
         {
             if (m_NetComponents.ContainsKey(componentID) == false)
             {
-                Debug.LogError(string.Format("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary. ID was {0}", componentID), gameObject);
+                Debug.LogError(string.Format("NetworkObject -- RecieveMessage: Recieved a message for an ID not in the dictionary. ID was {0}, GameObject name is {1}", componentID, gameObject.name), gameObject);
                 StartCoroutine(StorePuzzleMessage(recievedMessage, componentID, 0));
                 return;
             }
