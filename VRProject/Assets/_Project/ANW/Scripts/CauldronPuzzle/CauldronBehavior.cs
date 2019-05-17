@@ -136,14 +136,8 @@ public class CauldronBehavior : NetworkObjectComponent
         }
         else if (liquidID != mixtureNeededID)
         {
-            correctMixturesCompleted = 0;
-            for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
-            {
-                paperMarkings[i] = paperNullMarking;
-            }
+            ResetPuzzle();
             SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
-            paper.GetComponent<Renderer>().materials = paperMarkings;
-            mixCooldown = addToMixCooldown;
         }
 
         UpdateMixture(liquidID);
@@ -162,6 +156,17 @@ public class CauldronBehavior : NetworkObjectComponent
         SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
 
         markingLerping = true;
+    }
+
+    void ResetPuzzle()
+    {
+        correctMixturesCompleted = 0;
+        for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
+        {
+            paperMarkings[i] = paperNullMarking;
+        }
+        paper.GetComponent<Renderer>().materials = paperMarkings;
+        mixCooldown = addToMixCooldown;
     }
 
     public override void RecieveNetworkMessage(string recievedMessage)
@@ -192,13 +197,7 @@ public class CauldronBehavior : NetworkObjectComponent
         }
         if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
         {
-            correctMixturesCompleted = 0;
-            for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
-            {
-                paperMarkings[i] = paperNullMarking;
-            }
-            paper.GetComponent<Renderer>().materials = paperMarkings;
-            mixCooldown = addToMixCooldown;
+            ResetPuzzle();
         }
     }
 
