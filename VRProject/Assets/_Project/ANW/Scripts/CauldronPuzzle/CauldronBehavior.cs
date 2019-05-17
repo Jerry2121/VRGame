@@ -67,7 +67,8 @@ public class CauldronBehavior : NetworkObjectComponent
         if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
             return;
 
-        UpdateMixture(-1);
+        mixtureNeededID = 0;
+        markingLerping = true;
 
     }
 
@@ -140,6 +141,7 @@ public class CauldronBehavior : NetworkObjectComponent
             {
                 paperMarkings[i] = paperNullMarking;
             }
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
             paper.GetComponent<Renderer>().materials = paperMarkings;
             mixCooldown = addToMixCooldown;
         }
@@ -187,6 +189,16 @@ public class CauldronBehavior : NetworkObjectComponent
 
             mixtureNeededID = numOne;
             markingLerping = true;
+        }
+        if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
+        {
+            correctMixturesCompleted = 0;
+            for (int i = 1; i < paper.GetComponent<MeshRenderer>().materials.Length; i++)
+            {
+                paperMarkings[i] = paperNullMarking;
+            }
+            paper.GetComponent<Renderer>().materials = paperMarkings;
+            mixCooldown = addToMixCooldown;
         }
     }
 

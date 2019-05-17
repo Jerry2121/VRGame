@@ -19,6 +19,7 @@ namespace VRGame.Networking
         LoadedIn,       // LIN
         PuzzleStarted,  // PuS
         PuzzleProgress, // PuP
+        PuzzleFailed,   //PuF
         PuzzleComplete, // PuC
         Disconnected,   // Dco
     }
@@ -64,6 +65,9 @@ namespace VRGame.Networking
 
                 case "PuP":
                     return NetworkMessageContent.PuzzleProgress;//ClientID|ObjectID|PuP|ComponentID|NumOne
+
+                case "PuF":
+                    return NetworkMessageContent.PuzzleFailed;  //ClientID|ObjectID|PuF
 
                 case "PuC":                                     
                     return NetworkMessageContent.PuzzleComplete;// ClientID|ObjectID|PuC
@@ -236,12 +240,10 @@ namespace VRGame.Networking
 
         public static bool TranslateIDMessage(string message, out int clientID)
         {
+            clientID = -1;
+
             if (GetMessageContentType(message) != NetworkMessageContent.ClientID)
-            {
-                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
-                clientID = -1;
                 return false;
-            }
 
             string[] splitMessage = message.Split('|');
 
@@ -254,12 +256,10 @@ namespace VRGame.Networking
 
         public static bool TranslateLoadedInMessage(string message, out int clientID)
         {
+            clientID = -1;
+
             if (GetMessageContentType(message) != NetworkMessageContent.LoadedIn)
-            {
-                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
-                clientID = -1;
                 return false;
-            }
 
             string[] splitMessage = message.Split('|');
 
@@ -300,12 +300,10 @@ namespace VRGame.Networking
 
         public static bool TranslateDisconnectedMessage(string message, out int clientID)
         {
-            if (GetMessageContentType(message) != NetworkMessageContent.Disconnected)
-            {
-                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 clientID = -1;
+
+            if (GetMessageContentType(message) != NetworkMessageContent.Disconnected)
                 return false;
-            }
 
             string[] splitMessage = message.Split('|');
 
@@ -320,10 +318,7 @@ namespace VRGame.Networking
         {
             clientID = objectID = componentID = -1;
             if(GetMessageContentType(message) != NetworkMessageContent.PuzzleStarted)
-            {
-                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 return false;
-            }
 
             string[] splitMessage = message.Split('|');
 
@@ -357,14 +352,29 @@ namespace VRGame.Networking
             return false;
         }
 
+        public static bool TranslatePuzzleFailedMessage(string message, out int clientID, out int objectID, out int componentID)
+        {
+            clientID = objectID = componentID = -1;
+            if (GetMessageContentType(message) != NetworkMessageContent.PuzzleFailed)
+                return false;
+
+            string[] splitMessage = message.Split('|');
+
+            if (int.TryParse(splitMessage[0], out clientID) &&
+                int.TryParse(splitMessage[1], out objectID) &&
+                int.TryParse(splitMessage[3], out componentID))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool TranslatePuzzleCompleteMessage(string message, out int clientID, out int objectID, out int componentID)
         {
             clientID = objectID = componentID = -1;
             if (GetMessageContentType(message) != NetworkMessageContent.PuzzleComplete)
-            {
-                Debug.LogError("NetworkTranslater -- Translation passed wrong message");
                 return false;
-            }
 
             string[] splitMessage = message.Split('|');
 
@@ -446,9 +456,15 @@ namespace VRGame.Networking
         {
             return string.Format("{0}|{1}|PuP|{2}|{3}", clientID, objectID, componentID, numOne);
         }
-        public static string CreatePuzzleCompleteMessage(int v, int objectID, int m_ComponentID)
+
+        public static string CreatePuzzleFailedMessage(int clientID, int objectID, int componentID)
         {
-            throw new NotImplementedException();
+            return string.Format("{0}|{1}|PuF|{2}", clientID, objectID, componentID);
+        }
+
+        public static string CreatePuzzleCompleteMessage(int clientID, int objectID, int componentID)
+        {
+            return string.Format("{0}|{1}|PuC|{2}", clientID, objectID, componentID);
         }
 
         #endregion
