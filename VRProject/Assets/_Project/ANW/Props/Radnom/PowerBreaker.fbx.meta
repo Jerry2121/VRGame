@@ -40,6 +40,8 @@ ModelImporter:
     100068: Wheel
     100070: Button1.002
     100072: ButtonX
+    100074: Button1.000
+    100076: Reset
     400000: //RootNode
     400002: Button1
     400004: Button2
@@ -77,6 +79,8 @@ ModelImporter:
     400068: Wheel
     400070: Button1.002
     400072: ButtonX
+    400074: Button1.000
+    400076: Reset
     2100000: Box
     2100002: Light5
     2100004: Light4
@@ -99,6 +103,13 @@ ModelImporter:
     2100038: timber_1_fixed_d.003
     2100040: timber_1_fixed_d.001
     2100042: dark_iron.001
+    2100044: Box.002
+    2100046: Light5.002
+    2100048: Light4.002
+    2100050: Light3.002
+    2100052: Light2.002
+    2100054: Light1.002
+    2100056: MasterLight.002
     2300000: //RootNode
     2300002: Button1
     2300004: Button2
@@ -136,6 +147,8 @@ ModelImporter:
     2300068: Wheel
     2300070: Button1.002
     2300072: ButtonX
+    2300074: Button1.000
+    2300076: Reset
     3300000: //RootNode
     3300002: Button1
     3300004: Button2
@@ -173,6 +186,8 @@ ModelImporter:
     3300068: Wheel
     3300070: Button1.002
     3300072: ButtonX
+    3300074: Button1.000
+    3300076: Reset
     4300000: Cube
     4300002: PowerBreaker
     4300004: Button2
@@ -210,6 +225,8 @@ ModelImporter:
     4300068: cauldronFillShape
     4300070: ButtonX
     4300072: Button1.002
+    4300074: Reset
+    4300076: Button1.000
   externalObjects: {}
   materials:
     importMaterials: 1
