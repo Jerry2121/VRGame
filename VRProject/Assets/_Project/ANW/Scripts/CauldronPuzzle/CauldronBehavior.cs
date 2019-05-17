@@ -207,6 +207,7 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void RegisterSelf()
     {
+        Debug.Log("REGISTERING " + gameObject.name);
         base.RegisterSelf();
     }
 
