@@ -195,12 +195,16 @@ namespace VRGame.Networking
                 case NetworkMessageContent.PuzzleProgress:
                     PuzzleProgressMessage(recievedMessage);
                     break;
+                case NetworkMessageContent.PuzzleFailed:
+                    PuzzleFailedMessage(recievedMessage);
+                    break;
                 case NetworkMessageContent.PuzzleComplete:
                     PuzzleCompleteMessage(recievedMessage);
                     break;
                 case NetworkMessageContent.None:
                     break;
                 default:
+                    WriteMessage(recievedMessage);
                     break;
             }
 
@@ -359,6 +363,10 @@ namespace VRGame.Networking
             }
         }
 
+        void PuzzleFailedMessage(string recievedMessage)
+        {
+            WriteMessage(recievedMessage);
+        }
         private void PuzzleCompleteMessage(string recievedMessage)
         {
             WriteMessage(recievedMessage);
