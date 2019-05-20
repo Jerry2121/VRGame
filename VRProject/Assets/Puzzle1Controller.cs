@@ -19,6 +19,7 @@ public class Puzzle1Controller : NetworkObjectComponent
     public AudioSource PuzzleCompletedSound;
     public GameObject PuzzleLightingBolt;
     public GameObject PuzzleLightingBolt2;
+    public GameObject LevelInformationCanvas;
 
     public override int ID { get => m_ID; protected set => m_ID = value; }
     [HideInNormalInspector]
@@ -78,6 +79,7 @@ public class Puzzle1Controller : NetworkObjectComponent
         Puzzle1Light.color = new Color32(0, 65, 9, 255);
         PuzzleCompletedSound.Play();
         PuzzleStarted = false;
+        LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete = true;
         PuzzleCompleted = true;
     }
 

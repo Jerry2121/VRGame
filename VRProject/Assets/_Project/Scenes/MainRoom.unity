@@ -282,8 +282,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &4991993
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -491,8 +493,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &5398640
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -916,8 +920,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &16713767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1126,8 +1132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &19680645
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1455,8 +1463,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &40290338
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1666,8 +1676,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &41626466
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1893,8 +1905,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &41752645
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2338,8 +2352,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &62007306
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3133,8 +3149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &95780550
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3353,8 +3371,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &110434472
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3598,8 +3618,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &125731837
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3882,8 +3904,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &135908181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4239,8 +4263,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &148445606
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4607,8 +4633,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &163066607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4815,8 +4843,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &164294850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5005,8 +5035,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &164601526
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5086,6 +5118,59 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!1 &173662608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173662609}
+  - component: {fileID: 173662611}
+  - component: {fileID: 173662610}
+  m_Layer: 0
+  m_Name: Room3Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &173662609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173662608}
+  m_LocalRotation: {x: -0.7071071, y: 0.00000033717458, z: -0.7071065, w: 0.00000033717495}
+  m_LocalPosition: {x: 26.43, y: -10.81, z: 51.08}
+  m_LocalScale: {x: 800, y: 800.0005, z: 50.00003}
+  m_Children: []
+  m_Father: {fileID: 1529020085}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -180, y: -90, z: -0.000015258789}
+--- !u!65 &173662610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173662608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.010000003, z: 5.3812003e-15}
+  m_Center: {x: 0, y: -4.656613e-10, z: 0.0000000053644236}
+--- !u!33 &173662611
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173662608}
+  m_Mesh: {fileID: 4300000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!1001 &176072021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5321,8 +5406,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &196310848
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5549,8 +5636,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &211835758
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5739,8 +5828,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &220425820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6065,8 +6156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &237192700
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6325,8 +6418,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &241092545
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6516,8 +6611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &243025504
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6782,8 +6879,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &252109918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6990,8 +7089,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &254184916
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7200,8 +7301,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &262202546
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7411,8 +7514,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &263865492
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7721,8 +7826,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &268498694
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7912,8 +8019,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &269446074
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8158,8 +8267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &277962502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8219,6 +8330,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277962492}
   m_Mesh: {fileID: 4300000, guid: a9d27543a9545784183475959ace4682, type: 3}
+--- !u!84 &279931892
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1906
+  m_Height: 993
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &291245784
 GameObject:
   m_ObjectHideFlags: 0
@@ -8562,8 +8705,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &296329437
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8771,8 +8916,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &302078025
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8997,8 +9144,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &309890946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9205,8 +9354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &314009598
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9431,8 +9582,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &323973427
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9856,8 +10009,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &332017950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10084,8 +10239,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &336424940
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10292,8 +10449,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &340695073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10614,14 +10773,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
-      propertyPath: m_Name
-      value: Meter
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.03
@@ -10668,6 +10819,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
       propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
+      propertyPath: m_Name
+      value: Meter
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f8e2807584ae6c1498f6f750acdbb43e, type: 3}
@@ -10969,8 +11128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &357564402
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11245,8 +11406,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &373696132
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11435,8 +11598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &374387677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11702,8 +11867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &396200388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11910,8 +12077,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &399806500
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12100,8 +12269,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &409561539
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12329,8 +12500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &415557603
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12503,6 +12676,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.010000003, z: 5.3812003e-15}
   m_Center: {x: 0, y: 0.0000000018626451, z: -0.0000000029802045}
+--- !u!84 &426471309
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1906
+  m_Height: 993
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &431304690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7132484313804212470, guid: 1704650da247cc94095ea6050a33e16a,
@@ -12691,8 +12896,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &435417198
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12902,8 +13109,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &439789287
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13178,8 +13387,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &464660300
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13423,8 +13634,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &471024294
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13651,8 +13864,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &487545940
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13897,8 +14112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &508933151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14107,8 +14324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &512825981
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14355,8 +14574,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &515598133
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14581,8 +14802,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &516445652
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15025,8 +15248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &533862722
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15233,8 +15458,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &538360266
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15423,8 +15650,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &547067490
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15790,8 +16019,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &566087189
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15891,6 +16122,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000004, y: 0.010000003, z: 0.000000038146975}
   m_Center: {x: 0, y: 0, z: -0.000000007450581}
+--- !u!1 &568620042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568620043}
+  - component: {fileID: 568620045}
+  - component: {fileID: 568620044}
+  m_Layer: 0
+  m_Name: Room4Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &568620043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568620042}
+  m_LocalRotation: {x: -0.0000001490116, y: 0.0000004768371, z: -1, w: 9.237054e-14}
+  m_LocalPosition: {x: 41.76, y: -10.81, z: 18.84}
+  m_LocalScale: {x: 800, y: 800.0005, z: 50.00003}
+  m_Children: []
+  m_Father: {fileID: 1529020085}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -180, y: -180, z: -0.000015258789}
+--- !u!65 &568620044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568620042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.010000003, z: 5.3812003e-15}
+  m_Center: {x: 0, y: -4.656613e-10, z: 0.0000000053644236}
+--- !u!33 &568620045
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568620042}
+  m_Mesh: {fileID: 4300000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!1 &571309459
 GameObject:
   m_ObjectHideFlags: 0
@@ -16040,8 +16324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &571309468
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16603,8 +16889,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &609939937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16850,8 +17138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &628916045
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17060,8 +17350,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &631990315
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17339,8 +17631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &640840955
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17657,8 +17951,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &660607515
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17867,8 +18163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &674540239
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18076,8 +18374,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &678171733
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18326,8 +18626,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &682494740
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18387,38 +18689,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682494732}
   m_Mesh: {fileID: 4300000, guid: 64704605f89d97f43821f289ee58f53a, type: 3}
---- !u!84 &682629538
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 723
-  m_Height: 431
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &689760392
 GameObject:
   m_ObjectHideFlags: 0
@@ -18548,8 +18818,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &689760400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18774,8 +19046,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &694969182
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19002,8 +19276,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &707277489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19268,8 +19544,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &717434584
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19570,8 +19848,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &723562834
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19872,8 +20152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &725017831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20436,8 +20718,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &765608770
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20647,8 +20931,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &770373689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20868,8 +21154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &774167821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21078,8 +21366,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &780875618
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21299,8 +21589,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &786147023
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21489,8 +21781,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &799110756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21715,8 +22009,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &803718980
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21796,6 +22092,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!1 &823794222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1177602943827493265, guid: 01ee86b65353a5744b7c9dbf15beb097,
+    type: 3}
+  m_PrefabInstance: {fileID: 993332912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &823794225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823794222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3069b5a766e477f469bb7f5c669945b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelInformationCanvas: {fileID: 1049308758}
 --- !u!1 &823950850
 GameObject:
   m_ObjectHideFlags: 0
@@ -22026,8 +22341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &836262302
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22257,8 +22574,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &842780331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22614,8 +22933,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &857342315
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22917,8 +23238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &878279363
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23127,8 +23450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &878748497
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23338,8 +23663,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &878753788
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23622,8 +23949,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &900943924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23842,8 +24171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &915725556
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24247,8 +24578,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &939878899
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24562,8 +24895,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &945801732
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24878,8 +25213,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &955945163
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25411,8 +25748,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &976717182
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25670,8 +26009,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &983053859
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25879,8 +26220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &990476392
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26158,7 +26501,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 682629538}
+      objectReference: {fileID: 426471309}
     - target: {fileID: 1177602943827664319, guid: 01ee86b65353a5744b7c9dbf15beb097,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26212,6 +26555,51 @@ PrefabInstance:
     - target: {fileID: 1177602943925793015, guid: 01ee86b65353a5744b7c9dbf15beb097,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177602943827493265, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177602944147581876, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: UIInfo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242865892872555647, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186272053875397389, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435771947317509247, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321403880750765982, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 279931892}
+    - target: {fileID: 3387207396973617379, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330710735898640273, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 291909554812653795, guid: 01ee86b65353a5744b7c9dbf15beb097,
+        type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -26628,8 +27016,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1003829047
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26854,8 +27244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1004562921
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27141,8 +27533,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1025362771
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27367,8 +27761,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1028551031
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27557,8 +27953,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1030468322
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27785,8 +28183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1030689687
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28179,8 +28579,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1044609565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28240,6 +28642,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044609555}
   m_Mesh: {fileID: 4300000, guid: 37d17dfa176850c45a85a208ca314b33, type: 3}
+--- !u!1 &1049308758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 13355971472254799, guid: 01ee86b65353a5744b7c9dbf15beb097,
+    type: 3}
+  m_PrefabInstance: {fileID: 993332912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1050902238
 GameObject:
   m_ObjectHideFlags: 0
@@ -28399,8 +28807,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1052542181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28479,6 +28889,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.010000003, z: 5.3812003e-15}
   m_Center: {x: 0, y: 0, z: -0.0000000035763321}
+--- !u!33 &1054781826
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055747458}
+  m_Mesh: {fileID: 4300000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+--- !u!4 &1055584674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055747458}
+  m_LocalRotation: {x: -1, y: -2.9493626e-14, z: -0.00000008146034, w: 0.0000004768371}
+  m_LocalPosition: {x: -6.7191753, y: -10.8145, z: 35.678127}
+  m_LocalScale: {x: 800, y: 800.0005, z: 50.00003}
+  m_Children: []
+  m_Father: {fileID: 1529020085}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: -0.000015258789}
+--- !u!65 &1055714085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055747458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.010000003, z: 5.3812003e-15}
+  m_Center: {x: 0, y: -4.656613e-10, z: 0.0000000053644236}
+--- !u!1 &1055747458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055584674}
+  - component: {fileID: 1054781826}
+  - component: {fileID: 1055714085}
+  m_Layer: 0
+  m_Name: Room2Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
 --- !u!1 &1058156964
 GameObject:
   m_ObjectHideFlags: 0
@@ -28644,8 +29107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1058156974
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28705,38 +29170,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058156964}
   m_Mesh: {fileID: 4300000, guid: a9d27543a9545784183475959ace4682, type: 3}
---- !u!84 &1058689899
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 723
-  m_Height: 431
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1058901432 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f,
@@ -28885,8 +29318,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1062457479
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29105,8 +29540,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1064727100
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29426,8 +29863,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1072175944
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29655,8 +30094,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1091196158
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29883,8 +30324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1095785765
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30093,8 +30536,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1098986447
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30284,8 +30729,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1103562885
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30494,8 +30941,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1108392786
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31056,8 +31505,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1124338455
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31480,8 +31931,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1160769147
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31818,8 +32271,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1166965136
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32106,8 +32561,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1187333404
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32316,8 +32773,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1187850642
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32692,8 +33151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1216606941
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32902,8 +33363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1223469060
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33113,8 +33576,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1224130320
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33391,8 +33856,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1234726869
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33601,8 +34068,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1237968960
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33920,8 +34389,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1260914643
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34446,8 +34917,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1282315360
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34672,8 +35145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1289551394
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34881,8 +35356,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1291973502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35249,8 +35726,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1294958416
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35459,8 +35938,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1319952651
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35822,8 +36303,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1344263722
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36241,8 +36724,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1355184224
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36432,8 +36917,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1357089758
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36866,8 +37353,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1371236150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37128,8 +37617,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1381156214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37468,8 +37959,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1390443301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37678,8 +38171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1396177465
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37958,8 +38453,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1407012752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38280,8 +38777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1420537345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38647,8 +39146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1451994038
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38873,8 +39374,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1452882206
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38954,6 +39457,38 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!84 &1453435859
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1906
+  m_Height: 993
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1454666551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f,
@@ -39316,8 +39851,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1474965211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39544,8 +40081,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1477252706
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39793,8 +40332,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1503950387
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39983,8 +40524,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1506230002
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40211,8 +40754,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1506674356
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40401,8 +40946,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1511172723
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40462,6 +41009,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511172715}
   m_Mesh: {fileID: 4300000, guid: 64704605f89d97f43821f289ee58f53a, type: 3}
+--- !u!1 &1529020084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529020085}
+  m_Layer: 0
+  m_Name: RoomTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1529020085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529020084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1055584674}
+  - {fileID: 173662609}
+  - {fileID: 568620043}
+  m_Father: {fileID: 3112692737350829680}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1532227760
 GameObject:
   m_ObjectHideFlags: 0
@@ -40627,8 +41207,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1532227770
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41153,8 +41735,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1556228130
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41431,8 +42015,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1566162092
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41785,8 +42371,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1590596768
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42142,8 +42730,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1601886752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42333,8 +42923,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1603162713
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42601,8 +43193,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1612621805
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42828,8 +43422,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1623787374
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43056,8 +43652,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1625371579
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43354,8 +43952,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1643555705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43752,8 +44352,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1700515373
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43978,8 +44580,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1702573339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44310,8 +44914,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1729663423
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44794,8 +45400,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1740176901
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45070,8 +45678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1748939450
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45388,8 +45998,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1776231084
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45598,8 +46210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1782652432
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45809,8 +46423,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1784089618
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46018,8 +46634,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1788119890
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46226,8 +46844,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1797773375
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46436,8 +47056,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1801647956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46828,8 +47450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1809499401
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47056,8 +47680,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1812073432
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47246,8 +47872,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1815434618
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47436,8 +48064,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1822678895
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47645,8 +48275,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1824789570
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47892,8 +48524,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1832647820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48102,8 +48736,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1834533345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48350,8 +48986,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1841464402
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48815,8 +49453,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1855647989
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49042,8 +49682,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1860789462
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49546,8 +50188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1897527122
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49826,8 +50470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1899030620
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50110,8 +50756,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1918026063
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50300,8 +50948,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1918474588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50528,8 +51178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1920214593
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51129,8 +51781,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1951314460
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51357,8 +52011,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1960674696
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51586,8 +52242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1964324819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51776,8 +52434,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1964873103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52003,8 +52663,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1978009887
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52223,8 +52885,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1983986138
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52413,8 +53077,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &1984318136
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52691,8 +53357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2006322307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52882,8 +53550,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2010955628
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53129,8 +53799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2012311946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53356,8 +54028,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2021171135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53694,8 +54368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2029104144
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54486,8 +55162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2070119269
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54676,8 +55354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2072283353
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54933,8 +55613,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2079701912
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55218,8 +55900,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2093494630
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55516,8 +56200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2105909187
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55745,8 +56431,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2111022222
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56004,8 +56692,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2114790565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56252,8 +56942,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2135668008
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56482,8 +57174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2140051433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56747,8 +57441,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!64 &2147077919
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56815,14 +57511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (30)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -56875,6 +57563,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256812070205 stripped
@@ -56890,14 +57586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (41)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -56950,6 +57638,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256823462068 stripped
@@ -56965,14 +57661,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (54)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -57024,6 +57712,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -57719,14 +58415,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -57779,6 +58467,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256910586294 stripped
@@ -57794,14 +58490,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (39)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -57854,6 +58542,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256955806418 stripped
@@ -57869,14 +58565,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023256879624120}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (65)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -57929,6 +58617,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256971553979 stripped
@@ -57944,14 +58640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -58004,6 +58692,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023256975407213 stripped
@@ -58019,14 +58715,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (57)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37
@@ -58079,6 +58767,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257050431574 stripped
@@ -58094,14 +58790,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -58154,6 +58842,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257070153494 stripped
@@ -58169,14 +58865,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (56)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37
@@ -58228,6 +58916,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -58459,14 +59155,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -58519,6 +59207,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257091688775 stripped
@@ -58534,14 +59230,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (24)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -58593,6 +59281,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -59304,14 +60000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (18)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -59364,6 +60052,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257147780701 stripped
@@ -59379,14 +60075,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (47)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -59439,6 +60127,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257159713528 stripped
@@ -59454,14 +60150,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (60)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -59514,6 +60202,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (60)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257179850030 stripped
@@ -59529,14 +60225,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023256879624120}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (66)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -59589,6 +60277,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257202243432 stripped
@@ -59604,14 +60300,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (26)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -59664,6 +60352,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257286080761 stripped
@@ -59679,14 +60375,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -59738,6 +60426,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -60614,14 +61310,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (42)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -60674,6 +61362,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257376711504 stripped
@@ -60689,14 +61385,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -60748,6 +61436,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -61015,14 +61711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -61075,6 +61763,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257475284110 stripped
@@ -61090,14 +61786,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (27)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -61150,6 +61838,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257481504092 stripped
@@ -61165,14 +61861,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (28)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -61225,6 +61913,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257491928259 stripped
@@ -61240,14 +61936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (59)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37
@@ -61300,6 +61988,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (59)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257493409913 stripped
@@ -61315,14 +62011,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -61375,6 +62063,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257500600752 stripped
@@ -61390,14 +62086,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (63)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -61450,6 +62138,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257512344985 stripped
@@ -61465,14 +62161,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -61524,6 +62212,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -62185,14 +62881,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (29)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -62245,6 +62933,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257558047042 stripped
@@ -62260,14 +62956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (35)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -62319,6 +63007,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -62550,14 +63246,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (55)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -62610,6 +63298,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257728312223 stripped
@@ -62625,14 +63321,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (45)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -62684,6 +63372,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -63130,14 +63826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (20)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -63190,6 +63878,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257794757134 stripped
@@ -63205,14 +63901,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (43)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -63264,6 +63952,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -63495,14 +64191,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (62)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -63555,6 +64243,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257855224970 stripped
@@ -63570,14 +64266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (25)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -63630,6 +64318,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023257872259042 stripped
@@ -63645,14 +64341,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (48)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -63704,6 +64392,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -63935,16 +64631,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258457907319}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64014,6 +64700,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -64120,14 +64816,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (53)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -64180,6 +64868,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258002510208 stripped
@@ -64195,14 +64891,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (33)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -64255,6 +64943,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258025181166 stripped
@@ -64270,14 +64966,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023256879624120}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (64)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -64330,6 +65018,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258026682236 stripped
@@ -64345,16 +65041,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258457907319}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64424,6 +65110,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -64535,14 +65231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (37)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -64595,6 +65283,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258060406645 stripped
@@ -64610,16 +65306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258457907319}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64689,6 +65375,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -64790,14 +65486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (19)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -64850,6 +65538,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258107927975 stripped
@@ -64865,14 +65561,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -64925,6 +65613,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258158890452 stripped
@@ -64940,14 +65636,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (52)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -65000,6 +65688,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258159313264 stripped
@@ -65015,14 +65711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023256879624120}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (67)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -65075,6 +65763,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258175025236 stripped
@@ -65090,14 +65786,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (31)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35
@@ -65149,6 +65837,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -65610,14 +66306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -65670,6 +66358,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258322993808 stripped
@@ -65685,14 +66381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (13)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -65744,6 +66432,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -65975,14 +66671,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (61)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29
@@ -66034,6 +66722,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -66099,14 +66795,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (40)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -66158,6 +66846,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -66224,16 +66920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8541100987974678252}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66303,6 +66989,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -66619,14 +67315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (49)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -66679,6 +67367,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258494314711 stripped
@@ -66694,14 +67390,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (23)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -66753,6 +67441,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -67199,14 +67895,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (22)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -67259,6 +67947,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258601262432 stripped
@@ -67274,14 +67970,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (38)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -67334,6 +68022,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258607858954 stripped
@@ -67349,14 +68045,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (58)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37
@@ -67409,6 +68097,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (58)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258656554463 stripped
@@ -67424,14 +68120,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (44)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -67484,6 +68172,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258673935446 stripped
@@ -67499,14 +68195,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (46)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13
@@ -67559,6 +68247,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258720479790 stripped
@@ -67574,16 +68270,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258457907319}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67653,6 +68339,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -67969,14 +68665,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (34)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -68028,6 +68716,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -68309,14 +69005,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -68368,6 +69056,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -68599,14 +69295,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19
@@ -68659,6 +69347,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258859025411 stripped
@@ -68680,6 +69376,16 @@ PrefabInstance:
       value: Room1Doorway
       objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396929, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -68744,16 +69450,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55c9b6124cbce4c4bb31e645841b249b, type: 3}
 --- !u!4 &133023258875114608 stripped
@@ -68769,14 +69465,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (50)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -68829,6 +69517,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258880729449 stripped
@@ -68844,14 +69540,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258470139794}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (36)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -68904,6 +69592,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258881376251 stripped
@@ -68919,14 +69615,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023258817938239}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (51)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -68979,6 +69667,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258898997460 stripped
@@ -68994,14 +69690,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (21)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27
@@ -69054,6 +69742,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 50.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
 --- !u!4 &133023258911151111 stripped
@@ -69069,14 +69765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 133023257139418676}
     m_Modifications:
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_Name
-      value: BrickFloor (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -69128,6 +69816,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
       propertyPath: m_LocalScale.z
       value: 50.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_Name
+      value: BrickFloor (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deecfec6233fd1042b7de6167644f04f, type: 3}
@@ -69806,16 +70502,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 233515864989631351}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69880,6 +70566,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -72587,8 +73283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!54 &1218106850904569140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73202,6 +73900,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396930, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -73258,16 +73966,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5958655361301254732, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -74239,16 +74937,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8541100987974678252}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -74318,6 +75006,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -74998,8 +75696,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!4 &2306021440984432516
 Transform:
   m_ObjectHideFlags: 0
@@ -75941,16 +76641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 233515864989631351}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76015,6 +76705,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -76491,6 +77191,7 @@ Transform:
   - {fileID: 1194128095436512183}
   - {fileID: 5510261926106048568}
   - {fileID: 3980944032862074972}
+  - {fileID: 1529020085}
   m_Father: {fileID: 7695351070349898673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77168,8 +77869,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1001 &3539917377016524920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78237,6 +78940,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396930, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -78293,16 +79006,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5958655361301254732, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -80408,6 +81111,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396930, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80464,16 +81177,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5958655361301254732, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -82242,8 +82945,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!114 &5997995790547113166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82258,8 +82963,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle3
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1 &6005705205080830932
 GameObject:
   m_ObjectHideFlags: 0
@@ -82541,6 +83248,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396930, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82597,16 +83314,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5958655361301254732, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -83797,6 +84504,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5958655363009396930, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -83853,16 +84570,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5958655361301254732, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361374941886, guid: 55c9b6124cbce4c4bb31e645841b249b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958655361665949493, guid: 55c9b6124cbce4c4bb31e645841b249b,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -84269,8 +84976,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!4 &6780818358874666811
 Transform:
   m_ObjectHideFlags: 0
@@ -85001,8 +85710,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1001 &7084936032116483767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85010,16 +85721,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 233515864989631351}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85084,6 +85785,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -85293,16 +86004,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 233515864989631351}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -85367,6 +86068,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -85686,8 +86397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: fork
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!114 &7198867862513678703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85930,8 +86643,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bottle1
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1 &7262988090632761222
 GameObject:
   m_ObjectHideFlags: 0
@@ -86310,8 +87025,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: plate
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1 &7453171765493314087
 GameObject:
   m_ObjectHideFlags: 0
@@ -86550,8 +87267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: bowl
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1001 &7582918248032588748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86559,16 +87278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8541100987974678252}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -86638,6 +87347,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
@@ -87594,8 +88313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: mug
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1001 &7989580573552473457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89661,8 +90382,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: spoon
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!4 &9003669567681185179
 Transform:
   m_ObjectHideFlags: 0
@@ -89723,16 +90446,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8541100987974678252}
     m_Modifications:
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_Name
-      value: HallwaySegment (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 222288827520767682, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -89802,6 +90515,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 400.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_Name
+      value: HallwaySegment (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974484768504930064, guid: fac11083c40ce9748af115fa355c6b7a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6126337453773063915, guid: fac11083c40ce9748af115fa355c6b7a,
         type: 3}
