@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
+using VRGame.Networking;
 
-public class PowerBreakerBehavior : MonoBehaviour
+public class PowerBreakerBehavior : NetworkObjectComponent
 {
     public GameObject[] wires;
 
@@ -25,6 +26,12 @@ public class PowerBreakerBehavior : MonoBehaviour
     public Color32[] buttonLightsColors;
 
     public bool puzzleCompleted;
+
+    public override NetworkObject m_NetworkObject { get; protected set; }
+    public override int ID { get => m_ID; protected set => m_ID = value; }
+    [HideInNormalInspector]
+    [SerializeField]
+    int m_ID;
 
     private void Update()
     {
@@ -254,4 +261,44 @@ public class PowerBreakerBehavior : MonoBehaviour
             wires[24].gameObject.SetActive(true);
         }
     }
+
+    public override void RecieveNetworkMessage(string recievedMessage)
+    {
+        if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        {
+
+        }
+    }
+
+    public override void SendNetworkMessage(string messageToSend)
+    {
+        NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
+    }
+
+    public override void SetID(int newID)
+    {
+        if (newID > -1)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("PowerBreakerBehaviour -- SetID: ID set to {0}", newID));
+            ID = newID;
+        }
+    }
+
+    public override void RegisterSelf()
+    {
+        base.RegisterSelf();
+    }
+
+    [ExecuteAlways]
+    public override void SetNetworkObject(NetworkObject newNetworkObject)
+    {
+        base.SetNetworkObject(newNetworkObject);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+    }
+
 }
