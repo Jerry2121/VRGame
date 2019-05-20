@@ -272,6 +272,8 @@ public class PowerBreakerBehavior : NetworkObjectComponent
 
     public override void RecieveNetworkMessage(string recievedMessage)
     {
+        Debug.Log("PowerBreakerBehaviour: RecievedMessage");
+
         if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
             if(Debug.isDebugBuild)
