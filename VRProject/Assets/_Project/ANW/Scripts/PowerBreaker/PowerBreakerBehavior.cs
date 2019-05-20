@@ -274,12 +274,16 @@ public class PowerBreakerBehavior : NetworkObjectComponent
     {
         if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
+            if(Debug.isDebugBuild)
+                Debug.Log("PowerBreakerBehaviour: Recieved Progress. Button ID is " + numOne);
+
             GameObject buttonNumbered = null;
             GameObject buttonColored = null;
 
             foreach (var button in buttonsNumeric)
             {
-                if (button.GetComponent<ButtonBehavior>().buttonID == numOne)
+                ButtonBehavior buttonBehavior = button.GetComponent<ButtonBehavior>();
+                if (buttonBehavior.buttonID == numOne && buttonBehavior.matchFound == null)
                 {
                     buttonNumbered = button;
                     break;
@@ -287,7 +291,8 @@ public class PowerBreakerBehavior : NetworkObjectComponent
             }
             foreach (var button in buttonsColored)
             {
-                if (button.GetComponent<ButtonBehavior>().buttonID == numOne)
+                ButtonBehavior buttonBehavior = button.GetComponent<ButtonBehavior>();
+                if (buttonBehavior.buttonID == numOne && buttonBehavior.matchFound == null)
                 {
                     buttonColored = button;
                     break;
@@ -309,6 +314,7 @@ public class PowerBreakerBehavior : NetworkObjectComponent
         }
         else if (NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
         {
+            Debug.Log("PowerBreakerBehaviour: Recieved Failure");
             ResetPuzzle();
         }
         else
