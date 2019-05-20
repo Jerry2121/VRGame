@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 3343470}
   - component: {fileID: 2305984}
   - component: {fileID: 6491384}
+  - component: {fileID: 8032244820568636990}
+  - component: {fileID: 3496065474740983547}
+  - component: {fileID: 2288157884511007981}
+  - component: {fileID: 7384527683282483665}
   m_Layer: 0
   m_Name: scrolls
   m_TagString: Untagged
@@ -90,6 +94,65 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 87eae56dfd6732740981e5602d04797f, type: 3}
+--- !u!54 &8032244820568636990
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157598}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3496065474740983547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a541b03f5377e049858795f9332e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObjectName: scrolls
+  m_ObjectID: 0
+  m_Grabbed: 0
+  m_LocalAuthority: 0
+  m_ServerAuthority: 0
+--- !u!114 &2288157884511007981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e2c7589f16254489a1112c849d1102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ID: 0
+--- !u!114 &7384527683282483665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510ee9d7d28b1e340a35331c9b508f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ID: 1
