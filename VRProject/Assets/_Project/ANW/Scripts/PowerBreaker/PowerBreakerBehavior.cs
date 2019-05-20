@@ -15,7 +15,7 @@ public class PowerBreakerBehavior : NetworkObjectComponent
 
     public int correctMatchesCompleted;
 
-    public GameObject numericButtonPressed;
+    public GameObject numericButtonPressed = null;
     public int numericButtonPressedID;
     public GameObject coloredButtonPressed;
     public int coloredButtonPressedID;
@@ -148,129 +148,129 @@ public class PowerBreakerBehavior : NetworkObjectComponent
         }
     }
 
-    public void InstantiateWire(GameObject originLeft, GameObject originRight)
+    public void InstantiateWire(GameObject buttonNumber, GameObject buttonColored)
     {
-        if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonA")
+        if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonA")
         {
             wires[0].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonB")
         {
             wires[1].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonC")
         {
             wires[2].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonD")
         {
             wires[3].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonE")
         {
             wires[4].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonA")
         {
             wires[5].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonB")
         {
             wires[6].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonC")
         {
             wires[7].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonD")
         {
             wires[8].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonE")
         {
             wires[9].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonA")
         {
             wires[10].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonB")
         {
             wires[11].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonC")
         {
             wires[12].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonD")
         {
             wires[13].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonE")
         {
             wires[14].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonA")
         {
             wires[15].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonB")
         {
             wires[16].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonC")
         {
             wires[17].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonD")
         {
             wires[18].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonE")
         {
             wires[19].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonA")
         {
             wires[20].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonB")
         {
             wires[21].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonC")
         {
             wires[22].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonD")
         {
             wires[23].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonE")
         {
             wires[24].gameObject.SetActive(true);
         }
