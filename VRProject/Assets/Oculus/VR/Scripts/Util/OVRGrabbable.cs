@@ -39,7 +39,7 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
-    protected NetworkObject m_NetObj;
+    protected NetworkObject m_NetworkObject;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -122,10 +122,10 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-        if (m_NetObj != null)
+        if (m_NetworkObject != null)
         {
-            m_NetObj.SetPlayerInteracting(true);
-            m_NetObj.m_Grabbed = true;
+            m_NetworkObject.SetPlayerInteracting(true);
+            m_NetworkObject.m_Grabbed = true;
         }
     }
 
@@ -141,10 +141,10 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = null;
         m_grabbedCollider = null;
 
-        if (m_NetObj != null)
+        if (m_NetworkObject != null)
         {
-            m_NetObj.SetPlayerInteracting(false);
-            m_NetObj.m_Grabbed = false;
+            m_NetworkObject.SetPlayerInteracting(false);
+            m_NetworkObject.m_Grabbed = false;
         }
     }
 
@@ -168,7 +168,8 @@ public class OVRGrabbable : MonoBehaviour
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
 
-        m_NetObj = GetComponent<NetworkObjectComponent>()?.m_NetworkObject;
+        //m_NetworkObject = GetComponent<NetworkObjectComponent>()?.m_NetworkObject;
+        m_NetworkObject = NetworkObjectComponent.GetNetworkObjectForObject(transform);
     }
 
     void OnDestroy()
