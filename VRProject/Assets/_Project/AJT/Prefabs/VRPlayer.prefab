@@ -1160,8 +1160,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: Player
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 1
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!114 &8691742851432020683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1367,7 @@ GameObject:
   - component: {fileID: 1321403880711220149}
   - component: {fileID: 2951233262987618589}
   - component: {fileID: 790782129177541546}
+  - component: {fileID: 7277970985016007462}
   m_Layer: 27
   m_Name: RightHandAnchor
   m_TagString: VRHands
@@ -1475,6 +1478,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 15
+--- !u!114 &7277970985016007462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321403880711349855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609d4a0bd324ab7439bd39714dc43fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321403880711389095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,6 +1505,7 @@ GameObject:
   - component: {fileID: 1321403880711220136}
   - component: {fileID: 77644499345738298}
   - component: {fileID: 3675196590973605887}
+  - component: {fileID: 8209967701371278107}
   m_Layer: 27
   m_Name: LeftHandAnchor
   m_TagString: VRHands
@@ -1601,6 +1617,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 13
+--- !u!114 &8209967701371278107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321403880711389095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609d4a0bd324ab7439bd39714dc43fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321403880725093976
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,19 +5383,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1321403880711022423}
     m_Modifications:
-    - target: {fileID: 157742, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 158226, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Name
       value: LocalAvatar
       objectReference: {fileID: 0}
     - target: {fileID: 158226, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 184120, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -5415,15 +5435,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1231602751420816, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1000010482306814, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010910743596, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+    - target: {fileID: 1000011125779090, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1000011125779090, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+    - target: {fileID: 1000010910743596, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
@@ -5435,7 +5459,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1231602751420816, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+    - target: {fileID: 157742, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 184120, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
