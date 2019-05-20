@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 2605559166448973750, guid: effff6acb839ee444925663e01b12268, type: 3}
   - {fileID: 157598, guid: 5819cea5b13f2934a8e13996ff748543, type: 3}
   - {fileID: 178230, guid: bfb5063a60f6ab946b7818053c46d9d2, type: 3}
+  - {fileID: 7035713884002117349, guid: 00b099f0230dadb40a989f2926bde80b, type: 3}
   m_playerPrefab: {fileID: 1321403880711187725, guid: 80a566a7c8906064dbc32260e483da3c,
     type: 3}
   m_NetworkAddress: 10.47.1.42
@@ -73,8 +74,8 @@ MonoBehaviour:
     _asset: {fileID: 102900000, guid: 9dce18dcd29f77347905b9f41ec48748, type: 3}
     _path: Assets/_Project/AW/NetMenu.unity
   m_OnlineScene:
-    _asset: {fileID: 102900000, guid: 93c5760fb4ec3114d9c1d629fc1af78a, type: 3}
-    _path: Assets/_Project/AW/JTCopy.unity
+    _asset: {fileID: 102900000, guid: 3936b0b07ddce8f45a7913f27a35100e, type: 3}
+    _path: Assets/_Project/AW/JT2Copy.unity
   m_ShowGUI: 1
   m_Debug: 0
   m_OffsetX: 0

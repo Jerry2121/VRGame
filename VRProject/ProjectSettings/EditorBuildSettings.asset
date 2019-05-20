@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/AW/JTCopy.unity
     guid: 93c5760fb4ec3114d9c1d629fc1af78a
+  - enabled: 1
+    path: Assets/_Project/AW/JT2Copy.unity
+    guid: 3936b0b07ddce8f45a7913f27a35100e
   m_configObjects: {}
