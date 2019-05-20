@@ -2224,6 +2224,7 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4294902015
   puzzleCompleted: 0
+  m_ID: 10
 --- !u!1 &2672030241868511979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,8 +3667,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: PowerBreakerPuzzle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1 &7035713884002117351
 GameObject:
   m_ObjectHideFlags: 0

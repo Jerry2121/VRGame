@@ -115,8 +115,8 @@ public class CauldronBehavior : NetworkObjectComponent
             return;
         }
 
-        //if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-          //  return;
+        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
+            return;
 
         if (liquidID == mixtureNeededID)
         {
@@ -150,7 +150,7 @@ public class CauldronBehavior : NetworkObjectComponent
             return;
         }
 
-        //SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
+        SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
 
         markingLerping = true;
     }
@@ -196,6 +196,10 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             Debug.LogError("PUZZLE RECIEVE FAILURE");
             ResetPuzzle();
+        }
+        else
+        {
+            Debug.LogError(string.Format("CauldronBehaviour -- RecieveNetworkMessage: Unable to translate message. Message was {0}", recievedMessage));
         }
     }
 

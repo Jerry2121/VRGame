@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
+using VRGame.Networking;
 
-public class PowerBreakerBehavior : MonoBehaviour
+public class PowerBreakerBehavior : NetworkObjectComponent
 {
     public GameObject[] wires;
 
@@ -14,7 +15,7 @@ public class PowerBreakerBehavior : MonoBehaviour
 
     public int correctMatchesCompleted;
 
-    public GameObject numericButtonPressed;
+    public GameObject numericButtonPressed = null;
     public int numericButtonPressedID;
     public GameObject coloredButtonPressed;
     public int coloredButtonPressedID;
@@ -25,6 +26,18 @@ public class PowerBreakerBehavior : MonoBehaviour
     public Color32[] buttonLightsColors;
 
     public bool puzzleCompleted;
+
+    public override NetworkObject m_NetworkObject { get; protected set; }
+    public override int ID { get => m_ID; protected set => m_ID = value; }
+    [HideInNormalInspector]
+    [SerializeField]
+    int m_ID;
+
+    private void Start()
+    {
+        m_NetworkObject = GetNetworkObjectForObject(this.transform);
+        RegisterSelf();
+    }
 
     private void Update()
     {
@@ -54,6 +67,8 @@ public class PowerBreakerBehavior : MonoBehaviour
 
             numericButtonPressed = null;
             coloredButtonPressed = null;
+
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, numericButtonPressedID));
         }
 
         else if (numericButtonPressedID != coloredButtonPressedID)
@@ -108,7 +123,13 @@ public class PowerBreakerBehavior : MonoBehaviour
         puzzleCompleted = true;
     }
 
-    public void ResetPuzzle()
+    public void ResetPowerBreaker()
+    {
+        SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
+        ResetPuzzle();
+    }
+
+    void ResetPuzzle()
     {
         for (int i = 0; i < wires.Length; i++)
         {
@@ -127,131 +148,218 @@ public class PowerBreakerBehavior : MonoBehaviour
         }
     }
 
-    public void InstantiateWire(GameObject originLeft, GameObject originRight)
+    public void InstantiateWire(GameObject buttonNumber, GameObject buttonColored)
     {
-        if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonA")
+        if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonA")
         {
             wires[0].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonB")
         {
             wires[1].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonC")
         {
             wires[2].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonD")
         {
             wires[3].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button1" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button1" && buttonColored.name == "ButtonE")
         {
             wires[4].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonA")
         {
             wires[5].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonB")
         {
             wires[6].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonC")
         {
             wires[7].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonD")
         {
             wires[8].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button2" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button2" && buttonColored.name == "ButtonE")
         {
             wires[9].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonA")
         {
             wires[10].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonB")
         {
             wires[11].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonC")
         {
             wires[12].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonD")
         {
             wires[13].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button3" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button3" && buttonColored.name == "ButtonE")
         {
             wires[14].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonA")
         {
             wires[15].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonB")
         {
             wires[16].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonC")
         {
             wires[17].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonD")
         {
             wires[18].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button4" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button4" && buttonColored.name == "ButtonE")
         {
             wires[19].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonA")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonA")
         {
             wires[20].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonB")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonB")
         {
             wires[21].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonC")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonC")
         {
             wires[22].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonD")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonD")
         {
             wires[23].gameObject.SetActive(true);
         }
 
-        else if (numericButtonPressed.name == "Button5" && coloredButtonPressed.name == "ButtonE")
+        else if (buttonNumber.name == "Button5" && buttonColored.name == "ButtonE")
         {
             wires[24].gameObject.SetActive(true);
         }
     }
+
+    public override void RecieveNetworkMessage(string recievedMessage)
+    {
+        Debug.Log("PowerBreakerBehaviour: RecievedMessage");
+
+        if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        {
+            if(Debug.isDebugBuild)
+                Debug.Log("PowerBreakerBehaviour: Recieved Progress. Button ID is " + numOne);
+
+            GameObject buttonNumbered = null;
+            GameObject buttonColored = null;
+
+            foreach (var button in buttonsNumeric)
+            {
+                ButtonBehavior buttonBehavior = button.GetComponent<ButtonBehavior>();
+                if (buttonBehavior.buttonID == numOne && buttonBehavior.matchFound == null)
+                {
+                    buttonNumbered = button;
+                    break;
+                }
+            }
+            foreach (var button in buttonsColored)
+            {
+                ButtonBehavior buttonBehavior = button.GetComponent<ButtonBehavior>();
+                if (buttonBehavior.buttonID == numOne && buttonBehavior.matchFound == null)
+                {
+                    buttonColored = button;
+                    break;
+                }
+            }
+
+            if (buttonNumbered == null && buttonColored == null)
+            {
+                Debug.LogError("PowerBreakerBehaviour -- RecieveNetworkMessage: Did not find buttons matching sent button ID");
+                return;
+            }
+
+            correctMatchesCompleted++;
+
+            buttonNumbered.GetComponent<ButtonBehavior>().matchFound = buttonColored;
+            buttonColored.GetComponent<ButtonBehavior>().matchFound = buttonNumbered;
+
+            InstantiateWire(buttonNumbered, buttonColored);
+        }
+        else if (NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
+        {
+            Debug.Log("PowerBreakerBehaviour: Recieved Failure");
+            ResetPuzzle();
+        }
+        else
+        {
+            Debug.LogError(string.Format("PowerBreakerBehaviour -- RecieveNetworkMessage: Unable to translate message. Message was {0}", recievedMessage));
+        }
+    }
+
+    public override void SendNetworkMessage(string messageToSend)
+    {
+        NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
+    }
+
+    public override void SetID(int newID)
+    {
+        if (newID > -1)
+        {
+            if (Debug.isDebugBuild)
+                Debug.Log(string.Format("PowerBreakerBehaviour -- SetID: ID set to {0}", newID));
+            ID = newID;
+        }
+    }
+
+    public override void RegisterSelf()
+    {
+        base.RegisterSelf();
+    }
+
+    [ExecuteAlways]
+    public override void SetNetworkObject(NetworkObject newNetworkObject)
+    {
+        base.SetNetworkObject(newNetworkObject);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+    }
+
 }

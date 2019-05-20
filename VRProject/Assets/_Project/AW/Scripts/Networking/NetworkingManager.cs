@@ -173,8 +173,10 @@ namespace VRGame.Networking
 
         public void PassNetworkMessageToReciever(string recievedMessage, int objectID, int componentID)
         {
-            if(m_NetworkedObjectDictionary.ContainsKey(objectID))
+            if (m_NetworkedObjectDictionary.ContainsKey(objectID))
                 m_NetworkedObjectDictionary[objectID].RecieveMessage(recievedMessage, componentID);
+            else
+                Debug.LogError("NetworkingManager -- PassNetworkMessageToReciever: Recieve a network message for and object not in the dictionary!");
         }
 
         public void RecieveInstantiateMessage(string recievedMessage)

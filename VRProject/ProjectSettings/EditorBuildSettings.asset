@@ -18,12 +18,9 @@ EditorBuildSettings:
     path: Assets/_Project/AW/NetworkingTest.unity
     guid: bae7e2dfd1af72e4a8663d545d0a10df
   - enabled: 1
-    path: Assets/_Project/AW/NewJT2Clone.unity
-    guid: 7a8bd8040fe2f0347bd669fa8781b4f2
-  - enabled: 1
     path: Assets/_Project/AW/JTCopy.unity
     guid: 93c5760fb4ec3114d9c1d629fc1af78a
   - enabled: 1
-    path: Assets/_Project/AW/NewJT2Clone 1.unity
-    guid: bf9e167342a9f2e4ebb97834d8adbccd
+    path: Assets/_Project/AW/JT2Copy.unity
+    guid: 3936b0b07ddce8f45a7913f27a35100e
   m_configObjects: {}
