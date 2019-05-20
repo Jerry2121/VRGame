@@ -47,9 +47,6 @@ namespace VRGame.Networking
             }
             else if (transform.position != m_LastSentPosition)
             {
-                //if (Debug.isDebugBuild)
-                //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
-
                 if (localControl == false)
                     localControl = true;
 
@@ -65,10 +62,10 @@ namespace VRGame.Networking
 
         void SendPosition()
         {
-                if (m_RigidBody != null && m_NetworkObject.m_Grabbed == false)
-                {
-                    m_RigidBody.isKinematic = m_WasKinematic;
-                }
+            if (m_RigidBody != null && m_NetworkObject.m_Grabbed == false)
+            {
+                m_RigidBody.isKinematic = m_WasKinematic;
+            }
 
             m_LastSentPosition = transform.position;
 
@@ -77,6 +74,9 @@ namespace VRGame.Networking
             roundedPos.x = (float)Math.Round(transform.position.x, 3);
             roundedPos.y = (float)Math.Round(transform.position.y, 3);
             roundedPos.z = (float)Math.Round(transform.position.z, 3);
+
+                //if (Debug.isDebugBuild)
+                //Debug.Log(string.Format("Object {0} is sending a position message", gameObject.name));
 
             SendNetworkMessage(NetworkTranslater.CreatePositionMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, ID, roundedPos));
 

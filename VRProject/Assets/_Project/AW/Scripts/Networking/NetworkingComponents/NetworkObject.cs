@@ -20,6 +20,9 @@ namespace VRGame.Networking {
         [SerializeField] bool m_ServerAuthority;
 
         bool m_IsLocalObject;
+
+        [SerializeField]
+        [HideInNormalInspector]
         bool m_PlayerInteracting;
 
         Dictionary<int, NetworkObjectComponent> m_NetComponents = new Dictionary<int, NetworkObjectComponent>();
