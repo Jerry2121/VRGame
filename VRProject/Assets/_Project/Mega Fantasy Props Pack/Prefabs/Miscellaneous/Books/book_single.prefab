@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5109695480545336617}
   - component: {fileID: 5456118251911956860}
   - component: {fileID: 7651938238443788317}
+  - component: {fileID: 7295489605632386899}
   m_Layer: 0
   m_Name: book_single
   m_TagString: Untagged
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: booksingle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
 --- !u!114 &5456118251911956860
@@ -173,3 +175,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &7295489605632386899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44486a2829f61574fa34589385263ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookCovers:
+  - {fileID: 2100000, guid: 47724333e4ef0734cbbfe2ac8ccf681a, type: 2}
+  - {fileID: 2100000, guid: 19b610a59115b3544a25976b65817e4e, type: 2}
+  - {fileID: 2100000, guid: e5e845b6ac5f8dc429a548e827f4fb22, type: 2}
+  - {fileID: 2100000, guid: e721513dd67b1194eb34d01628a2ec38, type: 2}
+  - {fileID: 2100000, guid: 3f6e37fdf70ee3649873addb4353ba36, type: 2}
+  - {fileID: 2100000, guid: fa824aa32c5d9bf4188aad0eab42e295, type: 2}
+  - {fileID: 2100000, guid: 00d2fb0ba59dca84fb06f1e87df7b18a, type: 2}
+  - {fileID: 2100000, guid: 4296487324833494ab41763b17dfe44c, type: 2}
+  - {fileID: 2100000, guid: fbc8fa67719400c4ca7d95a1edc047c4, type: 2}
+  - {fileID: 2100000, guid: e33a90087b2c7df49b9bd37354ad9639, type: 2}
+  - {fileID: 2100000, guid: 65c26a2be64691748aa588a612a3e5dc, type: 2}
