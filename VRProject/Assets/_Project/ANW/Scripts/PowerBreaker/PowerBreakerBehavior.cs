@@ -61,6 +61,8 @@ public class PowerBreakerBehavior : NetworkObjectComponent
 
             numericButtonPressed = null;
             coloredButtonPressed = null;
+
+            SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, numericButtonPressedID));
         }
 
         else if (numericButtonPressedID != coloredButtonPressedID)
@@ -115,7 +117,13 @@ public class PowerBreakerBehavior : NetworkObjectComponent
         puzzleCompleted = true;
     }
 
-    public void ResetPuzzle()
+    public void ResetPowerBreaker()
+    {
+        SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
+        ResetPuzzle();
+    }
+
+    void ResetPuzzle()
     {
         for (int i = 0; i < wires.Length; i++)
         {
@@ -264,9 +272,48 @@ public class PowerBreakerBehavior : NetworkObjectComponent
 
     public override void RecieveNetworkMessage(string recievedMessage)
     {
-        if(NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
+        if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
+            GameObject buttonNumbered = null;
+            GameObject buttonColored = null;
 
+            foreach (var button in buttonsNumeric)
+            {
+                if (button.GetComponent<ButtonBehavior>().buttonID == numOne)
+                {
+                    buttonNumbered = button;
+                    break;
+                }
+            }
+            foreach (var button in buttonsColored)
+            {
+                if (button.GetComponent<ButtonBehavior>().buttonID == numOne)
+                {
+                    buttonColored = button;
+                    break;
+                }
+            }
+
+            if (buttonNumbered == null && buttonColored == null)
+            {
+                Debug.LogError("PowerBreakerBehaviour -- RecieveNetworkMessage: Did not find buttons matching sent button ID");
+                return;
+            }
+
+            correctMatchesCompleted++;
+
+            buttonNumbered.GetComponent<ButtonBehavior>().matchFound = buttonColored;
+            buttonColored.GetComponent<ButtonBehavior>().matchFound = buttonNumbered;
+
+            InstantiateWire(buttonNumbered, buttonColored);
+        }
+        else if (NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
+        {
+            ResetPuzzle();
+        }
+        else
+        {
+            Debug.LogError(string.Format("PowerBreakerBehaviour -- RecieveNetworkMessage: Unable to translate message. Message was {0}", recievedMessage));
         }
     }
 

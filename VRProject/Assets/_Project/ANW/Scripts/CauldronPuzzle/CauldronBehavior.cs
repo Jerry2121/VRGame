@@ -197,6 +197,10 @@ public class CauldronBehavior : NetworkObjectComponent
             Debug.LogError("PUZZLE RECIEVE FAILURE");
             ResetPuzzle();
         }
+        else
+        {
+            Debug.LogError(string.Format("PowerBreakerBehaviour -- RecieveNetworkMessage: Unable to translate message. Message was {0}", recievedMessage));
+        }
     }
 
     public override void SendNetworkMessage(string messageToSend)

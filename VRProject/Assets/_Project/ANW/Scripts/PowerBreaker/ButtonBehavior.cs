@@ -19,7 +19,7 @@ public class ButtonBehavior : MonoBehaviour
 
         if (gameObject.name == "ButtonX")
         {
-            powerBreaker.GetComponent<PowerBreakerBehavior>().ResetPuzzle();
+            powerBreaker.GetComponent<PowerBreakerBehavior>().ResetPowerBreaker();
         }
 
         if (buttonType == "Numeric")
