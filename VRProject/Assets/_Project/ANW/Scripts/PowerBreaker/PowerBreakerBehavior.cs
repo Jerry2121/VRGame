@@ -33,6 +33,12 @@ public class PowerBreakerBehavior : NetworkObjectComponent
     [SerializeField]
     int m_ID;
 
+    private void Start()
+    {
+        m_NetworkObject = GetNetworkObjectForObject(this.transform);
+        RegisterSelf();
+    }
+
     private void Update()
     {
         if (correctMatchesCompleted == 5)
