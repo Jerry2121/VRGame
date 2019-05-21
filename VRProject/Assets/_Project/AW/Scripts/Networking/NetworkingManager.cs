@@ -53,7 +53,7 @@ namespace VRGame.Networking
 
             foreach(var GO in m_SpawnableGameObjects)
             {
-                NetworkObject netSpawn = GO.GetComponent<NetworkObject>();
+                NetworkObject netSpawn = GO?.GetComponent<NetworkObject>();
                 if(netSpawn == null)
                 {
                     Debug.LogError("NetworkingManager -- Start: Gameobject does not have a NetworkSpawnable component");

@@ -16,11 +16,7 @@ GameObject:
   - component: {fileID: 1795136328877127846}
   - component: {fileID: 8291905031876183281}
   - component: {fileID: 936387002410112215}
-<<<<<<< HEAD
-  - component: {fileID: 2824804680023764560}
-=======
   - component: {fileID: 9178799911831337891}
->>>>>>> 6a54a256d9aec201a3550956e55f04a5fc4fb0d5
   m_Layer: 0
   m_Name: scroll
   m_TagString: Untagged
@@ -162,11 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
-<<<<<<< HEAD
---- !u!114 &2824804680023764560
-=======
 --- !u!114 &9178799911831337891
->>>>>>> 6a54a256d9aec201a3550956e55f04a5fc4fb0d5
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,9 +174,4 @@ MonoBehaviour:
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
-<<<<<<< HEAD
-  m_grabPoints:
-  - {fileID: 6434316}
-=======
   m_grabPoints: []
->>>>>>> 6a54a256d9aec201a3550956e55f04a5fc4fb0d5
