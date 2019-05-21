@@ -47,8 +47,10 @@ public class BurnableObject : MonoBehaviour
                 {
                     burningDown = false;
                     Destroy(this.gameObject);
-                    Instantiate(destroyedVersion, transform.position, transform.rotation);
-                    
+                    if (destroyedVersion != null)
+                    {
+                        Instantiate(destroyedVersion, transform.position, transform.rotation);
+                    }
                 }
             }
 

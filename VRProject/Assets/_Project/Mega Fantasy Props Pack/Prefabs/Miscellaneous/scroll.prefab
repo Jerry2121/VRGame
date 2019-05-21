@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1795136328877127846}
   - component: {fileID: 8291905031876183281}
   - component: {fileID: 936387002410112215}
+  - component: {fileID: 2824804680023764560}
   m_Layer: 0
   m_Name: scroll
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!114 &8291905031876183281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +158,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ID: 1
+--- !u!114 &2824804680023764560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints:
+  - {fileID: 6434316}
