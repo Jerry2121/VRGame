@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/AW/JT2Copy.unity
     guid: 3936b0b07ddce8f45a7913f27a35100e
+  - enabled: 1
+    path: Assets/_Project/Scenes/MainRoom.unity
+    guid: 92eaec34bd345a3459ed93fbe2f758a0
   m_configObjects: {}
