@@ -71,6 +71,13 @@ public class CauldronBehavior : NetworkObjectComponent
 
     void Update()
     {
+        if(powerBreaker == null)
+        {
+            powerBreaker = GameObject.Find("PowerBreaker");
+            return;
+        }
+
+
         mixCooldown -= Time.deltaTime;
 
         if (correctMixturesCompleted >= correctMixturesNeeded)
