@@ -12,7 +12,7 @@ public class PowerBreakerBehavior : NetworkObjectComponent
     public int[] buttonIDsNumeric;
     public GameObject[] buttonsColored;
     public int[] buttonIDsColored;
-
+    public GameObject LevelInformationCanvas;
     public int correctMatchesCompleted;
 
     public GameObject numericButtonPressed = null;
@@ -120,6 +120,7 @@ public class PowerBreakerBehavior : NetworkObjectComponent
             tempMaterial[i].color = buttonLightsColors[3];
         }
         gameObject.GetComponent<MeshRenderer>().materials = tempMaterial;
+        LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete = true;
         puzzleCompleted = true;
     }
 
