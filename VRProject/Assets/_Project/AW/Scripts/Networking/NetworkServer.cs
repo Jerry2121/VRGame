@@ -288,7 +288,13 @@ namespace VRGame.Networking
                 {
                     ServerObject networkedObject = m_NetworkedObjects[objectID];
                     messages.Add(NetworkTranslater.CreateInstantiateMessage(networkedObject.m_ClientID, objectID, networkedObject.m_ObjectType, networkedObject.m_Position, networkedObject.m_Rotation.value));
+                    if (messages.Count > 10)
+                    {
+                        SendMessages(Encoding.UTF8.GetBytes(NetworkTranslater.CombineMessages(messages)), i);
+                        messages.Clear();
+                    }
                 }
+
                 foreach (var objectID in m_Puzzles.Keys)
                 {
                     ServerPuzzle puzzle = m_Puzzles[objectID];
