@@ -81,6 +81,8 @@ MonoBehaviour:
   - {fileID: 155542, guid: db61bf80eb5d3ff44b9ee201e5da1d16, type: 3}
   - {fileID: 134572, guid: 760548f18aa646341b9f69fdb3425502, type: 3}
   - {fileID: 106920, guid: 5c63ee1e94a9a014da2292f3dbf7b19a, type: 3}
+  - {fileID: 186590, guid: c544f22775dffd641b35be9b929052d1, type: 3}
+  - {fileID: 188746, guid: 9d9dd1cff3cb5e147b732da5712b7587, type: 3}
   m_playerPrefab: {fileID: 1321403880711187725, guid: 80a566a7c8906064dbc32260e483da3c,
     type: 3}
   m_NetworkAddress: 10.47.1.42
