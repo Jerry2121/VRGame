@@ -5,10 +5,9 @@ using UnityEngine;
 public class CrystalPuzzleBehavior : MonoBehaviour
 {
     public GameObject[] crystalReceptors;
-    public GameObject crystalRecieved;
     public bool puzzleCompleted;
-
-    private void Update()
+    
+    void Update()
     {
         if (puzzleCompleted)
         {
@@ -17,20 +16,12 @@ public class CrystalPuzzleBehavior : MonoBehaviour
 
         for (int i = 0; i < crystalReceptors.Length; i++)
         {
-            if (crystalReceptors[i].GetComponent<CrystalPuzzleBehavior>().crystalRecieved = null)
+            if (crystalReceptors[i].GetComponent<CrystalReceptorBehavior>().crystalRecieved = null)
             {
                 return;
             }
         }
 
         puzzleCompleted = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other == crystalRecieved)
-        {
-            crystalRecieved = null;
-        }
     }
 }
