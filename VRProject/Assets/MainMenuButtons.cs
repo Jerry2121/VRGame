@@ -19,9 +19,7 @@ public class MainMenuButtons : MonoBehaviour
     [Header("HostGameOptions")]
     public TMP_InputField WorldName;
     public TMP_InputField PlayerUsername;
-    public GameObject DifficultyDropDown;
     public Toggle AllowHintsToggle;
-    public Toggle Allowsavingtoggle;
     public Toggle thirtyminutetimer;
     public Toggle timeelapsedtimer;
     public GameObject Warning;
@@ -56,7 +54,6 @@ public class MainMenuButtons : MonoBehaviour
         {
             PlayerPrefs.SetString("WorldName", WorldName.text);
             PlayerPrefs.SetString("PlayerUsername", PlayerUsername.text);
-            PlayerPrefs.SetInt("Difficulty", DifficultyDropDown.GetComponent<TMP_Dropdown>().value);
             if (AllowHintsToggle.isOn)
             {
                 PlayerPrefs.SetInt("AllowHints", 1);
@@ -64,15 +61,6 @@ public class MainMenuButtons : MonoBehaviour
             else
             {
                 PlayerPrefs.SetInt("AllowHints", 0);
-            }
-
-            if (Allowsavingtoggle.isOn)
-            {
-                PlayerPrefs.SetInt("AllowSaving", 1);
-            }
-            else
-            {
-                PlayerPrefs.SetInt("AllowSaving", 0);
             }
 
             if (thirtyminutetimer.isOn)

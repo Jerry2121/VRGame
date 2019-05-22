@@ -36,7 +36,18 @@ public class Puzzle1Controller : NetworkObjectComponent
 
     private void Update()
     {
-        if(!PuzzleCompleted && !PuzzleStarted && m_WheelController.spins > 5 && !PuzzlePoweredUp)
+        if (LevelInformationCanvas == null)
+        {
+            if (NetworkingManager.GetLocalPlayer() != null)
+            {
+                LevelInformationCanvas = NetworkingManager.GetLocalPlayer().GetComponentInChildren<RoomFadeText>().gameObject;
+            }
+            else
+            {
+                return;
+            }
+        }
+        if (!PuzzleCompleted && !PuzzleStarted && m_WheelController.spins > 5 && !PuzzlePoweredUp)
         {
             PuzzlePoweredUp = true;
             PuzzleLightingBolt.SetActive(true);

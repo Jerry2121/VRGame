@@ -41,6 +41,17 @@ public class PowerBreakerBehavior : NetworkObjectComponent
 
     private void Update()
     {
+        if (LevelInformationCanvas == null)
+        {
+            if (NetworkingManager.GetLocalPlayer() != null)
+            {
+                LevelInformationCanvas = NetworkingManager.GetLocalPlayer().GetComponentInChildren<RoomFadeText>().gameObject;
+            }
+            else
+            {
+                return;
+            }
+        }
         if (correctMatchesCompleted == 5)
         {
             if (!puzzleCompleted)
