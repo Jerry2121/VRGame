@@ -386,7 +386,7 @@ namespace VRGame.Networking
             if(scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 StartCoroutine(SpawnSceneObjectsOverNetwork());
-                StartCoroutine(SpawnPlayer(new float3(0,1,0), quaternion.identity));
+                StartCoroutine(SpawnPlayer(new float3(-20,3,-37), quaternion.identity));
             }
         }
 
