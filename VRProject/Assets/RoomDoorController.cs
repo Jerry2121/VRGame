@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
 
 public class RoomDoorController : MonoBehaviour
 {
@@ -21,6 +22,17 @@ public class RoomDoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(LevelInformationCanvas == null)
+        {
+            if(NetworkingManager.GetLocalPlayer() != null)
+            {
+                LevelInformationCanvas = NetworkingManager.GetLocalPlayer().GetComponentInChildren<RoomFadeText>().gameObject;
+            }
+            else
+            {
+                return;
+            }
+        }
         if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && !ran)
         {
             Room1_2Doorway.SetBool("Open", true);
