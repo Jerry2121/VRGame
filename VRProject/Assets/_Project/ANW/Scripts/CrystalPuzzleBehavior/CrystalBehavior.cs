@@ -33,10 +33,10 @@ public class CrystalBehavior : MonoBehaviour
    void OnTriggerStay(Collider other)
     {
         {
-            if (other.gameObject.GetComponent<CrystalPuzzleBehavior>() && recentlyGrabbed)
+            if (other.gameObject.GetComponent<CrystalReceptorBehavior>() && recentlyGrabbed)
             {
                 GameObject g = Instantiate(gameObject, other.gameObject.transform);
-                other.gameObject.GetComponent<CrystalPuzzleBehavior>().crystalRecieved = g;
+                other.gameObject.GetComponent<CrystalReceptorBehavior>().crystalRecieved = g;
 
                 Destroy(this.gameObject);
             }
