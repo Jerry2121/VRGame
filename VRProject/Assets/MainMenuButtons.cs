@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using VRGame.Networking;
 
 public class MainMenuButtons : MonoBehaviour
 {
@@ -93,7 +94,13 @@ public class MainMenuButtons : MonoBehaviour
             }
             Warning.SetActive(false);
             PutOnHeadSetCanvas.SetActive(true);
-            SceneManager.LoadScene(1);
+
+            if (NetworkingManager.s_Instance.IsConnected())
+            {
+                NetworkingManager.s_Instance.StartHost();
+            }
+            else
+                SceneManager.LoadScene(1);
         }
         else
         {

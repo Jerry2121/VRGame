@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1300288230848432401}
   - component: {fileID: 1300288230848432405}
-  - component: {fileID: 1274982523}
   m_Layer: 0
   m_Name: NetworkingManager
   m_TagString: Untagged
@@ -97,16 +96,3 @@ MonoBehaviour:
   m_Debug: 0
   m_OffsetX: 0
   m_OffsetY: 0
---- !u!114 &1274982523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300288230848432400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa3f0e20895c17439acbae795094ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn: {fileID: 253583440114526318, guid: 208ea99fa3cb37f45be44e0f0224bb54, type: 3}
