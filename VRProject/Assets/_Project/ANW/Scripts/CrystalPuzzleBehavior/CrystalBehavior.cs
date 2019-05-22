@@ -24,6 +24,7 @@ public class CrystalBehavior : MonoBehaviour
 
             else if (recentlyGrabbedTimer < 0)
             {
+                gameObject.GetComponent<Rigidbody>().useGravity = true;
                 recentlyGrabbed = false;
                 recentlyGrabbedTimer = 0;
             }
@@ -35,10 +36,10 @@ public class CrystalBehavior : MonoBehaviour
         {
             if (other.gameObject.GetComponent<CrystalReceptorBehavior>() && recentlyGrabbed)
             {
-                GameObject g = Instantiate(gameObject, other.gameObject.transform);
-                other.gameObject.GetComponent<CrystalReceptorBehavior>().crystalRecieved = g;
-
-                Destroy(this.gameObject);
+                other.gameObject.GetComponent<CrystalReceptorBehavior>().crystalRecieved = this.gameObject;
+                gameObject.GetComponent<Rigidbody>().useGravity = false;
+                gameObject.transform.position = other.gameObject.transform.position;
+                gameObject.transform.rotation = other.gameObject.transform.rotation;
             }
         }
     }
