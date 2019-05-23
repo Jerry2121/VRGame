@@ -10,6 +10,7 @@ namespace VRGame.Networking
         [SerializeField] Camera playerCamera;
         [SerializeField] Behaviour[] m_ComponentsToDisableOnNetworkedPlayer;
         [SerializeField] Behaviour[] m_ComponentsToDisableOnLocalPlayer;
+        [SerializeField] Renderer[] m_RenderersToDisable;
 
         bool m_IsLocalPlayer;
         int m_PlayerID;
@@ -68,6 +69,10 @@ namespace VRGame.Networking
                     //if(Debug.isDebugBuild)
                     //    Debug.Log("Disabling " + comp.name);
                     comp.enabled = false;
+                }
+                foreach(var rend in m_RenderersToDisable)
+                {
+                    rend.enabled = false;
                 }
             }
             else
