@@ -413,6 +413,11 @@ namespace VRGame.Networking
             InstantiateOverNetwork("Player", spawnPosition, rotation);
         }
 
+        public void SetIPAddress(string ip)
+        {
+            m_NetworkAddress = ip;
+        }
+
         public IPAddress NetworkAddress()
         {
 #if UNITY_EDITOR

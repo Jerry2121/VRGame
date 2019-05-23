@@ -83,7 +83,7 @@ public class MainMenuButtons : MonoBehaviour
             Warning.SetActive(false);
             PutOnHeadSetCanvas.SetActive(true);
 
-            if (NetworkingManager.s_Instance.IsConnected())
+            if (NetworkingManager.s_Instance != null)
             {
                 NetworkingManager.s_Instance.StartHost();
             }
@@ -95,6 +95,15 @@ public class MainMenuButtons : MonoBehaviour
             Warning.SetActive(true);
         }
     }
+
+    public void JoinGameNetwork()
+    {
+        if (NetworkingManager.s_Instance != null)
+            NetworkingManager.s_Instance.StartClient();
+        else
+            SceneManager.LoadScene(1);
+    }
+
     public void JoinGame()
     {
         PlayMain.SetActive(false);
@@ -125,6 +134,12 @@ public class MainMenuButtons : MonoBehaviour
     {
 
     }
+
+    public void SetIP(string ip)
+    {
+        NetworkingManager.s_Instance.SetIPAddress(ip);
+    }
+
     public void ExitGame()
     {
         ExitConfirm.SetActive(!ExitConfirm.activeSelf);
