@@ -4873,6 +4873,8 @@ MonoBehaviour:
   m_RenderersToDisable:
   - {fileID: 6933976147884753293}
   - {fileID: 1912103801510239250}
+  m_ObjectsToDisableForNetworkedPlayer:
+  - {fileID: 6767575322589783434}
 --- !u!114 &5601614017589343931
 MonoBehaviour:
   m_ObjectHideFlags: 0
