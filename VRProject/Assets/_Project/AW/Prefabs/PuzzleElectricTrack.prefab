@@ -47,8 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: PuzzleElectricTrack
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!114 &8227311203783176014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +223,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a708c392d7a05564d9aafdf02c9736f6, type: 3}
+  - {fileID: 2100000, guid: e7c40d2d53fd67f4bb9425b6c9807d01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -701,6 +703,7 @@ MonoBehaviour:
   PuzzleCompletedSound: {fileID: 7170208580597580740}
   PuzzleLightingBolt: {fileID: 7170208579201611414}
   PuzzleLightingBolt2: {fileID: 7170208579110477922}
+  LevelInformationCanvas: {fileID: 0}
   m_ID: 10
 --- !u!1 &7170208578988338289
 GameObject:

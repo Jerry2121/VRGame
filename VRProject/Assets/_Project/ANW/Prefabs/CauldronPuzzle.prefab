@@ -398,7 +398,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: 65c26a2be64691748aa588a612a3e5dc, type: 2}
+  - {fileID: 2100000, guid: f08c33a6a72a59146a54dccdf67dc085, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -701,7 +701,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: fbc8fa67719400c4ca7d95a1edc047c4, type: 2}
+  - {fileID: 2100000, guid: 13f4f3573c7535649a32f4c29a090153, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +879,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: e33a90087b2c7df49b9bd37354ad9639, type: 2}
+  - {fileID: 2100000, guid: 85500eda25ae43f4aaf6ce130ebcb7b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1096,9 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixtureFinished: 0
-  correctMixturesNeeded: 5
   correctMixturesCompleted: 0
-  mixtureNeededID: 0
   addToMixCooldown: 2
   cauldronMarking: {fileID: 487222114867079833}
   cauldronFill: {fileID: 487222114839230190}
@@ -1285,7 +1283,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: 47724333e4ef0734cbbfe2ac8ccf681a, type: 2}
+  - {fileID: 2100000, guid: 1e40d3b4ed9fcc3419d02f46411d61cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1493,7 +1491,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: fa824aa32c5d9bf4188aad0eab42e295, type: 2}
+  - {fileID: 2100000, guid: 967e4ca310c7bac469b7bd006660cae5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1764,7 +1762,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0664a4889da60aa4aadaaed77fd6a556, type: 2}
-  - {fileID: 2100000, guid: 4296487324833494ab41763b17dfe44c, type: 2}
+  - {fileID: 2100000, guid: 7a5f844473051d24ba8038269816088a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1989,8 +1987,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ObjectName: CauldronPuzzle
   m_ObjectID: 0
+  m_Grabbed: 0
   m_LocalAuthority: 0
   m_ServerAuthority: 0
+  m_PlayerInteracting: 0
 --- !u!1 &3918338041810427925
 GameObject:
   m_ObjectHideFlags: 0
