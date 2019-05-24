@@ -291,7 +291,7 @@ namespace VRGame.Networking
         public void InstantiateOverNetwork(string objectName, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float rotW)
         {
             if(m_Client != null)
-                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID(), -1, objectName, posX, posY, posZ, rotX, rotY, rotZ, rotW));
+                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }
 
         public void InstantiateOverNetwork(string objectName, float3 position, quaternion rotation)
@@ -449,7 +449,7 @@ namespace VRGame.Networking
         public static int ClientID()
         {
             if(s_Instance.m_Client != null)
-                return s_Instance.m_Client.ClientID();
+                return s_Instance.m_Client.ClientID;
             return -1;
         }
 

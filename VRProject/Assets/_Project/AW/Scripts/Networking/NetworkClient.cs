@@ -13,13 +13,15 @@ namespace VRGame.Networking
 {
     class NetworkClient : MonoBehaviour
     {
-        int m_ClientID = -1;
+        private int m_ClientID = -1;
+
+        public int ClientID { get =>  m_ClientID; }
 
         NetworkPlayer m_Player;
 
-        public UdpCNetworkDriver m_Driver;
-        public NetworkConnection m_Connection;
-        public bool m_Done;
+        UdpCNetworkDriver m_Driver;
+        NetworkConnection m_Connection;
+        bool m_Done;
 
         List<string> m_MessageList = new List<string>();
 
@@ -308,7 +310,7 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleStartedMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            if (clientID == ClientID())
+            if (clientID == m_ClientID)
                 return;
 
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
@@ -319,7 +321,7 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne) == false)
                 return;
 
-            if (clientID == ClientID())
+            if (clientID == m_ClientID)
                 return;
 
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
@@ -330,7 +332,7 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            if (clientID == ClientID())
+            if (clientID == m_ClientID)
                 return;
 
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
@@ -341,7 +343,7 @@ namespace VRGame.Networking
             if (NetworkTranslater.TranslatePuzzleCompleteMessage(recievedMessage, out int clientID, out int objectID, out int componentID) == false)
                 return;
 
-            if (clientID == ClientID())
+            if (clientID == m_ClientID)
                 return;
 
             NetworkingManager.s_Instance.PassNetworkMessageToReciever(recievedMessage, objectID, componentID);
@@ -367,10 +369,10 @@ namespace VRGame.Networking
         //    }
         //}
         
-        public int ClientID()
+        /*public int ClientID()
         {
             return m_ClientID;
-        }
+        }*/
 
     }
 }
