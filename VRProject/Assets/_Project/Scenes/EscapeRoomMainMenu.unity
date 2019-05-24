@@ -14772,28 +14772,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: m_playerPrefab
-      value: 
-      objectReference: {fileID: 6767575322698654635, guid: 87f4c5ee5b42d7c41a6e7a5044e8719d,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: m_OnlineScene._asset
-      value: 
-      objectReference: {fileID: 102900000, guid: 92eaec34bd345a3459ed93fbe2f758a0,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: m_OfflineScene._asset
-      value: 
-      objectReference: {fileID: 102900000, guid: 363442386788f0c42bdce9f110c92e4d,
-        type: 3}
-    - target: {fileID: 1300288230848432405, guid: 680a2ffbaf98a7047825ace67da2a8ac,
-        type: 3}
-      propertyPath: m_OnlineScene._path
-      value: Assets/_Project/Scenes/MainRoom.unity
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680a2ffbaf98a7047825ace67da2a8ac, type: 3}

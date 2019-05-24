@@ -302,6 +302,7 @@ namespace VRGame.Networking
         public void StartHost()
         {
             StartServer();
+            m_NetworkAddress = "localhost";
             StartClient();
 
             if (Debug.isDebugBuild)

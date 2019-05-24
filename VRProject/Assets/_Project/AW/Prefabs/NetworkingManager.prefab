@@ -82,16 +82,16 @@ MonoBehaviour:
   - {fileID: 106920, guid: 5c63ee1e94a9a014da2292f3dbf7b19a, type: 3}
   - {fileID: 186590, guid: c544f22775dffd641b35be9b929052d1, type: 3}
   - {fileID: 188746, guid: 9d9dd1cff3cb5e147b732da5712b7587, type: 3}
-  m_playerPrefab: {fileID: 1321403880711187725, guid: 80a566a7c8906064dbc32260e483da3c,
+  m_PlayerPrefab: {fileID: 6767575322698654635, guid: 87f4c5ee5b42d7c41a6e7a5044e8719d,
     type: 3}
   m_NetworkAddress: 10.47.1.42
   m_NetworkPort: 9000
   m_OfflineScene:
-    _asset: {fileID: 102900000, guid: 9dce18dcd29f77347905b9f41ec48748, type: 3}
-    _path: Assets/_Project/AW/NetMenu.unity
+    _asset: {fileID: 102900000, guid: 363442386788f0c42bdce9f110c92e4d, type: 3}
+    _path: Assets/_Project/Scenes/EscapeRoomMainMenu.unity
   m_OnlineScene:
-    _asset: {fileID: 102900000, guid: 3936b0b07ddce8f45a7913f27a35100e, type: 3}
-    _path: Assets/_Project/AW/JT2Copy.unity
+    _asset: {fileID: 102900000, guid: 92eaec34bd345a3459ed93fbe2f758a0, type: 3}
+    _path: Assets/_Project/Scenes/MainRoom.unity
   m_ShowGUI: 1
   m_Debug: 0
   m_OffsetX: 0
