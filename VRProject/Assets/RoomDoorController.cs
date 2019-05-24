@@ -48,7 +48,7 @@ public class RoomDoorController : MonoBehaviour
             Timer = 0;
             ran = true;
         }
-        if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && ran && Timer >= 10)
+        if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && ran && Timer >= 10 && !ran1)
         {
             Debug.Log("Room23DoorOpened");
             Room2_3Doorway.SetBool("Open", true);
