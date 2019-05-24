@@ -29,7 +29,7 @@ public class CrystalPuzzleBehavior : MonoBehaviour
 
         for (int i = 0; i < crystalReceptors.Length; i++)
         {
-            if (crystalReceptors[i].GetComponent<CrystalReceptorBehavior>().crystalRecieved = null)
+            if (crystalReceptors[i].GetComponent<CrystalReceptorBehavior>().crystalRecieved == null)
             {
                 return;
             }
