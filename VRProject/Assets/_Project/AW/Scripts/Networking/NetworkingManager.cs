@@ -399,9 +399,11 @@ namespace VRGame.Networking
 
             foreach(var netObject in netObjects)
             {
-                yield return new WaitForEndOfFrame();
-                if(IsHost()) //If we are the host we'll spawn them over the network, otherwise we will just destroy them,
+                if (IsHost()) //If we are the host we'll spawn them over the network, otherwise we will just destroy them,
+                {
+                    yield return new WaitForEndOfFrame();
                     InstantiateOverNetwork(netObject.m_ObjectName, netObject.transform.position, netObject.transform.rotation);
+                }
                 Destroy(netObject.gameObject);
             }
 
