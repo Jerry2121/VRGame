@@ -35,17 +35,20 @@ public class RoomDoorController : MonoBehaviour
         }
         if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && !ran)
         {
+            Debug.Log("Room12DoorOpened");
             Room1_2Doorway.SetBool("Open", true);
             Room1_2Doorway2.SetBool("Open", true);
             ran = true;
         }
         if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && LevelInformationCanvas.GetComponent<RoomFadeText>().Room2Entered)
         {
+            Debug.Log("Room23DoorOpened");
             Room2_3Doorway.SetBool("Open", true);
             Room2_3Doorway2.SetBool("Open", true);
         }
         if (LevelInformationCanvas.GetComponent<RoomFadeText>().RoomObjectiveComplete && LevelInformationCanvas.GetComponent<RoomFadeText>().Room3Entered)
         {
+            Debug.Log("Room34DoorOpened");
             Room3_4Doorway.SetBool("Open", true);
             Room3_4Doorway2.SetBool("Open", true);
         }
