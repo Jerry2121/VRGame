@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/AJT/EscapeRoomMainMenu.unity
+    path: Assets/_Project/Scenes/EscapeRoomMainMenu.unity
     guid: 363442386788f0c42bdce9f110c92e4d
   - enabled: 1
     path: Assets/_Project/Scenes/MainRoom.unity
