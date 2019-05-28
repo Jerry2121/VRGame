@@ -328,8 +328,11 @@ namespace VRGame.Networking
 
             m_NetworkedObjects.Add(objectID, serverObj);
 
-            if (objectType == "Player" && m_Players.ContainsKey(clientID)== false)
-                m_Players.Add(clientID, serverObj);
+            if (objectType == "Player")
+                if (m_Players.ContainsKey(clientID) == false)
+                    m_Players.Add(clientID, serverObj);
+                else
+                    Debug.LogError("NetworkServer -- InstantiateMessage: Got an Instantiate Message for a player already in the dictionary");
 
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }

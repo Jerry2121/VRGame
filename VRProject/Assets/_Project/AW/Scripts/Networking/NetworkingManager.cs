@@ -41,7 +41,7 @@ namespace VRGame.Networking
         // Start is called before the first frame update
         void Start()
         {
-            if(s_Instance != null)
+            if (s_Instance != null)
             {
                 Debug.LogWarning("NetworkingManager -- Start: Instance was not equal to null! Destroying this component!", gameObject);
                 Destroy(this);
@@ -51,15 +51,15 @@ namespace VRGame.Networking
             DontDestroyOnLoad(s_Instance);
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            foreach(var GO in m_SpawnableGameObjects)
+            foreach (var GO in m_SpawnableGameObjects)
             {
                 NetworkObject netSpawn = GO?.GetComponent<NetworkObject>();
-                if(netSpawn == null)
+                if (netSpawn == null)
                 {
                     Debug.LogError("NetworkingManager -- Start: Gameobject does not have a NetworkSpawnable component");
                     continue;
                 }
-                if(string.IsNullOrWhiteSpace(netSpawn.m_ObjectName))
+                if (string.IsNullOrWhiteSpace(netSpawn.m_ObjectName))
                 {
                     Debug.LogError("NetworkingManager -- Start: GameObject has no objectName on NetworkObject!");
                     continue;
@@ -118,7 +118,7 @@ namespace VRGame.Networking
             }
             else
             {
-                if(m_Server != null && m_Client == null)
+                if (m_Server != null && m_Client == null)
                 {
                     string warningMsg = "WARNING: server running with no client";
                     GUIStyle style = new GUIStyle();
@@ -150,10 +150,10 @@ namespace VRGame.Networking
                 return;
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Testing Client"))
-                {
-                    DebugCreateClient();
-                }
-                ypos += spacing;
+            {
+                DebugCreateClient();
+            }
+            ypos += spacing;
 #endif
 
         }
@@ -166,7 +166,10 @@ namespace VRGame.Networking
         public void SendNetworkMessage(string message)
         {
             if (m_Client == null)
+            {
+                Debug.LogError("NetworkingManager -- SendNetworkMessage: There is no Client to send the message!");
                 return;
+            }
 
             m_Client.WriteMessage(message);
         }
@@ -192,7 +195,7 @@ namespace VRGame.Networking
             float3 position = new float3(posX, posY, posZ);
             quaternion rotation = new quaternion(rotX, rotY, rotZ, rotW);
 
-            if(Debug.isDebugBuild)
+            if (Debug.isDebugBuild)
                 Debug.Log(string.Format("Recieved message to instantiate a {0} from client {1}", objectType, clientID));
 
             //Do unique player stuff
@@ -220,7 +223,7 @@ namespace VRGame.Networking
 
             if (m_NetworkedObjectDictionary.ContainsKey(objectID))
             {
-                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object" , objectID, objectType), tempGO);
+                Debug.LogError(string.Format("The networkedObjectDictionary already has an entry for {0}! The objects type was {1}. Destroying the object", objectID, objectType), tempGO);
                 Destroy(tempGO);
                 return;
             }
@@ -253,7 +256,7 @@ namespace VRGame.Networking
             player.SetPlayerID(clientID);
 
             if (clientID == ClientID()) //The message came from us, the local player
-            { 
+            {
                 player.SetIsLocalPlayer();
                 m_LocalPlayer = player.gameObject;
             }
@@ -265,16 +268,16 @@ namespace VRGame.Networking
         {
             if (playerID == ClientID())
             {
-                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected player, not on our own player");
+                Debug.LogError("NetworkManager -- DestroyPlayer: This should only be called for disconnected players, not on our own player");
                 return;
             }
 
-            if(m_PlayerDictionary.ContainsKey(playerID) == false)
+            if (m_PlayerDictionary.ContainsKey(playerID) == false)
             {
                 Debug.LogError("NetworkingManager -- DestroyPlayer: Tried to destroy a player that is not in the dictionary");
                 return;
             }
-            
+
             GameObject player = m_PlayerDictionary[playerID].gameObject;
             m_PlayerDictionary.Remove(playerID);
 
@@ -290,8 +293,7 @@ namespace VRGame.Networking
 
         public void InstantiateOverNetwork(string objectName, float posX, float posY, float posZ, float rotX, float rotY, float rotZ, float rotW)
         {
-            if(m_Client != null)
-                SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, posX, posY, posZ, rotX, rotY, rotZ, rotW));
+            SendNetworkMessage(NetworkTranslater.CreateInstantiateMessage(m_Client.ClientID, -1, objectName, posX, posY, posZ, rotX, rotY, rotZ, rotW));
         }
 
         public void InstantiateOverNetwork(string objectName, float3 position, quaternion rotation)
@@ -305,13 +307,15 @@ namespace VRGame.Networking
             m_NetworkAddress = "localhost";
             StartClient();
 
-            if (Debug.isDebugBuild)
+            if (Debug.isDebugBuild && m_Server != null && m_Client != null)
                 Debug.Log("NetworkingManager -- StartHost: Host created.");
+            else if (m_Server == null || m_Client == null)
+                Debug.LogError("NetworkingManager -- StartHost: Failed to create host: Either the client or server was null");
         }
 
         public void StartClient()
         {
-                m_Client = gameObject.AddComponent<NetworkClient>();
+            m_Client = gameObject.AddComponent<NetworkClient>();
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartClient: Client created.");
@@ -319,7 +323,7 @@ namespace VRGame.Networking
 
         public void StartServer()
         {
-                m_Server = gameObject.AddComponent<NetworkServer>();
+            m_Server = gameObject.AddComponent<NetworkServer>();
 
             if (Debug.isDebugBuild)
                 Debug.Log("NetworkingManager -- StartServer: Server created.");
@@ -340,6 +344,11 @@ namespace VRGame.Networking
             m_NetworkedObjectDictionary.Clear();
             m_PlayerDictionary.Clear();
             SwitchToOfflineScene();
+
+            if (m_Server != null)
+                Debug.LogError("NetworkingManager -- Disconnect: The server was not set to null!");
+            if (m_Client != null)
+                Debug.LogError("NetworkingManager -- Disconnect: The client was not set to null!");
         }
 
         void StopClient()
@@ -347,27 +356,24 @@ namespace VRGame.Networking
             if (m_Client != null)
             {
                 m_Client.Disconnect();
-               // Debug.Log("Client =");
-                //Destroy(m_Client);
                 m_Client = null;
+                if (Debug.isDebugBuild)
+                    Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
             }
-
-            if (Debug.isDebugBuild)
-                Debug.Log("NetworkingManager -- ClientDisconnect: Client disconnected.");
         }
 
         void StopHost()
         {
             StopClient();
 
-            if(m_Server != null)
+            if (m_Server != null)
             {
                 Destroy(m_Server);
                 m_Server = null;
+                if (Debug.isDebugBuild)
+                    Debug.Log("NetworkingManager -- StopHost: Server stopped.");
             }
 
-            if (Debug.isDebugBuild)
-                Debug.Log("NetworkingManager -- StopHost: Server stopped.");
         }
 
         public void SwitchToOfflineScene()
@@ -377,17 +383,17 @@ namespace VRGame.Networking
 
         public void SwitchToOnlineScene()
         {
-            if(m_Client != null)
+            if (m_Client != null)
                 SceneManager.LoadScene(m_OnlineScene.Path);
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
         {
             SendNetworkMessage(NetworkTranslater.CreateLoadedInMessage(ClientID()));
-            if(scene.path == m_OnlineScene.Path && m_Client != null)
+            if (scene.path == m_OnlineScene.Path && m_Client != null)
             {
                 StartCoroutine(SpawnSceneObjectsOverNetwork());
-                StartCoroutine(SpawnPlayer(new float3(-20,3,-37), quaternion.identity));
+                StartCoroutine(SpawnPlayer(new float3(-20, 3, -37), quaternion.identity));
             }
         }
 
@@ -398,7 +404,7 @@ namespace VRGame.Networking
         {
             NetworkObject[] netObjects = GameObject.FindObjectsOfType<NetworkObject>();
 
-            foreach(var netObject in netObjects)
+            foreach (var netObject in netObjects)
             {
                 if (IsHost()) //If we are the host we'll spawn them over the network, otherwise we will just destroy them,
                 {
@@ -451,7 +457,7 @@ namespace VRGame.Networking
 
         public static int ClientID()
         {
-            if(s_Instance.m_Client != null)
+            if (s_Instance.m_Client != null)
                 return s_Instance.m_Client.ClientID;
             return -1;
         }
@@ -499,7 +505,7 @@ namespace VRGame.Networking
                         return false;
                 }
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 Debug.LogError(ex.Message);
                 return false;
