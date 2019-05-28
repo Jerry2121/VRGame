@@ -11,7 +11,7 @@ public class LeverScript : MonoBehaviour
     Vector3 LevelPos;
     Vector3 LevelRot;
     Quaternion LeverRot;
-    bool leverActivated;
+    public bool leverActivated;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,6 @@ public class LeverScript : MonoBehaviour
             {
                 this.transform.position = new Vector3(LevelPos.x, MinY, LevelPos.z);
                 leverActivated = true;
-
             }
             
         }
