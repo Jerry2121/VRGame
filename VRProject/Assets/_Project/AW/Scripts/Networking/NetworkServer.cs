@@ -328,7 +328,7 @@ namespace VRGame.Networking
 
             m_NetworkedObjects.Add(objectID, serverObj);
 
-            if (objectType == "Player")
+            if (objectType == "Player" && m_Players.ContainsKey(clientID)== false)
                 m_Players.Add(clientID, serverObj);
 
             WriteMessage(NetworkTranslater.CreateInstantiateMessage(clientID, objectID, objectType, posX, posY, posZ, rotX, rotY, rotZ, rotW));
