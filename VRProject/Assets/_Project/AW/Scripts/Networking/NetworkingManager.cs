@@ -214,7 +214,7 @@ namespace VRGame.Networking
             {
                 Debug.LogError(
                     "NetworkingManager -- RecieveInstantiateMessage: Cannot spawn " + objectType + " over the network. " +
-                    "It either has not been added to the gamemanager, or it does not have a NetworkObject component.");
+                    "It either has not been added to the NetworkingManager, or it does not have a NetworkObject component.");
                 return;
             }
 
