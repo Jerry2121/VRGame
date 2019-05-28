@@ -110,6 +110,7 @@ public class Puzzle1Controller : NetworkObjectComponent
                 break;
 
             case NetworkMessageContent.PuzzleComplete:
+                PuzzleComplete();
                 Debug.Log("Puzzle1Controller -- RecieveNetworkMessage: Recieved PuzzleComplete message");
                 break;
         }
