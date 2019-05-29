@@ -30,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757572221796655914}
-  m_LocalRotation: {x: -0, y: 0.0000004768371, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.879, y: 1.615, z: -23.791}
   m_LocalScale: {x: 22.410435, y: 22.410427, z: 22.410429}
   m_Children: []
@@ -135,6 +135,7 @@ MonoBehaviour:
   CenterEyeCamera: {fileID: 0}
   GameOverTitle: {fileID: 0}
   GameOverClosing: {fileID: 0}
+  left: 1
 --- !u!114 &6112348895425138679
 MonoBehaviour:
   m_ObjectHideFlags: 0

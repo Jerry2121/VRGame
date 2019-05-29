@@ -56,11 +56,11 @@ public class LeverScript : MonoBehaviour
             {
                 if (left)
                 {
-                    OtherLever = GameObject.Find("2LeverHandle");
+                    OtherLever = GameObject.Find("2LeverHandle(Clone)");
                 }
                 else if (!left)
                 {
-                    OtherLever = GameObject.Find("1LeverHandle");
+                    OtherLever = GameObject.Find("1LeverHandle(Clone)");
                 }
                 if(OtherLever == null)
                 {
