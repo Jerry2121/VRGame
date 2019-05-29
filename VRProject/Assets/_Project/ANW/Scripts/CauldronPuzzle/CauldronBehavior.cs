@@ -149,16 +149,17 @@ public class CauldronBehavior : NetworkObjectComponent
 
     IEnumerator UpdateMixture(int liquidID)
     {
-        yield return new WaitForSecondsRealtime(0.5f);
-
-        mixtureNeededID = Random.Range(0, 6);
+        int newMixID = Random.Range(0, 6);
         
-        if (mixtureNeededID == liquidID)
+        if (newMixID == liquidID)
         {
             StartCoroutine(UpdateMixture(liquidID));
             yield break;
         }
 
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        mixtureNeededID = newMixID;
         SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
 
         markingLerping = true;
@@ -179,8 +180,6 @@ public class CauldronBehavior : NetworkObjectComponent
     {
         if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
-            Debug.LogError("CAULDRON RECIEVED PROGRESS");
-
             if (numOne == mixtureNeededID)
                 return;
 

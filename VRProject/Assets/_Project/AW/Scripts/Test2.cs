@@ -34,6 +34,9 @@ public class Test2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Name of root ");
+        Debug.Log(transform.root.name);
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             Spawn();
@@ -42,9 +45,9 @@ public class Test2 : MonoBehaviour
     
     void Spawn()
     {
-        float foo = UnityEngine.Random.Range(-10, 10);
-        float boo = UnityEngine.Random.Range(-10, 10);
-        NetworkingManager.s_Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo, 0,0,0,0);
+        //float foo = UnityEngine.Random.Range(-10, 10);
+        //float boo = UnityEngine.Random.Range(-10, 10);
+        //NetworkingManager.s_Instance.InstantiateOverNetwork(spawn.GetComponent<NetworkObject>().m_ObjectName, foo, 0, boo, 0,0,0,0);
     }
 
     [ExecuteAlways]

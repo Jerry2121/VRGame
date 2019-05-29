@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixtureFinished: 0
   correctMixturesCompleted: 0
-  addToMixCooldown: 2
+  addToMixCooldown: 2.5
   cauldronMarking: {fileID: 487222114867079833}
   cauldronFill: {fileID: 487222114839230190}
   paper: {fileID: 4178067392169898741}
@@ -2497,6 +2497,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222115007500416}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2540,10 +2544,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2564,6 +2564,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222115663173618}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2608,10 +2612,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
-      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2631,6 +2631,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222114809664751}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2675,10 +2679,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
-      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2698,6 +2698,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222114832756273}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2741,10 +2745,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2765,6 +2765,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222116335708041}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2808,10 +2812,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2832,6 +2832,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 487222114516905138}
     m_Modifications:
+    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
+      propertyPath: m_Name
+      value: BottleFill
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -2875,10 +2879,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
-      propertyPath: m_Name
-      value: BottleFill
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: e6242ed5fe18f4a4c948af86791d2fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
