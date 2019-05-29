@@ -143,7 +143,7 @@ public class CauldronBehavior : NetworkObjectComponent
             ResetPuzzle();
             SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
         }
-
+        mixtureNeededID = -1;
         StartCoroutine(UpdateMixture(liquidID));
     }
 
