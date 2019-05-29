@@ -65,9 +65,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: You successfully murdered your partner! You will now be sentenced to life
-    in Prison! Congrats on the new place to live! I hear its the best place to live
-    in!!! :D
+  m_text: 'Congratulations you have completed the game! You now have bragging rights
+    to say that you have been one of the first people to complete this game! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -136,15 +135,15 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 647095951}
-    characterCount: 162
+    characterCount: 147
     spriteCount: 0
-    spaceCount: 30
-    wordCount: 31
+    spaceCount: 26
+    wordCount: 26
     linkCount: 0
     lineCount: 3
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -338,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1278386499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1194,7 +1193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7663827118039867404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1319,11 +1318,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4563,13 +4562,14 @@ GameObject:
   - component: {fileID: 6327825366424451053}
   - component: {fileID: 466949498029894655}
   - component: {fileID: 9080365482838995065}
+  - component: {fileID: 4730069306687461631}
   m_Layer: 12
   m_Name: GameClosing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6327825366424451053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4694,11 +4694,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4712,6 +4712,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4730069306687461631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613688562786971647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ef407f64c7c4a448394381a3abec9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5601614017676189054
 GameObject:
   m_ObjectHideFlags: 0
@@ -13954,15 +13966,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9, type: 3}
---- !u!1 &6366731435424997780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3834356495902177002, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7885084317433730942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6366731435424997781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3834356495902177003, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7885084317433730942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6366731435424997780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3834356495902177002, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
     type: 3}
   m_PrefabInstance: {fileID: 7885084317433730942}
   m_PrefabAsset: {fileID: 0}
