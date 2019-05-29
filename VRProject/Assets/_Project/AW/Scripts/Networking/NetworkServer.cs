@@ -149,7 +149,7 @@ namespace VRGame.Networking
 
         void SendMessages(byte[] buffer, int i)
         {
-            using (var writer = new DataStreamWriter(1024 * 64, Allocator.Temp))
+            using (var writer = new DataStreamWriter(1024 * 128, Allocator.Temp))
             {
                 writer.Write(buffer);
 
