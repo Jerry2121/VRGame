@@ -75,7 +75,7 @@ public class LeverScript : MonoBehaviour
 
         if (this.transform.position.y <= MinY)
         {
-            if(grabbed == false && ran == false)
+            if(grabbedBy.transform.root != NetworkingManager.GetLocalPlayer() && ran == false)
             {
                 //This player is dead
                 GameOverClosing.SetActive(true);
@@ -91,6 +91,7 @@ public class LeverScript : MonoBehaviour
         {
             grabbedBy = null;
             grabbed = false;
+            NetworkObjectComponent.GetNetworkObjectForObject(transform).SetPlayerInteracting(false);
         }
         if (grabbed)
         {
@@ -133,6 +134,7 @@ public class LeverScript : MonoBehaviour
         {
             grabbedBy = other.gameObject;
             grabbed = true;
+            NetworkObjectComponent.GetNetworkObjectForObject(transform).SetPlayerInteracting(true);
         }
     }
 }
