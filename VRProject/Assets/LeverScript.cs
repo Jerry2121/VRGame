@@ -71,7 +71,7 @@ public class LeverScript : MonoBehaviour
             
         }
         //If Player 1 Pulls Lever and Wins
-        if (leverActivated && !OtherLever.GetComponent<LeverScript>().leverActivated)
+        if (leverActivated && !OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
         {
             GameOverClosing.SetActive(true);
             GameOverTitle.SetActive(true);
@@ -81,7 +81,7 @@ public class LeverScript : MonoBehaviour
             ran = true;
         }
         //If Player 2 Pulls Lever, Player 1 Looses
-        if (!leverActivated && OtherLever.GetComponent<LeverScript>().leverActivated)
+        else if (!leverActivated && OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
         {
             GameOverClosing.SetActive(true);
             GameOverTitle.SetActive(true);
