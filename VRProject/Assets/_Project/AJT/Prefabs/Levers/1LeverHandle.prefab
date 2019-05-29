@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3512858686822683238}
   - component: {fileID: 6466461660367897264}
   - component: {fileID: 4245248851568600911}
+  - component: {fileID: 6112348895425138679}
+  - component: {fileID: 6390030829695112990}
   m_Layer: 0
   m_Name: 1LeverHandle
   m_TagString: Untagged
@@ -125,3 +127,42 @@ MonoBehaviour:
   MinY: 1.1518
   grabbedBy: {fileID: 0}
   grabbed: 0
+  leverActivated: 0
+  OtherLever: {fileID: 0}
+  EndGameCanvas: {fileID: 0}
+  WinObject: {fileID: 0}
+  LooseObject: {fileID: 0}
+  CenterEyeCamera: {fileID: 0}
+  GameOverTitle: {fileID: 0}
+  GameOverClosing: {fileID: 0}
+--- !u!114 &6112348895425138679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757572221796655914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a541b03f5377e049858795f9332e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObjectName: 1LeverHandle
+  m_ObjectID: 0
+  m_Grabbed: 0
+  m_LocalAuthority: 0
+  m_ServerAuthority: 0
+  m_PlayerInteracting: 0
+--- !u!114 &6390030829695112990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757572221796655914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e2c7589f16254489a1112c849d1102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ID: 0

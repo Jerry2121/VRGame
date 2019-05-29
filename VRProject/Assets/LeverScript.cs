@@ -49,6 +49,20 @@ public class LeverScript : MonoBehaviour
                 return;
             }
         }
+
+        if (this.transform.position.y <= MinY)
+        {
+            if(grabbed == false && ran == false)
+            {
+                //This player is dead
+                GameOverClosing.SetActive(true);
+                GameOverTitle.SetActive(true);
+                WinObject.SetActive(false);
+                LooseObject.SetActive(true);
+                CenterEyeCamera.cullingMask = 1 << 12;
+            }
+        }
+
         transform.rotation = LeverRot;
         if (OVRInput.GetUp(OVRInput.Button.PrimaryHandTrigger) || OVRInput.GetUp(OVRInput.Button.SecondaryHandTrigger))
         {
@@ -81,14 +95,14 @@ public class LeverScript : MonoBehaviour
             ran = true;
         }
         //If Player 2 Pulls Lever, Player 1 Looses
-        else if (!leverActivated && OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
-        {
-            GameOverClosing.SetActive(true);
-            GameOverTitle.SetActive(true);
-            WinObject.SetActive(false);
-            LooseObject.SetActive(true);
-            CenterEyeCamera.cullingMask = 1 << 12;
-        }
+        //else if (!leverActivated && OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
+        //{
+        //    GameOverClosing.SetActive(true);
+        //    GameOverTitle.SetActive(true);
+        //    WinObject.SetActive(false);
+        //    LooseObject.SetActive(true);
+        //    CenterEyeCamera.cullingMask = 1 << 12;
+        //}
     }
     private void OnTriggerStay(Collider other)
     {
