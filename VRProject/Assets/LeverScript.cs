@@ -75,7 +75,7 @@ public class LeverScript : MonoBehaviour
 
         if (this.transform.position.y <= MinY)
         {
-            if(grabbedBy.transform.root != NetworkingManager.GetLocalPlayer() && ran == false)
+            if(grabbedBy.transform.root.gameObject != NetworkingManager.GetLocalPlayer() && ran == false)
             {
                 //This player is dead
                 GameOverClosing.SetActive(true);
