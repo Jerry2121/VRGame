@@ -20,6 +20,7 @@ public class LeverScript : MonoBehaviour
     public Camera CenterEyeCamera;
     public GameObject GameOverTitle;
     public GameObject GameOverClosing;
+    public bool left;
     private static bool ran;
 
     // Start is called before the first frame update
@@ -43,6 +44,28 @@ public class LeverScript : MonoBehaviour
                 CenterEyeCamera = canvasscript.CenterEyeCamera;
                 GameOverTitle = canvasscript.GameOverTitle;
                 GameOverClosing = canvasscript.GameOverClosing;
+            }
+            else
+            {
+                return;
+            }
+        }
+        if (OtherLever == null)
+        {
+            if (NetworkingManager.GetLocalPlayer() != null)
+            {
+                if (left)
+                {
+                    OtherLever = GameObject.Find("2LeverHandle");
+                }
+                else if (!left)
+                {
+                    OtherLever = GameObject.Find("1LeverHandle");
+                }
+                if(OtherLever == null)
+                {
+                    return;
+                }
             }
             else
             {
