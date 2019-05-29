@@ -71,17 +71,7 @@ public class LeverScript : MonoBehaviour
             
         }
         //If Player 1 Pulls Lever and Wins
-        if (leverActivated && this.gameObject.name == "1LeverHandle" && !OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
-        {
-            GameOverClosing.SetActive(true);
-            GameOverTitle.SetActive(true);
-            WinObject.SetActive(true);
-            LooseObject.SetActive(false);
-            CenterEyeCamera.cullingMask = 1 << 12;
-            ran = true;
-        }
-        //If Player 2 Pulls Lever and Wins
-        if (leverActivated && this.gameObject.name == "2LeverHandle" && !OtherLever.GetComponent<LeverScript>().leverActivated && !ran)
+        if (leverActivated && !OtherLever.GetComponent<LeverScript>().leverActivated)
         {
             GameOverClosing.SetActive(true);
             GameOverTitle.SetActive(true);
@@ -91,16 +81,7 @@ public class LeverScript : MonoBehaviour
             ran = true;
         }
         //If Player 2 Pulls Lever, Player 1 Looses
-        if (!leverActivated && this.gameObject.name == "1LeverHandle" && OtherLever.GetComponent<LeverScript>().leverActivated && ran)
-        {
-            GameOverClosing.SetActive(true);
-            GameOverTitle.SetActive(true);
-            WinObject.SetActive(false);
-            LooseObject.SetActive(true);
-            CenterEyeCamera.cullingMask = 1 << 12;
-        }
-        //If Player 1 Pulls Lever, Player 2 Looses
-        if (!leverActivated && this.gameObject.name == "2LeverHandle" && OtherLever.GetComponent<LeverScript>().leverActivated && ran)
+        if (!leverActivated && OtherLever.GetComponent<LeverScript>().leverActivated)
         {
             GameOverClosing.SetActive(true);
             GameOverTitle.SetActive(true);
