@@ -121,6 +121,7 @@ public class CauldronBehavior : NetworkObjectComponent
         {
             return;
         }
+        mixCooldown = addToMixCooldown;
 
         if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
             return;
@@ -132,7 +133,6 @@ public class CauldronBehavior : NetworkObjectComponent
             correctMixturesCompleted++;
             paperMarkings[correctMixturesCompleted] = paperMarkingsArray[liquidID];
             paper.GetComponent<Renderer>().materials = paperMarkings;
-            mixCooldown = addToMixCooldown;
             if (correctMixturesCompleted == 5)
             {
                 buttonMix = true;
@@ -175,7 +175,6 @@ public class CauldronBehavior : NetworkObjectComponent
             paperMarkings[i] = paperNullMarking;
         }
         paper.GetComponent<Renderer>().materials = paperMarkings;
-        mixCooldown = addToMixCooldown;
     }
 
     public override void RecieveNetworkMessage(string recievedMessage)
@@ -187,6 +186,8 @@ public class CauldronBehavior : NetworkObjectComponent
                 Debug.LogError("CauldronBehaviour -- RecieveNetworkMessage: Recieved an mix ID we are already set to.");
                 return;
             }
+
+            Debug.Log("CauldronBehaviour -- RecieveNetworkMessage: Recieved a progress message");
 
             if (mixtureNeededID != -1)
             {
@@ -218,6 +219,8 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void SendNetworkMessage(string messageToSend)
     {
+        Debug.Log("CauldronBehavour -- SendNetwrkMessage");
+
         NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
     }
 
