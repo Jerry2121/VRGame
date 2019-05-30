@@ -4033,7 +4033,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3637b758ff163493f8bb8b6d7e96d7ae, type: 2}
+  - {fileID: 2100000, guid: 944feb076639a4d39b750e3cb5d7dfab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13948,6 +13948,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelInformationCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 5601614017676189053}
+    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1.46
+      objectReference: {fileID: 0}
     - target: {fileID: 3834356495902177003, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14302,21 +14317,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 865.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 5601614017676189053}
-    - target: {fileID: 3834356495902177008, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 3834356495900028175, guid: 4e9cb6d6d4e21774b960d0b4f53d93e9,
         type: 3}
