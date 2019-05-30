@@ -184,7 +184,7 @@ public class CauldronBehavior : NetworkObjectComponent
             if (numOne == mixtureNeededID)
             {
                 Debug.LogError("CauldronBehaviour -- RecieveNetworkMessage: Recieved an mix ID we are already set to.");
-                return;
+                //return;
             }
 
             Debug.Log("CauldronBehaviour -- RecieveNetworkMessage: Recieved a progress message");
@@ -208,7 +208,7 @@ public class CauldronBehavior : NetworkObjectComponent
         }
         else if(NetworkTranslater.TranslatePuzzleFailedMessage(recievedMessage, out clientID, out objectID, out componentID))
         {
-            Debug.LogError("PUZZLE RECIEVE FAILURE");
+            Debug.LogError("CauldronBehaviour -- RecieveNetworkMessage: PUZZLE RECIEVE FAILURE");
             ResetPuzzle();
         }
         else
@@ -219,7 +219,7 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void SendNetworkMessage(string messageToSend)
     {
-        Debug.Log("CauldronBehavour -- SendNetwrkMessage");
+        Debug.Log("CauldronBehavour -- SendNetworkMessage");
 
         NetworkingManager.s_Instance.SendNetworkMessage(messageToSend);
     }
