@@ -318,6 +318,8 @@ namespace VRGame.Networking
 
         void PuzzleProgressMessage(string recievedMessage)
         {
+            Debug.Log("NetworkClient -- PuzzleProgressMessage");
+
             if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne) == false)
                 return;
 

@@ -20,7 +20,7 @@ public class BottleBehavior : MonoBehaviour
                 Debug.DrawRay(bottleTop.position, Vector3.down, Color.red);
                 if (hit.collider.name == "CauldronFill")
                 {
-                    Debug.Log("HIT!");
+                    //Debug.Log("HIT!");
                     hit.collider.gameObject.GetComponent<CauldronBehavior>().CheckMixture(liquidID);
                 }
             }
