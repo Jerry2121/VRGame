@@ -12,7 +12,7 @@ public class CauldronBehavior : NetworkObjectComponent
     int correctMixturesNeeded = 5;
 
     //How many mixtures have been completed?
-    [HideInInspector]public int correctMixturesCompleted;
+    [HideInNormalInspector]public int correctMixturesCompleted;
 
     // What bottle needs to be poured into the cauldron
     int mixtureNeededID = -1;
@@ -47,6 +47,8 @@ public class CauldronBehavior : NetworkObjectComponent
     [HideInNormalInspector]
     [SerializeField]
     int m_ID;
+
+    string lastRecievedMessage;
 
     void Start()
     {
@@ -179,6 +181,14 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void RecieveNetworkMessage(string recievedMessage)
     {
+        if(recievedMessage == lastRecievedMessage)
+        {
+            Debug.LogError("CauldronBehaviour -- RecieveNetworkMessage: Recieved a duplicate message");
+            return;
+        }
+
+        lastRecievedMessage = recievedMessage;
+
         if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
             if (numOne == mixtureNeededID)
@@ -187,7 +197,7 @@ public class CauldronBehavior : NetworkObjectComponent
                 //return;
             }
 
-            Debug.Log("CauldronBehaviour -- RecieveNetworkMessage: Recieved a progress message");
+            Debug.Log(string.Format("CauldronBehaviour -- RecieveNetworkMessage: Recieved a progress message. Message was \n {0} ", recievedMessage));
 
             if (mixtureNeededID != -1)
             {
