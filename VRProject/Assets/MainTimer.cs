@@ -8,6 +8,8 @@ public class MainTimer : MonoBehaviour
     //PlayerPrefs
     //30mTimer
     //TimeElapsed
+    public GameObject EndGameCanvas;
+    public GameObject WinObject;
     private float TimerPlaceHolder = 1800;
     private float ThirtyTimerPlaceHolder;
 
@@ -21,15 +23,29 @@ public class MainTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Player Pref ThirtyMinuteTimer value = " + PlayerPrefs.GetInt("ThirtyMinuteTimer"));
+        Debug.Log("Player Pref TimeElapsed value = " + PlayerPrefs.GetInt("TimeElapsed"));
+        if (EndGameCanvas == null)
+        {
+            if (NetworkingManager.GetLocalPlayer() != null)
+            {
+                EndGameCanvasScript canvasscript = NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>();
+                WinObject = canvasscript.WinObject;
+            }
+            else
+            {
+                return;
+            }
+        }
         ThirtyTimerPlaceHolder = PlayerPrefs.GetFloat("30mTimer");
-        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>().WinObject == !isActiveAndEnabled)
+        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && WinObject == !isActiveAndEnabled)
         {
             TimerPlaceHolder -= Time.deltaTime;
             double b;
             b = System.Math.Round(TimerPlaceHolder, 0);
             PlayerPrefs.SetFloat("30mTimer", (int)b);
         }
-        if (PlayerPrefs.GetInt("TimeElapsed") == 1 && NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>().WinObject == !isActiveAndEnabled)
+        if (PlayerPrefs.GetInt("TimeElapsed") == 1 && WinObject == !isActiveAndEnabled)
         {
             ThirtyTimerPlaceHolder += Time.deltaTime;
             double b;

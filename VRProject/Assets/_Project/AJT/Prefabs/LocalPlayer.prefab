@@ -4887,6 +4887,8 @@ MonoBehaviour:
   CenterEyeCamera: {fileID: 6767575322699785491}
   GameOverTitle: {fileID: 1595926872379306596}
   GameOverClosing: {fileID: 4613688562786971647}
+  ThirtyMinuteTimer: {fileID: 3822063236767770314}
+  TimeElapsed: {fileID: 8708824013858404186}
 --- !u!1 &4613688562786971647
 GameObject:
   m_ObjectHideFlags: 0

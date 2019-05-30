@@ -20,6 +20,8 @@ public class LeverScript : MonoBehaviour
     public Camera CenterEyeCamera;
     public GameObject GameOverTitle;
     public GameObject GameOverClosing;
+    public GameObject ThirtyMinuteTimer;
+    public GameObject TimeElapsed;
     public bool left;
     private static bool ran;
 
@@ -44,6 +46,8 @@ public class LeverScript : MonoBehaviour
                 CenterEyeCamera = canvasscript.CenterEyeCamera;
                 GameOverTitle = canvasscript.GameOverTitle;
                 GameOverClosing = canvasscript.GameOverClosing;
+                ThirtyMinuteTimer = canvasscript.ThirtyMinuteTimer;
+                TimeElapsed = canvasscript.TimeElapsed;
             }
             else
             {
@@ -80,6 +84,14 @@ public class LeverScript : MonoBehaviour
                 GameOverTitle.SetActive(true);
                 WinObject.SetActive(true);
                 LooseObject.SetActive(false);
+            if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1)
+            {
+                ThirtyMinuteTimer.SetActive(true);
+            }
+                if (PlayerPrefs.GetInt("TimeElapsed") == 1)
+                {
+                    TimeElapsed.SetActive(true);
+                }
                 CenterEyeCamera.cullingMask = 1 << 12;
         }
 
@@ -112,6 +124,14 @@ public class LeverScript : MonoBehaviour
             GameOverTitle.SetActive(true);
             WinObject.SetActive(true);
             LooseObject.SetActive(false);
+            if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1)
+            {
+                ThirtyMinuteTimer.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("TimeElapsed") == 1)
+            {
+                TimeElapsed.SetActive(true);
+            }
             CenterEyeCamera.cullingMask = 1 << 12;
             ran = true;
         }
@@ -142,6 +162,14 @@ public class LeverScript : MonoBehaviour
             GameOverTitle.SetActive(true);
             WinObject.SetActive(true);
             LooseObject.SetActive(false);
+            if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1)
+            {
+                ThirtyMinuteTimer.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("TimeElapsed") == 1)
+            {
+                TimeElapsed.SetActive(true);
+            }
             CenterEyeCamera.cullingMask = 1 << 12;
         }
     }
