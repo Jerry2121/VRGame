@@ -144,22 +144,20 @@ public class CauldronBehavior : NetworkObjectComponent
             SendNetworkMessage(NetworkTranslater.CreatePuzzleFailedMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID));
         }
         mixtureNeededID = -1;
-        StartCoroutine(UpdateMixture(liquidID));
+        UpdateMixture(liquidID);
     }
 
-    IEnumerator UpdateMixture(int liquidID)
+    void UpdateMixture(int liquidID)
     {
         int newMixID = Random.Range(0, 6);
 
         if (newMixID == liquidID)
         {
-            StartCoroutine(UpdateMixture(liquidID));
-            yield break;
+            UpdateMixture(liquidID);
+            return;
         }
         else
         {
-            yield return new WaitForSecondsRealtime(0.5f);
-
             mixtureNeededID = newMixID;
             SendNetworkMessage(NetworkTranslater.CreatePuzzleProgressMessage(NetworkingManager.ClientID(), m_NetworkObject.m_ObjectID, m_ID, mixtureNeededID));
 
