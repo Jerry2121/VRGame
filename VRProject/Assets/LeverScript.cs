@@ -23,6 +23,7 @@ public class LeverScript : MonoBehaviour
     public GameObject ThirtyMinuteTimer;
     public GameObject TimeElapsed;
     public bool left;
+    public bool GameOver;
     private static bool ran;
 
     // Start is called before the first frame update
@@ -92,6 +93,7 @@ public class LeverScript : MonoBehaviour
                 {
                     TimeElapsed.SetActive(true);
                 }
+            GameOver = true;
                 CenterEyeCamera.cullingMask = 1 << 12;
         }
 
@@ -132,6 +134,7 @@ public class LeverScript : MonoBehaviour
             {
                 TimeElapsed.SetActive(true);
             }
+            GameOver = true;
             CenterEyeCamera.cullingMask = 1 << 12;
             ran = true;
         }
@@ -170,6 +173,7 @@ public class LeverScript : MonoBehaviour
             {
                 TimeElapsed.SetActive(true);
             }
+            GameOver = true;
             CenterEyeCamera.cullingMask = 1 << 12;
         }
     }

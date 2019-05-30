@@ -23,12 +23,11 @@ public class MainTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player Pref ThirtyMinuteTimer value = " + PlayerPrefs.GetInt("ThirtyMinuteTimer"));
-        Debug.Log("Player Pref TimeElapsed value = " + PlayerPrefs.GetInt("TimeElapsed"));
         if (EndGameCanvas == null)
         {
             if (NetworkingManager.GetLocalPlayer() != null)
             {
+                EndGameCanvas = NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>().gameObject;
                 EndGameCanvasScript canvasscript = NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>();
                 WinObject = canvasscript.WinObject;
             }
@@ -38,19 +37,20 @@ public class MainTimer : MonoBehaviour
             }
         }
         ThirtyTimerPlaceHolder = PlayerPrefs.GetFloat("30mTimer");
-        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && WinObject == !isActiveAndEnabled)
+        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && GameObject.Find("1LeverHandle(Clone)").GetComponent<LeverScript>().GameOver == false || PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && GameObject.Find("2LeverHandle(Clone)").GetComponent<LeverScript>().GameOver == false)
         {
             TimerPlaceHolder -= Time.deltaTime;
-            double b;
-            b = System.Math.Round(TimerPlaceHolder, 0);
-            PlayerPrefs.SetFloat("30mTimer", (int)b);
+            float b;
+            b = TimerPlaceHolder;
+            PlayerPrefs.SetFloat("30mTimer", b);
         }
-        if (PlayerPrefs.GetInt("TimeElapsed") == 1 && WinObject == !isActiveAndEnabled)
+        ThirtyTimerPlaceHolder = PlayerPrefs.GetFloat("TimeElapsedTimer");
+        if (PlayerPrefs.GetInt("TimeElapsed") == 1 && GameObject.Find("1LeverHandle(Clone)").GetComponent<LeverScript>().GameOver == false || PlayerPrefs.GetInt("TimeElapsed") == 1 && GameObject.Find("2LeverHandle(Clone)").GetComponent<LeverScript>().GameOver == false)
         {
             ThirtyTimerPlaceHolder += Time.deltaTime;
-            double b;
-            b = System.Math.Round(ThirtyTimerPlaceHolder, 0);
-            PlayerPrefs.SetFloat("TimeElapsedTimer", (int)b);
+            float b;
+            b = ThirtyTimerPlaceHolder;
+            PlayerPrefs.SetFloat("TimeElapsedTimer", b);
         }
     }
 }

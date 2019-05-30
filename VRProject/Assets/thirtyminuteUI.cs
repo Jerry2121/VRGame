@@ -18,6 +18,6 @@ public class thirtyminuteUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        this.gameObject.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("30mTimer") + "s Left";
+        this.gameObject.GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(PlayerPrefs.GetFloat("30mTimer")) + "s Left";
     }
 }

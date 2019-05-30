@@ -18,6 +18,6 @@ public class TimeElapsedUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        this.gameObject.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetFloat("TimeElapsedTimer") + "s";
+        this.gameObject.GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(PlayerPrefs.GetFloat("TimeElapsedTimer")) + "s";
     }
 }
