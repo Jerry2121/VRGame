@@ -173,6 +173,7 @@ public class CauldronBehavior : NetworkObjectComponent
             paperMarkings[i] = paperNullMarking;
         }
         paper.GetComponent<Renderer>().materials = paperMarkings;
+        mixtureNeededID = -1;
     }
 
     public override void RecieveNetworkMessage(string recievedMessage)
