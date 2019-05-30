@@ -13,7 +13,7 @@ public class BottleBehavior : MonoBehaviour
     {
         if (bottleBottom.transform.position.y > bottleTop.transform.position.y)
         {
-            Debug.Log("The bottle is spilling.");
+            //Debug.Log("The bottle is spilling.");
             RaycastHit hit;
             if (Physics.Raycast(bottleTop.position, Vector3.down, out hit))
             {

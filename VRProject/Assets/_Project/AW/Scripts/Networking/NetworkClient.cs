@@ -100,7 +100,7 @@ namespace VRGame.Networking
                         stream.ReadBytesIntoArray(ref readerCtx, ref messageBytes, stream.Length);
                         string recievedMessage = Encoding.UTF8.GetString(messageBytes);
 
-                        //Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
+                        Debug.Log("NetworkClient -- Got the value " + recievedMessage + " from the server");
 
                         string[] splitMessages = NetworkTranslater.SplitMessages(recievedMessage);
 
@@ -147,7 +147,7 @@ namespace VRGame.Networking
 
             if(m_MessageList.Count <= 0)
             {
-                SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()));
+                SendMessages(Encoding.UTF8.GetBytes("null"));
             }
 
             else {

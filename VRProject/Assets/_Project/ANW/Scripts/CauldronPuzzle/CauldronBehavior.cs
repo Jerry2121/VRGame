@@ -50,7 +50,7 @@ public class CauldronBehavior : NetworkObjectComponent
 
     void Start()
     {
-        Debug.Log("CAULDRON START " + gameObject.name);
+        //Debug.Log("CAULDRON START " + gameObject.name);
 
         m_NetworkObject = GetNetworkObjectForObject(this.transform);
         RegisterSelf();
@@ -233,7 +233,7 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public override void RegisterSelf()
     {
-        Debug.Log("REGISTERING " + gameObject.name);
+        //Debug.Log("REGISTERING " + gameObject.name);
         base.RegisterSelf();
     }
 

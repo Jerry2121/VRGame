@@ -102,7 +102,7 @@ namespace VRGame.Networking
 
                             string recievedMessage = Encoding.UTF8.GetString(messageBytes);
 
-                            //Debug.Log("NetworkServer -- Got " + recievedMessage + " from a Client.");
+                            Debug.Log("NetworkServer -- Got " + recievedMessage + " from a Client.");
 
                             //m_MessageList.Add(recievedMessage);
 
@@ -137,7 +137,7 @@ namespace VRGame.Networking
                     //don't send if there aren't any messages
                     if (currentMessages.Count <= 0)
                     {
-                        SendMessages(Encoding.UTF8.GetBytes(UnityEngine.Random.Range(0f, 10f).ToString()), i);
+                        SendMessages(Encoding.UTF8.GetBytes("null"), i);
                         continue;
                     }
 
