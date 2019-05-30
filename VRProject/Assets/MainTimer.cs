@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRGame.Networking;
 
 public class MainTimer : MonoBehaviour
 {
@@ -21,14 +22,14 @@ public class MainTimer : MonoBehaviour
     void Update()
     {
         ThirtyTimerPlaceHolder = PlayerPrefs.GetFloat("30mTimer");
-        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1)
+        if (PlayerPrefs.GetInt("ThirtyMinuteTimer") == 1 && NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>().WinObject == !isActiveAndEnabled)
         {
             TimerPlaceHolder -= Time.deltaTime;
             double b;
             b = System.Math.Round(TimerPlaceHolder, 0);
             PlayerPrefs.SetFloat("30mTimer", (int)b);
         }
-        if (PlayerPrefs.GetInt("TimeElapsed") == 1)
+        if (PlayerPrefs.GetInt("TimeElapsed") == 1 && NetworkingManager.GetLocalPlayer().GetComponentInChildren<EndGameCanvasScript>().WinObject == !isActiveAndEnabled)
         {
             ThirtyTimerPlaceHolder += Time.deltaTime;
             double b;
