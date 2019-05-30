@@ -117,14 +117,15 @@ public class CauldronBehavior : NetworkObjectComponent
 
     public void CheckMixture(int liquidID)
     {
+        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
+            return;
+
         if (mixCooldown > 0 || mixtureFinished)
         {
             return;
         }
         mixCooldown = addToMixCooldown;
 
-        if (NetworkingManager.s_Instance.IsConnected() && NetworkingManager.s_Instance.IsHost() == false)
-            return;
 
         if (liquidID == mixtureNeededID)
         {
