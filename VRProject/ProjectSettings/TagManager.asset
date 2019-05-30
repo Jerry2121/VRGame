@@ -17,6 +17,7 @@ TagManager:
   - P1Progress2
   - CauldronFill
   - Burnable
+  - LeverEndCollider
   layers:
   - Default
   - TransparentFX

@@ -134,4 +134,15 @@ public class LeverScript : MonoBehaviour
             NetworkObjectComponent.GetNetworkObjectForObject(transform).SetPlayerInteracting(true);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "LeverEndCollider")
+        {
+            GameOverClosing.SetActive(true);
+            GameOverTitle.SetActive(true);
+            WinObject.SetActive(true);
+            LooseObject.SetActive(false);
+            CenterEyeCamera.cullingMask = 1 << 12;
+        }
+    }
 }
