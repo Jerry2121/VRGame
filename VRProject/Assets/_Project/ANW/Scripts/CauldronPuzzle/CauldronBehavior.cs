@@ -183,7 +183,10 @@ public class CauldronBehavior : NetworkObjectComponent
         if (NetworkTranslater.TranslatePuzzleProgressMessage(recievedMessage, out int clientID, out int objectID, out int componentID, out int numOne))
         {
             if (numOne == mixtureNeededID)
+            {
+                Debug.LogError("CauldronBehaviour -- RecieveNetworkMessage: Recieved an mix ID we are already set to.");
                 return;
+            }
 
             if (mixtureNeededID != -1)
             {
